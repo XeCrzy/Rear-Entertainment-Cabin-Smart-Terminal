@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/background.png</file>
+        <file>image/buzzer_off.png</file>
+        <file>image/buzzer_on.png</file>
+        <file>image/cloud.png</file>
+        <file>image/Fog.png</file>
+        <file>image/game.png</file>
+        <file>image/led_off.png</file>
+        <file>image/led_on.png</file>
+        <file>image/music.png</file>
+        <file>image/rain.png</file>
+        <file>image/snow.png</file>
+        <file>image/sunny.png</file>
+        <file>image/talk.png</file>
+        <file>image/video.png</file>
+    </qresource>
+</RCC>
