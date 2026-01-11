@@ -35,7 +35,8 @@ private slots:
     // 时间更新槽函数
     void onTimeUpdated(const QString &timeStr);
     void onNtpSyncFinished(bool success, const QString &timeStr);
-    void on_btn_game_clicked();
+
+
 
 };
 #endif // WIDGET_H

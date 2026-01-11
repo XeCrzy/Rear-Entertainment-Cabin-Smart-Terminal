@@ -1,9 +1,6 @@
 ﻿#include "widget.h"
 #include "ui_widget.h"
-#include <QPixmap>
-#include <QBrush>
 #include <QDebug>
-#include <QPalette>
 #include <QDateTime>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -31,12 +28,6 @@ Widget::Widget(QWidget *parent)
     timeThread->startTimeThread();
 
 
-    //创建背景图片控件
-    QPixmap pix = QPixmap(":/image/background.png").scaled(this->size());
-    //创建画板
-    QPalette paletee;
-    paletee.setBrush(QPalette::Background,QBrush(pix));
-    this->setPalette(paletee);
     mainWindowInit();
 }
 
@@ -128,7 +119,4 @@ Widget::~Widget()
 }
 
 
-void Widget::on_btn_game_clicked()
-{
-    qDebug() << "游戏按钮";
-}
+

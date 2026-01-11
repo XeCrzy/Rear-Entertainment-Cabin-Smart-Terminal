@@ -570,20 +570,29 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_res.cpp qrc_easyInput.cpp
 qrc_res.cpp: res.qrc \
 		/usr/local/Qt-Embedded-5.7.0/bin/rcc \
-		image/game.png \
-		image/snow.png \
+		image/music_next.png \
+		image/help.png \
+		image/background.png \
+		image/rain.png \
 		image/video.png \
+		image/music.jpg \
+		image/snake.jpg \
+		image/sunny.png \
+		image/music_play.png \
 		image/buzzer_on.png \
 		image/music.png \
-		image/background.png \
-		image/led_off.png \
-		image/buzzer_off.png \
-		image/led_on.png \
-		image/talk.png \
-		image/cloud.png \
-		image/rain.png \
 		image/Fog.png \
-		image/sunny.png
+		image/snow.png \
+		image/music_pre.png \
+		image/buzzer_off.png \
+		image/plane.jpg \
+		image/talk.png \
+		image/video_play.png \
+		image/led_off.png \
+		image/led_on.png \
+		image/cloud.png \
+		image/game.png \
+		image/Intelligent_voice.png
 	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name res res.qrc -o qrc_res.cpp
 
 qrc_easyInput.cpp: easyInput/easyInput.qrc \
@@ -1112,10 +1121,11 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		threadtime.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMutex \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		time_manager.h \
@@ -1563,6 +1573,8 @@ moc_easyinput.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		easyInput/easyinput.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
@@ -2059,6 +2071,8 @@ moc_easyinput.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		easyInput/easyinput.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
@@ -2530,10 +2544,11 @@ main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		threadtime.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMutex \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		time_manager.h \
@@ -3058,29 +3073,16 @@ widget.o: widget.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		threadtime.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMutex \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
 		time_manager.h \
 		ntp_client.h \
 		ui_widget.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QFrame \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QGridLayout \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHBoxLayout \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLabel \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLineEdit \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSpacerItem \
-		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
-		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QBrush \
-		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPalette \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 
@@ -3815,6 +3817,8 @@ easyInput.o: easyInput/easyInput.cpp easyInput/easyinput.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		easyInput/ui_easyInput.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \

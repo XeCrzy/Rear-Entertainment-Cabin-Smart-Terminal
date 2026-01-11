@@ -14,5 +14,14 @@
         <file>image/sunny.png</file>
         <file>image/talk.png</file>
         <file>image/video.png</file>
+        <file>image/music.jpg</file>
+        <file>image/plane.jpg</file>
+        <file>image/snake.jpg</file>
+        <file>image/music_next.png</file>
+        <file>image/music_play.png</file>
+        <file>image/music_pre.png</file>
+        <file>image/video_play.png</file>
+        <file>image/Intelligent_voice.png</file>
+        <file>image/help.png</file>
     </qresource>
 </RCC>

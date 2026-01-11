@@ -34,6 +34,15 @@
        </color>
       </brush>
      </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
@@ -49,6 +58,24 @@
         <red>255</red>
         <green>255</green>
         <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
        </color>
       </brush>
      </colorrole>
@@ -72,6 +99,15 @@
        </color>
       </brush>
      </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
@@ -87,6 +123,24 @@
         <red>255</red>
         <green>255</green>
         <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
        </color>
       </brush>
      </colorrole>
@@ -110,6 +164,15 @@
        </color>
       </brush>
      </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
+       </color>
+      </brush>
+     </colorrole>
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
@@ -125,6 +188,24 @@
         <red>255</red>
         <green>255</green>
         <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>240</red>
+        <green>242</green>
+        <blue>245</blue>
        </color>
       </brush>
      </colorrole>
@@ -144,409 +225,1316 @@
    <string>Widget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#Widget{
-	border-image: url(:/image/background.png);
-	
-	color: rgb(255, 255, 255);
-}
-QPushButton {
-    
-	background-color: rgba(230, 230, 230, 150);
-	color: rgb(255, 255, 255);
-}
-QPushButton:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-QLabel#label_time{
-	color: rgb(255, 255, 255);
-	
-	font: 11pt &quot;Arial Rounded MT Bold&quot;;
-	
+   <string notr="true">/* ===================== 全局根容器 全局样式【严格不修改布局/尺寸】 ===================== */
+/* 整个主窗体背景，参考图的浅灰底色，不影响任何子控件大小位置 */
+QWidget#Widget {
+    background-color: #F0F2F5;
 }
 
-QLabel#label_title{
-	color: rgb(255, 255, 255);
-	
-	font: 16pt &quot;微软雅黑&quot;;
+/* ===================== 头部区域 - frame_header 及内部所有控件 【严格原布局】 ===================== */
+/* 头部总框架背景+边框：纯白底色+细灰边框，参考图头部样式 */
+QFrame#frame_header {
+    background-color: #FFFFFF;
+    border: 1px solid #E4E7ED;
+    border-radius: 4px;
+	box-shadow: 0px 0px 6px 1px #20000000;
 }
-
-/* 注意：QLabel 的类名已修正（原词 QLbabel 为笔误） */
-QLabel#label_temperature {
-    border: 1px solid white;
-    border-radius: 10px;
+/* 头部标题-车载智能终端 文字样式 */
+QLabel#label_title {
+    color: #1E293B;/* 深灰主文字色 */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框，还原清爽样式 */
 }
-
+/* 头部天气标签 文字样式 */
 QLabel#label_weather {
-    border: 1px solid white;
-    border-radius: 10px;
+    color: #334155;/* 中灰文字色 */
+    font-size: 13px;
+    font-weight: normal;
+    border: none;/* 清除原默认边框 */
+}
+/* 头部温度标签 文字样式 */
+QLabel#label_temperature {
+    color: #334155;/* 中灰文字色 */
+    font-size: 13px;
+    font-weight: normal;
+    border: none;/* 清除原默认边框 */
+}
+/* 头部时间标签 文字样式 */
+QLabel#label_time {
+    color: #1E293B;/* 深灰主文字色 */
+    font-size: 15px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框 */
+    qproperty-alignment: AlignCenter;/* 文字居中，不修改控件大小 */
 }
 
-QPushButton#btn_guangzhou {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
+/* ===================== 中部核心区域 - frame_mid_part 及内部4个功能卡片 【严格原布局/原间距】 ===================== */
+/* 中部总框架样式：透明背景，不遮挡底层底色，不修改任何布局 */
+QFrame#frame_mid_part {
+    background-color: transparent;
+    border: none;
+}
+/* 游戏区卡片 - frame_game 整体样式【原大小/原位置/原内边距】 */
+QFrame#frame_game {
+    background-color: #FFFFFF;/* 卡片纯白背景 */
+    border: 1px solid #E4E7ED;/* 卡片细灰边框 */
+    border-radius: 6px;/* 卡片圆角，参考图效果 */
+}
+/* 音乐区卡片 - frame_music 整体样式【原大小/原位置/原内边距】 */
+QFrame#frame_music {
+    background-color: #FFFFFF;/* 卡片纯白背景 */
+    border: 1px solid #E4E7ED;/* 卡片细灰边框 */
+    border-radius: 6px;/* 卡片圆角，参考图效果 */
+}
+/* 天气+视频区卡片 - frame_fun 整体样式【原大小/原位置/原内边距】 */
+QFrame#frame_fun {
+    background-color: #FFFFFF;/* 卡片纯白背景 */
+    border: 1px solid #E4E7ED;/* 卡片细灰边框 */
+    border-radius: 6px;/* 卡片圆角，参考图效果 */
+}
+/* 智能语音区卡片 - frame_talk 整体样式【原大小/原位置/原内边距】 */
+QFrame#frame_talk {
+    background-color: #FFFFFF;/* 卡片纯白背景 */
+    border: 1px solid #E4E7ED;/* 卡片细灰边框 */
+    border-radius: 6px;/* 卡片圆角，参考图效果 */
 }
 
-QPushButton#btn_beijing {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
-	
-
+/* -------------------- 中部所有功能区 标题标签 统一样式 【游戏区/音乐播放区等】 -------------------- */
+QLabel#label { /* 游戏区标题 */
+    color: #1E293B;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框 */
+}
+QLabel#label_2 { /* 音乐播放区标题 */
+    color: #1E293B;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框 */
+}
+QLabel#label_5 { /* 获取城市天气标题 */
+    color: #1E293B;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框 */
+}
+QLabel#label_6 { /* 视频播放标题 */
+    color: #1E293B;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框 */
+}
+QLabel#label_7 { /* 智能语音助手标题 */
+    color: #1E293B;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;/* 清除原默认边框 */
 }
 
-QPushButton#btn_send {
-	background-color: rgb(255, 85, 0);
-	
-	color: rgb(255, 255, 255);
+/* -------------------- 游戏区内部按钮 样式【贪吃蛇/飞机大战/更多游戏，原大小不变】 -------------------- */
+QPushButton#btn_snake {
+    background-color: #2563EB;/* 蓝色按钮，参考图配色 */
+    color: #FFFFFF;/* 白色文字 */
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-radius: 4px;
+}
+QPushButton#btn_snake:hover {background-color: #1D4ED8;}/* 悬浮加深，无位移 */
+QPushButton#btn_snake:pressed {background-color: #1E40AF;}/* 按下更深，无位移 */
+
+QPushButton#btn_plane {
+    background-color: #DC2626;/* 红色按钮，参考图配色 */
+    color: #FFFFFF;/* 白色文字 */
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-radius: 4px;
+}
+QPushButton#btn_plane:hover {background-color: #B91C1C;}/* 悬浮加深，无位移 */
+QPushButton#btn_plane:pressed {background-color: #991B1B;}/* 按下更深，无位移 */
+
+QPushButton#btn_more_game {
+    background-color: #64748B;/* 灰色按钮，参考图配色 */
+    color: #FFFFFF;/* 白色文字 */
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-radius: 4px;
+}
+QPushButton#btn_more_game:hover {background-color: #475569;}/* 悬浮加深，无位移 */
+QPushButton#btn_more_game:pressed {background-color: #334155;}/* 按下更深，无位移 */
+
+/* -------------------- 音乐区内部控件 样式【原大小/原位置不变】 -------------------- */
+/* 音乐圆形图标容器 - 只加边框和圆角，你后期加border-image即可，大小不变 */
+QLabel#label_3 {
+    border: 1px solid #E4E7ED;
+    border-radius: 70px;/* 完美圆形，匹配你的140x160尺寸 */
+    background-color: #F8FAFC;
+    border-style: solid;
+}
+/* 音乐音量滑块 美化，不修改滑块大小/位置 */
+QSlider#horizontalSlider {
+    background-color: #E4E7ED;/* 滑块底色 */
+    height: 4px;
+    border-radius: 2px;
+}
+QSlider#horizontalSlider::handle {
+    width: 12px;
+    height: 12px;
+    background-color: #2563EB;/* 滑块按钮蓝色 */
+    border-radius: 6px;/* 圆形滑块 */
+    margin-top: -4px;
+    margin-bottom: -4px;
+    border: none;
+}
+/* 音乐上一曲/播放/下一曲按钮 样式 */
+QPushButton#btn_music_pre,QPushButton#btn_music_next {
+    background-color: #E2E8F0;
+    color: #1E293B;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+}
+QPushButton#btn_music_play {
+    background-color: #2563EB;
+    color: #FFFFFF;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
 }
 
-QPushButton#btn_game {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
-	
-	border-image: url(:/image/game.png);
+/* -------------------- 天气区-输入框+按钮 样式【原大小不变】 -------------------- */
+QLineEdit#lineEdit {
+    border:1px solid #E4E7ED;
+    border-radius:4px;
+    background-color:#FFFFFF;
+    color:#1E293B;
+    font-size:12px;
+    padding-left:5px;
+}
+QPushButton#btn_send,QPushButton#btn_beijing,QPushButton#btn_guangzhou {
+    background-color: #E2E8F0;
+    color: #1E293B;
+    font-size:12px;
+    border:none;
+    border-radius:4px;
+}
+QPushButton#btn_send:hover,QPushButton#btn_beijing:hover,QPushButton#btn_guangzhou:hover {
+    background-color: #CBD5E1;
 }
 
-QPushButton#btn_talk {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
-	
-	border-image: url(:/image/talk.png);
+/* -------------------- 视频区 样式【原大小不变】 -------------------- */
+/* 视频播放容器 - 你后期加border-image，只加底色和边框 */
+QWidget#widget {
+    background-color: #1E293B;
+    border:1px solid #475569;
+    border-radius:4px;
+}
+/* 视频播放/暂停按钮 */
+QPushButton#btn_start_pause {
+    background-color: #2563EB;
+    color:#FFFFFF;
+    font-size:12px;
+    border:none;
+    border-radius:4px;
 }
 
-QPushButton#btn_led {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
+/* -------------------- 智能语音区 圆形容器 样式【原150x150大小不变】 -------------------- */
+QLabel#label_4 {
+    border: 2px solid #CBD5E1;
+    border-radius:75px;/* 完美圆形，匹配你的150x150尺寸 */
+    background-color: #F8FAFC;
+    border-style: solid;
+    /* 你后期在这里加 border-image: url(你的图片路径); 即可 */
 }
 
-QPushButton#btn_buzzer {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
+/* ===================== 底部功能区 - frame_bottom 及内部所有按钮 【严格原布局/原大小/原间距 完全不变】 ===================== */
+/* 底部总框架样式：纯白底色+细灰边框，参考图底部样式 */
+QFrame#frame_bottom {
+    background-color: #FFFFFF;
+    border:1px solid #E4E7ED;
+    border-radius:4px;
 }
-
-QPushButton#btn_music {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
-	
-	border-image: url(:/image/music.png);
+/* -------------------- 底部所有按钮 统一基础样式 + 个性配色【全部原大小/位置不变，无任何位移】 -------------------- */
+/* 底部通用按钮样式：统一基础样式，hover和pressed无位移，只改颜色 */
+QPushButton#btn_led,QPushButton#btn_led_switch,QPushButton#btn_talk,QPushButton#btn_wind_small,
+QPushButton#btn_fan,QPushButton#btn_wind_big,QPushButton#btn_buzzer,QPushButton#btn_buzzer_switch,QPushButton#btn_help {
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-radius: 4px;
 }
+/* LED相关按钮-浅蓝 */
+QPushButton#btn_led {background-color: #94A3B8;color:#FFFFFF;}
+QPushButton#btn_led:hover {background-color: #64748B;}
+QPushButton#btn_led_switch {background-color: #38BDF8;color:#FFFFFF;}
+QPushButton#btn_led_switch:hover {background-color: #0EA5E9;}
+/* 语音按钮-紫色 */
+QPushButton#btn_talk {background-color: #9333EA;color:#FFFFFF;}
+QPushButton#btn_talk:hover {background-color: #7E22CE;}
+/* 风扇相关按钮-浅绿 */
+QPushButton#btn_wind_small,QPushButton#btn_wind_big {background-color: #A3E635;color:#1E293B;font-size:11px;}
+QPushButton#btn_fan {background-color: #4ADE80;color:#FFFFFF;}
+QPushButton#btn_fan:hover {background-color: #22C55E;}
+/* 蜂鸣器相关按钮-橙色 */
+QPushButton#btn_buzzer {background-color: #F97316;color:#FFFFFF;}
+QPushButton#btn_buzzer:hover {background-color: #EA580C;}
+QPushButton#btn_buzzer_switch {background-color: #FB923C;color:#FFFFFF;}
+QPushButton#btn_buzzer_switch:hover {background-color: #F97316;}
+/* 帮助按钮-灰色 */
+QPushButton#btn_help:hover {background-color: #475569;}
 
-QPushButton#btn_video {
-    border: 1px solid white;
-    border-radius: 10px;
-	color: white;
-	
-	border-image: url(:/image/video.png);
-}
-
-
-
-</string>
+/* ===================== 全局通用补充 防样式溢出【无任何布局修改】 ===================== */
+/* 清除所有QFrame的默认多余边框，防止遮挡 */
+QFrame {border-style: none;}
+/* 所有按钮按下无偏移，完美贴合原布局 */
+QPushButton {
+    padding:0px;
+    margin:0px;
+}</string>
   </property>
-  <widget class="QWidget" name="widget_2" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>100</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <property name="leftMargin">
+    <number>0</number>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>800</width>
-     <height>100</height>
-    </size>
+   <property name="rightMargin">
+    <number>0</number>
    </property>
-   <property name="maximumSize">
-    <size>
-     <width>800</width>
-     <height>100</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background: qradialgradient(cx:0.5, cy:0.5, radius:1.2, fx:0.5, fy:0.5, 
-                stop:0 #2c3036, 
-                stop:0.6 #1a1c20, 
-                stop:1 #0a0b0d);
-
-    /* 2. 白色阴影边框：
-       通过使用 semi-transparent white (半透明白)，
-       在深色背景上会产生一种向外发光的“朦胧白色阴影”错觉。*/
-    border: 1px solid rgba(255, 255, 255, 40); 
-    border-radius: 12px;</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_title">
-      <property name="minimumSize">
-       <size>
-        <width>250</width>
-        <height>50</height>
-       </size>
+   <item>
+    <widget class="QFrame" name="frame_header">
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>48</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>250</width>
-        <height>50</height>
-       </size>
+      <property name="leftMargin">
+       <number>0</number>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
+      <property name="topMargin">
+       <number>0</number>
       </property>
-      <property name="text">
-       <string>车载智能终端</string>
+      <property name="rightMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>397</width>
-        <height>20</height>
-       </size>
+      <item>
+       <widget class="QLabel" name="label_title">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="text">
+         <string>车载智能终端</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_weather">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="text">
+         <string>天气</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_temperature">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="text">
+         <string>温度:18℃</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>128</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_time">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>48</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="text">
+         <string>time</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_mid_part">
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>320</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>320</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <property name="spacing">
+       <number>0</number>
       </property>
-     </spacer>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLabel" name="label_time">
-      <property name="minimumSize">
-       <size>
-        <width>200</width>
-        <height>50</height>
-       </size>
+      <property name="leftMargin">
+       <number>0</number>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>200</width>
-        <height>50</height>
-       </size>
+      <property name="topMargin">
+       <number>0</number>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
+      <property name="rightMargin">
+       <number>0</number>
       </property>
-      <property name="text">
-       <string>time</string>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>150</y>
-     <width>371</width>
-     <height>271</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Box</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="label_weather">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>131</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="text">
-     <string>天气</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_temperature">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>131</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Panel</enum>
-    </property>
-    <property name="text">
-     <string>温度:18℃</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_beijing">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>110</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>北京</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_guangzhou">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>110</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>广州</string>
-    </property>
-   </widget>
-   <widget class="QFrame" name="frame_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>160</y>
-      <width>351</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLineEdit" name="lineEdit_send"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_send">
-       <property name="text">
-        <string>发送</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QFrame" name="frame_3">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>150</y>
-     <width>351</width>
-     <height>271</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::Box</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QPushButton" name="btn_game">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>30</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_talk">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>30</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_led">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>110</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>led</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_buzzer">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>110</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>buzzer</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_music">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>190</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_video">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>190</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-  </widget>
+      <item>
+       <widget class="QFrame" name="frame_game">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="text">
+            <string>游戏区</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_snake">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/image/snake.jpg);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_plane">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/image/plane.jpg);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_more_game">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>70</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/image/game.png);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_music">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="text">
+            <string>音乐播放区</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>150</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>150</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/image/music.jpg);</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="horizontalSlider">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>140</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget_music_btn" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>140</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>140</width>
+             <height>40</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="btn_music_pre">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-image: url(:/image/music_pre.png);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_music_play">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>40</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-image: url(:/image/music_play.png);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_music_next">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-image: url(:/image/music_next.png);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_fun">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QFrame" name="frame">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="minimumSize">
+               <size>
+                <width>140</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>获取城市天气</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLineEdit" name="lineEdit">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_send">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>发送城市</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QPushButton" name="btn_beijing">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>北京</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_guangzhou">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>广州</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_2">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>160</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>160</height>
+            </size>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>70</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::Box</enum>
+                </property>
+                <property name="text">
+                 <string>视频播放</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_start_pause">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>60</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border-image: url(:/image/video.png);</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>130</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>130</width>
+                <height>100</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_talk">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>310</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLabel" name="label_7">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>140</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>120</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string>智能语音助手</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>150</width>
+           <height>150</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-image: url(:/image/Intelligent_voice.png);</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_bottom">
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>74</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>74</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QPushButton" name="btn_led">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>led</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_led_switch">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>灯开关</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_talk">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/image/talk.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QPushButton" name="btn_wind_small">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>小风</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_fan">
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>风扇</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_wind_big">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>大风</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_buzzer">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>蜂鸣器</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_buzzer_switch">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>蜂鸣器开关</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_help">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/image/help.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
