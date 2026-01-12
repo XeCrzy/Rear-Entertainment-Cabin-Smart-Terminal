@@ -765,10 +765,10 @@ void easyInput::setPosition(const QString &position)
 
 void easyInput::setMainStyle()
 {
-    QString iconType = "white";
-    // 第二个参数明确为 "#FFFFFF" (白色)
+    QString iconType = "#000000";
+    // 第二个参数明确为
     // 第三个参数 btnBackgroundColor 建议给一个微弱的深色，如 "#2A2A2A"，否则透明背景可能导致文字在复杂背景下依然模糊
-    setColor("#191919", "#FFFFFF", "#2A2A2A", "#4189D3", "#FFFFFF", "#F95717", "#FFFFFF");
+    setColor("#87CEFA", "#000000", "#2A2A2A", "#4189D3", "#000000", "#F95717", "#000000");
 
     QString icon_upper = QString(":/image/upper_%1.png").arg(iconType);
     QString icon_delete = QString(":/image/delete_%1.png").arg(iconType);
@@ -782,25 +782,21 @@ void easyInput::setColor(const QString &mainBackgroundColor, const QString &main
     QStringList qss;
 
     // 1. 让背景透明，确保能看到你在 UI 里设计的背景
-    qss.append("QWidget#widgetMain,QWidget#widgetTop,QWidget#widgetNumber{background:transparent;}");
+    qss.append("QWidget#widgetMain,QWidget#widgetTop,QWidget#widgetNumber{background:mainBackgroundColor;}");
 
-    // 2. 强制按钮文字变白 + 圆角矩形
-    // 这里不再使用传入的 mainTextColor 变量，直接写死 #FFFFFF 确保万无一失
+
     qss.append("QPushButton { "
-               "border: 1px solid white; "
+               "border: 1px solid #000000; "
                "border-radius: 10px; "
-               "color: #FFFFFF !important; "
-               "background-color: transparent; "
+               "color: #000000 !important; "
+               "background-color: #F0FFFF; "
                "}");
 
     // 3. 悬停状态
     qss.append(QString("QPushButton:hover { background-color: rgba(255, 255, 255, 60); color: #FFFFFF !important; }"));
 
-    // 4. Label（汉字显示区）强制白字
-    qss.append("QLabel { color: #FFFFFF !important; background: transparent; }");
+    qss.append("QLabel { color: #F0FFFF !important; background: #D3D3D3; }");
 
-    // 5. 应用样式表，并在最后强制全局 QWidget 属性
-    this->setStyleSheet(qss.join("") + "QWidget { font-size: 12px; color: #FFFFFF; }");
 }
 
 void easyInput::setInputType(const QString &inputType)

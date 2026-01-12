@@ -472,7 +472,6 @@ QPushButton#btn_led:hover {background-color: #64748B;}
 QPushButton#btn_led_switch {background-color: #38BDF8;color:#FFFFFF;}
 QPushButton#btn_led_switch:hover {background-color: #0EA5E9;}
 /* 语音按钮-紫色 */
-QPushButton#btn_talk {background-color: #9333EA;color:#FFFFFF;}
 QPushButton#btn_talk:hover {background-color: #7E22CE;}
 /* 风扇相关按钮-浅绿 */
 QPushButton#btn_wind_small,QPushButton#btn_wind_big {background-color: #A3E635;color:#1E293B;font-size:11px;}
@@ -598,7 +597,7 @@ QSlider#horizontalSlider {
          <number>0</number>
         </property>
         <property name="text">
-         <string>车载智能终端</string>
+         <string>后娱座舱智能终端</string>
         </property>
        </widget>
       </item>
@@ -617,13 +616,13 @@ QSlider#horizontalSlider {
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">border-image: url(:/image/sunny.png);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
         </property>
         <property name="text">
-         <string>天气</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
