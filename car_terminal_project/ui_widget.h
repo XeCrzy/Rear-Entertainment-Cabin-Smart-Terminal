@@ -388,7 +388,6 @@ public:
                         "QPushButton#btn_led_switch {background-color: #38BDF8;color:#FFFFFF;}\n"
 "QPushButton#btn_led_switch:hover {background-color: #0EA5E9;}\n"
 "/* \350\257\255\351\237\263\346\214\211\351\222\256-\347\264\253\350\211\262 */\n"
-"QPushButton#btn_talk {background-color: #9333EA;color:#FFFFFF;}\n"
 "QPushButton#btn_talk:hover {background-color: #7E22CE;}\n"
 "/* \351\243\216\346\211\207\347\233\270\345\205\263\346\214\211\351\222\256-\346\265\205\347\273\277 */\n"
 "QPushButton#btn_wind_small,QPushButton#btn_wind_big {background-color: #A3E635;color:#1E293B;font-size:11px;}\n"
@@ -398,8 +397,8 @@ public:
 "QPushButton#btn_buzzer {background-color: #F97316;color:#FFFFFF;}\n"
 "QPushButton#btn_buzzer:hover {background-color: #EA580C;}\n"
 "QPushButton#btn_buzzer_switch {background-color: #FB923C;color:#FFFFFF;}\n"
-""
-                        "QPushButton#btn_buzzer_switch:hover {background-color: #F97316;}\n"
+"QPushButton#btn_buzzer_switch:hover {background-color: #F97316;}"
+                        "\n"
 "/* \345\270\256\345\212\251\346\214\211\351\222\256-\347\201\260\350\211\262 */\n"
 "QPushButton#btn_help:hover {background-color: #475569;}\n"
 "\n"
@@ -409,11 +408,11 @@ public:
 "/* \346\211\200\346\234\211\346\214\211\351\222\256\346\214\211\344\270\213\346\227\240\345\201\217\347\247\273\357\274\214\345\256\214\347\276\216\350\264\264\345\220\210\345\216\237\345\270\203\345\261\200 */\n"
 "QPushButton {\n"
 "    padding:0px;\n"
-"    margin:0px;"
-                        "\n"
+"    margin:0px;\n"
 "}\n"
 "\n"
-"/* \346\273\221\345\235\227 - \347\273\206\346\235\241\347\212\266 */\n"
+"/* \346\273\221\345\235\227 - \347\273\206\346\235"
+                        "\241\347\212\266 */\n"
 "QSlider#horizontalSlider::handle {\n"
 "    width: 2px;\n"
 "    height: 12px;\n"
@@ -440,8 +439,8 @@ public:
 "\n"
 "/* \346\225\264\344\275\223\346\273\221\345\235\227\346\216\247\344\273\266 */\n"
 "QSlider#horizontalSlider {\n"
-"  "
-                        "  /* \344\277\235\347\225\231\345\237\272\346\234\254\350\256\276\347\275\256\357\274\214\344\275\206\350\203\214\346\231\257\350\256\276\344\270\272\351\200\217\346\230\216 */\n"
+"    /* \344\277\235\347\225\231\345\237\272\346\234\254\350\256\276\347"
+                        "\275\256\357\274\214\344\275\206\350\203\214\346\231\257\350\256\276\344\270\272\351\200\217\346\230\216 */\n"
 "    background-color: transparent;\n"
 "    height: 4px;\n"
 "    border-radius: 2px;\n"
@@ -476,7 +475,7 @@ public:
         label_weather->setObjectName(QStringLiteral("label_weather"));
         label_weather->setMinimumSize(QSize(60, 40));
         label_weather->setMaximumSize(QSize(60, 40));
-        label_weather->setStyleSheet(QStringLiteral(""));
+        label_weather->setStyleSheet(QStringLiteral("border-image: url(:/image/sunny.png);"));
         label_weather->setFrameShape(QFrame::Panel);
         label_weather->setAlignment(Qt::AlignCenter);
 
@@ -852,8 +851,8 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", 0));
-        label_title->setText(QApplication::translate("Widget", "\350\275\246\350\275\275\346\231\272\350\203\275\347\273\210\347\253\257", 0));
-        label_weather->setText(QApplication::translate("Widget", "\345\244\251\346\260\224", 0));
+        label_title->setText(QApplication::translate("Widget", "\345\220\216\345\250\261\345\272\247\350\210\261\346\231\272\350\203\275\347\273\210\347\253\257", 0));
+        label_weather->setText(QString());
         label_temperature->setText(QApplication::translate("Widget", "\346\270\251\345\272\246:18\342\204\203", 0));
         label_time->setText(QApplication::translate("Widget", "time", 0));
         label->setText(QApplication::translate("Widget", "\346\270\270\346\210\217\345\214\272", 0));

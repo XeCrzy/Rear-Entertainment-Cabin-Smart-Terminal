@@ -20,16 +20,23 @@ SOURCES += \
     threadtime.cpp \
     widget.cpp \
     ntp_client.c \
-    time_manager.c
-
+    time_manager.c \
+    camerawidget.cpp \
+    picshowmainwindow.cpp \
+    v4l2api.cpp
 HEADERS += \
     threadtime.h \
     widget.h \
     ntp_client.h \
-    time_manager.h
+    time_manager.h \
+    camerawidget.h \
+    picshowmainwindow.h \
+    v4l2api.h
 
 FORMS += \
-    widget.ui
+    widget.ui \
+    camerawidget.ui \
+    picshowmainwindow.ui
 
 
 # Default rules for deployment.

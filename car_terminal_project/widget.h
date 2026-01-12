@@ -5,8 +5,8 @@
 #include <QTextEdit>
 #include <QTimer>
 #include "easyInput/easyinput.h"
+#include "camerawidget.h"
 #include "threadtime.h"
-
 extern "C"
 {
 #include <sys/types.h>
@@ -34,6 +34,8 @@ public:
 
 private:
     Ui::Widget *ui;
+    CameraWidget *camera;
+
     void mainWindowInit();
     easyInput *eInput;
     bool   inputFlag;   //是否开启输入法标志位
@@ -69,5 +71,6 @@ private slots:
     //音乐播放相关函数
     void on_btn_music_play_clicked();
     void updateMusicProgress();
+    void on_btn_camera_clicked();
 };
 #endif // WIDGET_H

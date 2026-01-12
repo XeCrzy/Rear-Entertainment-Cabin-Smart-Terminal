@@ -1,5 +1,7 @@
 ﻿#include "widget.h"
 #include "ui_widget.h"
+#include "camerawidget.h"
+#include <QImage>
 #include <QDebug>
 #include <QDateTime>
 Widget::Widget(QWidget *parent)
@@ -7,7 +9,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
+    camera = new CameraWidget();
     // 使用单例模式获取输入法实例
     eInput = easyInput::Instance(this);
 
@@ -280,6 +282,7 @@ Widget::~Widget()
         ::ioctl(beepFd, BEEP_OFF, 1);
         ::close(beepFd);
     }
+    delete camera;
     delete ui;
 }
 
@@ -335,4 +338,10 @@ void Widget::on_btn_buzzer_switch_clicked()
     }
 
     qDebug() << "Buzzer status:" << (beepStatus ? "开启" : "关闭");
+}
+
+void Widget::on_btn_camera_clicked()
+{
+
+    camera->show();
 }
