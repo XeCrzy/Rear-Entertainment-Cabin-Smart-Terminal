@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[13];
-    char stringdata0[204];
+    QByteArrayData data[19];
+    char stringdata0[309];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,7 +41,13 @@ QT_MOC_LITERAL(8, 81, 25), // "on_btn_led_switch_clicked"
 QT_MOC_LITERAL(9, 107, 28), // "on_btn_buzzer_switch_clicked"
 QT_MOC_LITERAL(10, 136, 25), // "on_btn_music_play_clicked"
 QT_MOC_LITERAL(11, 162, 19), // "updateMusicProgress"
-QT_MOC_LITERAL(12, 182, 21) // "on_btn_camera_clicked"
+QT_MOC_LITERAL(12, 182, 21), // "on_btn_camera_clicked"
+QT_MOC_LITERAL(13, 204, 22), // "onVoiceCommandReceived"
+QT_MOC_LITERAL(14, 227, 7), // "command"
+QT_MOC_LITERAL(15, 235, 20), // "onVoiceStatusChanged"
+QT_MOC_LITERAL(16, 256, 6), // "status"
+QT_MOC_LITERAL(17, 263, 24), // "onVoiceRecordingFinished"
+QT_MOC_LITERAL(18, 288, 20) // "onVoiceButtonClicked"
 
     },
     "Widget\0slotHideInput\0\0exitWindow\0"
@@ -49,7 +55,9 @@ QT_MOC_LITERAL(12, 182, 21) // "on_btn_camera_clicked"
     "success\0on_btn_led_switch_clicked\0"
     "on_btn_buzzer_switch_clicked\0"
     "on_btn_music_play_clicked\0updateMusicProgress\0"
-    "on_btn_camera_clicked"
+    "on_btn_camera_clicked\0onVoiceCommandReceived\0"
+    "command\0onVoiceStatusChanged\0status\0"
+    "onVoiceRecordingFinished\0onVoiceButtonClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +67,7 @@ static const uint qt_meta_data_Widget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,15 +75,19 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x08 /* Private */,
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    1,   61,    2, 0x08 /* Private */,
-       6,    2,   64,    2, 0x08 /* Private */,
-       8,    0,   69,    2, 0x08 /* Private */,
-       9,    0,   70,    2, 0x08 /* Private */,
-      10,    0,   71,    2, 0x08 /* Private */,
-      11,    0,   72,    2, 0x08 /* Private */,
-      12,    0,   73,    2, 0x08 /* Private */,
+       1,    0,   79,    2, 0x08 /* Private */,
+       3,    0,   80,    2, 0x08 /* Private */,
+       4,    1,   81,    2, 0x08 /* Private */,
+       6,    2,   84,    2, 0x08 /* Private */,
+       8,    0,   89,    2, 0x08 /* Private */,
+       9,    0,   90,    2, 0x08 /* Private */,
+      10,    0,   91,    2, 0x08 /* Private */,
+      11,    0,   92,    2, 0x08 /* Private */,
+      12,    0,   93,    2, 0x08 /* Private */,
+      13,    1,   94,    2, 0x08 /* Private */,
+      15,    1,   97,    2, 0x08 /* Private */,
+      17,    0,  100,    2, 0x08 /* Private */,
+      18,    0,  101,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -85,6 +97,10 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   14,
+    QMetaType::Void, QMetaType::QString,   16,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -106,6 +122,10 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 6: _t->on_btn_music_play_clicked(); break;
         case 7: _t->updateMusicProgress(); break;
         case 8: _t->on_btn_camera_clicked(); break;
+        case 9: _t->onVoiceCommandReceived((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 10: _t->onVoiceStatusChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 11: _t->onVoiceRecordingFinished(); break;
+        case 12: _t->onVoiceButtonClicked(); break;
         default: ;
         }
     }
@@ -136,13 +156,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 13;
     }
     return _id;
 }

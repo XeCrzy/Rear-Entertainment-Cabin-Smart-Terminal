@@ -4,6 +4,7 @@
 #include <QImage>
 #include <QDebug>
 #include <QDateTime>
+#include <QMessageBox>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -17,6 +18,16 @@ Widget::Widget(QWidget *parent)
     if (eInput) {
         eInput->hide();
     }
+
+    // 初始化语音线程
+    voiceThread = new VoiceThread(this);
+    connect(voiceThread, &VoiceThread::voiceCommand, this, &Widget::onVoiceCommandReceived);
+    connect(voiceThread, &VoiceThread::statusChanged, this, &Widget::onVoiceStatusChanged);
+    connect(voiceThread, &VoiceThread::voiceRecordingFinished, this, &Widget::onVoiceRecordingFinished);
+
+    // 连接两个语音按钮
+    connect(ui->btn_talk, &QPushButton::clicked, this, &Widget::onVoiceButtonClicked);
+    connect(ui->btn_talk1, &QPushButton::clicked, this, &Widget::onVoiceButtonClicked);
 
     // 初始化时间线程
     timeThread = new ThreadTime(this);
@@ -253,6 +264,15 @@ void Widget::exitWindow()
 
 Widget::~Widget()
 {
+    // 停止语音线程
+    if (voiceThread) {
+        voiceThread->stopRecording();
+        if (voiceThread->isRunning()) {
+            voiceThread->wait(2000);  // 等待2秒
+        }
+        delete voiceThread;
+        voiceThread = nullptr;
+    }
     // 停止并删除音乐定时器
     if (musicTimer) {
         musicTimer->stop();
@@ -345,3 +365,107 @@ void Widget::on_btn_camera_clicked()
 
     camera->show();
 }
+
+// 语音识别相关槽函数
+// 添加录音完成槽函数
+void Widget::onVoiceRecordingFinished()
+{
+    qDebug() << "Voice recording finished";
+    // 可以在这里更新UI，比如显示"正在识别..."等
+}
+// 修改语音按钮点击处理函数
+void Widget::onVoiceButtonClicked()
+{
+    qDebug() << "Voice button clicked";
+
+    // 检查线程是否正在运行
+    if (voiceThread && voiceThread->isRunning()) {
+        qDebug() << "Voice recognition is already in progress";
+        return;
+    }
+
+    // 开始语音识别
+    if (voiceThread) {
+        voiceThread->start();
+        ui->btn_talk->setEnabled(false);
+        ui->btn_talk1->setEnabled(false);
+        qDebug() << "Voice recognition started";
+    }
+}
+// 修改语音命令处理函数
+void Widget::onVoiceCommandReceived(const QString &command)
+{
+    qDebug() << "Voice command received:" << command;
+
+    // 重新启用语音按钮
+    ui->btn_talk->setEnabled(true);
+    ui->btn_talk1->setEnabled(true);
+
+    // 将命令转换为小写以便比较
+    QString cmd = command.trimmed().toLower();
+    qDebug() << "Processing command:" << cmd;
+
+    // 命令匹配和执行
+    if (cmd == "打开相机" || cmd == "相机打开" || cmd.contains("相机")) {
+        qDebug() << "Executing: Open camera";
+        camera->show();
+    }
+    else if (cmd == "播放音乐" || cmd == "音乐播放" || cmd.contains("音乐")) {
+        qDebug() << "Executing: Play music";
+        on_btn_music_play_clicked();
+    }
+    else if (cmd == "停止音乐" || cmd == "音乐停止" || (cmd.contains("停止") && cmd.contains("音乐"))) {
+        qDebug() << "Executing: Stop music";
+        if (isMusicPlaying) {
+            on_btn_music_play_clicked();
+        }
+    }
+    else if (cmd == "打开灯" || cmd == "灯打开" || cmd.contains("打开灯") || cmd.contains("开灯")) {
+        qDebug() << "Executing: Turn on LED";
+        if (!isLedOn) {
+            on_btn_led_switch_clicked();
+        }
+    }
+    else if (cmd == "关闭灯" || cmd == "灯关闭" || cmd.contains("关闭灯") || cmd.contains("关灯")) {
+        qDebug() << "Executing: Turn off LED";
+        if (isLedOn) {
+            on_btn_led_switch_clicked();
+        }
+    }
+    else if (cmd == "打开蜂鸣器" || cmd == "蜂鸣器打开" || cmd.contains("蜂鸣器")) {
+        qDebug() << "Executing: Turn on buzzer";
+        if (!beepStatus) {
+            on_btn_buzzer_switch_clicked();
+        }
+    }
+    else if (cmd == "关闭蜂鸣器" || cmd == "蜂鸣器关闭" || cmd.contains("关闭蜂鸣器")) {
+        qDebug() << "Executing: Turn off buzzer";
+        if (beepStatus) {
+            on_btn_buzzer_switch_clicked();
+        }
+    }
+    else if (cmd == "帮助" || cmd.contains("帮助")) {
+        qDebug() << "Executing: Show help";
+        QMessageBox::information(this, "语音命令帮助",
+            "支持的语音命令:\n"
+            "1. 打开相机 / 相机打开\n"
+            "2. 播放音乐 / 停止音乐\n"
+            "3. 打开灯 / 关闭灯\n"
+            "4. 打开蜂鸣器 / 关闭蜂鸣器\n"
+            "5. 帮助");
+    }
+    else {
+        qDebug() << "Unrecognized command:" << command;
+        QMessageBox::warning(this, "未识别命令",
+            QString("未识别的命令: %1\n请说'帮助'查看可用命令").arg(command));
+    }
+}
+
+void Widget::onVoiceStatusChanged(const QString &status)
+{
+    qDebug() << "Voice status:" << status;
+    // 可以在这里更新状态显示
+    // 例如：ui->label_status->setText(status);
+}
+
+

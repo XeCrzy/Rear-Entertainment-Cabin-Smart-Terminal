@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,6 +18,7 @@ DEFINES += QT_NO_PLACEHOLDERTEXT
 SOURCES += \
     main.cpp \
     threadtime.cpp \
+    voicethread.cpp \
     widget.cpp \
     ntp_client.c \
     time_manager.c \
@@ -26,6 +27,7 @@ SOURCES += \
     v4l2api.cpp
 HEADERS += \
     threadtime.h \
+    voicethread.h \
     widget.h \
     ntp_client.h \
     time_manager.h \

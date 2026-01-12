@@ -7,6 +7,8 @@
 #include "easyInput/easyinput.h"
 #include "camerawidget.h"
 #include "threadtime.h"
+#include "voicethread.h"
+
 extern "C"
 {
 #include <sys/types.h>
@@ -34,7 +36,10 @@ public:
 
 private:
     Ui::Widget *ui;
+    //相机界面
     CameraWidget *camera;
+    //语音线程
+    VoiceThread *voiceThread;
 
     void mainWindowInit();
     easyInput *eInput;
@@ -42,6 +47,7 @@ private:
     bool eventFilter(QObject *watched, QEvent *event);
     ThreadTime *timeThread;  // 添加时间线程成员
 
+    //led和蜂鸣器相关变量
     int ledFd;
     int beepFd;
     bool beepStatus;
@@ -62,15 +68,24 @@ private:
 private slots:
     void slotHideInput();
     void exitWindow();
+
     // 时间更新槽函数
     void onTimeUpdated(const QString &timeStr);
     void onNtpSyncFinished(bool success, const QString &timeStr);
+
     //控制led灯和蜂鸣器按钮槽函数
     void on_btn_led_switch_clicked();
     void on_btn_buzzer_switch_clicked();
+
     //音乐播放相关函数
     void on_btn_music_play_clicked();
     void updateMusicProgress();
     void on_btn_camera_clicked();
+
+    // 语音识别槽函数
+    void onVoiceCommandReceived(const QString &command);
+    void onVoiceStatusChanged(const QString &status);
+    void onVoiceRecordingFinished();
+    void onVoiceButtonClicked();  // 统一处理两个语音按钮
 };
 #endif // WIDGET_H
