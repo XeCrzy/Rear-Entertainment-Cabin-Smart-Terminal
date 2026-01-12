@@ -88,19 +88,25 @@ public:
     {
         if (easyInput->objectName().isEmpty())
             easyInput->setObjectName(QStringLiteral("easyInput"));
-        easyInput->resize(575, 189);
+        easyInput->resize(575, 221);
         QPalette palette;
-        QBrush brush(QColor(255, 255, 255, 255));
+        QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        QBrush brush1(QColor(120, 120, 120, 255));
+        QBrush brush1(QColor(255, 255, 255, 255));
         brush1.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
-        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush1);
+        QBrush brush2(QColor(120, 120, 120, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
         easyInput->setPalette(palette);
+        QFont font;
+        font.setFamily(QStringLiteral("Agency FB"));
+        font.setPointSize(10);
+        easyInput->setFont(font);
         easyInput->setAutoFillBackground(false);
         easyInput->setStyleSheet(QStringLiteral("border-image: url(:/image/background.png);"));
         gridLayout_3 = new QGridLayout(easyInput);

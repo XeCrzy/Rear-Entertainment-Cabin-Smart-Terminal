@@ -28,9 +28,9 @@
      <colorrole role="WindowText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -46,9 +46,9 @@
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -80,11 +80,11 @@
       </brush>
      </colorrole>
      <colorrole role="PlaceholderText">
-      <brush brushstyle="NoBrush">
+      <brush brushstyle="SolidPattern">
        <color alpha="128">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -93,9 +93,9 @@
      <colorrole role="WindowText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -111,9 +111,9 @@
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -145,11 +145,11 @@
       </brush>
      </colorrole>
      <colorrole role="PlaceholderText">
-      <brush brushstyle="NoBrush">
+      <brush brushstyle="SolidPattern">
        <color alpha="128">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -210,7 +210,7 @@
       </brush>
      </colorrole>
      <colorrole role="PlaceholderText">
-      <brush brushstyle="NoBrush">
+      <brush brushstyle="SolidPattern">
        <color alpha="128">
         <red>255</red>
         <green>255</green>
@@ -1170,58 +1170,32 @@ QPushButton {
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item>
-               <widget class="QLabel" name="label_6">
-                <property name="minimumSize">
-                 <size>
-                  <width>70</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>70</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::Box</enum>
-                </property>
-                <property name="text">
-                 <string>视频播放</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_start_pause">
-                <property name="minimumSize">
-                 <size>
-                  <width>60</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>60</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">border-image: url(:/image/video.png);</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <widget class="QLabel" name="label_6">
+              <property name="minimumSize">
+               <size>
+                <width>70</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>70</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>相机</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="QWidget" name="widget" native="true">
+             <widget class="QPushButton" name="btn_camera">
               <property name="minimumSize">
                <size>
                 <width>130</width>
@@ -1233,6 +1207,12 @@ QPushButton {
                 <width>130</width>
                 <height>100</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-image: url(:/image/camera.png);</string>
+              </property>
+              <property name="text">
+               <string/>
               </property>
              </widget>
             </item>
@@ -1293,11 +1273,11 @@ QPushButton {
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
-        <widget class="QLabel" name="label_4">
+        <widget class="QPushButton" name="btn_talk1">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>80</y>
+           <y>90</y>
            <width>150</width>
            <height>150</height>
           </rect>
@@ -1315,10 +1295,11 @@ QPushButton {
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/image/Intelligent_voice.png);</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <string notr="true">    border: 1px solid #E4E7ED;
+    border-radius: 75px;/* 完美圆形，匹配你的140x160尺寸 */
+    background-color: #F8FAFC;
+    border-style: solid;
+	border-image: url(:/image/Intelligent_voice.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1351,7 +1332,7 @@ QPushButton {
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
-       <widget class="QPushButton" name="btn_led">
+       <widget class="QLabel" name="label_led">
         <property name="minimumSize">
          <size>
           <width>70</width>
@@ -1364,8 +1345,11 @@ QPushButton {
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/image/led_off.png);</string>
+        </property>
         <property name="text">
-         <string>led</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -1472,7 +1456,7 @@ QPushButton {
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="btn_buzzer">
+       <widget class="QLabel" name="label_buzzer">
         <property name="minimumSize">
          <size>
           <width>70</width>
@@ -1485,8 +1469,11 @@ QPushButton {
           <height>50</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/image/buzzer_off.png);</string>
+        </property>
         <property name="text">
-         <string>蜂鸣器</string>
+         <string/>
         </property>
        </widget>
       </item>

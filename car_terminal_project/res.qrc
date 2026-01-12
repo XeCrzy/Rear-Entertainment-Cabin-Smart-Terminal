@@ -23,5 +23,6 @@
         <file>image/video_play.png</file>
         <file>image/Intelligent_voice.png</file>
         <file>image/help.png</file>
+        <file>image/camera.png</file>
     </qresource>
 </RCC>

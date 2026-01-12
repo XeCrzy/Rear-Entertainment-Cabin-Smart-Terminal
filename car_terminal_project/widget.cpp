@@ -28,8 +28,60 @@ Widget::Widget(QWidget *parent)
     timeThread->startTimeThread();
 
 
+    // 初始化LED开关标志位为关闭
+    isLedOn = false;
+    // 设置label_led默认显示关闭图片
+    ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
+    // 1. 打开led驱动
+    ledFd = ::open("/dev/led_drv", O_RDWR);
+    if(ledFd == -1){
+        perror("open led error");
+    }
+    currentLed = 7;
+    // 初始化led定时器并设置信号连接
+    ledTimer = new QTimer(this);
+    connect(ledTimer, &QTimer::timeout, [=](){
+        char buf[2];
+        // 熄灭当前的灯
+        buf[0] = 0;
+        buf[1] = currentLed;
+        ::write(ledFd, buf, 2);
+
+        // 移动到下一个 (7->8->9->10->7)
+        currentLed++;
+        if (currentLed > 10) currentLed = 7;
+
+        // 点亮新的灯
+        buf[0] = 1;
+        buf[1] = currentLed;
+        ::write(ledFd, buf, 2);
+    });
+
+    // 2. 打开蜂鸣器驱动
+    beepFd = ::open("/dev/beep", O_RDWR);
+    if(beepFd == -1)
+    {
+        perror("open buzzer failed");
+    }
+    // 初始化蜂鸣器变量
+        beepStatus = false;
+    // 初始化buzzer定时器并设置信号连接
+        beepTimer = new QTimer(this);
+            connect(beepTimer, &QTimer::timeout, [=](){
+                if(beepStatus) {
+                    ::ioctl(beepFd, BEEP_OFF, 1); // 关
+                    beepStatus = false;
+                } else {
+                    ::ioctl(beepFd, BEEP_ON, 1);  // 开
+                    beepStatus = true;
+                }
+            });
+
     mainWindowInit();
 }
+
+
+
 
 // 添加时间更新槽函数实现
 void Widget::onTimeUpdated(const QString &timeStr)
@@ -115,8 +167,78 @@ Widget::~Widget()
         timeThread->stopTimeThread();
         delete timeThread;
     }
+    // 停止LED定时器并熄灭灯
+        if (ledTimer) {
+            ledTimer->stop();
+            // 熄灭最后点亮的灯
+            if (ledFd != -1) {
+                char buf[2];
+                buf[0] = 0;
+                buf[1] = currentLed;
+                ::write(ledFd, buf, 2);
+                ::close(ledFd); // 关闭LED驱动文件描述符
+            }
+            delete ledTimer;
+        }
+
+        // 关闭蜂鸣器驱动
+        if (beepFd != -1) {
+            ::ioctl(beepFd, BEEP_OFF, 1);
+            ::close(beepFd);
+        }
     delete ui;
 }
 
 
 
+
+void Widget::on_btn_led_switch_clicked()
+{
+    // 1. 切换LED开关状态
+       isLedOn = !isLedOn;
+
+       // 2. 更新label_led的显示图片
+       if (isLedOn) {
+           // 开启状态：显示on图片 + 启动流水灯定时器
+           ui->label_led->setStyleSheet("border-image: url(:/image/led_on.png);");
+           // 启动LED定时器（流水灯）
+           ledTimer->start(500); // 500ms切换一次灯，可根据需求调整时间
+       } else {
+           // 关闭状态：显示off图片 + 停止流水灯定时器 + 熄灭所有灯
+           ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
+           ledTimer->stop();
+
+           // 关闭时熄灭当前点亮的LED灯（避免灯一直亮）
+           if (ledFd != -1) {
+               char buf[2];
+               buf[0] = 0;       // 熄灭指令
+               buf[1] = currentLed; // 当前点亮的灯
+               ::write(ledFd, buf, 2);
+           }
+       }
+}
+
+void Widget::on_btn_buzzer_switch_clicked()
+{
+    // 切换状态标志位
+        beepStatus = !beepStatus;
+
+        // 根据状态控制蜂鸣器硬件
+        if (beepFd >= 0) {
+            int ret = ::ioctl(beepFd, beepStatus ? BEEP_ON : BEEP_OFF,1);
+            if (ret < 0) {
+                qDebug() << "蜂鸣器控制失败:" << strerror(errno);
+            }
+        } else {
+            qDebug() << "蜂鸣器设备未打开，仅切换界面状态";
+        }
+
+        // 更新按钮图标样式
+        if (beepStatus) {
+            ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_on.png);");
+        } else {
+            ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_off.png);");
+        }
+
+        qDebug() << "蜂鸣器状态:" << (beepStatus ? "开启" : "关闭");
+}

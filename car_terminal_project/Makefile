@@ -580,6 +580,7 @@ qrc_res.cpp: res.qrc \
 		image/sunny.png \
 		image/music_play.png \
 		image/buzzer_on.png \
+		image/camera.png \
 		image/music.png \
 		image/Fog.png \
 		image/snow.png \
@@ -791,6 +792,9 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextcursor.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextformat.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		easyInput/easyinput.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGuiDepends \
@@ -840,7 +844,6 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstracteventdispatcher.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractnativeeventfilter.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmath.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetaobject.h \
@@ -851,7 +854,6 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsignalmapper.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsocketnotifier.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemsemaphore.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtranslator.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qwineventnotifier.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmimedatabase.h \
@@ -1121,7 +1123,6 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		threadtime.h \
@@ -2214,6 +2215,9 @@ main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextcursor.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextformat.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		easyInput/easyinput.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGuiDepends \
@@ -2263,7 +2267,6 @@ main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstracteventdispatcher.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractnativeeventfilter.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmath.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetaobject.h \
@@ -2274,7 +2277,6 @@ main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsignalmapper.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsocketnotifier.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemsemaphore.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtranslator.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qwineventnotifier.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmimedatabase.h \
@@ -2544,7 +2546,6 @@ main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		threadtime.h \
@@ -2743,6 +2744,9 @@ widget.o: widget.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextcursor.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextformat.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		easyInput/easyinput.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGuiDepends \
@@ -2792,7 +2796,6 @@ widget.o: widget.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstracteventdispatcher.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractnativeeventfilter.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmath.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetaobject.h \
@@ -2803,7 +2806,6 @@ widget.o: widget.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsignalmapper.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsocketnotifier.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemsemaphore.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtranslator.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qwineventnotifier.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmimedatabase.h \
@@ -3073,7 +3075,6 @@ widget.o: widget.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbox.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtoolbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtwidgetsversion.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QPointer \
 		easyInput/googlepinyin.h \
 		threadtime.h \
@@ -3083,6 +3084,18 @@ widget.o: widget.cpp widget.h \
 		time_manager.h \
 		ntp_client.h \
 		ui_widget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QFrame \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLabel \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLineEdit \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSlider \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSpacerItem \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 

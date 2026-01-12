@@ -68,23 +68,21 @@ public:
     QPushButton *btn_guangzhou;
     QFrame *frame_2;
     QVBoxLayout *verticalLayout_4;
-    QHBoxLayout *horizontalLayout_5;
     QLabel *label_6;
-    QPushButton *btn_start_pause;
-    QWidget *widget;
+    QPushButton *btn_camera;
     QFrame *frame_talk;
     QLabel *label_7;
-    QLabel *label_4;
+    QPushButton *btn_talk1;
     QFrame *frame_bottom;
     QHBoxLayout *horizontalLayout_7;
-    QPushButton *btn_led;
+    QLabel *label_led;
     QPushButton *btn_led_switch;
     QPushButton *btn_talk;
     QHBoxLayout *horizontalLayout_6;
     QPushButton *btn_wind_small;
     QPushButton *btn_fan;
     QPushButton *btn_wind_big;
-    QPushButton *btn_buzzer;
+    QLabel *label_buzzer;
     QPushButton *btn_buzzer_switch;
     QPushButton *btn_help;
 
@@ -96,33 +94,34 @@ public:
         Widget->setMinimumSize(QSize(800, 480));
         Widget->setMaximumSize(QSize(800, 480));
         QPalette palette;
-        QBrush brush(QColor(255, 255, 255, 255));
+        QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         QBrush brush1(QColor(240, 242, 245, 255));
         brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush1);
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        QBrush brush2(QColor(255, 255, 255, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
         palette.setBrush(QPalette::Active, QPalette::Base, brush1);
         palette.setBrush(QPalette::Active, QPalette::Window, brush1);
-        QBrush brush2(QColor(255, 255, 255, 128));
-        brush2.setStyle(Qt::NoBrush);
+        QBrush brush3(QColor(0, 0, 0, 128));
+        brush3.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush2);
         palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
-        QBrush brush3(QColor(255, 255, 255, 128));
-        brush3.setStyle(Qt::NoBrush);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush2);
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush);
-        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush2);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush2);
         palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
         QBrush brush4(QColor(255, 255, 255, 128));
-        brush4.setStyle(Qt::NoBrush);
+        brush4.setStyle(Qt::SolidPattern);
         Widget->setPalette(palette);
         Widget->setStyleSheet(QString::fromUtf8("/* ===================== \345\205\250\345\261\200\346\240\271\345\256\271\345\231\250 \345\205\250\345\261\200\346\240\267\345\274\217\343\200\220\344\270\245\346\240\274\344\270\215\344\277\256\346\224\271\345\270\203\345\261\200/\345\260\272\345\257\270\343\200\221 ===================== */\n"
 "/* \346\225\264\344\270\252\344\270\273\347\252\227\344\275\223\350\203\214\346\231\257\357\274\214\345\217\202\350\200\203\345\233\276\347\232\204\346\265\205\347\201\260\345\272\225\350\211\262\357\274\214\344\270\215\345\275\261\345\223\215\344\273\273\344\275\225\345\255\220\346\216\247\344\273\266\345\244\247\345\260\217\344\275\215\347\275\256 */\n"
@@ -672,8 +671,6 @@ public:
         frame_2->setFrameShadow(QFrame::Raised);
         verticalLayout_4 = new QVBoxLayout(frame_2);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         label_6 = new QLabel(frame_2);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setMinimumSize(QSize(70, 30));
@@ -681,25 +678,15 @@ public:
         label_6->setFrameShape(QFrame::Box);
         label_6->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        horizontalLayout_5->addWidget(label_6);
+        verticalLayout_4->addWidget(label_6);
 
-        btn_start_pause = new QPushButton(frame_2);
-        btn_start_pause->setObjectName(QStringLiteral("btn_start_pause"));
-        btn_start_pause->setMinimumSize(QSize(60, 30));
-        btn_start_pause->setMaximumSize(QSize(60, 30));
-        btn_start_pause->setStyleSheet(QStringLiteral("border-image: url(:/image/video.png);"));
+        btn_camera = new QPushButton(frame_2);
+        btn_camera->setObjectName(QStringLiteral("btn_camera"));
+        btn_camera->setMinimumSize(QSize(130, 100));
+        btn_camera->setMaximumSize(QSize(130, 100));
+        btn_camera->setStyleSheet(QStringLiteral("border-image: url(:/image/camera.png);"));
 
-        horizontalLayout_5->addWidget(btn_start_pause);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_5);
-
-        widget = new QWidget(frame_2);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setMinimumSize(QSize(130, 100));
-        widget->setMaximumSize(QSize(130, 100));
-
-        verticalLayout_4->addWidget(widget);
+        verticalLayout_4->addWidget(btn_camera);
 
 
         verticalLayout_3->addWidget(frame_2);
@@ -720,13 +707,16 @@ public:
         label_7->setMaximumSize(QSize(120, 30));
         label_7->setFrameShape(QFrame::Box);
         label_7->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        label_4 = new QLabel(frame_talk);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(10, 80, 150, 150));
-        label_4->setMinimumSize(QSize(150, 150));
-        label_4->setMaximumSize(QSize(150, 150));
-        label_4->setStyleSheet(QStringLiteral("border-image: url(:/image/Intelligent_voice.png);"));
-        label_4->setFrameShape(QFrame::Box);
+        btn_talk1 = new QPushButton(frame_talk);
+        btn_talk1->setObjectName(QStringLiteral("btn_talk1"));
+        btn_talk1->setGeometry(QRect(10, 90, 150, 150));
+        btn_talk1->setMinimumSize(QSize(150, 150));
+        btn_talk1->setMaximumSize(QSize(150, 150));
+        btn_talk1->setStyleSheet(QString::fromUtf8("    border: 1px solid #E4E7ED;\n"
+"    border-radius: 75px;/* \345\256\214\347\276\216\345\234\206\345\275\242\357\274\214\345\214\271\351\205\215\344\275\240\347\232\204140x160\345\260\272\345\257\270 */\n"
+"    background-color: #F8FAFC;\n"
+"    border-style: solid;\n"
+"	border-image: url(:/image/Intelligent_voice.png);"));
 
         horizontalLayout_8->addWidget(frame_talk);
 
@@ -741,12 +731,13 @@ public:
         frame_bottom->setFrameShadow(QFrame::Raised);
         horizontalLayout_7 = new QHBoxLayout(frame_bottom);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        btn_led = new QPushButton(frame_bottom);
-        btn_led->setObjectName(QStringLiteral("btn_led"));
-        btn_led->setMinimumSize(QSize(70, 50));
-        btn_led->setMaximumSize(QSize(70, 50));
+        label_led = new QLabel(frame_bottom);
+        label_led->setObjectName(QStringLiteral("label_led"));
+        label_led->setMinimumSize(QSize(70, 50));
+        label_led->setMaximumSize(QSize(70, 50));
+        label_led->setStyleSheet(QStringLiteral("border-image: url(:/image/led_off.png);"));
 
-        horizontalLayout_7->addWidget(btn_led);
+        horizontalLayout_7->addWidget(label_led);
 
         btn_led_switch = new QPushButton(frame_bottom);
         btn_led_switch->setObjectName(QStringLiteral("btn_led_switch"));
@@ -789,12 +780,13 @@ public:
 
         horizontalLayout_7->addLayout(horizontalLayout_6);
 
-        btn_buzzer = new QPushButton(frame_bottom);
-        btn_buzzer->setObjectName(QStringLiteral("btn_buzzer"));
-        btn_buzzer->setMinimumSize(QSize(70, 50));
-        btn_buzzer->setMaximumSize(QSize(70, 50));
+        label_buzzer = new QLabel(frame_bottom);
+        label_buzzer->setObjectName(QStringLiteral("label_buzzer"));
+        label_buzzer->setMinimumSize(QSize(70, 50));
+        label_buzzer->setMaximumSize(QSize(70, 50));
+        label_buzzer->setStyleSheet(QStringLiteral("border-image: url(:/image/buzzer_off.png);"));
 
-        horizontalLayout_7->addWidget(btn_buzzer);
+        horizontalLayout_7->addWidget(label_buzzer);
 
         btn_buzzer_switch = new QPushButton(frame_bottom);
         btn_buzzer_switch->setObjectName(QStringLiteral("btn_buzzer_switch"));
@@ -840,17 +832,17 @@ public:
         btn_send->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\345\237\216\345\270\202", 0));
         btn_beijing->setText(QApplication::translate("Widget", "\345\214\227\344\272\254", 0));
         btn_guangzhou->setText(QApplication::translate("Widget", "\345\271\277\345\267\236", 0));
-        label_6->setText(QApplication::translate("Widget", "\350\247\206\351\242\221\346\222\255\346\224\276", 0));
-        btn_start_pause->setText(QString());
+        label_6->setText(QApplication::translate("Widget", "\347\233\270\346\234\272", 0));
+        btn_camera->setText(QString());
         label_7->setText(QApplication::translate("Widget", "\346\231\272\350\203\275\350\257\255\351\237\263\345\212\251\346\211\213", 0));
-        label_4->setText(QString());
-        btn_led->setText(QApplication::translate("Widget", "led", 0));
+        btn_talk1->setText(QString());
+        label_led->setText(QString());
         btn_led_switch->setText(QApplication::translate("Widget", "\347\201\257\345\274\200\345\205\263", 0));
         btn_talk->setText(QString());
         btn_wind_small->setText(QApplication::translate("Widget", "\345\260\217\351\243\216", 0));
         btn_fan->setText(QApplication::translate("Widget", "\351\243\216\346\211\207", 0));
         btn_wind_big->setText(QApplication::translate("Widget", "\345\244\247\351\243\216", 0));
-        btn_buzzer->setText(QApplication::translate("Widget", "\350\234\202\351\270\243\345\231\250", 0));
+        label_buzzer->setText(QString());
         btn_buzzer_switch->setText(QApplication::translate("Widget", "\350\234\202\351\270\243\345\231\250\345\274\200\345\205\263", 0));
         btn_help->setText(QString());
     } // retranslateUi
