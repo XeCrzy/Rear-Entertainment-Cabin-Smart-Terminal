@@ -24,5 +24,6 @@
         <file>image/Intelligent_voice.png</file>
         <file>image/help.png</file>
         <file>image/camera.png</file>
+        <file>image/music_pause.png</file>
     </qresource>
 </RCC>

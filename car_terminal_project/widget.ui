@@ -493,7 +493,43 @@ QFrame {border-style: none;}
 QPushButton {
     padding:0px;
     margin:0px;
-}</string>
+}
+
+/* 滑块 - 细条状 */
+QSlider#horizontalSlider::handle {
+    width: 2px;
+    height: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #1E40AF;/* 深蓝色边框 */
+    border-radius: 0px;
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+
+/* 已填充的进度部分 */
+QSlider#horizontalSlider::sub-page:horizontal {
+    background-color: #2563EB;
+    height: 4px;
+    border-radius: 2px;
+}
+
+/* 未填充的进度部分 */
+QSlider#horizontalSlider::add-page:horizontal {
+    background-color: #CBD5E1;
+    height: 4px;
+    border-radius: 2px;
+}
+
+/* 整体滑块控件 */
+QSlider#horizontalSlider {
+    /* 保留基本设置，但背景设为透明 */
+    background-color: transparent;
+    height: 4px;
+    border-radius: 2px;
+}
+
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <property name="leftMargin">
@@ -965,7 +1001,7 @@ QPushButton {
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">border-image: url(:/image/music_play.png);</string>
+               <string notr="true">border-image: url(:/image/music_pause.png);</string>
               </property>
               <property name="text">
                <string/>

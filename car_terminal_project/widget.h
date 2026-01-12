@@ -1,6 +1,5 @@
 ﻿#ifndef WIDGET_H
 #define WIDGET_H
-
 #include <QWidget>
 #include <QMenuBar>
 #include <QTextEdit>
@@ -49,7 +48,15 @@ private:
     QTimer *beepTimer;
     bool isLedOn;
 
-
+    //音乐播放相关变量
+    QTimer *musicTimer;
+    bool isMusicPlaying;
+    int musicProgress;  // 当前进度值
+    int totalDuration;  // 总时长（毫秒）
+    int progressUpdateInterval;
+    qint64 musicStartTime;  // 播放开始的时间戳
+    qint64 musicPausedTime; // 暂停时已播放的时间
+    bool isMusicPaused;     // 是否处于暂停状态
 private slots:
     void slotHideInput();
     void exitWindow();
@@ -59,5 +66,8 @@ private slots:
     //控制led灯和蜂鸣器按钮槽函数
     void on_btn_led_switch_clicked();
     void on_btn_buzzer_switch_clicked();
+    //音乐播放相关函数
+    void on_btn_music_play_clicked();
+    void updateMusicProgress();
 };
 #endif // WIDGET_H

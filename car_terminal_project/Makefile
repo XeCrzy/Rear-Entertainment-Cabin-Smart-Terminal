@@ -12,7 +12,7 @@ MAKEFILE      = Makefile
 
 CC            = arm-linux-gcc
 CXX           = arm-linux-g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_PLACEHOLDERTEXT -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -march=armv7-a -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -march=armv7-a -march=armv7-a -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I. -IeasyInput -IeasyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I. -I. -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++
@@ -592,6 +592,7 @@ qrc_res.cpp: res.qrc \
 		image/led_off.png \
 		image/led_on.png \
 		image/cloud.png \
+		image/music_pause.png \
 		image/game.png \
 		image/Intelligent_voice.png
 	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name res res.qrc -o qrc_res.cpp
@@ -3084,18 +3085,6 @@ widget.o: widget.cpp widget.h \
 		time_manager.h \
 		ntp_client.h \
 		ui_widget.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QFrame \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHBoxLayout \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLabel \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLineEdit \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSlider \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSpacerItem \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 

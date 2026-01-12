@@ -411,7 +411,44 @@ public:
 "    padding:0px;\n"
 "    margin:0px;"
                         "\n"
-"}"));
+"}\n"
+"\n"
+"/* \346\273\221\345\235\227 - \347\273\206\346\235\241\347\212\266 */\n"
+"QSlider#horizontalSlider::handle {\n"
+"    width: 2px;\n"
+"    height: 12px;\n"
+"    background-color: #FFFFFF;\n"
+"    border: 1px solid #1E40AF;/* \346\267\261\350\223\235\350\211\262\350\276\271\346\241\206 */\n"
+"    border-radius: 0px;\n"
+"    margin-top: -4px;\n"
+"    margin-bottom: -4px;\n"
+"}\n"
+"\n"
+"/* \345\267\262\345\241\253\345\205\205\347\232\204\350\277\233\345\272\246\351\203\250\345\210\206 */\n"
+"QSlider#horizontalSlider::sub-page:horizontal {\n"
+"    background-color: #2563EB;\n"
+"    height: 4px;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"\n"
+"/* \346\234\252\345\241\253\345\205\205\347\232\204\350\277\233\345\272\246\351\203\250\345\210\206 */\n"
+"QSlider#horizontalSlider::add-page:horizontal {\n"
+"    background-color: #CBD5E1;\n"
+"    height: 4px;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"\n"
+"/* \346\225\264\344\275\223\346\273\221\345\235\227\346\216\247\344\273\266 */\n"
+"QSlider#horizontalSlider {\n"
+"  "
+                        "  /* \344\277\235\347\225\231\345\237\272\346\234\254\350\256\276\347\275\256\357\274\214\344\275\206\350\203\214\346\231\257\350\256\276\344\270\272\351\200\217\346\230\216 */\n"
+"    background-color: transparent;\n"
+"    height: 4px;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"\n"
+"\n"
+""));
         verticalLayout_5 = new QVBoxLayout(Widget);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, -1, 0, -1);
@@ -578,7 +615,7 @@ public:
         btn_music_play->setObjectName(QStringLiteral("btn_music_play"));
         btn_music_play->setMinimumSize(QSize(40, 40));
         btn_music_play->setMaximumSize(QSize(40, 40));
-        btn_music_play->setStyleSheet(QStringLiteral("border-image: url(:/image/music_play.png);"));
+        btn_music_play->setStyleSheet(QStringLiteral("border-image: url(:/image/music_pause.png);"));
 
         horizontalLayout_2->addWidget(btn_music_play);
 
