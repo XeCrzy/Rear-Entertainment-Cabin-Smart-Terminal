@@ -288,49 +288,7 @@ void Widget::exitWindow()
     this->close();
 }
 
-Widget::~Widget()
-{
-    // 停止语音线程
-    if (voiceThread) {
-        voiceThread->stopRecording();
-        if (voiceThread->isRunning()) {
-            voiceThread->wait(2000);  // 等待2秒
-        }
-        delete voiceThread;
-        voiceThread = nullptr;
-    }
-    // 停止并删除音乐定时器
-    if (musicTimer) {
-        musicTimer->stop();
-        delete musicTimer;
-    }
-    // 停止时间线程
-    if (timeThread) {
-        timeThread->stopTimeThread();
-        delete timeThread;
-    }
-    // 停止LED定时器并熄灭灯
-    if (ledTimer) {
-        ledTimer->stop();
-        // 熄灭最后点亮的灯
-        if (ledFd != -1) {
-            char buf[2];
-            buf[0] = 0;
-            buf[1] = currentLed;
-            ::write(ledFd, buf, 2);
-            ::close(ledFd); // 关闭LED驱动文件描述符
-        }
-        delete ledTimer;
-    }
 
-    // 关闭蜂鸣器驱动
-    if (beepFd != -1) {
-        ::ioctl(beepFd, BEEP_OFF, 1);
-        ::close(beepFd);
-    }
-    delete camera;
-    delete ui;
-}
 
 
 
@@ -418,7 +376,7 @@ void Widget::onVoiceButtonClicked()
         qDebug() << "Voice recognition started";
     }
 }
-// 修改语音命令处理函数
+// 语音命令处理函数
 void Widget::onVoiceCommandReceived(const QString &command)
 {
     qDebug() << "Voice command received:" << command;
@@ -613,17 +571,31 @@ void Widget::onClientBConnected()
 void Widget::onClientBDisconnected()
 {
     qDebug() << "Client B disconnected from server";
-    // Try to reconnect after 5 seconds
-    QTimer::singleShot(5000, this, &Widget::reconnectClientB);
+    // 只有在不是重复连接的情况下才重连
+    static QElapsedTimer reconnectTimer;
+    if (!reconnectTimer.isValid() || reconnectTimer.hasExpired(5000)) {
+        // Try to reconnect after 5 seconds
+        QTimer::singleShot(5000, this, &Widget::reconnectClientB);
+        reconnectTimer.start(); // 重置计时器
+    }
 }
 
 void Widget::onClientBConnectionError(const QString &error)
 {
     qDebug() << "Client B connection error:" << error;
-    QMessageBox::warning(this, "Connection Error",
-                         QString("Client B connection error:\n%1").arg(error));
 
-    // Try to reconnect after 5 seconds
+    // 只在第一次连接失败时显示弹窗，避免重复弹窗
+    static bool errorShown = false;
+    static QElapsedTimer errorTimer;
+
+    if (!errorShown || errorTimer.hasExpired(10000)) { // 10秒内只显示一次
+        QMessageBox::warning(this, "连接错误",
+                            QString("客户端B连接错误:\n%1\n\n将在5秒后重试...").arg(error));
+        errorShown = true;
+        errorTimer.start(); // 重置计时器
+    }
+
+    // 等待5秒后重连
     QTimer::singleShot(5000, this, &Widget::reconnectClientB);
 }
 
@@ -641,7 +613,13 @@ void Widget::onClientBDebugMessage(const QString &msg)
 void Widget::reconnectClientB()
 {
     if (clientBThread) {
-        clientBThread->connectToServer();
+        // 先检查是否已经在运行
+        if (!clientBThread->isRunning()) {
+            qDebug() << "Attempting to reconnect client B...";
+            clientBThread->connectToServer();
+        } else {
+            qDebug() << "Client B thread is already running, skip reconnect";
+        }
     }
 }
 
@@ -688,4 +666,47 @@ void Widget::on_btn_guangzhou_clicked()
     }
 }
 
+Widget::~Widget()
+{
+    // 停止语音线程
+    if (voiceThread) {
+        voiceThread->stopRecording();
+        if (voiceThread->isRunning()) {
+            voiceThread->wait(2000);  // 等待2秒
+        }
+        delete voiceThread;
+        voiceThread = nullptr;
+    }
+    // 停止并删除音乐定时器
+    if (musicTimer) {
+        musicTimer->stop();
+        delete musicTimer;
+    }
+    // 停止时间线程
+    if (timeThread) {
+        timeThread->stopTimeThread();
+        delete timeThread;
+    }
+    // 停止LED定时器并熄灭灯
+    if (ledTimer) {
+        ledTimer->stop();
+        // 熄灭最后点亮的灯
+        if (ledFd != -1) {
+            char buf[2];
+            buf[0] = 0;
+            buf[1] = currentLed;
+            ::write(ledFd, buf, 2);
+            ::close(ledFd); // 关闭LED驱动文件描述符
+        }
+        delete ledTimer;
+    }
+
+    // 关闭蜂鸣器驱动
+    if (beepFd != -1) {
+        ::ioctl(beepFd, BEEP_OFF, 1);
+        ::close(beepFd);
+    }
+    delete camera;
+    delete ui;
+}
 

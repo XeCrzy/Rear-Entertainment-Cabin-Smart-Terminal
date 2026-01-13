@@ -87,119 +87,135 @@ void ClientBThread::run()
     QByteArray hostBytes = serverHost.toUtf8();
     const char* host = hostBytes.constData();
 
-    if (!c_tcp_connect(host, serverPort)) {
-        emit connectionError("Failed to connect to server");
-        emit debugMessage("Failed to connect to server");
+    // 添加连接重试计数器
+    int connection_attempts = 0;
+    const int MAX_CONNECTION_ATTEMPTS = 3;
 
-        thread_mutex.lock();
-        tcp_client.running = false;
-        thread_mutex.unlock();
-        return;
-    }
+    while (thread_running && connection_attempts < MAX_CONNECTION_ATTEMPTS) {
+        if (c_tcp_connect(host, serverPort)) {
+            emit connectedToServer();
+            emit debugMessage("Connected to server");
 
-    emit connectedToServer();
-    emit debugMessage("Connected to server");
+            // Send identity
+            sendIdentity();
 
-    // Send identity
-    sendIdentity();
+            // Main receive loop
+            char buffer[BUFFER_SIZE];
+            int consecutive_timeouts = 0;
+            const int MAX_TIMEOUTS = 10;
 
-    // Main receive loop
-    char buffer[BUFFER_SIZE];
-    int consecutive_timeouts = 0;
-    const int MAX_TIMEOUTS = 10; // 连续超时10次才认为是连接问题
+            while (thread_running) {
+                // Check if need to exit
+                thread_mutex.lock();
+                bool running = thread_running && tcp_client.running;
+                thread_mutex.unlock();
 
-    while (thread_running) {
-        // Check if need to exit
-        thread_mutex.lock();
-        bool running = thread_running && tcp_client.running;
-        thread_mutex.unlock();
-
-        if (!running) {
-            break;
-        }
-
-        // Check connection status
-        if (!c_tcp_is_connected()) {
-            emitDebug("Connection lost, attempting to reconnect...");
-
-            // Try to reconnect
-            if (c_tcp_connect(host, serverPort)) {
-                sendIdentity();
-                emit connectedToServer();
-                emitDebug("Reconnected to server");
-                consecutive_timeouts = 0; // 重置超时计数
-            } else {
-                msleep(5000); // Wait 5 seconds before retry
-                continue;
-            }
-        }
-
-        // Receive data with timeout
-        int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 500); // 500ms超时
-
-        if (bytes_received > 0) {
-            buffer[bytes_received] = '\0';
-            QString message = QString::fromUtf8(buffer).trimmed();
-
-            // 防止重复处理相同的消息
-            static QString lastMessage;
-            if (message == lastMessage && !message.isEmpty()) {
-                continue;
-            }
-            lastMessage = message;
-
-            // 只有在真正有数据时才打印调试信息
-            if (message.length() > 0) {
-                emitDebug("Received data: " + message);
-            }
-
-            // Process received message
-            processReceivedMessage(buffer);
-            consecutive_timeouts = 0; // 收到数据，重置超时计数
-        }
-        else if (bytes_received == 0) {
-            // Connection closed
-            emitDebug("Server closed connection");
-            c_tcp_disconnect();
-            emit disconnectedFromServer();
-            break;
-        }
-        else if (bytes_received == -2) {
-            // Timeout (这是我们在c_tcp_receive中返回的-2)
-            consecutive_timeouts++;
-            if (consecutive_timeouts >= MAX_TIMEOUTS) {
-                // 连续超时多次，可能是连接问题
-                emitDebug("Connection timeout detected, checking connection...");
-                if (!c_tcp_is_connected()) {
-                    c_tcp_disconnect();
-                    emit disconnectedFromServer();
+                if (!running) {
                     break;
                 }
-                consecutive_timeouts = 0;
-            }
-            // 超时是正常现象，不打印错误信息
-        }
-        else if (bytes_received < 0) {
-            // 真正的错误
-            if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
-                // 只有当errno不是这些"非错误"时才打印
-                const char* err_msg = strerror(errno);
-                if (err_msg && strlen(err_msg) > 0 && strcmp(err_msg, "Success") != 0) {
-                    emitDebug(QString("Receive error: %1").arg(err_msg));
-                }
-            }
-            consecutive_timeouts++;
-            if (consecutive_timeouts >= MAX_TIMEOUTS) {
-                emitDebug("Too many receive errors, reconnecting...");
-                c_tcp_disconnect();
-                msleep(1000);
-                continue;
-            }
-        }
 
-        // Process Qt events
-        QCoreApplication::processEvents();
-        msleep(50);  // Reduce CPU usage
+                // Check connection status
+                if (!c_tcp_is_connected()) {
+                    emitDebug("Connection lost, attempting to reconnect...");
+                    break; // 跳出接收循环，重新连接
+                }
+
+                // Receive data with timeout
+                int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 500);
+
+                if (bytes_received > 0) {
+                    buffer[bytes_received] = '\0';
+                    QString message = QString::fromUtf8(buffer).trimmed();
+
+                    // 防止重复处理相同的消息
+                    static QString lastMessage;
+                    if (message == lastMessage && !message.isEmpty()) {
+                        continue;
+                    }
+                    lastMessage = message;
+
+                    // 只有在真正有数据时才打印调试信息
+                    if (message.length() > 0) {
+                        emitDebug("Received data: " + message);
+                    }
+
+                    // Process received message
+                    processReceivedMessage(buffer);
+                    consecutive_timeouts = 0;
+                }
+                else if (bytes_received == 0) {
+                    // Connection closed
+                    emitDebug("Server closed connection");
+                    break;
+                }
+                else if (bytes_received == -2) {
+                    // Timeout
+                    consecutive_timeouts++;
+                    if (consecutive_timeouts >= MAX_TIMEOUTS) {
+                        emitDebug("Connection timeout detected");
+                        break;
+                    }
+                }
+                else if (bytes_received < 0) {
+                    // 真正的错误
+                    if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
+                        const char* err_msg = strerror(errno);
+                        if (err_msg && strlen(err_msg) > 0 && strcmp(err_msg, "Success") != 0) {
+                            emitDebug(QString("Receive error: %1").arg(err_msg));
+                        }
+                    }
+                    consecutive_timeouts++;
+                    if (consecutive_timeouts >= MAX_TIMEOUTS) {
+                        emitDebug("Too many receive errors");
+                        break;
+                    }
+                }
+
+                // Process Qt events
+                QCoreApplication::processEvents();
+                msleep(50);
+            }
+
+            // 断开连接
+            c_tcp_disconnect();
+            emit disconnectedFromServer();
+
+            // 重置连接尝试计数器，以便重新连接
+            connection_attempts = 0;
+
+            // 等待5秒后重试连接
+            if (thread_running) {
+                emitDebug("Waiting 5 seconds before reconnecting...");
+                msleep(5000);
+            }
+        } else {
+            // 连接失败
+            connection_attempts++;
+            QString errorMsg = QString("Connection attempt %1/%2 failed: %3")
+                                .arg(connection_attempts)
+                                .arg(MAX_CONNECTION_ATTEMPTS)
+                                .arg(strerror(errno));
+
+            // 只在第一次连接失败时发送错误信号
+            if (connection_attempts == 1) {
+                emit connectionError(errorMsg);
+            }
+
+            emitDebug(errorMsg);
+
+            if (thread_running && connection_attempts < MAX_CONNECTION_ATTEMPTS) {
+                // 等待5秒后重试
+                emitDebug("Waiting 5 seconds before next attempt...");
+                msleep(5000);
+            } else {
+                // 达到最大尝试次数，发送最终错误信号
+                if (connection_attempts >= MAX_CONNECTION_ATTEMPTS) {
+                    emit connectionError("Max connection attempts reached. Please check server status.");
+                    emitDebug("Max connection attempts reached, stopping thread.");
+                }
+                break;
+            }
+        }
     }
 
     // Cleanup
@@ -209,9 +225,7 @@ void ClientBThread::run()
     tcp_client.running = false;
     thread_mutex.unlock();
 
-    emit disconnectedFromServer();
     emit debugMessage("TCP client thread ended");
-
     qDebug() << "ClientBThread: C TCP client thread ended";
 }
 
