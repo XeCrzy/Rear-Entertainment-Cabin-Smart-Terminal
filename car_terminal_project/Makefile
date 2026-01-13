@@ -48,7 +48,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = main.cpp \
+SOURCES       = clientbthread.cpp \
+		main.cpp \
 		threadtime.cpp \
 		voicethread.cpp \
 		widget.cpp \
@@ -76,6 +77,7 @@ SOURCES       = main.cpp \
 		easyInput/googlepinyin/utf16reader.cpp \
 		easyInput/easyInput.cpp qrc_res.cpp \
 		qrc_easyInput.cpp \
+		moc_clientbthread.cpp \
 		moc_threadtime.cpp \
 		moc_voicethread.cpp \
 		moc_widget.cpp \
@@ -83,7 +85,8 @@ SOURCES       = main.cpp \
 		moc_picshowmainwindow.cpp \
 		moc_easyinput.cpp \
 		moc_googlepinyin.cpp
-OBJECTS       = main.o \
+OBJECTS       = clientbthread.o \
+		main.o \
 		threadtime.o \
 		voicethread.o \
 		widget.o \
@@ -112,6 +115,7 @@ OBJECTS       = main.o \
 		easyInput.o \
 		qrc_res.o \
 		qrc_easyInput.o \
+		moc_clientbthread.o \
 		moc_threadtime.o \
 		moc_voicethread.o \
 		moc_widget.o \
@@ -235,7 +239,8 @@ DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/exceptions.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/yacc.prf \
 		/usr/local/Qt-Embedded-5.7.0/mkspecs/features/lex.prf \
-		car_terminal_project.pro threadtime.h \
+		car_terminal_project.pro clientbthread.h \
+		threadtime.h \
 		voicethread.h \
 		widget.h \
 		ntp_client.h \
@@ -263,7 +268,8 @@ DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
 		easyInput/googlepinyin/userdict.h \
 		easyInput/googlepinyin/utf16char.h \
 		easyInput/googlepinyin/utf16reader.h \
-		easyInput/easyinput.h main.cpp \
+		easyInput/easyinput.h clientbthread.cpp \
+		main.cpp \
 		threadtime.cpp \
 		voicethread.cpp \
 		widget.cpp \
@@ -563,8 +569,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc easyInput/easyInput.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents threadtime.h voicethread.h widget.h ntp_client.h time_manager.h camerawidget.h picshowmainwindow.h v4l2api.h easyInput/easyinput.h easyInput/googlepinyin.h easyInput/googlepinyin/atomdictbase.h easyInput/googlepinyin/dictbuilder.h easyInput/googlepinyin/dictdef.h easyInput/googlepinyin/dictlist.h easyInput/googlepinyin/dicttrie.h easyInput/googlepinyin/lpicache.h easyInput/googlepinyin/matrixsearch.h easyInput/googlepinyin/mystdlib.h easyInput/googlepinyin/ngram.h easyInput/googlepinyin/pinyinime.h easyInput/googlepinyin/searchutility.h easyInput/googlepinyin/spellingtable.h easyInput/googlepinyin/spellingtrie.h easyInput/googlepinyin/splparser.h easyInput/googlepinyin/sync.h easyInput/googlepinyin/userdict.h easyInput/googlepinyin/utf16char.h easyInput/googlepinyin/utf16reader.h easyInput/easyinput.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp threadtime.cpp voicethread.cpp widget.cpp ntp_client.c time_manager.c camerawidget.cpp picshowmainwindow.cpp v4l2api.cpp easyInput/googlepinyin.cpp easyInput/googlepinyin/dictbuilder.cpp easyInput/googlepinyin/dictlist.cpp easyInput/googlepinyin/dicttrie.cpp easyInput/googlepinyin/lpicache.cpp easyInput/googlepinyin/matrixsearch.cpp easyInput/googlepinyin/mystdlib.cpp easyInput/googlepinyin/ngram.cpp easyInput/googlepinyin/pinyinime.cpp easyInput/googlepinyin/searchutility.cpp easyInput/googlepinyin/spellingtable.cpp easyInput/googlepinyin/spellingtrie.cpp easyInput/googlepinyin/splparser.cpp easyInput/googlepinyin/sync.cpp easyInput/googlepinyin/userdict.cpp easyInput/googlepinyin/utf16char.cpp easyInput/googlepinyin/utf16reader.cpp easyInput/easyInput.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents clientbthread.h threadtime.h voicethread.h widget.h ntp_client.h time_manager.h camerawidget.h picshowmainwindow.h v4l2api.h easyInput/easyinput.h easyInput/googlepinyin.h easyInput/googlepinyin/atomdictbase.h easyInput/googlepinyin/dictbuilder.h easyInput/googlepinyin/dictdef.h easyInput/googlepinyin/dictlist.h easyInput/googlepinyin/dicttrie.h easyInput/googlepinyin/lpicache.h easyInput/googlepinyin/matrixsearch.h easyInput/googlepinyin/mystdlib.h easyInput/googlepinyin/ngram.h easyInput/googlepinyin/pinyinime.h easyInput/googlepinyin/searchutility.h easyInput/googlepinyin/spellingtable.h easyInput/googlepinyin/spellingtrie.h easyInput/googlepinyin/splparser.h easyInput/googlepinyin/sync.h easyInput/googlepinyin/userdict.h easyInput/googlepinyin/utf16char.h easyInput/googlepinyin/utf16reader.h easyInput/easyinput.h $(DISTDIR)/
+	$(COPY_FILE) --parents clientbthread.cpp main.cpp threadtime.cpp voicethread.cpp widget.cpp ntp_client.c time_manager.c camerawidget.cpp picshowmainwindow.cpp v4l2api.cpp easyInput/googlepinyin.cpp easyInput/googlepinyin/dictbuilder.cpp easyInput/googlepinyin/dictlist.cpp easyInput/googlepinyin/dicttrie.cpp easyInput/googlepinyin/lpicache.cpp easyInput/googlepinyin/matrixsearch.cpp easyInput/googlepinyin/mystdlib.cpp easyInput/googlepinyin/ngram.cpp easyInput/googlepinyin/pinyinime.cpp easyInput/googlepinyin/searchutility.cpp easyInput/googlepinyin/spellingtable.cpp easyInput/googlepinyin/spellingtrie.cpp easyInput/googlepinyin/splparser.cpp easyInput/googlepinyin/sync.cpp easyInput/googlepinyin/userdict.cpp easyInput/googlepinyin/utf16char.cpp easyInput/googlepinyin/utf16reader.cpp easyInput/easyInput.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui camerawidget.ui picshowmainwindow.ui easyInput/easyInput.ui $(DISTDIR)/
 
 
@@ -627,9 +633,66 @@ qrc_easyInput.cpp: easyInput/easyInput.qrc \
 		easyInput/image/upper_white.png
 	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name easyInput easyInput/easyInput.qrc -o qrc_easyInput.cpp
 
-compiler_moc_header_make_all: moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
+compiler_moc_header_make_all: moc_clientbthread.cpp moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
+	-$(DEL_FILE) moc_clientbthread.cpp moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
+moc_clientbthread.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qthread.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMutex \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qwaitcondition.h \
+		clientbthread.h \
+		/usr/local/Qt-Embedded-5.7.0/bin/moc
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include clientbthread.h -o moc_clientbthread.cpp
+
 moc_threadtime.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
@@ -1220,6 +1283,8 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		ntp_client.h \
 		voicethread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		clientbthread.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
 		widget.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include widget.h -o moc_widget.cpp
@@ -2425,6 +2490,88 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
+clientbthread.o: clientbthread.cpp clientbthread.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QThread \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qthread.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMutex \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qwaitcondition.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QCoreApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QStringList \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QElapsedTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qelapsedtimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QRegularExpression \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientbthread.o clientbthread.cpp
+
 main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
@@ -2886,6 +3033,8 @@ main.o: main.cpp widget.h \
 		ntp_client.h \
 		voicethread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		clientbthread.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
@@ -3502,9 +3651,12 @@ widget.o: widget.cpp widget.h \
 		ntp_client.h \
 		voicethread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
+		clientbthread.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
 		ui_widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDateTime \
-		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMessageBox
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMessageBox \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMapIterator
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o widget.o widget.cpp
 
 ntp_client.o: ntp_client.c ntp_client.h
@@ -4502,6 +4654,9 @@ qrc_res.o: qrc_res.cpp
 
 qrc_easyInput.o: qrc_easyInput.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_easyInput.o qrc_easyInput.cpp
+
+moc_clientbthread.o: moc_clientbthread.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_clientbthread.o moc_clientbthread.cpp
 
 moc_threadtime.o: moc_threadtime.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_threadtime.o moc_threadtime.cpp

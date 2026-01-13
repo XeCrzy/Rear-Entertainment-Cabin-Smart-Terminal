@@ -33,6 +33,7 @@ public:
     QFrame *frame_header;
     QHBoxLayout *horizontalLayout;
     QLabel *label_title;
+    QLabel *label_city;
     QLabel *label_weather;
     QLabel *label_temperature;
     QSpacerItem *horizontalSpacer_4;
@@ -471,6 +472,11 @@ public:
 
         horizontalLayout->addWidget(label_title);
 
+        label_city = new QLabel(frame_header);
+        label_city->setObjectName(QStringLiteral("label_city"));
+
+        horizontalLayout->addWidget(label_city);
+
         label_weather = new QLabel(frame_header);
         label_weather->setObjectName(QStringLiteral("label_weather"));
         label_weather->setMinimumSize(QSize(60, 40));
@@ -852,6 +858,7 @@ public:
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", 0));
         label_title->setText(QApplication::translate("Widget", "\345\220\216\345\250\261\345\272\247\350\210\261\346\231\272\350\203\275\347\273\210\347\253\257", 0));
+        label_city->setText(QApplication::translate("Widget", "\345\237\216\345\270\202\345\220\215\347\247\260:", 0));
         label_weather->setText(QString());
         label_temperature->setText(QApplication::translate("Widget", "\346\270\251\345\272\246:18\342\204\203", 0));
         label_time->setText(QApplication::translate("Widget", "time", 0));

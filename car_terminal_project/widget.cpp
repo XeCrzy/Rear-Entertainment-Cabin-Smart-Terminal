@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QMessageBox>
+#include <QMapIterator>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -104,6 +105,31 @@ Widget::Widget(QWidget *parent)
     // 创建音乐定时器
     musicTimer = new QTimer(this);
     connect(musicTimer, &QTimer::timeout, this, &Widget::updateMusicProgress);
+
+    // 初始化天气图标映射
+    initWeatherIconMap();
+
+    // 初始化客户端B线程（使用C语言TCP实现）
+    clientBThread = new ClientBThread(this);
+
+    // 连接客户端B信号
+    connect(clientBThread, &ClientBThread::weatherDataReceived,
+            this, &Widget::onWeatherDataReceived);
+    connect(clientBThread, &ClientBThread::commandReceived,
+            this, &Widget::onCommandReceived);
+    connect(clientBThread, &ClientBThread::connectedToServer,
+            this, &Widget::onClientBConnected);
+    connect(clientBThread, &ClientBThread::disconnectedFromServer,
+            this, &Widget::onClientBDisconnected);
+    connect(clientBThread, &ClientBThread::connectionError,
+            this, &Widget::onClientBConnectionError);
+    connect(clientBThread, &ClientBThread::cityNameSent,
+            this, &Widget::onClientBCityNameSent);
+    connect(clientBThread, &ClientBThread::debugMessage,
+            this, &Widget::onClientBDebugMessage);
+
+    // 启动客户端B连接（延迟1秒）
+    QTimer::singleShot(1000, this, &Widget::reconnectClientB);
 
     mainWindowInit();
 }
@@ -466,6 +492,200 @@ void Widget::onVoiceStatusChanged(const QString &status)
     qDebug() << "Voice status:" << status;
     // 可以在这里更新状态显示
     // 例如：ui->label_status->setText(status);
+}
+
+void Widget::initWeatherIconMap()
+{
+    weatherIconMap.clear();
+    weatherIconMap["晴"] = "sunny.png";
+    weatherIconMap["多云"] = "cloud.png";
+    weatherIconMap["阴"] = "cloud.png";
+    weatherIconMap["少云"] = "cloud.png";
+
+    weatherIconMap["小雨"] = "rain.png";
+    weatherIconMap["中雨"] = "rain.png";
+    weatherIconMap["大雨"] = "rain.png";
+    weatherIconMap["暴雨"] = "rain.png";
+    weatherIconMap["阵雨"] = "rain.png";
+    weatherIconMap["雷阵雨"] = "rain.png";
+
+    weatherIconMap["小雪"] = "snow.png";
+    weatherIconMap["中雪"] = "snow.png";
+    weatherIconMap["大雪"] = "snow.png";
+    weatherIconMap["暴雪"] = "snow.png";
+
+    weatherIconMap["雾"] = "Fog.png";
+    weatherIconMap["霾"] = "Fog.png";
+    weatherIconMap["扬沙"] = "Fog.png";
+    weatherIconMap["沙尘暴"] = "Fog.png";
+}
+
+QString Widget::getWeatherIconPath(const QString &weather)
+{
+    // 尝试完全匹配
+    if (weatherIconMap.contains(weather)) {
+        return weatherIconMap[weather];
+    }
+
+    // 尝试部分匹配
+    QMapIterator<QString, QString> it(weatherIconMap);
+    while (it.hasNext()) {
+        it.next();
+        if (weather.contains(it.key())) {
+            return it.value();
+        }
+    }
+
+    // 默认图标
+    return "sunny.png";
+}
+
+// 天气数据接收槽函数
+void Widget::onWeatherDataReceived(const QString &city, const QString &weather,
+                                  const QString &temperature, const QString &humidity)
+{
+    qDebug() << "Weather data received - City:" << city << "Weather:" << weather
+             << "Temperature:" << temperature << "Humidity:" << humidity;
+
+    // Update temperature display - 直接显示温度数值
+    ui->label_temperature->setText(QString("温度:%1℃").arg(temperature));
+
+    // Update weather icon
+    QString iconPath = getWeatherIconPath(weather);
+    ui->label_weather->setStyleSheet(
+        QString("border-image: url(:/image/%1);").arg(iconPath));
+
+    // Update city display if label_city exists
+    QLabel *labelCity = findChild<QLabel*>("label_city");
+    if (labelCity) {
+        labelCity->setText(city);
+    }
+}
+
+// 命令接收槽函数
+void Widget::onCommandReceived(const QString &command)
+{
+    qDebug() << "Command received:" << command;
+
+    QString cmd = command.toUpper();
+
+    if (cmd == "LED_ON") {
+        // Turn on LED
+        if (!isLedOn) {
+            on_btn_led_switch_clicked();
+        }
+        qDebug() << "Executing command: Turn on LED";
+    }
+    else if (cmd == "LED_OFF") {
+        // Turn off LED
+        if (isLedOn) {
+            on_btn_led_switch_clicked();
+        }
+        qDebug() << "Executing command: Turn off LED";
+    }
+    else if (cmd == "BUZZER_ON") {
+        // Turn on buzzer
+        if (!beepStatus) {
+            on_btn_buzzer_switch_clicked();
+        }
+        qDebug() << "Executing command: Turn on buzzer";
+    }
+    else if (cmd == "BUZZER_OFF") {
+        // Turn off buzzer
+        if (beepStatus) {
+            on_btn_buzzer_switch_clicked();
+        }
+        qDebug() << "Executing command: Turn off buzzer";
+    }
+    else {
+        qDebug() << "Unknown command:" << command;
+    }
+}
+
+// 客户端B连接状态槽函数
+void Widget::onClientBConnected()
+{
+    qDebug() << "Client B connected to server";
+    // Can update UI status here
+}
+
+
+void Widget::onClientBDisconnected()
+{
+    qDebug() << "Client B disconnected from server";
+    // Try to reconnect after 5 seconds
+    QTimer::singleShot(5000, this, &Widget::reconnectClientB);
+}
+
+void Widget::onClientBConnectionError(const QString &error)
+{
+    qDebug() << "Client B connection error:" << error;
+    QMessageBox::warning(this, "Connection Error",
+                         QString("Client B connection error:\n%1").arg(error));
+
+    // Try to reconnect after 5 seconds
+    QTimer::singleShot(5000, this, &Widget::reconnectClientB);
+}
+
+void Widget::onClientBCityNameSent(const QString &city)
+{
+    qDebug() << "City name sent:" << city;
+    // Can show success message here
+}
+
+void Widget::onClientBDebugMessage(const QString &msg)
+{
+    qDebug() << "Client B debug:" << msg;
+}
+
+void Widget::reconnectClientB()
+{
+    if (clientBThread) {
+        clientBThread->connectToServer();
+    }
+}
+
+// 城市名发送槽函数
+void Widget::on_btn_send_clicked()
+{
+    QString city = ui->lineEdit->text().trimmed();
+    if (city.isEmpty()) {
+        QMessageBox::warning(this, "输入错误", "请输入城市名");
+        return;
+    }
+
+    if (clientBThread && clientBThread->isConnected()) {
+        clientBThread->sendCityName(city);
+    } else {
+        QMessageBox::warning(this, "连接错误", "未连接到服务器");
+        reconnectClientB();
+    }
+}
+
+void Widget::on_btn_beijing_clicked()
+{
+    QString city = "北京";
+    ui->lineEdit->setText(city);
+
+    if (clientBThread && clientBThread->isConnected()) {
+        clientBThread->sendCityName(city);
+    } else {
+        QMessageBox::warning(this, "连接错误", "未连接到服务器");
+        reconnectClientB();
+    }
+}
+
+void Widget::on_btn_guangzhou_clicked()
+{
+    QString city = "广州";
+    ui->lineEdit->setText(city);
+
+    if (clientBThread && clientBThread->isConnected()) {
+        clientBThread->sendCityName(city);
+    } else {
+        QMessageBox::warning(this, "连接错误", "未连接到服务器");
+        reconnectClientB();
+    }
 }
 
 

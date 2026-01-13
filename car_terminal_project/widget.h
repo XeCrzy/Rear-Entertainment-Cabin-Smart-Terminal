@@ -8,7 +8,7 @@
 #include "camerawidget.h"
 #include "threadtime.h"
 #include "voicethread.h"
-
+#include "clientbthread.h"
 extern "C"
 {
 #include <sys/types.h>
@@ -41,13 +41,15 @@ private:
     //语音线程
     VoiceThread *voiceThread;
 
+
+    //输入法相关
     void mainWindowInit();
     easyInput *eInput;
     bool   inputFlag;   //是否开启输入法标志位
     bool eventFilter(QObject *watched, QEvent *event);
     ThreadTime *timeThread;  // 添加时间线程成员
 
-    //led和蜂鸣器相关变量
+    //led和蜂鸣器相关
     int ledFd;
     int beepFd;
     bool beepStatus;
@@ -56,7 +58,7 @@ private:
     QTimer *beepTimer;
     bool isLedOn;
 
-    //音乐播放相关变量
+    //音乐播放相关
     QTimer *musicTimer;
     bool isMusicPlaying;
     int musicProgress;  // 当前进度值
@@ -65,6 +67,16 @@ private:
     qint64 musicStartTime;  // 播放开始的时间戳
     qint64 musicPausedTime; // 暂停时已播放的时间
     bool isMusicPaused;     // 是否处于暂停状态
+
+    // 客户端B线程相关
+    ClientBThread *clientBThread;
+    // 天气图标映射
+    QMap<QString, QString> weatherIconMap;
+    // 初始化天气图标映射
+    void initWeatherIconMap();
+    // 根据天气获取图标路径
+    QString getWeatherIconPath(const QString &weather);
+
 private slots:
     void slotHideInput();
     void exitWindow();
@@ -87,5 +99,24 @@ private slots:
     void onVoiceStatusChanged(const QString &status);
     void onVoiceRecordingFinished();
     void onVoiceButtonClicked();  // 统一处理两个语音按钮
+
+    // 客户端B相关槽函数
+    void onWeatherDataReceived(const QString &city, const QString &weather,
+                               const QString &temperature, const QString &humidity);
+    void onCommandReceived(const QString &command);
+    void onClientBConnected();
+    void onClientBDisconnected();
+    void onClientBConnectionError(const QString &error);
+    void onClientBCityNameSent(const QString &city);
+    void onClientBDebugMessage(const QString &msg);
+
+    // 城市名发送槽函数
+    void on_btn_send_clicked();
+    void on_btn_beijing_clicked();
+    void on_btn_guangzhou_clicked();
+
+    // 客户端B重连
+    void reconnectClientB();
+
 };
 #endif // WIDGET_H
