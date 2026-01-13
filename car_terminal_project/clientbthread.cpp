@@ -9,6 +9,8 @@
 ClientBThread::ClientBThread(QObject *parent)
     : QThread(parent)
     , thread_running(true)
+    , connectionEstablished(false)
+    , autoConnect(false)
     , serverHost("192.168.16.181")
     , serverPort(60000)
 {
@@ -35,6 +37,7 @@ bool ClientBThread::connectToServer(const QString &host, quint16 port)
 {
     serverHost = host;
     serverPort = port;
+    autoConnect = true;  // Enable auto-connect for startup
 
     // If already running, return directly
     if (isRunning() && isConnected()) {
@@ -50,9 +53,118 @@ bool ClientBThread::connectToServer(const QString &host, quint16 port)
     return true;
 }
 
+bool ClientBThread::sendCityName(const QString &city, bool autoConnectMode)
+{
+    qDebug() << "ClientBThread::sendCityName called with city:" << city;
+    this->autoConnect = autoConnectMode;
+    currentCity = city;
+
+    if (autoConnectMode) {
+        // For auto-connect mode (startup), use the thread
+        if (!isRunning()) {
+            start();
+        }
+        return true;
+    } else {
+        // For manual connection (button/voice), use direct connection
+        return manualConnectAndSend(city);
+    }
+}
+
+bool ClientBThread::manualConnectAndSend(const QString &city)
+{
+    qDebug() << "Manual connect and send for city:" << city;
+
+    // Connect to server
+    QByteArray hostBytes = serverHost.toUtf8();
+    const char* host = hostBytes.constData();
+
+    if (c_tcp_connect(host, serverPort)) {
+        emit debugMessage("Connected to server for manual request");
+
+        // Send identity
+        sendIdentity();
+
+        // Send city name
+        QByteArray cityBytes = city.toUtf8();
+        const char* cityData = cityBytes.constData();
+
+        if (c_tcp_send(cityData, strlen(cityData))) {
+            emit cityNameSent(city);
+            emit debugMessage("Sent city name: " + city);
+
+            // Receive weather data
+            char buffer[BUFFER_SIZE];
+            bool weatherReceived = false;
+            QElapsedTimer timer;
+            timer.start();
+
+            // Wait for weather data for up to 10 seconds
+            while (!weatherReceived && timer.elapsed() < 10000) {
+                int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 1000);
+
+                if (bytes_received > 0) {
+                    buffer[bytes_received] = '\0';
+                    QString message = QString::fromUtf8(buffer).trimmed();
+
+                    if (!message.isEmpty()) {
+                        emit debugMessage("Received data: " + message);
+
+                        // Check if this is weather data
+                        if (message.contains("城市:") || message.contains("天气:") ||
+                            message.contains("温度:") || message.contains("湿度:")) {
+                            processReceivedMessage(buffer);
+                            weatherReceived = true;
+                        } else if (message.contains("CONNECTED") ||
+                                   message.contains("CLIENT_B_CONNECTED")) {
+                            // Connection notification, ignore and continue
+                            emit debugMessage("Connection notification received");
+                        } else {
+                            // Other message types
+                            processReceivedMessage(buffer);
+                        }
+                    }
+                } else if (bytes_received == 0) {
+                    emit debugMessage("Server closed connection");
+                    break;
+                } else if (bytes_received == -2) {
+                    // Timeout, continue waiting
+                    continue;
+                }
+
+                QCoreApplication::processEvents();
+                msleep(100);
+            }
+
+            if (weatherReceived) {
+                emit debugMessage("Weather data received successfully");
+            } else {
+                emit debugMessage("Timeout waiting for weather data");
+            }
+
+            // Disconnect after receiving data
+            c_tcp_disconnect();
+            emit manualConnectionCompleted(weatherReceived);
+            return weatherReceived;
+        } else {
+            emit dataSendError("Failed to send city name");
+            emit debugMessage("Failed to send city name");
+            c_tcp_disconnect();
+            emit manualConnectionCompleted(false);
+            return false;
+        }
+    } else {
+        emit connectionError("Failed to connect to server");
+        emit debugMessage("Failed to connect to server");
+        emit manualConnectionCompleted(false);
+        return false;
+    }
+}
+
 void ClientBThread::disconnectFromServer()
 {
     c_tcp_disconnect();
+    connectionEstablished = false;
 }
 
 bool ClientBThread::isConnected() const
@@ -76,7 +188,13 @@ void ClientBThread::stopThread()
 
 void ClientBThread::run()
 {
-    qDebug() << "ClientBThread: C TCP client thread started";
+    qDebug() << "ClientBThread: C TCP client thread started - AutoConnect mode:" << autoConnect;
+
+    if (!autoConnect) {
+        qDebug() << "AutoConnect is disabled, thread will exit";
+        emit debugMessage("AutoConnect is disabled");
+        return;
+    }
 
     // Set thread running flag
     thread_mutex.lock();
@@ -87,135 +205,75 @@ void ClientBThread::run()
     QByteArray hostBytes = serverHost.toUtf8();
     const char* host = hostBytes.constData();
 
-    // 添加连接重试计数器
-    int connection_attempts = 0;
-    const int MAX_CONNECTION_ATTEMPTS = 3;
+    if (c_tcp_connect(host, serverPort)) {
+        connectionEstablished = true;
+        emit connectedToServer();
+        emit debugMessage("Connected to server");
 
-    while (thread_running && connection_attempts < MAX_CONNECTION_ATTEMPTS) {
-        if (c_tcp_connect(host, serverPort)) {
-            emit connectedToServer();
-            emit debugMessage("Connected to server");
+        // Send identity
+        sendIdentity();
 
-            // Send identity
-            sendIdentity();
+        // Send initial city (Guangzhou for startup)
+        if (!currentCity.isEmpty()) {
+            QByteArray cityBytes = currentCity.toUtf8();
+            const char* cityData = cityBytes.constData();
 
-            // Main receive loop
-            char buffer[BUFFER_SIZE];
-            int consecutive_timeouts = 0;
-            const int MAX_TIMEOUTS = 10;
-
-            while (thread_running) {
-                // Check if need to exit
-                thread_mutex.lock();
-                bool running = thread_running && tcp_client.running;
-                thread_mutex.unlock();
-
-                if (!running) {
-                    break;
-                }
-
-                // Check connection status
-                if (!c_tcp_is_connected()) {
-                    emitDebug("Connection lost, attempting to reconnect...");
-                    break; // 跳出接收循环，重新连接
-                }
-
-                // Receive data with timeout
-                int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 500);
-
-                if (bytes_received > 0) {
-                    buffer[bytes_received] = '\0';
-                    QString message = QString::fromUtf8(buffer).trimmed();
-
-                    // 防止重复处理相同的消息
-                    static QString lastMessage;
-                    if (message == lastMessage && !message.isEmpty()) {
-                        continue;
-                    }
-                    lastMessage = message;
-
-                    // 只有在真正有数据时才打印调试信息
-                    if (message.length() > 0) {
-                        emitDebug("Received data: " + message);
-                    }
-
-                    // Process received message
-                    processReceivedMessage(buffer);
-                    consecutive_timeouts = 0;
-                }
-                else if (bytes_received == 0) {
-                    // Connection closed
-                    emitDebug("Server closed connection");
-                    break;
-                }
-                else if (bytes_received == -2) {
-                    // Timeout
-                    consecutive_timeouts++;
-                    if (consecutive_timeouts >= MAX_TIMEOUTS) {
-                        emitDebug("Connection timeout detected");
-                        break;
-                    }
-                }
-                else if (bytes_received < 0) {
-                    // 真正的错误
-                    if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
-                        const char* err_msg = strerror(errno);
-                        if (err_msg && strlen(err_msg) > 0 && strcmp(err_msg, "Success") != 0) {
-                            emitDebug(QString("Receive error: %1").arg(err_msg));
-                        }
-                    }
-                    consecutive_timeouts++;
-                    if (consecutive_timeouts >= MAX_TIMEOUTS) {
-                        emitDebug("Too many receive errors");
-                        break;
-                    }
-                }
-
-                // Process Qt events
-                QCoreApplication::processEvents();
-                msleep(50);
-            }
-
-            // 断开连接
-            c_tcp_disconnect();
-            emit disconnectedFromServer();
-
-            // 重置连接尝试计数器，以便重新连接
-            connection_attempts = 0;
-
-            // 等待5秒后重试连接
-            if (thread_running) {
-                emitDebug("Waiting 5 seconds before reconnecting...");
-                msleep(5000);
-            }
-        } else {
-            // 连接失败
-            connection_attempts++;
-            QString errorMsg = QString("Connection attempt %1/%2 failed: %3")
-                                .arg(connection_attempts)
-                                .arg(MAX_CONNECTION_ATTEMPTS)
-                                .arg(strerror(errno));
-
-            // 只在第一次连接失败时发送错误信号
-            if (connection_attempts == 1) {
-                emit connectionError(errorMsg);
-            }
-
-            emitDebug(errorMsg);
-
-            if (thread_running && connection_attempts < MAX_CONNECTION_ATTEMPTS) {
-                // 等待5秒后重试
-                emitDebug("Waiting 5 seconds before next attempt...");
-                msleep(5000);
-            } else {
-                // 达到最大尝试次数，发送最终错误信号
-                if (connection_attempts >= MAX_CONNECTION_ATTEMPTS) {
-                    emit connectionError("Max connection attempts reached. Please check server status.");
-                    emitDebug("Max connection attempts reached, stopping thread.");
-                }
-                break;
+            if (c_tcp_send(cityData, strlen(cityData))) {
+                emit cityNameSent(currentCity);
+                emit debugMessage("Sent initial city name: " + currentCity);
             }
         }
+
+        // Main receive loop
+        char buffer[BUFFER_SIZE];
+
+        while (thread_running) {
+            // Check if need to exit
+            thread_mutex.lock();
+            bool running = thread_running && tcp_client.running;
+            thread_mutex.unlock();
+
+            if (!running) {
+                break;
+            }
+
+            // Check connection status
+            if (!c_tcp_is_connected()) {
+                emit debugMessage("Connection lost in auto-connect mode");
+                break;
+            }
+
+            // Receive data with timeout - only check occasionally
+            int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 2000);
+
+            if (bytes_received > 0) {
+                buffer[bytes_received] = '\0';
+                QString message = QString::fromUtf8(buffer).trimmed();
+
+                if (message.length() > 0) {
+                    emit debugMessage("Received data: " + message);
+                    processReceivedMessage(buffer);
+                }
+            } else if (bytes_received == 0) {
+                // Connection closed
+                emit debugMessage("Server closed connection");
+                break;
+            }
+            // For timeout or minor errors, just continue
+
+            // Process Qt events
+            QCoreApplication::processEvents();
+            msleep(100);
+        }
+
+        // Disconnect
+        c_tcp_disconnect();
+        connectionEstablished = false;
+        emit disconnectedFromServer();
+    } else {
+        // Connection failed
+        emit connectionError("Failed to connect to server on startup");
+        emit debugMessage("Failed to connect to server on startup");
     }
 
     // Cleanup
@@ -227,24 +285,6 @@ void ClientBThread::run()
 
     emit debugMessage("TCP client thread ended");
     qDebug() << "ClientBThread: C TCP client thread ended";
-}
-
-void ClientBThread::onReconnectTimeout()
-{
-    if (thread_running && !isConnected()) {
-        emit debugMessage("Attempting to reconnect...");
-        QByteArray hostBytes = serverHost.toUtf8();
-        const char* host = hostBytes.constData();
-
-        if (c_tcp_connect(host, serverPort)) {
-            sendIdentity();
-            emit connectedToServer();
-            emit debugMessage("Reconnection successful");
-        } else {
-            // Try again after 5 seconds
-            QTimer::singleShot(5000, this, SLOT(onReconnectTimeout()));
-        }
-    }
 }
 
 // ==================== C LANGUAGE TCP CLIENT IMPLEMENTATION ====================
@@ -464,13 +504,13 @@ int ClientBThread::c_tcp_receive(char* buffer, int buffer_size, int timeout_ms)
 
     // Timeout or error
     if (select_result == 0) {
-        return -2; // 特殊值表示超时
+        return -2; // Special value for timeout
     }
-    return -1; // 其他错误
+    return -1; // Other error
 }
 
 // ==================== DATA PROCESSING FUNCTIONS ====================
-//消息分类
+
 ClientBThread::MessageType ClientBThread::classifyMessage(const QString &message)
 {
     if (message.contains("CLIENT_B_CONNECTED") ||
@@ -497,37 +537,17 @@ ClientBThread::MessageType ClientBThread::classifyMessage(const QString &message
 
 void ClientBThread::sendIdentity()
 {
+    if (!c_tcp_is_connected()) {
+        emit debugMessage("Cannot send identity, not connected");
+        return;
+    }
+
     const char* identity = "CLIENT_B";
     if (c_tcp_send(identity, strlen(identity))) {
         emitDebug("Sent identity: CLIENT_B");
     } else {
         emit dataSendError("Failed to send identity");
         emitDebug("Failed to send identity");
-    }
-}
-
-void ClientBThread::sendCityName(const QString &city)
-{
-    if (!isConnected()) {
-        emit dataSendError("Not connected to server");
-        emitDebug("Cannot send city name, not connected");
-        return;
-    }
-
-    if (city.isEmpty()) {
-        emitDebug("City name cannot be empty");
-        return;
-    }
-
-    QByteArray cityBytes = city.toUtf8();
-    const char* cityData = cityBytes.constData();
-
-    if (c_tcp_send(cityData, strlen(cityData))) {
-        emit cityNameSent(city);
-        emitDebug("Sent city name: " + city);
-    } else {
-        emit dataSendError("Failed to send city name: " + city);
-        emitDebug("Failed to send city name: " + city);
     }
 }
 
@@ -539,13 +559,13 @@ void ClientBThread::processReceivedMessage(const char* message)
         return;
     }
 
-    // 使用分类函数确定消息类型
+    // Use classification function to determine message type
     MessageType type = classifyMessage(msg);
 
     switch (type) {
     case MSG_CONNECTION_NOTIFICATION:
         emitDebug("Received connection notification: " + msg);
-        // 不处理连接通知，这些是给客户端A的
+        // Do not process connection notifications, these are for client A
         return;
 
     case MSG_COMMAND:
@@ -564,13 +584,13 @@ void ClientBThread::processReceivedMessage(const char* message)
     }
 }
 
-//天气数据解析
+// Weather data parsing
 void ClientBThread::parseWeatherData(const QString &msg)
 {
-    // 更健壮的天气数据解析
+    // More robust weather data parsing
     QStringList lines = msg.split("\n");
 
-    // 手动过滤空行
+    // Manually filter empty lines
     QStringList filteredLines;
     for (const QString &line : lines) {
         if (!line.trimmed().isEmpty()) {
@@ -580,7 +600,7 @@ void ClientBThread::parseWeatherData(const QString &msg)
 
     QString city, weather, temperature, humidity;
 
-    // 使用正则表达式提取信息
+    // Use regular expressions to extract information
     QRegularExpression cityRegex("城市:\\s*(.+)");
     QRegularExpression weatherRegex("天气:\\s*(.+)");
     QRegularExpression tempRegex("温度:\\s*([-+]?\\d*\\.?\\d+).*");
@@ -605,13 +625,13 @@ void ClientBThread::parseWeatherData(const QString &msg)
         }
     }
 
-    // 验证并修正数据
+    // Validate and correct data
     if (city.isEmpty()) city = "未知城市";
     if (weather.isEmpty()) weather = "未知";
-    if (temperature.isEmpty()) temperature = "25"; // 默认温度
+    if (temperature.isEmpty()) temperature = "25"; // Default temperature
     if (humidity.isEmpty()) humidity = "N/A%";
 
-    // 确保温度是纯数字
+    // Ensure temperature is pure number
     temperature = parseTemperature(temperature);
 
     emitDebug(QString("Parsed weather - City:%1 Weather:%2 Temp:%3°C Humidity:%4")
@@ -622,7 +642,7 @@ void ClientBThread::parseWeatherData(const QString &msg)
 
 QString ClientBThread::parseTemperature(const QString &tempStr) const
 {
-    // 提取温度数字部分
+    // Extract temperature numeric part
     QString result;
     bool hasDecimal = false;
 
@@ -641,16 +661,16 @@ QString ClientBThread::parseTemperature(const QString &tempStr) const
         }
     }
 
-    // 如果没有提取到数字，返回默认值
+    // If no numbers extracted, return default value
     if (result.isEmpty() || result == "-") {
         return "25";
     }
 
-    // 确保温度值合理
+    // Ensure temperature value is reasonable
     bool ok;
     double temp = result.toDouble(&ok);
     if (ok && temp >= -50 && temp <= 60) {
-        return QString::number(temp, 'f', 0); // 取整
+        return QString::number(temp, 'f', 0); // Round to integer
     }
 
     return "25";
@@ -681,4 +701,11 @@ void ClientBThread::emitDebug(const QString &msg)
     // Emit signal in main thread
     QMetaObject::invokeMethod(this, "debugMessage", Qt::QueuedConnection,
                               Q_ARG(QString, msg));
+}
+
+void ClientBThread::onReconnectTimeout()
+{
+    // This slot is for auto-reconnect, but we disabled auto-reconnect
+    // So we don't need to implement it
+    qDebug() << "Reconnect timeout slot called, but auto-reconnect is disabled";
 }

@@ -70,6 +70,7 @@ private:
 
     // 客户端B线程相关
     ClientBThread *clientBThread;
+    bool initialWeatherReceived;  // 标记是否已收到初始天气
     // 天气图标映射
     QMap<QString, QString> weatherIconMap;
     // 初始化天气图标映射
@@ -94,11 +95,13 @@ private slots:
     void updateMusicProgress();
     void on_btn_camera_clicked();
 
-    // 语音识别槽函数
+    //语音识别槽函数
     void onVoiceCommandReceived(const QString &command);
     void onVoiceStatusChanged(const QString &status);
     void onVoiceRecordingFinished();
     void onVoiceButtonClicked();  // 统一处理两个语音按钮
+    //通用城市天气查询函数
+    void queryWeatherByCity(const QString &city);
 
     // 客户端B相关槽函数
     void onWeatherDataReceived(const QString &city, const QString &weather,
@@ -109,6 +112,7 @@ private slots:
     void onClientBConnectionError(const QString &error);
     void onClientBCityNameSent(const QString &city);
     void onClientBDebugMessage(const QString &msg);
+    void onManualConnectionCompleted(bool success);  // 新增：手动连接完成
 
     // 城市名发送槽函数
     void on_btn_send_clicked();
@@ -117,6 +121,8 @@ private slots:
 
     // 客户端B重连
     void reconnectClientB();
+    // 手动请求天气
+    void requestWeather(const QString &city);
 
 };
 #endif // WIDGET_H

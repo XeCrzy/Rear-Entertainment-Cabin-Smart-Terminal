@@ -112,6 +112,9 @@ Widget::Widget(QWidget *parent)
     // 初始化客户端B线程（使用C语言TCP实现）
     clientBThread = new ClientBThread(this);
 
+    // 禁止自动连接
+    clientBThread->setAutoConnect(false);
+
     // 连接客户端B信号
     connect(clientBThread, &ClientBThread::weatherDataReceived,
             this, &Widget::onWeatherDataReceived);
@@ -127,9 +130,14 @@ Widget::Widget(QWidget *parent)
             this, &Widget::onClientBCityNameSent);
     connect(clientBThread, &ClientBThread::debugMessage,
             this, &Widget::onClientBDebugMessage);
+    connect(clientBThread, &ClientBThread::manualConnectionCompleted,
+            this, &Widget::onManualConnectionCompleted);
 
-    // 启动客户端B连接（延迟1秒）
-    QTimer::singleShot(1000, this, &Widget::reconnectClientB);
+    // 启动时只请求一次天气（显示上一次的天气） - 使用手动连接
+    QTimer::singleShot(2000, this, [=]() {
+        qDebug() << "Requesting initial weather data...";
+        requestWeather("广州");
+    });
 
     mainWindowInit();
 }
@@ -277,6 +285,35 @@ bool Widget::eventFilter(QObject *watched, QEvent *event)
         }
     return QWidget::eventFilter(watched,event);//将事件传递给父类
 }
+
+
+// 初始化天气图标映射
+void Widget::initWeatherIconMap()
+{
+    weatherIconMap.clear();
+    weatherIconMap["晴"] = "sunny.png";
+    weatherIconMap["多云"] = "cloud.png";
+    weatherIconMap["阴"] = "cloud.png";
+    weatherIconMap["少云"] = "cloud.png";
+
+    weatherIconMap["小雨"] = "rain.png";
+    weatherIconMap["中雨"] = "rain.png";
+    weatherIconMap["大雨"] = "rain.png";
+    weatherIconMap["暴雨"] = "rain.png";
+    weatherIconMap["阵雨"] = "rain.png";
+    weatherIconMap["雷阵雨"] = "rain.png";
+
+    weatherIconMap["小雪"] = "snow.png";
+    weatherIconMap["中雪"] = "snow.png";
+    weatherIconMap["大雪"] = "snow.png";
+    weatherIconMap["暴雪"] = "snow.png";
+
+    weatherIconMap["雾"] = "Fog.png";
+    weatherIconMap["霾"] = "Fog.png";
+    weatherIconMap["扬沙"] = "Fog.png";
+    weatherIconMap["沙尘暴"] = "Fog.png";
+}
+
 
 void Widget::slotHideInput()
 {
@@ -428,54 +465,71 @@ void Widget::onVoiceCommandReceived(const QString &command)
             on_btn_buzzer_switch_clicked();
         }
     }
+    // 新增天气查询命令处理 - 使用新的手动连接方式
+    else if (cmd == "广州天气" || cmd == "查看广州天气") {
+        qDebug() << "Executing: Query Guangzhou weather";
+        requestWeather("广州");
+    }
+    else if (cmd == "北京天气" || cmd == "查看北京天气") {
+        qDebug() << "Executing: Query Beijing weather";
+        requestWeather("北京");
+    }
+    else if (cmd == "杭州天气" || cmd == "查看杭州天气") {
+        qDebug() << "Executing: Query Hangzhou weather";
+        requestWeather("杭州");
+    }
+    else if (cmd == "上海天气" || cmd == "查看上海天气") {
+        qDebug() << "Executing: Query Shanghai weather";
+        requestWeather("上海");
+    }
+    else if (cmd.contains("天气") && cmd.length() > 2) {
+        // 通用天气查询：提取城市名
+        QString city = cmd;
+        city = city.replace("天气", "").replace("查看", "").trimmed();
+
+        if (!city.isEmpty()) {
+            qDebug() << "Executing: Query weather for" << city;
+            requestWeather(city);
+        } else {
+//            QMessageBox::information(this, "Weather Query",
+//                                   "Please say the city name, e.g.: Beijing weather, Guangzhou weather");
+        }
+    }
     else if (cmd == "帮助" || cmd.contains("帮助")) {
         qDebug() << "Executing: Show help";
-        QMessageBox::information(this, "语音命令帮助",
-            "支持的语音命令:\n"
-            "1. 打开相机 / 相机打开\n"
-            "2. 播放音乐 / 停止音乐\n"
-            "3. 打开灯 / 关闭灯\n"
-            "4. 打开蜂鸣器 / 关闭蜂鸣器\n"
-            "5. 帮助");
+        QString helpText =
+            "Supported voice commands:\n\n"
+            "Device Control:\n"
+            "1. Open camera / Camera open\n"
+            "2. Play music / Stop music\n"
+            "3. Turn on LED / Turn off LED\n"
+            "4. Turn on buzzer / Turn off buzzer\n\n"
+            "Weather Query:\n"
+            "5. Beijing weather / Guangzhou weather\n"
+            "6. Hangzhou weather / Shanghai weather\n"
+            "7. Other cities: Say city name + weather, e.g.: Shenzhen weather\n\n"
+            "8. Help - Show this help information";
+
+        QMessageBox::information(this, "Voice Command Help", helpText);
     }
     else {
         qDebug() << "Unrecognized command:" << command;
-        QMessageBox::warning(this, "未识别命令",
-            QString("未识别的命令: %1\n请说'帮助'查看可用命令").arg(command));
+        QMessageBox::warning(this, "Unrecognized Command",
+            QString("Unrecognized command: %1\n\nPlease say 'Help' to view available commands").arg(command));
     }
 }
 
 void Widget::onVoiceStatusChanged(const QString &status)
 {
     qDebug() << "Voice status:" << status;
-    // 可以在这里更新状态显示
-    // 例如：ui->label_status->setText(status);
-}
 
-void Widget::initWeatherIconMap()
-{
-    weatherIconMap.clear();
-    weatherIconMap["晴"] = "sunny.png";
-    weatherIconMap["多云"] = "cloud.png";
-    weatherIconMap["阴"] = "cloud.png";
-    weatherIconMap["少云"] = "cloud.png";
+        // 可以在这里更新UI，显示语音识别状态
+        // 例如：在某个标签上显示当前状态
+        // 注意：确保这个标签存在，如果不存在可以创建一个或者使用现有的
+        // 例如：ui->label_status->setText(status);
 
-    weatherIconMap["小雨"] = "rain.png";
-    weatherIconMap["中雨"] = "rain.png";
-    weatherIconMap["大雨"] = "rain.png";
-    weatherIconMap["暴雨"] = "rain.png";
-    weatherIconMap["阵雨"] = "rain.png";
-    weatherIconMap["雷阵雨"] = "rain.png";
-
-    weatherIconMap["小雪"] = "snow.png";
-    weatherIconMap["中雪"] = "snow.png";
-    weatherIconMap["大雪"] = "snow.png";
-    weatherIconMap["暴雪"] = "snow.png";
-
-    weatherIconMap["雾"] = "Fog.png";
-    weatherIconMap["霾"] = "Fog.png";
-    weatherIconMap["扬沙"] = "Fog.png";
-    weatherIconMap["沙尘暴"] = "Fog.png";
+        // 如果需要在状态栏显示，可以使用 QStatusBar（如果存在）
+        // 或者简单地在调试信息中显示
 }
 
 QString Widget::getWeatherIconPath(const QString &weather)
@@ -505,7 +559,18 @@ void Widget::onWeatherDataReceived(const QString &city, const QString &weather,
     qDebug() << "Weather data received - City:" << city << "Weather:" << weather
              << "Temperature:" << temperature << "Humidity:" << humidity;
 
-    // Update temperature display - 直接显示温度数值
+    // 标记已收到天气数据
+    if (!initialWeatherReceived) {
+        initialWeatherReceived = true;
+        qDebug() << "Initial weather data received";
+    }
+
+    // 显示一个短暂的提示
+    QMessageBox::information(this, "天气查询结果",
+        QString("%1天气:\n天气: %2\n温度: %3℃\n湿度: %4")
+            .arg(city).arg(weather).arg(temperature).arg(humidity));
+
+    // Update temperature display
     ui->label_temperature->setText(QString("温度:%1℃").arg(temperature));
 
     // Update weather icon
@@ -589,8 +654,8 @@ void Widget::onClientBConnectionError(const QString &error)
     static QElapsedTimer errorTimer;
 
     if (!errorShown || errorTimer.hasExpired(10000)) { // 10秒内只显示一次
-        QMessageBox::warning(this, "连接错误",
-                            QString("客户端B连接错误:\n%1\n\n将在5秒后重试...").arg(error));
+//        QMessageBox::warning(this, "连接错误",
+//                            QString("客户端B连接错误:\n%1\n\n将在5秒后重试...").arg(error));
         errorShown = true;
         errorTimer.start(); // 重置计时器
     }
@@ -610,17 +675,11 @@ void Widget::onClientBDebugMessage(const QString &msg)
     qDebug() << "Client B debug:" << msg;
 }
 
+// 移除或修改自动重连逻辑
 void Widget::reconnectClientB()
 {
-    if (clientBThread) {
-        // 先检查是否已经在运行
-        if (!clientBThread->isRunning()) {
-            qDebug() << "Attempting to reconnect client B...";
-            clientBThread->connectToServer();
-        } else {
-            qDebug() << "Client B thread is already running, skip reconnect";
-        }
-    }
+    // 现在我们不自动重连，只在需要时手动连接
+    qDebug() << "Auto-reconnect disabled. Please use manual weather request.";
 }
 
 // 城市名发送槽函数
@@ -628,41 +687,72 @@ void Widget::on_btn_send_clicked()
 {
     QString city = ui->lineEdit->text().trimmed();
     if (city.isEmpty()) {
-        QMessageBox::warning(this, "输入错误", "请输入城市名");
+//        QMessageBox::warning(this, "Input Error", "Please enter city name");
         return;
     }
 
-    if (clientBThread && clientBThread->isConnected()) {
-        clientBThread->sendCityName(city);
-    } else {
-        QMessageBox::warning(this, "连接错误", "未连接到服务器");
-        reconnectClientB();
-    }
+    requestWeather(city);
 }
 
 void Widget::on_btn_beijing_clicked()
 {
     QString city = "北京";
     ui->lineEdit->setText(city);
-
-    if (clientBThread && clientBThread->isConnected()) {
-        clientBThread->sendCityName(city);
-    } else {
-        QMessageBox::warning(this, "连接错误", "未连接到服务器");
-        reconnectClientB();
-    }
+    requestWeather(city);
 }
 
 void Widget::on_btn_guangzhou_clicked()
 {
     QString city = "广州";
     ui->lineEdit->setText(city);
+    requestWeather(city);
+}
+
+// 通用城市天气查询函数
+void Widget::queryWeatherByCity(const QString &city)
+{
+    if (city.isEmpty()) {
+        QMessageBox::warning(this, "输入错误", "请输入城市名");
+        return;
+    }
+
+    ui->lineEdit->setText(city);
 
     if (clientBThread && clientBThread->isConnected()) {
         clientBThread->sendCityName(city);
+        QMessageBox::information(this, "天气查询", QString("正在查询%1的天气...").arg(city));
     } else {
-        QMessageBox::warning(this, "连接错误", "未连接到服务器");
+//        QMessageBox::warning(this, "连接错误", "未连接到服务器");
         reconnectClientB();
+    }
+}
+
+// 新增：手动连接完成槽函数
+void Widget::onManualConnectionCompleted(bool success)
+{
+    qDebug() << "Manual connection completed, success:" << success;
+    if (success) {
+        qDebug() << "Weather data received successfully";
+    } else {
+        qDebug() << "Failed to get weather data";
+//        QMessageBox::warning(this, "Connection Error", "Failed to get weather data. Please try again.");
+    }
+}
+
+//请求天气函数
+void Widget::requestWeather(const QString &city)
+{
+    qDebug() << "Requesting weather for:" << city;
+
+    if (clientBThread) {
+        // 使用手动连接模式发送城市名
+        bool result = clientBThread->sendCityName(city, false);  // false表示手动连接
+
+        if (!result) {
+            qDebug() << "Failed to send city name:" << city;
+//            QMessageBox::warning(this, "请求失败",
+//                                QString("请求%1的天气失败").arg(city));
+        }
     }
 }
 

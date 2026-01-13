@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ClientBThread_t {
-    QByteArrayData data[18];
-    char stringdata0[219];
+    QByteArrayData data[20];
+    char stringdata0[253];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,7 +46,9 @@ QT_MOC_LITERAL(13, 156, 12), // "cityNameSent"
 QT_MOC_LITERAL(14, 169, 13), // "dataSendError"
 QT_MOC_LITERAL(15, 183, 12), // "debugMessage"
 QT_MOC_LITERAL(16, 196, 3), // "msg"
-QT_MOC_LITERAL(17, 200, 18) // "onReconnectTimeout"
+QT_MOC_LITERAL(17, 200, 25), // "manualConnectionCompleted"
+QT_MOC_LITERAL(18, 226, 7), // "success"
+QT_MOC_LITERAL(19, 234, 18) // "onReconnectTimeout"
 
     },
     "ClientBThread\0weatherDataReceived\0\0"
@@ -54,7 +56,8 @@ QT_MOC_LITERAL(17, 200, 18) // "onReconnectTimeout"
     "commandReceived\0command\0connectedToServer\0"
     "disconnectedFromServer\0connectionError\0"
     "error\0cityNameSent\0dataSendError\0"
-    "debugMessage\0msg\0onReconnectTimeout"
+    "debugMessage\0msg\0manualConnectionCompleted\0"
+    "success\0onReconnectTimeout"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,25 +67,26 @@ static const uint qt_meta_data_ClientBThread[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       8,       // signalCount
+       9,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    4,   59,    2, 0x06 /* Public */,
-       7,    1,   68,    2, 0x06 /* Public */,
-       9,    0,   71,    2, 0x06 /* Public */,
-      10,    0,   72,    2, 0x06 /* Public */,
-      11,    1,   73,    2, 0x06 /* Public */,
-      13,    1,   76,    2, 0x06 /* Public */,
-      14,    1,   79,    2, 0x06 /* Public */,
-      15,    1,   82,    2, 0x06 /* Public */,
+       1,    4,   64,    2, 0x06 /* Public */,
+       7,    1,   73,    2, 0x06 /* Public */,
+       9,    0,   76,    2, 0x06 /* Public */,
+      10,    0,   77,    2, 0x06 /* Public */,
+      11,    1,   78,    2, 0x06 /* Public */,
+      13,    1,   81,    2, 0x06 /* Public */,
+      14,    1,   84,    2, 0x06 /* Public */,
+      15,    1,   87,    2, 0x06 /* Public */,
+      17,    1,   90,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      17,    0,   85,    2, 0x08 /* Private */,
+      19,    0,   93,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,    3,    4,    5,    6,
@@ -93,6 +97,7 @@ static const uint qt_meta_data_ClientBThread[] = {
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void, QMetaType::QString,   16,
+    QMetaType::Void, QMetaType::Bool,   18,
 
  // slots: parameters
     QMetaType::Void,
@@ -114,7 +119,8 @@ void ClientBThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 5: _t->cityNameSent((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 6: _t->dataSendError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 7: _t->debugMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 8: _t->onReconnectTimeout(); break;
+        case 8: _t->manualConnectionCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 9: _t->onReconnectTimeout(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -176,6 +182,13 @@ void ClientBThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
                 return;
             }
         }
+        {
+            typedef void (ClientBThread::*_t)(bool );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ClientBThread::manualConnectionCompleted)) {
+                *result = 8;
+                return;
+            }
+        }
     }
 }
 
@@ -204,13 +217,13 @@ int ClientBThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }
@@ -267,5 +280,12 @@ void ClientBThread::debugMessage(const QString & _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
+}
+
+// SIGNAL 8
+void ClientBThread::manualConnectionCompleted(bool _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 QT_END_MOC_NAMESPACE

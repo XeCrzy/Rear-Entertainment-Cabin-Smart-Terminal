@@ -32,15 +32,21 @@ public:
     ~ClientBThread();
 
     // Send city name to server
-    void sendCityName(const QString &city);
+    bool sendCityName(const QString &city, bool autoConnect = false);
 
     // TCP connection control
     bool connectToServer(const QString &host = "192.168.16.181", quint16 port = 60000);
     void disconnectFromServer();
     bool isConnected() const;
 
+    // Check if we have a cached connection
+    bool hasConnection() const { return connectionEstablished; }
+
     // Thread control
     void stopThread();
+
+    // Set connection mode
+    void setAutoConnect(bool autoConnect) { this->autoConnect = autoConnect; }
 
 signals:
     // Weather data update signal
@@ -63,6 +69,9 @@ signals:
 
     // Debug information
     void debugMessage(const QString &msg);
+
+    // New signal for manual connection completed
+    void manualConnectionCompleted(bool success);
 
 protected:
     void run() override;
@@ -87,6 +96,8 @@ private:
 
     // Qt thread control
     bool thread_running;
+    bool connectionEstablished;
+    bool autoConnect;
     QMutex thread_mutex;
     QWaitCondition thread_cond;
 
@@ -94,10 +105,13 @@ private:
     QString serverHost;
     quint16 serverPort;
 
+    // Current city for sending
+    QString currentCity;
+
     // Buffer size
     enum { BUFFER_SIZE = 4096 };
 
-    // 新增：消息类型枚举
+    // Message type enumeration
     enum MessageType {
         MSG_WEATHER,
         MSG_COMMAND,
@@ -112,13 +126,16 @@ private:
     bool c_tcp_send(const char* data, int length);
     int c_tcp_receive(char* buffer, int buffer_size, int timeout_ms = 1000);
 
+    // Manual connection function
+    bool manualConnectAndSend(const QString &city);
+
     // Data parsing functions
     QString parseTemperature(const QString &tempStr) const;
     void processReceivedMessage(const char* message);
 
-    // 新增：消息分类函数声明
+    // Message classification function
     MessageType classifyMessage(const QString &message);
-    // 新增：天气数据解析函数声明
+    // Weather data parsing function
     void parseWeatherData(const QString &msg);
 
     // Send identity
