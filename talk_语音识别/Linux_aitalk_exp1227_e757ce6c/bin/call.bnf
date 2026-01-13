@@ -8,5 +8,5 @@
 !start <callstart>;
 <callstart>:<dial>;
 <dial>:<dialpre><contact>;
-<dialpre>:打开!id(10001)|播放!id(10001)|停止!id(10001)|关闭!id(10001)|查看!id(10001);
+<dialpre>:打开!id(10001)|播放!id(10001)|停止!id(10001)|停止!id(10001)|关闭!id(10001)|查看!id(10001);
 <contact>:相册 | 音乐 | 视频 | 相机 | 灯 | 蜂鸣器 |帮助 | 广州天气 | 北京天气 | 杭州天气 |上海天气;

@@ -16,6 +16,10 @@ extern "C"
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 #define BEEP_ON  0
 #define BEEP_OFF 1
 }
@@ -60,13 +64,24 @@ private:
 
     //音乐播放相关
     QTimer *musicTimer;
-    bool isMusicPlaying;
-    int musicProgress;  // 当前进度值
-    int totalDuration;  // 总时长（毫秒）
+    bool isMusicPlaying;     // 是否正在播放
+    bool isMusicPaused;      // 是否暂停状态
+    int currentMusicIndex;   // 当前播放的音乐索引 (0: 1.mp3, 1: 2.mp3)
+    qint64 musicStartTime;   // 播放开始的时间戳
+    qint64 musicPausedTime;  // 暂停时已播放的时间
+    int musicProgress;       // 当前进度值
+    int totalDuration;       // 总时长（毫秒）
     int progressUpdateInterval;
-    qint64 musicStartTime;  // 播放开始的时间戳
-    qint64 musicPausedTime; // 暂停时已播放的时间
-    bool isMusicPaused;     // 是否处于暂停状态
+
+    // 音乐控制函数
+    void startMusic();        // 开始播放音乐
+    void stopMusic();         // 停止播放音乐
+    void pauseMusic();        // 暂停播放音乐
+    void resumeMusic();       // 恢复播放音乐
+    void playNextMusic();     // 播放下一首
+    void playPreviousMusic(); // 播放上一首
+    void killMusicProcess();  // 杀死音乐进程
+    bool checkMusicProcess(); // 检查是否有音乐进程在运行
 
     // 客户端B线程相关
     ClientBThread *clientBThread;
@@ -93,6 +108,12 @@ private slots:
     //音乐播放相关函数
     void on_btn_music_play_clicked();
     void updateMusicProgress();
+
+    // 上一首/下一首按钮槽函数
+    void on_btn_music_pre_clicked();
+    void on_btn_music_next_clicked();
+
+    //打开相机槽函数
     void on_btn_camera_clicked();
 
     //语音识别槽函数

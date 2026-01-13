@@ -90,14 +90,15 @@ Widget::Widget(QWidget *parent)
             beepStatus = true;
         }
     });
-    // 初始化音乐进度条相关变量
+    // 初始化音乐相关变量
+    currentMusicIndex = 0;  // 默认播放1.mp3
     isMusicPlaying = false;
     isMusicPaused = false;
     musicStartTime = 0;
     musicPausedTime = 0;
     musicProgress = 0;
     totalDuration = 240 * 1000;  // 240秒转换为毫秒
-    progressUpdateInterval = 500;  // 500ms更新一次，让用户能看到滑动的效果
+    progressUpdateInterval = 500;  // 500ms更新一次
 
     // 设置进度条范围
     ui->horizontalSlider->setRange(0, 100);
@@ -146,44 +147,44 @@ Widget::Widget(QWidget *parent)
 // 实现音乐播放按钮点击槽函数
 void Widget::on_btn_music_play_clicked()
 {
-    // 切换播放状态
-    isMusicPlaying = !isMusicPlaying;
+    qDebug() << "Music play button clicked";
+    qDebug() << "Current state - Playing:" << isMusicPlaying << ", Paused:" << isMusicPaused;
 
-    if (isMusicPlaying) {
-        // 如果是播放状态
-        if (musicProgress >= 100) {
-            // 如果已经到达尾端，重置进度
-            musicProgress = 0;
-            musicPausedTime = 0;
-            ui->horizontalSlider->setValue(0);
-        }
-
-        // 记录开始时间
-        musicStartTime = QDateTime::currentMSecsSinceEpoch() - musicPausedTime;
-
-        // 启动定时器 - 这里的关键是定时器要开始工作！
-        musicTimer->start(progressUpdateInterval);  // 500ms触发一次
-
-        // 切换按钮图标为播放
-        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_play.png);");
-
-        qDebug() << "Music starts playing, timer started with interval:" << progressUpdateInterval << "ms";
+    if (!isMusicPlaying) {
+        // 如果音乐没有播放，开始播放
+        qDebug() << "Starting music playback";
+        startMusic();
+    } else if (isMusicPaused) {
+        // 如果音乐暂停了，恢复播放
+        qDebug() << "Resuming music playback";
+        resumeMusic();
     } else {
-        // 如果是暂停状态
-        musicTimer->stop();  // 停止定时器
-
-        // 记录暂停时已播放的时间
-        musicPausedTime = QDateTime::currentMSecsSinceEpoch() - musicStartTime;
-
-        // 切换按钮图标为暂停
-        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
-
-        qDebug() << "Music playback paused, current progress:" << musicProgress;
+        // 如果音乐正在播放，暂停它
+        qDebug() << "Pausing music playback";
+        pauseMusic();
     }
 }
 
+
+// 上一首按钮槽函数
+void Widget::on_btn_music_pre_clicked()
+{
+    playPreviousMusic();
+}
+
+// 下一首按钮槽函数
+void Widget::on_btn_music_next_clicked()
+{
+    playNextMusic();
+}
+
+
 void Widget::updateMusicProgress()
 {
+    if (!isMusicPlaying) {
+        return;
+    }
+
     // 计算已播放的时间
     qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
     qint64 elapsedTime = currentTime - musicStartTime;
@@ -199,22 +200,11 @@ void Widget::updateMusicProgress()
     musicProgress = progress;
     ui->horizontalSlider->setValue(musicProgress);
 
-    // 添加调试信息，查看定时器是否正常工作
-    static int updateCount = 0;
-    updateCount++;
-    qDebug() << "Timer update #" << updateCount << ": progress =" << progress;
-
     // 检查是否播放完成
     if (progress >= 100) {
-        musicTimer->stop();
-        isMusicPlaying = false;
-        isMusicPaused = false;
-        musicProgress = 0;
-        musicPausedTime = 0;
-        ui->horizontalSlider->setValue(0);
-        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_play.png);");
-        qDebug() << "Music playback complete, reset.";
-        updateCount = 0;  // 重置计数
+        qDebug() << "Music playback complete, resetting...";
+        // 播放完成，切换到下一首
+        playNextMusic();
     }
 }
 
@@ -433,13 +423,23 @@ void Widget::onVoiceCommandReceived(const QString &command)
     }
     else if (cmd == "播放音乐" || cmd == "音乐播放" || cmd.contains("音乐")) {
         qDebug() << "Executing: Play music";
-        on_btn_music_play_clicked();
+        if (!isMusicPlaying) {
+            on_btn_music_play_clicked();
+        }
     }
     else if (cmd == "停止音乐" || cmd == "音乐停止" || (cmd.contains("停止") && cmd.contains("音乐"))) {
         qDebug() << "Executing: Stop music";
         if (isMusicPlaying) {
-            on_btn_music_play_clicked();
+            stopMusic();
         }
+    }
+    else if (cmd == "播放下一首" || cmd == "播放下一首歌" || cmd.contains("播放下一首")) {
+        qDebug() << "Executing: Next music";
+        playNextMusic();
+    }
+    else if (cmd == "播放上一首" || cmd == "播放上一首歌" || cmd.contains("播放上一首")) {
+        qDebug() << "Executing: Previous music";
+        playPreviousMusic();
     }
     else if (cmd == "打开灯" || cmd == "灯打开" || cmd.contains("打开灯") || cmd.contains("开灯")) {
         qDebug() << "Executing: Turn on LED";
@@ -756,6 +756,227 @@ void Widget::requestWeather(const QString &city)
     }
 }
 
+
+// 开始播放音乐
+void Widget::startMusic()
+{
+    // 先杀死可能正在运行的音乐进程
+    killMusicProcess();
+
+    QString command;
+    if (currentMusicIndex == 0) {
+        command = "madplay /tmp/1.mp3 2>&1 &";
+        qDebug() << "Starting music: 1.mp3";
+    } else {
+        command = "madplay /tmp/2.mp3 2>&1 &";
+        qDebug() << "Starting music: 2.mp3";
+    }
+
+    // 检查音乐文件是否存在
+    QString musicFile = (currentMusicIndex == 0) ? "/tmp/1.mp3" : "/tmp/2.mp3";
+    if (access(musicFile.toStdString().c_str(), F_OK) == -1) {
+        qDebug() << "Music file not found:" << musicFile;
+        QMessageBox::warning(this, "错误", QString("音乐文件不存在: %1").arg(musicFile));
+        return;
+    }
+
+    // 执行播放命令
+    int ret = system(command.toStdString().c_str());
+    if (ret == 0) {
+        qDebug() << "Music started successfully";
+    } else {
+        qDebug() << "Failed to start music, return code:" << ret;
+        // 尝试再次检查并杀死进程
+        killMusicProcess();
+        // 再次尝试播放
+        system(command.toStdString().c_str());
+    }
+
+    // 更新状态
+    isMusicPlaying = true;
+    isMusicPaused = false;
+    musicStartTime = QDateTime::currentMSecsSinceEpoch();
+    musicPausedTime = 0;
+    musicProgress = 0;
+
+    // 重置进度条
+    ui->horizontalSlider->setValue(0);
+
+    // 启动定时器更新进度条
+    musicTimer->start(progressUpdateInterval);
+
+    // 更新按钮图标为播放（因为正在播放）
+    ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_play.png);");
+
+    qDebug() << "Music state: Playing, Paused:" << isMusicPaused;
+}
+
+// 杀死音乐进程
+void Widget::killMusicProcess()
+{
+    // 使用更强的kill命令，确保进程被终止
+    system("pkill -9 madplay 2>/dev/null");
+    // 给系统一点时间释放音频设备
+    usleep(100000); // 100ms
+    qDebug() << "Music process killed";
+}
+
+// 检查是否有音乐进程正在运行
+bool Widget::checkMusicProcess()
+{
+    FILE* fp = popen("pgrep madplay", "r");
+    char buffer[128];
+    bool result = false;
+
+    if (fp) {
+        if (fgets(buffer, sizeof(buffer), fp) != NULL) {
+            result = true;
+        }
+        pclose(fp);
+    }
+
+    return result;
+}
+
+// 停止播放音乐
+void Widget::stopMusic()
+{
+    // 停止定时器
+    musicTimer->stop();
+
+    // 杀死音乐进程
+    killMusicProcess();
+
+    // 重置状态
+    isMusicPlaying = false;
+    isMusicPaused = false;
+    musicProgress = 0;
+    musicPausedTime = 0;
+
+    // 重置进度条
+    ui->horizontalSlider->setValue(0);
+
+    // 更新按钮图标为暂停（因为停止了）
+    ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
+
+    qDebug() << "Music stopped";
+    qDebug() << "Music state: Playing:" << isMusicPlaying << ", Paused:" << isMusicPaused;
+}
+
+
+// 暂停播放音乐
+void Widget::pauseMusic()
+{
+    if (!isMusicPlaying || isMusicPaused) {
+        return;
+    }
+
+    // 检查是否有音乐进程
+    if (!checkMusicProcess()) {
+        qDebug() << "No music process found, cannot pause";
+        isMusicPlaying = false;
+        isMusicPaused = false;
+        return;
+    }
+
+    // 暂停音乐进程
+    int ret = system("pkill -SIGSTOP madplay");
+    if (ret == 0) {
+        qDebug() << "Music paused";
+        isMusicPaused = true;
+
+        // 停止定时器
+        musicTimer->stop();
+
+        // 记录暂停时已播放的时间
+        musicPausedTime = QDateTime::currentMSecsSinceEpoch() - musicStartTime;
+
+        // 更新按钮图标为暂停
+        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
+    } else {
+        qDebug() << "Failed to pause music, return code:" << ret;
+        // 如果暂停失败，可能是进程已经结束
+        isMusicPlaying = false;
+        isMusicPaused = false;
+        musicTimer->stop();
+        ui->horizontalSlider->setValue(0);
+        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
+    }
+
+    qDebug() << "Music state: Playing:" << isMusicPlaying << ", Paused:" << isMusicPaused;
+}
+
+// 恢复播放音乐
+void Widget::resumeMusic()
+{
+    if (!isMusicPlaying || !isMusicPaused) {
+        return;
+    }
+
+    // 检查是否有音乐进程
+    if (!checkMusicProcess()) {
+        qDebug() << "No music process found, cannot resume";
+        // 如果进程不存在，重新开始播放
+        startMusic();
+        return;
+    }
+
+    // 继续音乐进程
+    int ret = system("pkill -SIGCONT madplay");
+    if (ret == 0) {
+        qDebug() << "Music resumed";
+        isMusicPaused = false;
+
+        // 更新开始时间
+        musicStartTime = QDateTime::currentMSecsSinceEpoch() - musicPausedTime;
+
+        // 启动定时器
+        musicTimer->start(progressUpdateInterval);
+
+        // 更新按钮图标为播放
+        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_play.png);");
+    } else {
+        qDebug() << "Failed to resume music, return code:" << ret;
+        // 如果恢复失败，可能是进程已经结束
+        isMusicPlaying = false;
+        isMusicPaused = false;
+        musicTimer->stop();
+        ui->horizontalSlider->setValue(0);
+        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
+    }
+
+    qDebug() << "Music state: Playing:" << isMusicPlaying << ", Paused:" << isMusicPaused;
+}
+
+// 播放下一首
+void Widget::playNextMusic()
+{
+    qDebug() << "Switching to next music";
+
+    // 切换到下一首
+    currentMusicIndex = (currentMusicIndex + 1) % 2;  // 0->1, 1->0
+
+    // 如果正在播放，则播放新歌曲
+    if (isMusicPlaying) {
+        startMusic();
+    }
+}
+
+// 播放上一首
+void Widget::playPreviousMusic()
+{
+    qDebug() << "Switching to previous music";
+
+    // 切换到上一首
+    currentMusicIndex = (currentMusicIndex == 0) ? 1 : 0;  // 0->1, 1->0
+
+    // 如果正在播放，则播放新歌曲
+    if (isMusicPlaying) {
+        startMusic();
+    }
+}
+
+
 Widget::~Widget()
 {
     // 停止语音线程
@@ -767,11 +988,15 @@ Widget::~Widget()
         delete voiceThread;
         voiceThread = nullptr;
     }
+    // 停止音乐
+    stopMusic();
+
     // 停止并删除音乐定时器
     if (musicTimer) {
         musicTimer->stop();
         delete musicTimer;
     }
+
     // 停止时间线程
     if (timeThread) {
         timeThread->stopTimeThread();
