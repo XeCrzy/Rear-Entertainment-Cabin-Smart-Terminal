@@ -421,10 +421,21 @@ void Widget::onVoiceCommandReceived(const QString &command)
         qDebug() << "Executing: Open camera";
         camera->show();
     }
-    else if (cmd == "播放音乐" || cmd == "音乐播放" || cmd.contains("音乐")) {
+    else if (cmd == "播放音乐" || cmd == "音乐播放" || cmd.contains("播放音乐")) {
         qDebug() << "Executing: Play music";
         if (!isMusicPlaying) {
-            on_btn_music_play_clicked();
+            // 如果音乐没有播放，开始播放
+            startMusic();
+        } else if (isMusicPaused) {
+            // 如果音乐暂停了，恢复播放
+            resumeMusic();
+        }
+        // 如果音乐正在播放且没有暂停，则不做操作
+    }
+    else if (cmd == "暂停音乐" || cmd == "音乐暂停" || cmd.contains("暂停音乐")) {
+        qDebug() << "Executing: Pause music";
+        if (isMusicPlaying && !isMusicPaused) {
+            pauseMusic();
         }
     }
     else if (cmd == "停止音乐" || cmd == "音乐停止" || (cmd.contains("停止") && cmd.contains("音乐"))) {
@@ -432,14 +443,6 @@ void Widget::onVoiceCommandReceived(const QString &command)
         if (isMusicPlaying) {
             stopMusic();
         }
-    }
-    else if (cmd == "播放下一首" || cmd == "播放下一首歌" || cmd.contains("播放下一首")) {
-        qDebug() << "Executing: Next music";
-        playNextMusic();
-    }
-    else if (cmd == "播放上一首" || cmd == "播放上一首歌" || cmd.contains("播放上一首")) {
-        qDebug() << "Executing: Previous music";
-        playPreviousMusic();
     }
     else if (cmd == "打开灯" || cmd == "灯打开" || cmd.contains("打开灯") || cmd.contains("开灯")) {
         qDebug() << "Executing: Turn on LED";
@@ -808,6 +811,8 @@ void Widget::startMusic()
     // 更新按钮图标为播放（因为正在播放）
     ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_play.png);");
 
+    qDebug() << "Music button icon updated to play";
+
     qDebug() << "Music state: Playing, Paused:" << isMusicPaused;
 }
 
@@ -876,6 +881,8 @@ void Widget::pauseMusic()
         qDebug() << "No music process found, cannot pause";
         isMusicPlaying = false;
         isMusicPaused = false;
+        // 更新按钮图标为暂停
+        ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
         return;
     }
 
@@ -893,6 +900,8 @@ void Widget::pauseMusic()
 
         // 更新按钮图标为暂停
         ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
+
+        qDebug() << "Music button icon updated to pause";
     } else {
         qDebug() << "Failed to pause music, return code:" << ret;
         // 如果暂停失败，可能是进程已经结束
@@ -900,6 +909,7 @@ void Widget::pauseMusic()
         isMusicPaused = false;
         musicTimer->stop();
         ui->horizontalSlider->setValue(0);
+        // 更新按钮图标为暂停
         ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
     }
 
@@ -935,6 +945,8 @@ void Widget::resumeMusic()
 
         // 更新按钮图标为播放
         ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_play.png);");
+
+        qDebug() << "Music button icon updated to play";
     } else {
         qDebug() << "Failed to resume music, return code:" << ret;
         // 如果恢复失败，可能是进程已经结束
@@ -942,6 +954,7 @@ void Widget::resumeMusic()
         isMusicPaused = false;
         musicTimer->stop();
         ui->horizontalSlider->setValue(0);
+        // 更新按钮图标为暂停
         ui->btn_music_play->setStyleSheet("border-image: url(:/image/music_pause.png);");
     }
 

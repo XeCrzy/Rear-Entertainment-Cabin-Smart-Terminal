@@ -2226,3 +2226,187 @@ xœ«VJÌ,IÌÉV²ªV*K-R²R2RÒQJ*-	¤Vd¥Æ§$–¤*Yš››ZšZ˜è(¥å%e¦
 [2026/01/13 18:28:45 757] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
 [2026/01/13 18:28:45 791] isr_local  2185 esr_session_end, ret =  0  
 [2026/01/13 18:28:45 879] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/13 18:50:39 059] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/13 18:50:39 100] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/13 18:50:39 108] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/13 18:50:39 116] isr_local  805  engine_type  :  local  
+[2026/01/13 18:50:39 117] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/13 18:50:39 119] isr_local  805  sample_rate  :  16000  
+[2026/01/13 18:50:39 121] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/13 18:50:39 123] isr_local  805  local_grammar  :  call  
+[2026/01/13 18:50:39 124] isr_local  805  result_type  :  xml  
+[2026/01/13 18:50:39 126] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/13 18:50:39 127] isr_local  1329 authorized_aitalk=  1  
+[2026/01/13 18:50:39 128] isr_local  1330 forbid_aitalk=  0  
+[2026/01/13 18:50:39 139] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/13 18:50:39 150] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/13 18:50:39 151] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/13 18:50:39 238] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:39 239] isr_local  603  audio buffered :   udata(48007838) 1  
+[2026/01/13 18:50:39 254] isr_local  657  local engine ready  
+[2026/01/13 18:50:39 262] isr_local  587  esr_flush_buf_audio buffer audio num:  1  
+[2026/01/13 18:50:39 264] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:39 272] isr_local  592  esr_audio_write, ret =  0  
+[2026/01/13 18:50:39 279] isr_local  632  local engine started  
+[2026/01/13 18:50:39 416] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:39 419] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:39 583] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:39 587] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:39 735] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:39 737] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:39 907] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:39 909] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 029] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 033] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 180] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 184] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 339] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 342] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 493] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 497] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 650] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 654] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 810] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 814] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:40 960] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:40 962] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:41 116] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:41 120] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:41 273] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:41 275] isr_local  1601 auwl =   6400  
+[2026/01/13 18:50:41 431] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:50:41 434] isr_local  1601 auwl =   5760  
+[2026/01/13 18:50:41 475] isr_local  671  final result will throw out next!  
+[2026/01/13 18:50:41 481] isr_local  681  nRecognizeState:  1  
+[2026/01/13 18:50:41 483] isr_local  682  nConfidenceScore:  86  
+[2026/01/13 18:50:41 487] isr_local  730  result_type :   xml  
+[2026/01/13 18:50:41 490] isr_local  731  result_encoding :   UTF-8  
+[2026/01/13 18:50:41 493] isr_local  732  is iat :   false  
+[2026/01/13 18:50:41 496] isr_local  471  item_count:1  
+[2026/01/13 18:50:41 498] isr_local  471  item_count:1  
+[2026/01/13 18:50:41 501] isr_local  294  nil  
+[2026/01/13 18:50:41 509] isr_local  677  recognized end!  
+[2026/01/13 18:50:41 847] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/13 18:50:41 852] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/13 18:50:41 866] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/13 18:50:41 918] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/13 18:51:07 583] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/13 18:51:07 592] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/13 18:51:07 594] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/13 18:51:07 604] isr_local  805  engine_type  :  local  
+[2026/01/13 18:51:07 606] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/13 18:51:07 609] isr_local  805  sample_rate  :  16000  
+[2026/01/13 18:51:07 611] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/13 18:51:07 614] isr_local  805  local_grammar  :  call  
+[2026/01/13 18:51:07 616] isr_local  805  result_type  :  xml  
+[2026/01/13 18:51:07 618] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/13 18:51:07 621] isr_local  1329 authorized_aitalk=  1  
+[2026/01/13 18:51:07 625] isr_local  1330 forbid_aitalk=  0  
+[2026/01/13 18:51:07 633] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/13 18:51:07 650] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/13 18:51:07 653] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/13 18:51:07 757] isr_local  657  local engine ready  
+[2026/01/13 18:51:07 776] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/13 18:51:07 788] isr_local  632  local engine started  
+[2026/01/13 18:51:07 818] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:07 821] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:07 956] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:07 957] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:08 113] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:08 115] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:08 280] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:08 291] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:08 432] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:08 434] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:08 616] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:08 619] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:08 744] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:08 746] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:08 899] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:08 908] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 060] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 063] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 212] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 214] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 370] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 373] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 525] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 527] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 682] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 688] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 832] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 837] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:09 989] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:09 992] isr_local  1601 auwl =   5760  
+[2026/01/13 18:51:10 227] isr_local  671  final result will throw out next!  
+[2026/01/13 18:51:10 233] isr_local  681  nRecognizeState:  1  
+[2026/01/13 18:51:10 234] isr_local  682  nConfidenceScore:  0  
+[2026/01/13 18:51:10 236] isr_local  730  result_type :   xml  
+[2026/01/13 18:51:10 237] isr_local  731  result_encoding :   UTF-8  
+[2026/01/13 18:51:10 238] isr_local  732  is iat :   false  
+[2026/01/13 18:51:10 239] isr_local  773  no recognized result!  
+[2026/01/13 18:51:10 246] isr_local  677  recognized end!  
+[2026/01/13 18:51:10 548] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/13 18:51:10 554] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/13 18:51:10 574] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/13 18:51:10 631] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/13 18:51:18 029] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/13 18:51:18 039] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/13 18:51:18 041] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/13 18:51:18 053] isr_local  805  engine_type  :  local  
+[2026/01/13 18:51:18 056] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/13 18:51:18 060] isr_local  805  sample_rate  :  16000  
+[2026/01/13 18:51:18 064] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/13 18:51:18 076] isr_local  805  local_grammar  :  call  
+[2026/01/13 18:51:18 080] isr_local  805  result_type  :  xml  
+[2026/01/13 18:51:18 091] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/13 18:51:18 102] isr_local  1329 authorized_aitalk=  1  
+[2026/01/13 18:51:18 105] isr_local  1330 forbid_aitalk=  0  
+[2026/01/13 18:51:18 112] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/13 18:51:18 126] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/13 18:51:18 129] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/13 18:51:18 255] isr_local  657  local engine ready  
+[2026/01/13 18:51:18 261] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/13 18:51:18 269] isr_local  632  local engine started  
+[2026/01/13 18:51:18 278] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:18 280] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:18 404] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:18 406] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:18 554] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:18 558] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:18 705] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:18 707] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:18 860] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:18 866] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 027] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 029] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 174] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 176] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 328] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 330] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 483] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 492] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 639] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 642] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 797] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 800] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:19 955] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:19 957] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:20 108] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:20 114] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:20 264] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:20 266] isr_local  1601 auwl =   6400  
+[2026/01/13 18:51:20 427] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/13 18:51:20 431] isr_local  1601 auwl =   5760  
+[2026/01/13 18:51:20 660] isr_local  671  final result will throw out next!  
+[2026/01/13 18:51:20 664] isr_local  681  nRecognizeState:  1  
+[2026/01/13 18:51:20 666] isr_local  682  nConfidenceScore:  0  
+[2026/01/13 18:51:20 668] isr_local  730  result_type :   xml  
+[2026/01/13 18:51:20 669] isr_local  731  result_encoding :   UTF-8  
+[2026/01/13 18:51:20 671] isr_local  732  is iat :   false  
+[2026/01/13 18:51:20 673] isr_local  773  no recognized result!  
+[2026/01/13 18:51:20 681] isr_local  677  recognized end!  
+[2026/01/13 18:51:20 933] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/13 18:51:20 939] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/13 18:51:20 945] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/13 18:51:20 996] isr_local  640  local engine already stopped! stop cmd ignored  
