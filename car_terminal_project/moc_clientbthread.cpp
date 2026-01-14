@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ClientBThread_t {
     QByteArrayData data[20];
-    char stringdata0[253];
+    char stringdata0[249];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,9 +46,9 @@ QT_MOC_LITERAL(13, 156, 12), // "cityNameSent"
 QT_MOC_LITERAL(14, 169, 13), // "dataSendError"
 QT_MOC_LITERAL(15, 183, 12), // "debugMessage"
 QT_MOC_LITERAL(16, 196, 3), // "msg"
-QT_MOC_LITERAL(17, 200, 25), // "manualConnectionCompleted"
-QT_MOC_LITERAL(18, 226, 7), // "success"
-QT_MOC_LITERAL(19, 234, 18) // "onReconnectTimeout"
+QT_MOC_LITERAL(17, 200, 21), // "weatherQueryCompleted"
+QT_MOC_LITERAL(18, 222, 7), // "success"
+QT_MOC_LITERAL(19, 230, 18) // "onReconnectTimeout"
 
     },
     "ClientBThread\0weatherDataReceived\0\0"
@@ -56,7 +56,7 @@ QT_MOC_LITERAL(19, 234, 18) // "onReconnectTimeout"
     "commandReceived\0command\0connectedToServer\0"
     "disconnectedFromServer\0connectionError\0"
     "error\0cityNameSent\0dataSendError\0"
-    "debugMessage\0msg\0manualConnectionCompleted\0"
+    "debugMessage\0msg\0weatherQueryCompleted\0"
     "success\0onReconnectTimeout"
 };
 #undef QT_MOC_LITERAL
@@ -119,7 +119,7 @@ void ClientBThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 5: _t->cityNameSent((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 6: _t->dataSendError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 7: _t->debugMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 8: _t->manualConnectionCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: _t->weatherQueryCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 9: _t->onReconnectTimeout(); break;
         default: ;
         }
@@ -184,7 +184,7 @@ void ClientBThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         }
         {
             typedef void (ClientBThread::*_t)(bool );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ClientBThread::manualConnectionCompleted)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&ClientBThread::weatherQueryCompleted)) {
                 *result = 8;
                 return;
             }
@@ -283,7 +283,7 @@ void ClientBThread::debugMessage(const QString & _t1)
 }
 
 // SIGNAL 8
-void ClientBThread::manualConnectionCompleted(bool _t1)
+void ClientBThread::weatherQueryCompleted(bool _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);

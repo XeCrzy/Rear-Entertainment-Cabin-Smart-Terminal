@@ -41,55 +41,45 @@ Widget::Widget(QWidget *parent)
     // 启动时间线程
     timeThread->startTimeThread();
 
-
+    // ============== LED初始化 ==============
     // 初始化LED开关标志位为关闭
     isLedOn = false;
-    // 设置label_led默认显示关闭图片
-    ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
-    // 1. 打开led驱动
-    ledFd = ::open("/dev/led_drv", O_RDWR);
-    if(ledFd == -1){
-        perror("open led error");
-    }
     currentLed = 7;
-    // 初始化led定时器并设置信号连接
-    ledTimer = new QTimer(this);
-    connect(ledTimer, &QTimer::timeout, [=](){
-        char buf[2];
-        // 熄灭当前的灯
-        buf[0] = 0;
-        buf[1] = currentLed;
-        ::write(ledFd, buf, 2);
+    ledTimer = nullptr;
 
-        // 移动到下一个 (7->8->9->10->7)
-        currentLed++;
-        if (currentLed > 10) currentLed = 7;
-
-        // 点亮新的灯
-        buf[0] = 1;
-        buf[1] = currentLed;
-        ::write(ledFd, buf, 2);
-    });
-
-    // 2. 打开蜂鸣器驱动
-    beepFd = ::open("/dev/beep", O_RDWR);
-    if(beepFd == -1)
-    {
-        perror("open buzzer failed");
+    // 打开LED驱动
+    ledFd = ::open("/dev/led_drv", O_RDWR);
+    if (ledFd == -1) {
+        qDebug() << "Failed to open LED driver:" << strerror(errno);
+    } else {
+        qDebug() << "LED driver opened successfully";
     }
-    // 初始化蜂鸣器变量
+
+    // 初始化LED为关闭状态
+    turnOffLed();
+
+    // 设置LED显示图片
+    ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
+
+    // ============== 蜂鸣器初始化 ==============
     beepStatus = false;
-    // 初始化buzzer定时器并设置信号连接
-    beepTimer = new QTimer(this);
-    connect(beepTimer, &QTimer::timeout, [=](){
-        if(beepStatus) {
-            ::ioctl(beepFd, BEEP_OFF, 1); // 关
-            beepStatus = false;
-        } else {
-            ::ioctl(beepFd, BEEP_ON, 1);  // 开
-            beepStatus = true;
-        }
-    });
+    beepRunning = false;
+    beepTimer = nullptr;
+
+    // 打开蜂鸣器驱动
+    beepFd = ::open("/dev/beep", O_RDWR);
+    if (beepFd == -1) {
+        qDebug() << "Failed to open buzzer driver:" << strerror(errno);
+    } else {
+        qDebug() << "Buzzer driver opened successfully";
+    }
+
+    // 初始化蜂鸣器为关闭状态
+    turnOffBeep();
+
+    // 设置蜂鸣器显示图片
+    ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_off.png);");
+
     // 初始化音乐相关变量
     currentMusicIndex = 0;  // 默认播放1.mp3
     isMusicPlaying = false;
@@ -110,11 +100,12 @@ Widget::Widget(QWidget *parent)
     // 初始化天气图标映射
     initWeatherIconMap();
 
-    // 初始化客户端B线程（使用C语言TCP实现）
+    // ============== 客户端B线程初始化 ==============
+    // 初始化客户端B线程
     clientBThread = new ClientBThread(this);
 
-    // 禁止自动连接
-    clientBThread->setAutoConnect(false);
+    // 设置为手动天气查询模式，但保持连接接收命令
+    clientBThread->setManualMode(true);
 
     // 连接客户端B信号
     connect(clientBThread, &ClientBThread::weatherDataReceived,
@@ -131,18 +122,331 @@ Widget::Widget(QWidget *parent)
             this, &Widget::onClientBCityNameSent);
     connect(clientBThread, &ClientBThread::debugMessage,
             this, &Widget::onClientBDebugMessage);
-    connect(clientBThread, &ClientBThread::manualConnectionCompleted,
-            this, &Widget::onManualConnectionCompleted);
+    connect(clientBThread, &ClientBThread::weatherQueryCompleted,
+            this, &Widget::onWeatherQueryCompleted);
 
-    // 启动时只请求一次天气（显示上一次的天气） - 使用手动连接
+    // 启动客户端B线程（会自动连接服务器）
+    clientBThread->start();
+
+    // 等待2秒后尝试连接服务器（如果还没连接上）
     QTimer::singleShot(2000, this, [=]() {
-        qDebug() << "Requesting initial weather data...";
-        requestWeather("广州");
+        if (!clientBThread->isConnected()) {
+            qDebug() << "Manually triggering connection to server...";
+            clientBThread->connectToServer("192.168.16.181", 60000);
+        }
     });
+
 
     mainWindowInit();
 }
 
+// ============== LED控制函数 ==============
+
+// 启动LED流水灯
+void Widget::startLedFlow()
+{
+    if (ledFd == -1) {
+        qDebug() << "LED driver not opened, cannot start flow";
+        return;
+    }
+
+    if (!ledTimer) {
+        ledTimer = new QTimer(this);
+        connect(ledTimer, &QTimer::timeout, [=]() {
+            char buf[2];
+
+            // 熄灭当前的灯
+            buf[0] = 0;
+            buf[1] = currentLed;
+            ::write(ledFd, buf, 2);
+
+            // 移动到下一个 (7->8->9->10->7)
+            currentLed++;
+            if (currentLed > 10) currentLed = 7;
+
+            // 点亮新的灯
+            buf[0] = 1;
+            buf[1] = currentLed;
+            ::write(ledFd, buf, 2);
+
+            qDebug() << "LED flow: Current LED" << currentLed;
+        });
+    }
+
+    // 先点亮第一个LED
+    char buf[2];
+    buf[0] = 1;
+    buf[1] = currentLed;
+    ::write(ledFd, buf, 2);
+
+    // 启动定时器
+    ledTimer->start(500); // 500ms切换一次
+    isLedOn = true;
+
+    qDebug() << "LED flow started";
+}
+
+// 停止LED流水灯
+void Widget::stopLedFlow()
+{
+    if (ledTimer && ledTimer->isActive()) {
+        ledTimer->stop();
+        qDebug() << "LED flow stopped";
+    }
+
+    // 熄灭所有LED
+    turnOffLed();
+    isLedOn = false;
+}
+
+// 打开LED（单灯常亮）
+void Widget::turnOnLed()
+{
+    if (ledFd == -1) return;
+
+    char buf[2];
+    buf[0] = 1; // 点亮
+    buf[1] = 7; // LED 7
+    ::write(ledFd, buf, 2);
+
+    isLedOn = true;
+    qDebug() << "LED turned on";
+}
+
+// 关闭LED
+void Widget::turnOffLed()
+{
+    if (ledFd == -1) return;
+
+    char buf[2];
+    buf[0] = 0; // 熄灭
+
+    // 熄灭所有LED (7-10)
+    for (int i = 7; i <= 10; i++) {
+        buf[1] = i;
+        ::write(ledFd, buf, 2);
+    }
+
+    isLedOn = false;
+    qDebug() << "All LEDs turned off";
+}
+
+// ============== 蜂鸣器控制函数 ==============
+
+// 启动蜂鸣器（间歇鸣叫）
+void Widget::startBeep()
+{
+    if (beepFd == -1) {
+        qDebug() << "Buzzer driver not opened, cannot start beep";
+        return;
+    }
+
+    if (!beepTimer) {
+        beepTimer = new QTimer(this);
+        connect(beepTimer, &QTimer::timeout, [=]() {
+            if (beepStatus) {
+                ::ioctl(beepFd, BEEP_OFF, 1); // 关
+                beepStatus = false;
+            } else {
+                ::ioctl(beepFd, BEEP_ON, 1);  // 开
+                beepStatus = true;
+            }
+            qDebug() << "Buzzer status:" << (beepStatus ? "ON" : "OFF");
+        });
+    }
+
+    // 立即开启蜂鸣器
+    ::ioctl(beepFd, BEEP_ON, 1);
+    beepStatus = true;
+    beepRunning = true;
+
+    // 启动定时器
+    beepTimer->start(500); // 500ms切换一次
+
+    qDebug() << "Buzzer started";
+}
+
+// 停止蜂鸣器
+void Widget::stopBeep()
+{
+    if (beepTimer && beepTimer->isActive()) {
+        beepTimer->stop();
+        qDebug() << "Buzzer stopped";
+    }
+
+    // 确保蜂鸣器关闭
+    turnOffBeep();
+    beepRunning = false;
+}
+
+// 打开蜂鸣器（常响）
+void Widget::turnOnBeep()
+{
+    if (beepFd == -1) return;
+
+    ::ioctl(beepFd, BEEP_ON, 1);
+    beepStatus = true;
+    beepRunning = true;
+
+    qDebug() << "Buzzer turned on";
+}
+
+// 关闭蜂鸣器
+void Widget::turnOffBeep()
+{
+    if (beepFd == -1) return;
+
+    ::ioctl(beepFd, BEEP_OFF, 1);
+    beepStatus = false;
+    beepRunning = false;
+
+    qDebug() << "Buzzer turned off";
+}
+
+// ============== UI按钮槽函数 ==============
+
+// LED开关按钮
+void Widget::on_btn_led_switch_clicked()
+{
+    qDebug() << "LED switch button clicked";
+
+    if (isLedOn) {
+        // 关闭LED
+        stopLedFlow();
+        ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
+        qDebug() << "LED turned off";
+    } else {
+        // 开启LED流水灯
+        startLedFlow();
+        ui->label_led->setStyleSheet("border-image: url(:/image/led_on.png);");
+        qDebug() << "LED turned on (flow mode)";
+    }
+}
+
+// 蜂鸣器开关按钮
+void Widget::on_btn_buzzer_switch_clicked()
+{
+    qDebug() << "Buzzer switch button clicked";
+
+    if (beepRunning) {
+        // 关闭蜂鸣器
+        stopBeep();
+        ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_off.png);");
+        qDebug() << "Buzzer turned off";
+    } else {
+        // 开启蜂鸣器（间歇鸣叫）
+        startBeep();
+        ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_on.png);");
+        qDebug() << "Buzzer turned on (intermittent mode)";
+    }
+}
+
+
+// ============== 客户端B命令处理 ==============
+
+// 命令接收槽函数
+void Widget::onCommandReceived(const QString &command)
+{
+    qDebug() << "Command received from server:" << command;
+
+    QString cmd = command.toUpper();
+
+    if (cmd == "LED_ON") {
+        // 打开LED（流水灯模式）
+        if (!isLedOn) {
+            startLedFlow();
+            ui->label_led->setStyleSheet("border-image: url(:/image/led_on.png);");
+        }
+        qDebug() << "Executing command: Turn on LED";
+    }
+    else if (cmd == "LED_OFF") {
+        // 关闭LED
+        if (isLedOn) {
+            stopLedFlow();
+            ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
+        }
+        qDebug() << "Executing command: Turn off LED";
+    }
+    else if (cmd == "BUZZER_ON") {
+        // 打开蜂鸣器（间歇模式）
+        if (!beepRunning) {
+            startBeep();
+            ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_on.png);");
+        }
+        qDebug() << "Executing command: Turn on buzzer";
+    }
+    else if (cmd == "BUZZER_OFF") {
+        // 关闭蜂鸣器
+        if (beepRunning) {
+            stopBeep();
+            ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_off.png);");
+        }
+        qDebug() << "Executing command: Turn off buzzer";
+    }
+    else {
+        qDebug() << "Unknown command:" << command;
+    }
+}
+
+// ============== 天气查询相关 ==============
+
+// 请求天气函数（手动触发）
+void Widget::requestWeather(const QString &city)
+{
+    qDebug() << "Requesting weather for:" << city;
+
+    if (clientBThread) {
+        // 显示正在查询的提示
+        ui->label_temperature->setText("查询中...");
+
+        // 发送城市名查询天气
+        bool result = clientBThread->sendCityName(city);
+
+        if (!result) {
+            qDebug() << "Failed to request weather for:" << city;
+            // 可以在这里显示错误信息
+        }
+    }
+}
+
+// 城市名发送按钮
+void Widget::on_btn_send_clicked()
+{
+    QString city = ui->lineEdit->text().trimmed();
+    if (city.isEmpty()) {
+        qDebug() << "City name is empty";
+        return;
+    }
+
+    requestWeather(city);
+}
+
+// 北京按钮
+void Widget::on_btn_beijing_clicked()
+{
+    QString city = "北京";
+    ui->lineEdit->setText(city);
+    requestWeather(city);
+}
+
+// 广州按钮
+void Widget::on_btn_guangzhou_clicked()
+{
+    QString city = "广州";
+    ui->lineEdit->setText(city);
+    requestWeather(city);
+}
+
+// 天气查询完成
+void Widget::onWeatherQueryCompleted(bool success)
+{
+    if (success) {
+        qDebug() << "Weather query completed successfully";
+    } else {
+        qDebug() << "Weather query failed";
+        ui->label_temperature->setText("查询失败");
+    }
+}
 
 // 实现音乐播放按钮点击槽函数
 void Widget::on_btn_music_play_clicked()
@@ -316,61 +620,6 @@ void Widget::exitWindow()
 }
 
 
-
-
-
-
-void Widget::on_btn_led_switch_clicked()
-{
-    // 1. 切换LED开关状态
-    isLedOn = !isLedOn;
-
-    // 2. 更新label_led的显示图片
-    if (isLedOn) {
-        // 开启状态：显示on图片 + 启动流水灯定时器
-        ui->label_led->setStyleSheet("border-image: url(:/image/led_on.png);");
-        // 启动LED定时器（流水灯）
-        ledTimer->start(500); // 500ms切换一次灯，可根据需求调整时间
-    } else {
-        // 关闭状态：显示off图片 + 停止流水灯定时器 + 熄灭所有灯
-        ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
-        ledTimer->stop();
-
-        // 关闭时熄灭当前点亮的LED灯（避免灯一直亮）
-        if (ledFd != -1) {
-            char buf[2];
-            buf[0] = 0;       // 熄灭指令
-            buf[1] = currentLed; // 当前点亮的灯
-            ::write(ledFd, buf, 2);
-        }
-    }
-}
-
-void Widget::on_btn_buzzer_switch_clicked()
-{
-    // 切换状态标志位
-    beepStatus = !beepStatus;
-
-    // 根据状态控制蜂鸣器硬件
-    if (beepFd >= 0) {
-        int ret = ::ioctl(beepFd, beepStatus ? BEEP_ON : BEEP_OFF,1);
-        if (ret < 0) {
-            qDebug() << "Buzzer control failed:" << strerror(errno);
-        }
-    } else {
-        qDebug() << "The buzzer device is not turned on; only the interface status is changed.";
-    }
-
-    // 更新按钮图标样式
-    if (beepStatus) {
-        ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_on.png);");
-    } else {
-        ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_off.png);");
-    }
-
-    qDebug() << "Buzzer status:" << (beepStatus ? "开启" : "关闭");
-}
-
 void Widget::on_btn_camera_clicked()
 {
 
@@ -447,25 +696,30 @@ void Widget::onVoiceCommandReceived(const QString &command)
     else if (cmd == "打开灯" || cmd == "灯打开" || cmd.contains("打开灯") || cmd.contains("开灯")) {
         qDebug() << "Executing: Turn on LED";
         if (!isLedOn) {
-            on_btn_led_switch_clicked();
+            startLedFlow();  // 使用新的流水灯函数
+            ui->label_led->setStyleSheet("border-image: url(:/image/led_on.png);");
         }
     }
     else if (cmd == "关闭灯" || cmd == "灯关闭" || cmd.contains("关闭灯") || cmd.contains("关灯")) {
         qDebug() << "Executing: Turn off LED";
         if (isLedOn) {
-            on_btn_led_switch_clicked();
+            stopLedFlow();  // 使用新的停止函数
+            ui->label_led->setStyleSheet("border-image: url(:/image/led_off.png);");
         }
     }
+    // 语音控制蜂鸣器
     else if (cmd == "打开蜂鸣器" || cmd == "蜂鸣器打开" || cmd.contains("蜂鸣器")) {
         qDebug() << "Executing: Turn on buzzer";
-        if (!beepStatus) {
-            on_btn_buzzer_switch_clicked();
+        if (!beepRunning) {
+            startBeep();  // 使用新的间歇鸣叫函数
+            ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_on.png);");
         }
     }
     else if (cmd == "关闭蜂鸣器" || cmd == "蜂鸣器关闭" || cmd.contains("关闭蜂鸣器")) {
         qDebug() << "Executing: Turn off buzzer";
-        if (beepStatus) {
-            on_btn_buzzer_switch_clicked();
+        if (beepRunning) {
+            stopBeep();  // 使用新的停止函数
+            ui->label_buzzer->setStyleSheet("border-image: url(:/image/buzzer_off.png);");
         }
     }
     // 新增天气查询命令处理 - 使用新的手动连接方式
@@ -494,31 +748,31 @@ void Widget::onVoiceCommandReceived(const QString &command)
             qDebug() << "Executing: Query weather for" << city;
             requestWeather(city);
         } else {
-//            QMessageBox::information(this, "Weather Query",
-//                                   "Please say the city name, e.g.: Beijing weather, Guangzhou weather");
+            //            QMessageBox::information(this, "Weather Query",
+            //                                   "Please say the city name, e.g.: Beijing weather, Guangzhou weather");
         }
     }
     else if (cmd == "帮助" || cmd.contains("帮助")) {
         qDebug() << "Executing: Show help";
         QString helpText =
-            "Supported voice commands:\n\n"
-            "Device Control:\n"
-            "1. Open camera / Camera open\n"
-            "2. Play music / Stop music\n"
-            "3. Turn on LED / Turn off LED\n"
-            "4. Turn on buzzer / Turn off buzzer\n\n"
-            "Weather Query:\n"
-            "5. Beijing weather / Guangzhou weather\n"
-            "6. Hangzhou weather / Shanghai weather\n"
-            "7. Other cities: Say city name + weather, e.g.: Shenzhen weather\n\n"
-            "8. Help - Show this help information";
+                "Supported voice commands:\n\n"
+                "Device Control:\n"
+                "1. Open camera / Camera open\n"
+                "2. Play music / Stop music\n"
+                "3. Turn on LED / Turn off LED\n"
+                "4. Turn on buzzer / Turn off buzzer\n\n"
+                "Weather Query:\n"
+                "5. Beijing weather / Guangzhou weather\n"
+                "6. Hangzhou weather / Shanghai weather\n"
+                "7. Other cities: Say city name + weather, e.g.: Shenzhen weather\n\n"
+                "8. Help - Show this help information";
 
         QMessageBox::information(this, "Voice Command Help", helpText);
     }
     else {
         qDebug() << "Unrecognized command:" << command;
         QMessageBox::warning(this, "Unrecognized Command",
-            QString("Unrecognized command: %1\n\nPlease say 'Help' to view available commands").arg(command));
+                             QString("Unrecognized command: %1\n\nPlease say 'Help' to view available commands").arg(command));
     }
 }
 
@@ -588,45 +842,7 @@ void Widget::onWeatherDataReceived(const QString &city, const QString &weather,
     }
 }
 
-// 命令接收槽函数
-void Widget::onCommandReceived(const QString &command)
-{
-    qDebug() << "Command received:" << command;
 
-    QString cmd = command.toUpper();
-
-    if (cmd == "LED_ON") {
-        // Turn on LED
-        if (!isLedOn) {
-            on_btn_led_switch_clicked();
-        }
-        qDebug() << "Executing command: Turn on LED";
-    }
-    else if (cmd == "LED_OFF") {
-        // Turn off LED
-        if (isLedOn) {
-            on_btn_led_switch_clicked();
-        }
-        qDebug() << "Executing command: Turn off LED";
-    }
-    else if (cmd == "BUZZER_ON") {
-        // Turn on buzzer
-        if (!beepStatus) {
-            on_btn_buzzer_switch_clicked();
-        }
-        qDebug() << "Executing command: Turn on buzzer";
-    }
-    else if (cmd == "BUZZER_OFF") {
-        // Turn off buzzer
-        if (beepStatus) {
-            on_btn_buzzer_switch_clicked();
-        }
-        qDebug() << "Executing command: Turn off buzzer";
-    }
-    else {
-        qDebug() << "Unknown command:" << command;
-    }
-}
 
 // 客户端B连接状态槽函数
 void Widget::onClientBConnected()
@@ -685,31 +901,6 @@ void Widget::reconnectClientB()
     qDebug() << "Auto-reconnect disabled. Please use manual weather request.";
 }
 
-// 城市名发送槽函数
-void Widget::on_btn_send_clicked()
-{
-    QString city = ui->lineEdit->text().trimmed();
-    if (city.isEmpty()) {
-//        QMessageBox::warning(this, "Input Error", "Please enter city name");
-        return;
-    }
-
-    requestWeather(city);
-}
-
-void Widget::on_btn_beijing_clicked()
-{
-    QString city = "北京";
-    ui->lineEdit->setText(city);
-    requestWeather(city);
-}
-
-void Widget::on_btn_guangzhou_clicked()
-{
-    QString city = "广州";
-    ui->lineEdit->setText(city);
-    requestWeather(city);
-}
 
 // 通用城市天气查询函数
 void Widget::queryWeatherByCity(const QString &city)
@@ -739,23 +930,6 @@ void Widget::onManualConnectionCompleted(bool success)
     } else {
         qDebug() << "Failed to get weather data";
 //        QMessageBox::warning(this, "Connection Error", "Failed to get weather data. Please try again.");
-    }
-}
-
-//请求天气函数
-void Widget::requestWeather(const QString &city)
-{
-    qDebug() << "Requesting weather for:" << city;
-
-    if (clientBThread) {
-        // 使用手动连接模式发送城市名
-        bool result = clientBThread->sendCityName(city, false);  // false表示手动连接
-
-        if (!result) {
-            qDebug() << "Failed to send city name:" << city;
-//            QMessageBox::warning(this, "请求失败",
-//                                QString("请求%1的天气失败").arg(city));
-        }
     }
 }
 
@@ -992,6 +1166,37 @@ void Widget::playPreviousMusic()
 
 Widget::~Widget()
 {
+    // 停止LED
+    if (ledTimer && ledTimer->isActive()) {
+        ledTimer->stop();
+    }
+
+    // 熄灭LED
+    if (ledFd != -1) {
+        turnOffLed();
+        ::close(ledFd);
+    }
+
+    // 停止蜂鸣器
+    if (beepTimer && beepTimer->isActive()) {
+        beepTimer->stop();
+    }
+
+    // 关闭蜂鸣器
+    if (beepFd != -1) {
+        turnOffBeep();
+        ::close(beepFd);
+    }
+
+    // 删除定时器
+    if (ledTimer) delete ledTimer;
+    if (beepTimer) delete beepTimer;
+
+    // 停止客户端B线程
+    if (clientBThread) {
+        clientBThread->stopThread();
+        delete clientBThread;
+    }
     // 停止语音线程
     if (voiceThread) {
         voiceThread->stopRecording();
@@ -1014,25 +1219,6 @@ Widget::~Widget()
     if (timeThread) {
         timeThread->stopTimeThread();
         delete timeThread;
-    }
-    // 停止LED定时器并熄灭灯
-    if (ledTimer) {
-        ledTimer->stop();
-        // 熄灭最后点亮的灯
-        if (ledFd != -1) {
-            char buf[2];
-            buf[0] = 0;
-            buf[1] = currentLed;
-            ::write(ledFd, buf, 2);
-            ::close(ledFd); // 关闭LED驱动文件描述符
-        }
-        delete ledTimer;
-    }
-
-    // 关闭蜂鸣器驱动
-    if (beepFd != -1) {
-        ::ioctl(beepFd, BEEP_OFF, 1);
-        ::close(beepFd);
     }
     delete camera;
     delete ui;

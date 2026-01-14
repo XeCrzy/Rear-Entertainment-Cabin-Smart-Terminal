@@ -1,8 +1,13 @@
+release/clientbthread.o
 release/main.o
 release/threadtime.o
+release/voicethread.o
 release/widget.o
 release/ntp_client.o
 release/time_manager.o
+release/camerawidget.o
+release/picshowmainwindow.o
+release/v4l2api.o
 release/googlepinyin.o
 release/dictbuilder.o
 release/dictlist.o
@@ -23,7 +28,11 @@ release/utf16reader.o
 release/easyInput.o
 release/qrc_res.o
 release/qrc_easyInput.o
+release/moc_clientbthread.o
 release/moc_threadtime.o
+release/moc_voicethread.o
 release/moc_widget.o
+release/moc_camerawidget.o
+release/moc_picshowmainwindow.o
 release/moc_easyinput.o
 release/moc_googlepinyin.o

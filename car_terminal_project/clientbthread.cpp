@@ -10,7 +10,7 @@ ClientBThread::ClientBThread(QObject *parent)
     : QThread(parent)
     , thread_running(true)
     , connectionEstablished(false)
-    , autoConnect(false)
+    , manualWeatherOnly(true)
     , serverHost("192.168.16.181")
     , serverPort(60000)
 {
@@ -22,6 +22,8 @@ ClientBThread::ClientBThread(QObject *parent)
     strncpy(tcp_client.server_ip, "192.168.16.181", sizeof(tcp_client.server_ip) - 1);
     tcp_client.server_port = 60000;
     pthread_mutex_init(&tcp_client.socket_mutex, NULL);
+
+    qDebug() << "ClientBThread: Initialized - will maintain connection for commands";
 }
 
 ClientBThread::~ClientBThread()
@@ -37,126 +39,215 @@ bool ClientBThread::connectToServer(const QString &host, quint16 port)
 {
     serverHost = host;
     serverPort = port;
-    autoConnect = true;  // Enable auto-connect for startup
 
-    // If already running, return directly
-    if (isRunning() && isConnected()) {
-        emit debugMessage("Already connected to server");
-        return true;
-    }
+    qDebug() << "ClientBThread: Connecting to server..." << host << ":" << port;
 
     // Start thread if not running
     if (!isRunning()) {
         start();
+        return true;
     }
 
     return true;
 }
 
-bool ClientBThread::sendCityName(const QString &city, bool autoConnectMode)
+bool ClientBThread::sendCityName(const QString &city)
 {
-    qDebug() << "ClientBThread::sendCityName called with city:" << city;
-    this->autoConnect = autoConnectMode;
-    currentCity = city;
+    qDebug() << "ClientBThread: Sending city name:" << city;
 
-    if (autoConnectMode) {
-        // For auto-connect mode (startup), use the thread
-        if (!isRunning()) {
-            start();
-        }
-        return true;
+    if (manualWeatherOnly) {
+        // Use manual connection for weather query
+        return manualWeatherQuery(city);
     } else {
-        // For manual connection (button/voice), use direct connection
-        return manualConnectAndSend(city);
-    }
-}
+        // Use existing connection
+        if (!c_tcp_is_connected()) {
+            qDebug() << "ClientBThread: Not connected, cannot send city name";
+            return false;
+        }
 
-bool ClientBThread::manualConnectAndSend(const QString &city)
-{
-    qDebug() << "Manual connect and send for city:" << city;
-
-    // Connect to server
-    QByteArray hostBytes = serverHost.toUtf8();
-    const char* host = hostBytes.constData();
-
-    if (c_tcp_connect(host, serverPort)) {
-        emit debugMessage("Connected to server for manual request");
-
-        // Send identity
-        sendIdentity();
-
-        // Send city name
         QByteArray cityBytes = city.toUtf8();
         const char* cityData = cityBytes.constData();
 
         if (c_tcp_send(cityData, strlen(cityData))) {
             emit cityNameSent(city);
-            emit debugMessage("Sent city name: " + city);
-
-            // Receive weather data
-            char buffer[BUFFER_SIZE];
-            bool weatherReceived = false;
-            QElapsedTimer timer;
-            timer.start();
-
-            // Wait for weather data for up to 10 seconds
-            while (!weatherReceived && timer.elapsed() < 10000) {
-                int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 1000);
-
-                if (bytes_received > 0) {
-                    buffer[bytes_received] = '\0';
-                    QString message = QString::fromUtf8(buffer).trimmed();
-
-                    if (!message.isEmpty()) {
-                        emit debugMessage("Received data: " + message);
-
-                        // Check if this is weather data
-                        if (message.contains("城市:") || message.contains("天气:") ||
-                            message.contains("温度:") || message.contains("湿度:")) {
-                            processReceivedMessage(buffer);
-                            weatherReceived = true;
-                        } else if (message.contains("CONNECTED") ||
-                                   message.contains("CLIENT_B_CONNECTED")) {
-                            // Connection notification, ignore and continue
-                            emit debugMessage("Connection notification received");
-                        } else {
-                            // Other message types
-                            processReceivedMessage(buffer);
-                        }
-                    }
-                } else if (bytes_received == 0) {
-                    emit debugMessage("Server closed connection");
-                    break;
-                } else if (bytes_received == -2) {
-                    // Timeout, continue waiting
-                    continue;
-                }
-
-                QCoreApplication::processEvents();
-                msleep(100);
-            }
-
-            if (weatherReceived) {
-                emit debugMessage("Weather data received successfully");
-            } else {
-                emit debugMessage("Timeout waiting for weather data");
-            }
-
-            // Disconnect after receiving data
-            c_tcp_disconnect();
-            emit manualConnectionCompleted(weatherReceived);
-            return weatherReceived;
+            qDebug() << "ClientBThread: City name sent via existing connection:" << city;
+            return true;
         } else {
-            emit dataSendError("Failed to send city name");
-            emit debugMessage("Failed to send city name");
-            c_tcp_disconnect();
-            emit manualConnectionCompleted(false);
+            qDebug() << "ClientBThread: Failed to send city name";
             return false;
         }
+    }
+}
+
+bool ClientBThread::maintainConnectionForCommands()
+{
+    qDebug() << "ClientBThread: Establishing persistent connection for command reception";
+
+    // Connect to server
+    QByteArray hostBytes = serverHost.toUtf8();
+    const char* host = hostBytes.constData();
+
+    if (!c_tcp_connect(host, serverPort)) {
+        qDebug() << "ClientBThread: Failed to connect to server for command reception";
+        emit connectionError("Connection failed for command reception");
+        return false;
+    }
+
+    qDebug() << "ClientBThread: Connected to server for command reception";
+    emit connectedToServer();
+
+    // Send identity
+    sendIdentity();
+
+    // Main loop to receive commands
+    char buffer[BUFFER_SIZE];
+
+    while (thread_running && c_tcp_is_connected()) {
+        memset(buffer, 0, sizeof(buffer));
+
+        // Receive with timeout
+        int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 5000);
+
+        if (bytes_received > 0) {
+            buffer[bytes_received] = '\0';
+            QString message = QString::fromUtf8(buffer).trimmed();
+
+            qDebug() << "ClientBThread: Received message:" << message;
+
+            // Process the message
+            processReceivedMessage(buffer);
+        } else if (bytes_received == 0) {
+            qDebug() << "ClientBThread: Server closed connection";
+            break;
+        } else if (bytes_received == -2) {
+            // Timeout, continue
+            continue;
+        } else {
+            // Error
+            qDebug() << "ClientBThread: Receive error, breaking connection";
+            break;
+        }
+
+        QCoreApplication::processEvents();
+    }
+
+    // Disconnect
+    c_tcp_disconnect();
+    connectionEstablished = false;
+    emit disconnectedFromServer();
+
+    qDebug() << "ClientBThread: Connection lost, will attempt to reconnect";
+    return false;
+}
+
+bool ClientBThread::manualWeatherQuery(const QString &city)
+{
+    qDebug() << "ClientBThread: Starting manual weather query for city:" << city;
+
+    // Create a temporary connection for weather query
+    QByteArray hostBytes = serverHost.toUtf8();
+    const char* host = hostBytes.constData();
+
+    int temp_socket = ::socket(AF_INET, SOCK_STREAM, 0);
+    if (temp_socket < 0) {
+        qDebug() << "ClientBThread: Failed to create socket for weather query";
+        return false;
+    }
+
+    // Set timeout
+    struct timeval timeout;
+    timeout.tv_sec = 5;
+    timeout.tv_usec = 0;
+    setsockopt(temp_socket, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
+    setsockopt(temp_socket, SOL_SOCKET, SO_SNDTIMEO, &timeout, sizeof(timeout));
+
+    // Prepare server address
+    struct sockaddr_in server_addr;
+    memset(&server_addr, 0, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(serverPort);
+
+    if (inet_pton(AF_INET, host, &server_addr.sin_addr) <= 0) {
+        qDebug() << "ClientBThread: Invalid IP address for weather query";
+        ::close(temp_socket);
+        return false;
+    }
+
+    // Connect
+    if (::connect(temp_socket, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0) {
+        qDebug() << "ClientBThread: Connection failed for weather query:" << strerror(errno);
+        ::close(temp_socket);
+        return false;
+    }
+
+    qDebug() << "ClientBThread: Connected for weather query";
+
+    // Send identity
+    const char* identity = "CLIENT_B";
+    if (::send(temp_socket, identity, strlen(identity), 0) < 0) {
+        qDebug() << "ClientBThread: Failed to send identity for weather query";
+        ::close(temp_socket);
+        return false;
+    }
+
+    // Send city name
+    QByteArray cityBytes = city.toUtf8();
+    const char* cityData = cityBytes.constData();
+
+    if (::send(temp_socket, cityData, strlen(cityData), 0) < 0) {
+        qDebug() << "ClientBThread: Failed to send city name for weather query";
+        ::close(temp_socket);
+        return false;
+    }
+
+    qDebug() << "ClientBThread: City name sent for weather query:" << city;
+    emit cityNameSent(city);
+
+    // Receive weather data
+    char buffer[BUFFER_SIZE];
+    bool weatherReceived = false;
+    QElapsedTimer timer;
+    timer.start();
+
+    while (!weatherReceived && timer.elapsed() < 10000) {
+        memset(buffer, 0, sizeof(buffer));
+
+        int bytes_received = recv(temp_socket, buffer, BUFFER_SIZE - 1, 0);
+
+        if (bytes_received > 0) {
+            buffer[bytes_received] = '\0';
+            QString message = QString::fromUtf8(buffer).trimmed();
+
+            qDebug() << "ClientBThread: Received weather data:" << message;
+
+            if (message.contains("城市:") || message.contains("天气:") ||
+                message.contains("温度:") || message.contains("湿度:")) {
+                processReceivedMessage(buffer);
+                weatherReceived = true;
+                break;
+            }
+        } else if (bytes_received == 0) {
+            qDebug() << "ClientBThread: Server closed connection during weather query";
+            break;
+        } else {
+            if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                // Timeout, continue
+                continue;
+            }
+            break;
+        }
+    }
+
+    // Close temporary socket
+    ::close(temp_socket);
+
+    if (weatherReceived) {
+        qDebug() << "ClientBThread: Weather query completed successfully";
+        emit weatherQueryCompleted(true);
+        return true;
     } else {
-        emit connectionError("Failed to connect to server");
-        emit debugMessage("Failed to connect to server");
-        emit manualConnectionCompleted(false);
+        qDebug() << "ClientBThread: Weather query failed or timed out";
+        emit weatherQueryCompleted(false);
         return false;
     }
 }
@@ -184,107 +275,29 @@ void ClientBThread::stopThread()
 
     quit();
     wait(500);
+
+    qDebug() << "ClientBThread: Thread stopped";
 }
 
 void ClientBThread::run()
 {
-    qDebug() << "ClientBThread: C TCP client thread started - AutoConnect mode:" << autoConnect;
+    qDebug() << "ClientBThread: Thread started - maintaining connection for commands";
 
-    if (!autoConnect) {
-        qDebug() << "AutoConnect is disabled, thread will exit";
-        emit debugMessage("AutoConnect is disabled");
-        return;
-    }
-
-    // Set thread running flag
-    thread_mutex.lock();
-    tcp_client.running = true;
-    thread_mutex.unlock();
-
-    // Connect to server
-    QByteArray hostBytes = serverHost.toUtf8();
-    const char* host = hostBytes.constData();
-
-    if (c_tcp_connect(host, serverPort)) {
-        connectionEstablished = true;
-        emit connectedToServer();
-        emit debugMessage("Connected to server");
-
-        // Send identity
-        sendIdentity();
-
-        // Send initial city (Guangzhou for startup)
-        if (!currentCity.isEmpty()) {
-            QByteArray cityBytes = currentCity.toUtf8();
-            const char* cityData = cityBytes.constData();
-
-            if (c_tcp_send(cityData, strlen(cityData))) {
-                emit cityNameSent(currentCity);
-                emit debugMessage("Sent initial city name: " + currentCity);
-            }
-        }
-
-        // Main receive loop
-        char buffer[BUFFER_SIZE];
-
-        while (thread_running) {
-            // Check if need to exit
-            thread_mutex.lock();
-            bool running = thread_running && tcp_client.running;
-            thread_mutex.unlock();
-
-            if (!running) {
-                break;
-            }
-
-            // Check connection status
-            if (!c_tcp_is_connected()) {
-                emit debugMessage("Connection lost in auto-connect mode");
-                break;
-            }
-
-            // Receive data with timeout - only check occasionally
-            int bytes_received = c_tcp_receive(buffer, BUFFER_SIZE - 1, 2000);
-
-            if (bytes_received > 0) {
-                buffer[bytes_received] = '\0';
-                QString message = QString::fromUtf8(buffer).trimmed();
-
-                if (message.length() > 0) {
-                    emit debugMessage("Received data: " + message);
-                    processReceivedMessage(buffer);
+    // Main loop to maintain connection
+    while (thread_running) {
+        if (!maintainConnectionForCommands()) {
+            // Connection lost, wait and retry
+            if (thread_running) {
+                qDebug() << "ClientBThread: Waiting 3 seconds before reconnection...";
+                for (int i = 0; i < 30 && thread_running; i++) {
+                    msleep(100);
+                    QCoreApplication::processEvents();
                 }
-            } else if (bytes_received == 0) {
-                // Connection closed
-                emit debugMessage("Server closed connection");
-                break;
             }
-            // For timeout or minor errors, just continue
-
-            // Process Qt events
-            QCoreApplication::processEvents();
-            msleep(100);
         }
-
-        // Disconnect
-        c_tcp_disconnect();
-        connectionEstablished = false;
-        emit disconnectedFromServer();
-    } else {
-        // Connection failed
-        emit connectionError("Failed to connect to server on startup");
-        emit debugMessage("Failed to connect to server on startup");
     }
 
-    // Cleanup
-    c_tcp_disconnect();
-
-    thread_mutex.lock();
-    tcp_client.running = false;
-    thread_mutex.unlock();
-
-    emit debugMessage("TCP client thread ended");
-    qDebug() << "ClientBThread: C TCP client thread ended";
+    qDebug() << "ClientBThread: Thread ended";
 }
 
 // ==================== C LANGUAGE TCP CLIENT IMPLEMENTATION ====================
@@ -303,12 +316,12 @@ bool ClientBThread::c_tcp_connect(const char* host, int port)
     // Create socket
     tcp_client.socket_fd = ::socket(AF_INET, SOCK_STREAM, 0);
     if (tcp_client.socket_fd < 0) {
-        emitDebug(QString("Failed to create socket: %1").arg(strerror(errno)));
+        qDebug() << "ClientBThread: Failed to create socket:" << strerror(errno);
         pthread_mutex_unlock(&tcp_client.socket_mutex);
         return false;
     }
 
-    // Set socket options for better stability
+    // Set socket options
     int optval = 1;
     setsockopt(tcp_client.socket_fd, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof(optval));
     setsockopt(tcp_client.socket_fd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));
@@ -326,70 +339,21 @@ bool ClientBThread::c_tcp_connect(const char* host, int port)
     tcp_client.server_addr.sin_port = htons(port);
 
     if (inet_pton(AF_INET, host, &tcp_client.server_addr.sin_addr) <= 0) {
-        // If IP conversion fails, try DNS resolution
-        struct hostent *he = gethostbyname(host);
-        if (he == NULL) {
-            emitDebug(QString("DNS resolution failed: %1").arg(host));
-            ::close(tcp_client.socket_fd);
-            tcp_client.socket_fd = -1;
-            pthread_mutex_unlock(&tcp_client.socket_mutex);
-            return false;
-        }
-        memcpy(&tcp_client.server_addr.sin_addr, he->h_addr, he->h_length);
+        qDebug() << "ClientBThread: Invalid IP address:" << host;
+        ::close(tcp_client.socket_fd);
+        tcp_client.socket_fd = -1;
+        pthread_mutex_unlock(&tcp_client.socket_mutex);
+        return false;
     }
 
-    // Connect to server with timeout
-    int connect_result = ::connect(tcp_client.socket_fd,
-                                   (struct sockaddr*)&tcp_client.server_addr,
-                                   sizeof(tcp_client.server_addr));
-
-    if (connect_result < 0) {
-        if (errno != EINPROGRESS) {
-            emitDebug(QString("Connection failed: %1").arg(strerror(errno)));
-            ::close(tcp_client.socket_fd);
-            tcp_client.socket_fd = -1;
-            pthread_mutex_unlock(&tcp_client.socket_mutex);
-            return false;
-        }
-
-        // Use select to wait for connection completion
-        fd_set writefds;
-        struct timeval tv;
-
-        FD_ZERO(&writefds);
-        FD_SET(tcp_client.socket_fd, &writefds);
-
-        tv.tv_sec = 5;  // 5 second timeout
-        tv.tv_usec = 0;
-
-        int select_result = select(tcp_client.socket_fd + 1, NULL, &writefds, NULL, &tv);
-
-        if (select_result <= 0) {
-            emitDebug("Connection timeout");
-            ::close(tcp_client.socket_fd);
-            tcp_client.socket_fd = -1;
-            pthread_mutex_unlock(&tcp_client.socket_mutex);
-            return false;
-        }
-
-        // Check socket error
-        int error = 0;
-        socklen_t len = sizeof(error);
-        if (getsockopt(tcp_client.socket_fd, SOL_SOCKET, SO_ERROR, &error, &len) < 0) {
-            emitDebug(QString("Failed to get socket error: %1").arg(strerror(errno)));
-            ::close(tcp_client.socket_fd);
-            tcp_client.socket_fd = -1;
-            pthread_mutex_unlock(&tcp_client.socket_mutex);
-            return false;
-        }
-
-        if (error != 0) {
-            emitDebug(QString("Connection error: %1").arg(strerror(error)));
-            ::close(tcp_client.socket_fd);
-            tcp_client.socket_fd = -1;
-            pthread_mutex_unlock(&tcp_client.socket_mutex);
-            return false;
-        }
+    // Connect to server
+    if (::connect(tcp_client.socket_fd, (struct sockaddr*)&tcp_client.server_addr,
+                  sizeof(tcp_client.server_addr)) < 0) {
+        qDebug() << "ClientBThread: Connection failed:" << strerror(errno);
+        ::close(tcp_client.socket_fd);
+        tcp_client.socket_fd = -1;
+        pthread_mutex_unlock(&tcp_client.socket_mutex);
+        return false;
     }
 
     strncpy(tcp_client.server_ip, host, sizeof(tcp_client.server_ip) - 1);
@@ -397,6 +361,8 @@ bool ClientBThread::c_tcp_connect(const char* host, int port)
     tcp_client.connected = true;
 
     pthread_mutex_unlock(&tcp_client.socket_mutex);
+
+    qDebug() << "ClientBThread: Connected to" << host << ":" << port;
     return true;
 }
 
@@ -412,6 +378,8 @@ void ClientBThread::c_tcp_disconnect()
     tcp_client.connected = false;
 
     pthread_mutex_unlock(&tcp_client.socket_mutex);
+
+    qDebug() << "ClientBThread: Disconnected";
 }
 
 bool ClientBThread::c_tcp_is_connected() const
@@ -466,47 +434,28 @@ int ClientBThread::c_tcp_receive(char* buffer, int buffer_size, int timeout_ms)
     pthread_mutex_lock(&tcp_client.socket_mutex);
 
     // Set receive timeout
-    fd_set readfds;
     struct timeval tv;
-
-    FD_ZERO(&readfds);
-    FD_SET(tcp_client.socket_fd, &readfds);
-
     tv.tv_sec = timeout_ms / 1000;
     tv.tv_usec = (timeout_ms % 1000) * 1000;
+    setsockopt(tcp_client.socket_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
 
-    int select_result = select(tcp_client.socket_fd + 1, &readfds, NULL, NULL, &tv);
-
-    if (select_result > 0) {
-        if (FD_ISSET(tcp_client.socket_fd, &readfds)) {
-            int bytes_received = recv(tcp_client.socket_fd, buffer, buffer_size - 1, 0);
-
-            if (bytes_received == 0) {
-                // Connection closed
-                tcp_client.connected = false;
-                pthread_mutex_unlock(&tcp_client.socket_mutex);
-                return 0;
-            } else if (bytes_received < 0) {
-                // Receive error
-                if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
-                    tcp_client.connected = false;
-                }
-                pthread_mutex_unlock(&tcp_client.socket_mutex);
-                return -1;
-            }
-
-            pthread_mutex_unlock(&tcp_client.socket_mutex);
-            return bytes_received;
-        }
-    }
+    int bytes_received = recv(tcp_client.socket_fd, buffer, buffer_size - 1, 0);
 
     pthread_mutex_unlock(&tcp_client.socket_mutex);
 
-    // Timeout or error
-    if (select_result == 0) {
-        return -2; // Special value for timeout
+    if (bytes_received > 0) {
+        buffer[bytes_received] = '\0';
+        return bytes_received;
+    } else if (bytes_received == 0) {
+        // Connection closed
+        return 0;
+    } else {
+        // Error or timeout
+        if (errno == EAGAIN || errno == EWOULDBLOCK) {
+            return -2; // Timeout
+        }
+        return -1; // Other error
     }
-    return -1; // Other error
 }
 
 // ==================== DATA PROCESSING FUNCTIONS ====================
@@ -538,16 +487,15 @@ ClientBThread::MessageType ClientBThread::classifyMessage(const QString &message
 void ClientBThread::sendIdentity()
 {
     if (!c_tcp_is_connected()) {
-        emit debugMessage("Cannot send identity, not connected");
+        qDebug() << "ClientBThread: Cannot send identity, not connected";
         return;
     }
 
     const char* identity = "CLIENT_B";
     if (c_tcp_send(identity, strlen(identity))) {
-        emitDebug("Sent identity: CLIENT_B");
+        qDebug() << "ClientBThread: Sent identity: CLIENT_B";
     } else {
-        emit dataSendError("Failed to send identity");
-        emitDebug("Failed to send identity");
+        qDebug() << "ClientBThread: Failed to send identity";
     }
 }
 
@@ -564,22 +512,21 @@ void ClientBThread::processReceivedMessage(const char* message)
 
     switch (type) {
     case MSG_CONNECTION_NOTIFICATION:
-        emitDebug("Received connection notification: " + msg);
-        // Do not process connection notifications, these are for client A
+        qDebug() << "ClientBThread: Received connection notification:" << msg;
         return;
 
     case MSG_COMMAND:
-        emitDebug("Received command: " + msg);
+        qDebug() << "ClientBThread: Received command:" << msg;
         emitCommand(msg);
         return;
 
     case MSG_WEATHER:
-        emitDebug("Parsing weather data");
+        qDebug() << "ClientBThread: Parsing weather data";
         parseWeatherData(msg);
         return;
 
     case MSG_UNKNOWN:
-        emitDebug("Unknown message type: " + msg);
+        qDebug() << "ClientBThread: Unknown message type:" << msg;
         return;
     }
 }
@@ -587,10 +534,10 @@ void ClientBThread::processReceivedMessage(const char* message)
 // Weather data parsing
 void ClientBThread::parseWeatherData(const QString &msg)
 {
-    // More robust weather data parsing
+    // Robust weather data parsing
     QStringList lines = msg.split("\n");
 
-    // Manually filter empty lines
+    // Filter empty lines
     QStringList filteredLines;
     for (const QString &line : lines) {
         if (!line.trimmed().isEmpty()) {
@@ -626,16 +573,16 @@ void ClientBThread::parseWeatherData(const QString &msg)
     }
 
     // Validate and correct data
-    if (city.isEmpty()) city = "未知城市";
-    if (weather.isEmpty()) weather = "未知";
+    if (city.isEmpty()) city = "Unknown City";
+    if (weather.isEmpty()) weather = "Unknown";
     if (temperature.isEmpty()) temperature = "25"; // Default temperature
     if (humidity.isEmpty()) humidity = "N/A%";
 
     // Ensure temperature is pure number
     temperature = parseTemperature(temperature);
 
-    emitDebug(QString("Parsed weather - City:%1 Weather:%2 Temp:%3°C Humidity:%4")
-              .arg(city).arg(weather).arg(temperature).arg(humidity));
+    qDebug() << "ClientBThread: Parsed weather - City:" << city
+             << "Weather:" << weather << "Temp:" << temperature << "°C Humidity:" << humidity;
 
     emitWeatherData(city, weather, temperature, humidity);
 }
@@ -705,7 +652,5 @@ void ClientBThread::emitDebug(const QString &msg)
 
 void ClientBThread::onReconnectTimeout()
 {
-    // This slot is for auto-reconnect, but we disabled auto-reconnect
-    // So we don't need to implement it
-    qDebug() << "Reconnect timeout slot called, but auto-reconnect is disabled";
+    // Not used in this implementation
 }

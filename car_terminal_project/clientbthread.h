@@ -31,22 +31,19 @@ public:
     explicit ClientBThread(QObject *parent = nullptr);
     ~ClientBThread();
 
-    // Send city name to server
-    bool sendCityName(const QString &city, bool autoConnect = false);
+    // Manual weather query function (send city name to server)
+    bool sendCityName(const QString &city);
 
     // TCP connection control
     bool connectToServer(const QString &host = "192.168.16.181", quint16 port = 60000);
     void disconnectFromServer();
     bool isConnected() const;
 
-    // Check if we have a cached connection
-    bool hasConnection() const { return connectionEstablished; }
-
     // Thread control
     void stopThread();
 
-    // Set connection mode
-    void setAutoConnect(bool autoConnect) { this->autoConnect = autoConnect; }
+    // Set operation mode
+    void setManualMode(bool manual) { manualWeatherOnly = manual; }
 
 signals:
     // Weather data update signal
@@ -55,7 +52,7 @@ signals:
                             const QString &temperature,
                             const QString &humidity);
 
-    // Command receive signal
+    // Command receive signal (from Client C)
     void commandReceived(const QString &command);
 
     // Connection status signals
@@ -70,8 +67,8 @@ signals:
     // Debug information
     void debugMessage(const QString &msg);
 
-    // New signal for manual connection completed
-    void manualConnectionCompleted(bool success);
+    // Weather query completed
+    void weatherQueryCompleted(bool success);
 
 protected:
     void run() override;
@@ -97,7 +94,7 @@ private:
     // Qt thread control
     bool thread_running;
     bool connectionEstablished;
-    bool autoConnect;
+    bool manualWeatherOnly;  // Only manual weather queries, but always connected for commands
     QMutex thread_mutex;
     QWaitCondition thread_cond;
 
@@ -126,15 +123,13 @@ private:
     bool c_tcp_send(const char* data, int length);
     int c_tcp_receive(char* buffer, int buffer_size, int timeout_ms = 1000);
 
-    // Manual connection function
-    bool manualConnectAndSend(const QString &city);
-
     // Data parsing functions
     QString parseTemperature(const QString &tempStr) const;
     void processReceivedMessage(const char* message);
 
     // Message classification function
     MessageType classifyMessage(const QString &message);
+
     // Weather data parsing function
     void parseWeatherData(const QString &msg);
 
@@ -146,6 +141,12 @@ private:
                         const QString &temperature, const QString &humidity);
     void emitCommand(const QString &command);
     void emitDebug(const QString &msg);
+
+    // Connect and maintain connection for command reception
+    bool maintainConnectionForCommands();
+
+    // Manual weather query
+    bool manualWeatherQuery(const QString &city);
 };
 
 #endif // CLIENTBTHREAD_H

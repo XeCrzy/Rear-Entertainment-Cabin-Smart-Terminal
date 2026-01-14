@@ -53,14 +53,29 @@ private:
     bool eventFilter(QObject *watched, QEvent *event);
     ThreadTime *timeThread;  // 添加时间线程成员
 
-    //led和蜂鸣器相关
-    int ledFd;
-    int beepFd;
-    bool beepStatus;
+    // LED流水灯相关
+    bool isLedOn;
     int currentLed;
     QTimer *ledTimer;
+    int ledFd;
+
+    // 蜂鸣器相关
+    bool beepStatus;
+    bool beepRunning;
     QTimer *beepTimer;
-    bool isLedOn;
+    int beepFd;
+
+    // LED控制函数
+    void startLedFlow();
+    void stopLedFlow();
+    void turnOnLed();
+    void turnOffLed();
+
+    // 蜂鸣器控制函数
+    void startBeep();
+    void stopBeep();
+    void turnOnBeep();
+    void turnOffBeep();
 
     //音乐播放相关
     QTimer *musicTimer;
@@ -121,9 +136,9 @@ private slots:
     void onVoiceStatusChanged(const QString &status);
     void onVoiceRecordingFinished();
     void onVoiceButtonClicked();  // 统一处理两个语音按钮
-    //通用城市天气查询函数
+    //城市天气查询函数
     void queryWeatherByCity(const QString &city);
-
+    void onWeatherQueryCompleted(bool success);
     // 客户端B相关槽函数
     void onWeatherDataReceived(const QString &city, const QString &weather,
                                const QString &temperature, const QString &humidity);

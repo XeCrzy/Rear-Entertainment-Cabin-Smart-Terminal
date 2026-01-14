@@ -621,10 +621,13 @@ qrc_res.cpp: res.qrc \
 		image/video_play.png \
 		image/led_off.png \
 		image/led_on.png \
+		image/right_fan.png \
 		image/cloud.png \
 		image/music_pause.png \
 		image/game.png \
-		image/Intelligent_voice.png
+		image/fan.png \
+		image/Intelligent_voice.png \
+		image/left_fan.png
 	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name res res.qrc -o qrc_res.cpp
 
 qrc_easyInput.cpp: easyInput/easyInput.qrc \
@@ -3654,6 +3657,18 @@ widget.o: widget.cpp widget.h \
 		clientbthread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
 		ui_widget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QFrame \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLabel \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLineEdit \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSlider \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QSpacerItem \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDateTime \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMessageBox \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QMapIterator
@@ -3781,6 +3796,41 @@ camerawidget.o: camerawidget.cpp camerawidget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfileinfo.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFileInfoList \
 		ui_camerawidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qaction.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qactiongroup.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qbuttongroup.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qheaderview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qframe.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLabel \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlabel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QImage
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camerawidget.o camerawidget.cpp
 
@@ -3891,6 +3941,52 @@ picshowmainwindow.o: picshowmainwindow.cpp picshowmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfileinfo.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFileInfoList \
 		ui_picshowmainwindow.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qaction.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qactiongroup.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qbuttongroup.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qheaderview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qframe.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QLabel \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlabel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMenuBar \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmenubar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmenu.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QStatusBar \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstatusbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QVBoxLayout \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qboxlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qlayoutitem.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qgridlayout.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFileInfo \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMessageBox \
@@ -3898,8 +3994,6 @@ picshowmainwindow.o: picshowmainwindow.cpp picshowmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdialog.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QImageReader \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimagereader.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
-		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimageiohandler.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qplugin.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpointer.h \

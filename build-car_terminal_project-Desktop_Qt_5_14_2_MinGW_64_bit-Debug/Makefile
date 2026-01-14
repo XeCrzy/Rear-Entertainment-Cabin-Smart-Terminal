@@ -251,6 +251,7 @@ Makefile: ../car_terminal_project/car_terminal_project.pro ../../../tools/QT/5.1
 		../car_terminal_project/car_terminal_project.pro \
 		../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Widgets.prl \
 		../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Gui.prl \
+		../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Network.prl \
 		../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Core.prl \
 		../../../tools/QT/5.14.2/mingw73_64/lib/qtmain.prl \
 		../../../tools/QT/5.14.2/mingw73_64/mkspecs/features/build_pass.prf \
@@ -438,6 +439,7 @@ Makefile: ../car_terminal_project/car_terminal_project.pro ../../../tools/QT/5.1
 ../car_terminal_project/car_terminal_project.pro:
 ../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Widgets.prl:
 ../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Gui.prl:
+../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Network.prl:
 ../../../tools/QT/5.14.2/mingw73_64/lib/Qt5Core.prl:
 ../../../tools/QT/5.14.2/mingw73_64/lib/qtmain.prl:
 ../../../tools/QT/5.14.2/mingw73_64/mkspecs/features/build_pass.prf:

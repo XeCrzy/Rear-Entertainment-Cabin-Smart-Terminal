@@ -1,8 +1,13 @@
+debug/clientbthread.o
 debug/main.o
 debug/threadtime.o
+debug/voicethread.o
 debug/widget.o
 debug/ntp_client.o
 debug/time_manager.o
+debug/camerawidget.o
+debug/picshowmainwindow.o
+debug/v4l2api.o
 debug/googlepinyin.o
 debug/dictbuilder.o
 debug/dictlist.o
@@ -23,7 +28,11 @@ debug/utf16reader.o
 debug/easyInput.o
 debug/qrc_res.o
 debug/qrc_easyInput.o
+debug/moc_clientbthread.o
 debug/moc_threadtime.o
+debug/moc_voicethread.o
 debug/moc_widget.o
+debug/moc_camerawidget.o
+debug/moc_picshowmainwindow.o
 debug/moc_easyinput.o
 debug/moc_googlepinyin.o

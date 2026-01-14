@@ -397,13 +397,15 @@ QPushButton#btn_music_pre,QPushButton#btn_music_next {
     border: none;
     border-radius: 4px;
 }
+QPushButton#btn_music_pre:hover,QPushButton#btn_music_next:hover {background-color: #0EA5E9;}
 QPushButton#btn_music_play {
-    background-color: #2563EB;
+    
     color: #FFFFFF;
     font-size: 12px;
     border: none;
     border-radius: 4px;
 }
+QPushButton#btn_music_play:hover {background-color: #0EA5E9;}
 
 /* -------------------- 天气区-输入框+按钮 样式【原大小不变】 -------------------- */
 QLineEdit#lineEdit {
@@ -425,6 +427,13 @@ QPushButton#btn_send:hover,QPushButton#btn_beijing:hover,QPushButton#btn_guangzh
     background-color: #CBD5E1;
 }
 
+/*相机*/
+QPushButton#btn_camera{
+	border: 1px solid #E4E7ED;
+    border-radius: 5px;
+}
+QPushButton#btn_camera:hover {background-color: #0EA5E9;}
+/* 完美圆形，匹配你的140x160尺寸 */
 /* -------------------- 视频区 样式【原大小不变】 -------------------- */
 /* 视频播放容器 - 你后期加border-image，只加底色和边框 */
 QWidget#widget {
@@ -434,7 +443,7 @@ QWidget#widget {
 }
 /* 视频播放/暂停按钮 */
 QPushButton#btn_start_pause {
-    background-color: #2563EB;
+    
     color:#FFFFFF;
     font-size:12px;
     border:none;
@@ -465,6 +474,7 @@ QPushButton#btn_fan,QPushButton#btn_wind_big,QPushButton#btn_buzzer,QPushButton#
     font-weight: normal;
     border: none;
     border-radius: 4px;
+	border-right: 1px solid grey;
 }
 /* LED相关按钮-浅蓝 */
 QPushButton#btn_led {background-color: #94A3B8;color:#FFFFFF;}
@@ -473,14 +483,18 @@ QPushButton#btn_led_switch {background-color: #38BDF8;color:#FFFFFF;}
 QPushButton#btn_led_switch:hover {background-color: #0EA5E9;}
 /* 语音按钮-紫色 */
 QPushButton#btn_talk:hover {background-color: #7E22CE;}
+/*语音按钮-蓝色*/
+QPushButton#btn_talk1:hover {background-color: rgba(85, 170, 255, 150);}
+
+background-color: rgba(85, 170, 255, 150);
 /* 风扇相关按钮-浅绿 */
-QPushButton#btn_wind_small,QPushButton#btn_wind_big {background-color: #A3E635;color:#1E293B;font-size:11px;}
-QPushButton#btn_fan {background-color: #4ADE80;color:#FFFFFF;}
 QPushButton#btn_fan:hover {background-color: #22C55E;}
+QPushButton#btn_wind_small:hover {background-color: #22C55E;}
+QPushButton#btn_wind_big:hover {background-color: #22C55E;}
 /* 蜂鸣器相关按钮-橙色 */
 QPushButton#btn_buzzer {background-color: #F97316;color:#FFFFFF;}
 QPushButton#btn_buzzer:hover {background-color: #EA580C;}
-QPushButton#btn_buzzer_switch {background-color: #FB923C;color:#FFFFFF;}
+QPushButton#btn_buzzer_switch {background-color: #F97316;color:#FFFFFF;}
 QPushButton#btn_buzzer_switch:hover {background-color: #F97316;}
 /* 帮助按钮-灰色 */
 QPushButton#btn_help:hover {background-color: #475569;}
@@ -603,8 +617,23 @@ QSlider#horizontalSlider {
       </item>
       <item>
        <widget class="QLabel" name="label_city">
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;微软雅黑&quot;;</string>
+        </property>
         <property name="text">
-         <string>城市名称:</string>
+         <string>广州    </string>
         </property>
        </widget>
       </item>
@@ -612,7 +641,7 @@ QSlider#horizontalSlider {
        <widget class="QLabel" name="label_weather">
         <property name="minimumSize">
          <size>
-          <width>60</width>
+          <width>100</width>
           <height>40</height>
          </size>
         </property>
@@ -634,13 +663,16 @@ QSlider#horizontalSlider {
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="margin">
+         <number>10</number>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_temperature">
         <property name="minimumSize">
          <size>
-          <width>60</width>
+          <width>100</width>
           <height>40</height>
          </size>
         </property>
@@ -658,6 +690,9 @@ QSlider#horizontalSlider {
         </property>
         <property name="text">
          <string>温度:18℃</string>
+        </property>
+        <property name="margin">
+         <number>10</number>
         </property>
        </widget>
       </item>
@@ -1251,7 +1286,11 @@ QSlider#horizontalSlider {
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">border-image: url(:/image/camera.png);</string>
+               <string notr="true">border-image: url(:/image/camera.png);
+QPushButton#btn_camera:hover {
+	background-color: rgb(230, 230, 230);
+};
+</string>
               </property>
               <property name="text">
                <string/>
@@ -1319,7 +1358,7 @@ QSlider#horizontalSlider {
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>90</y>
+           <y>70</y>
            <width>150</width>
            <height>150</height>
           </rect>
@@ -1388,7 +1427,8 @@ QSlider#horizontalSlider {
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-image: url(:/image/led_off.png);</string>
+         <string notr="true">border-image: url(:/image/led_off.png);
+border-right: 1px solid grey;</string>
         </property>
         <property name="text">
          <string/>
@@ -1452,8 +1492,11 @@ QSlider#horizontalSlider {
             <height>30</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/image/left_fan.png);</string>
+          </property>
           <property name="text">
-           <string>小风</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -1471,8 +1514,11 @@ QSlider#horizontalSlider {
             <height>50</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/image/fan.png);</string>
+          </property>
           <property name="text">
-           <string>风扇</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -1490,8 +1536,11 @@ QSlider#horizontalSlider {
             <height>30</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/image/right_fan.png);</string>
+          </property>
           <property name="text">
-           <string>大风</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -1512,7 +1561,8 @@ QSlider#horizontalSlider {
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-image: url(:/image/buzzer_off.png);</string>
+         <string notr="true">border-image: url(:/image/buzzer_off.png);
+border-right: 1px solid grey;</string>
         </property>
         <property name="text">
          <string/>
@@ -1532,6 +1582,9 @@ QSlider#horizontalSlider {
           <width>70</width>
           <height>50</height>
          </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 85, 0);</string>
         </property>
         <property name="text">
          <string>蜂鸣器开关</string>

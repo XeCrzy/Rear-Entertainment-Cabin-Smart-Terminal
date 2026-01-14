@@ -37037,3 +37037,721 @@ FromServer: iFLYCloud
 [2026/01/13 18:51:23 235][Px1219][Tx567fc700][DBG] LENGINE    leng_main. 651  ENGINE_MSG_STOP
 [2026/01/13 18:51:23 235][Px1219][Tx567fc700][DBG] LENGINE    leng_main. 671  [sessinfo_local] bg, unload directly!
 [2026/01/13 18:51:23 236][Px1219][Tx567fc700][INF] LENGINE    leng_main. 676  l_engine_5 occupancy: 0 (0%)
+============================================================
+Time  2026/01/14 09:37:41 990 
+============================================================
+[2026/01/14 09:37:42 012][Pxe6c][Tx49f96700][DBG] MSPTHREAD  MSPThreadP 826  socket_main_0 IDLE
+[2026/01/14 09:37:42 015][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST socket_main_0:1:1:0
+[2026/01/14 09:37:42 016][Pxe6c][Tx49f96700][DBG] MSPTHREAD  MSPThreadP 868  socket_main_0 RUN <socket_main_0>
+[2026/01/14 09:37:42 020][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_1:1:1:0
+[2026/01/14 09:37:42 021][Pxe6c][Tx48f94700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_1 IDLE
+[2026/01/14 09:37:42 023][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_2:1:1:0
+[2026/01/14 09:37:42 023][Pxe6c][Tx48f94700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_1 RUN <l_engine_1>
+[2026/01/14 09:37:42 024][Pxe6c][Tx43fff700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_2 IDLE
+[2026/01/14 09:37:42 025][Pxe6c][Tx43fff700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_2 RUN <l_engine_2>
+[2026/01/14 09:37:42 026][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_3:1:1:0
+[2026/01/14 09:37:42 027][Pxe6c][Tx437fe700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_3 IDLE
+[2026/01/14 09:37:42 027][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:1:1:0
+[2026/01/14 09:37:42 028][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_4 IDLE
+[2026/01/14 09:37:42 029][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_4 RUN <l_engine_4>
+[2026/01/14 09:37:42 030][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:1:1:0
+[2026/01/14 09:37:42 031][Pxe6c][Tx437fe700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_3 RUN <l_engine_3>
+[2026/01/14 09:37:42 032][Pxe6c][Tx427fc700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_5 IDLE
+[2026/01/14 09:37:42 033][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:1:1:0
+[2026/01/14 09:37:42 034][Pxe6c][Tx427fc700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_5 RUN <l_engine_5>
+[2026/01/14 09:37:42 035][Pxe6c][Tx41ffb700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_6 IDLE
+[2026/01/14 09:37:42 035][Pxe6c][Tx41ffb700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_6 RUN <l_engine_6>
+[2026/01/14 09:37:42 039][Pxe6c][Tx49f99d80][TRC] MSPCMN     msp_cmn.c  1300 MSPLogin(0,0,ca7073f5) [in]
+[2026/01/14 09:37:42 040][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 109  lEngine_Start(4a8890d2,58ac8990,1, 0) [in]
+[2026/01/14 09:37:42 041][Pxe6c][Tx49f99d80][INF] LLOADER    lloader.c  327  load lgi
+[2026/01/14 09:37:42 042][Pxe6c][Tx49f99d80][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 043][Pxe6c][Tx49f99d80][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 044][Pxe6c][Tx49f99d80][PRF] LLOADER    lloader.c  397  load lgi cost 3 (ms)
+[2026/01/14 09:37:42 045][Pxe6c][Tx49f99d80][DBG] LENGINE    leng_shell 204  env=fb8a3d40,lgi,lgi_
+[2026/01/14 09:37:42 046][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:6:1:1
+[2026/01/14 09:37:42 046][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 275  lEngine_Start() [out] 0
+[2026/01/14 09:37:42 047][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 418  lEngine_SendMessage(fb8a3d40,1,4,,,) [in]
+[2026/01/14 09:37:42 048][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:11:1:0
+[2026/01/14 09:37:42 049][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 565  ENGINE_MSG_LOAD
+[2026/01/14 09:37:42 050][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(4ad19300,fb8a3d40) [in]
+[2026/01/14 09:37:42 053][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load ecode
+[2026/01/14 09:37:42 054][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 055][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 056][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load ecode cost 2 (ms)
+[2026/01/14 09:37:42 056][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load config
+[2026/01/14 09:37:42 057][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 058][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 059][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load config cost 2 (ms)
+[2026/01/14 09:37:42 059][Pxe6c][Tx41ffb700][INF] LMOD       luac_logge 172  [config:43:use general cloud  ]
+[2026/01/14 09:37:42 060][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load update
+[2026/01/14 09:37:42 061][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 061][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 063][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load update cost 3 (ms)
+[2026/01/14 09:37:42 064][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load transport
+[2026/01/14 09:37:42 064][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 065][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 066][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load transport cost 2 (ms)
+[2026/01/14 09:37:42 067][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load ns
+[2026/01/14 09:37:42 068][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 068][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 069][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load ns cost 2 (ms)
+[2026/01/14 09:37:42 070][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load network
+[2026/01/14 09:37:42 071][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 072][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 073][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load network cost 3 (ms)
+[2026/01/14 09:37:42 074][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 263  precall return 0
+[2026/01/14 09:37:42 075][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 288  [lgi_], ACTIVE
+[2026/01/14 09:37:42 075][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(2c049130,fb8a3d40) [in]
+[2026/01/14 09:37:42 092][Pxe6c][Tx41ffb700][TRC] LMOD       luac_logge 170  [lgi:684:SYS_MSG_LOAD  ]
+[2026/01/14 09:37:42 093][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load dkjson
+[2026/01/14 09:37:42 094][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 095][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 095][Pxe6c][Tx41ffb700][PRF] LLOADER    lloader.c  397  load dkjson cost 2 (ms)
+[2026/01/14 09:37:42 096][Pxe6c][Tx41ffb700][INF] LLOADER    lloader.c  327  load debug
+[2026/01/14 09:37:42 098][Pxe6c][Tx41ffb700][ERR] LLOADER    lloader.c  390  not found!
+[2026/01/14 09:37:42 099][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 100][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 312  [lgi_], loaded
+[2026/01/14 09:37:42 101][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(2c049130,fb8a3d40) [in]
+[2026/01/14 09:37:42 102][Pxe6c][Tx41ffb700][TRC] LMOD       luac_logge 170  [lgi:706:SYS_MSG_REGCB  msp_status_cb  func(2c0139a0) ]
+[2026/01/14 09:37:42 103][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 103][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2026/01/14 09:37:42 104][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 571  lgi_, eng = l_engine_6, env = fb8a3d40, L = fb8a3de0
+[2026/01/14 09:37:42 105][Pxe6c][Tx41ffb700][INF] LENGINE    leng_main. 572  l_engine_6 occupancy: 1 (33%)
+[2026/01/14 09:37:42 106][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 539  ENGINE_MSG_RPC_SYNC
+[2026/01/14 09:37:42 107][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 547  [lgi_], stat = 1
+[2026/01/14 09:37:42 108][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(fb8a5790,fb8a3d40) [in]
+[2026/01/14 09:37:42 109][Pxe6c][Tx41ffb700][TRC] LMOD       luac_logge 170  [lgi:298:LGI_MSG_INIT  ]
+[2026/01/14 09:37:42 111][Pxe6c][Tx41ffb700][INF] LMOD       luac_logge 172  [lgi:305:lgi  lgi_  268436457  1573451739  ]
+[2026/01/14 09:37:42 111][Pxe6c][Tx41ffb700][TRC] MSPCMN     msp_cmn.c  875  statusCbStub(,,param_num = 5)
+[2026/01/14 09:37:42 112][Pxe6c][Tx41ffb700][PRF] LENGINE    leng_main. 189  callc(msp_status_cb) cost 1 ms
+[2026/01/14 09:37:42 113][Pxe6c][Tx41ffb700][TRC] LMOD       luac_logge 170  [lgi:403:token:  nil  ]
+[2026/01/14 09:37:42 115][Pxe6c][Tx41ffb700][INF] LMOD       luac_logge 172  [lgi:476:msc cver : 5.0.44.1288  ]
+[2026/01/14 09:37:42 117][Pxe6c][Tx41ffb700][INF] LMOD       luac_logge 172  [lgi:519:ns_enable=  1  ]
+[2026/01/14 09:37:42 119][Pxe6c][Tx41ffb700][INF] LMOD       luac_logge 172  [lgi:531:prot_ver=1  ]
+[2026/01/14 09:37:42 120][Pxe6c][Tx41ffb700][INF] LMOD       luac_logge 172  [lgi:542:prot_type=tcp  ]
+[2026/01/14 09:37:42 121][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 122][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 461  lEngine_SendMessage() [out] 0
+[2026/01/14 09:37:42 122][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 310  lEngine_Stop(fb8a3d40) [in]
+[2026/01/14 09:37:42 123][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:7:1:1
+[2026/01/14 09:37:42 123][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 586  ENGINE_MSG_UNLOAD
+[2026/01/14 09:37:42 124][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(2c049130,fb8a3d40) [in]
+[2026/01/14 09:37:42 125][Pxe6c][Tx41ffb700][TRC] LMOD       luac_logge 170  [lgi:693:SYS_MSG_UNLOAD  go bg!  ]
+[2026/01/14 09:37:42 127][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 127][Pxe6c][Tx41ffb700][DBG] LENGINE    leng_main. 623  [lgi_] active, go bg!
+[2026/01/14 09:37:42 128][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 369  lEngine_Stop() [out] 0
+[2026/01/14 09:37:42 129][Pxe6c][Tx49f99d80][TRC] MSPCMN     msp_cmn.c  1483 MSPLogin() [out] 0
+[2026/01/14 09:37:42 145][Pxe6c][Tx49f99d80][TRC] QISR       qisr.c     917  QISRBuildGrammar(ca7071a4,fb8ad8e0,424,58ac89c0) [in]
+[2026/01/14 09:37:42 146][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 109  lEngine_Start(4a889102,58ac8900,1, 0) [in]
+[2026/01/14 09:37:42 147][Pxe6c][Tx49f99d80][INF] LLOADER    lloader.c  327  load grm_lex
+[2026/01/14 09:37:42 147][Pxe6c][Tx49f99d80][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 149][Pxe6c][Tx49f99d80][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 150][Pxe6c][Tx49f99d80][PRF] LLOADER    lloader.c  397  load grm_lex cost 4 (ms)
+[2026/01/14 09:37:42 151][Pxe6c][Tx49f99d80][DBG] LENGINE    leng_shell 204  env=fb8adaa0,grm_lex,local_grm
+[2026/01/14 09:37:42 152][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:6:1:1
+[2026/01/14 09:37:42 153][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 275  lEngine_Start() [out] 0
+[2026/01/14 09:37:42 154][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 477  lEngine_RegisterCallBack(fb8adaa0,4a910df7,4a65a910,0,) [in]
+[2026/01/14 09:37:42 154][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:8:1:0
+[2026/01/14 09:37:42 155][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 514  lEngine_RegisterCallBack() [out] 0
+[2026/01/14 09:37:42 156][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 380  lEngine_PostMessage(fb8adaa0,1,3,) [in]
+[2026/01/14 09:37:42 156][Pxe6c][Tx49f99d80][WAR] LENGINE    leng_shell 390  msg send while not active
+[2026/01/14 09:37:42 157][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:10:1:0
+[2026/01/14 09:37:42 158][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 407  lEngine_PostMessage() [out] 0
+[2026/01/14 09:37:42 159][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 310  lEngine_Stop(fb8adaa0) [in]
+[2026/01/14 09:37:42 160][Pxe6c][Tx49f99d80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:7:1:0
+[2026/01/14 09:37:42 160][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 565  ENGINE_MSG_LOAD
+[2026/01/14 09:37:42 161][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(4ad192c0,fb8adaa0) [in]
+[2026/01/14 09:37:42 163][Pxe6c][Tx427fc700][INF] LLOADER    lloader.c  327  load ecode
+[2026/01/14 09:37:42 163][Pxe6c][Tx427fc700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 164][Pxe6c][Tx427fc700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 165][Pxe6c][Tx427fc700][PRF] LLOADER    lloader.c  397  load ecode cost 2 (ms)
+[2026/01/14 09:37:42 166][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 263  precall return 0
+[2026/01/14 09:37:42 167][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 288  [local_grm], ACTIVE
+[2026/01/14 09:37:42 168][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(28013de0,fb8adaa0) [in]
+[2026/01/14 09:37:42 184][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:264:SYS_MSG_LOAD  ]
+[2026/01/14 09:37:42 184][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 185][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 312  [local_grm], loaded
+[2026/01/14 09:37:42 186][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(28013de0,fb8adaa0) [in]
+[2026/01/14 09:37:42 187][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:281:SYS_MSG_REGCB  ]
+[2026/01/14 09:37:42 187][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 188][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2026/01/14 09:37:42 189][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 571  local_grm, eng = l_engine_5, env = fb8adaa0, L = fb8aec50
+[2026/01/14 09:37:42 190][Pxe6c][Tx427fc700][INF] LENGINE    leng_main. 572  l_engine_5 occupancy: 1 (33%)
+[2026/01/14 09:37:42 191][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 586  ENGINE_MSG_UNLOAD
+[2026/01/14 09:37:42 191][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(28013de0,fb8adaa0) [in]
+[2026/01/14 09:37:42 193][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:267:SYS_MSG_UNLOAD  ]
+[2026/01/14 09:37:42 193][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 194][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 623  [local_grm] active, go bg!
+[2026/01/14 09:37:42 195][Pxe6c][Tx49f99d80][TRC] LENGINE    leng_shell 369  lEngine_Stop() [out] 0
+[2026/01/14 09:37:42 195][Pxe6c][Tx49f99d80][TRC] QISR       qisr.c     998  QISRBuildGrammar() [out] 0
+[2026/01/14 09:37:42 197][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 690  ENGINE_MSG_REGCB
+[2026/01/14 09:37:42 197][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 715  local_grm (grmMessageCallBackC)
+[2026/01/14 09:37:42 198][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(28013de0,fb8adaa0) [in]
+[2026/01/14 09:37:42 199][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:281:SYS_MSG_REGCB  ]
+[2026/01/14 09:37:42 200][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 201][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 09:37:42 201][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 525  [local_grm], stat = 1
+[2026/01/14 09:37:42 202][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(fb8a5790,fb8adaa0) [in]
+[2026/01/14 09:37:42 204][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:251:ISR_MSG_BUILDGRAMMAR  ]
+[2026/01/14 09:37:42 205][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:100:grm_type :  bnf  ]
+[2026/01/14 09:37:42 207][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:engine_type  :  local  ]
+[2026/01/14 09:37:42 209][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:asr_res_path  :  fo|res/asr/common.jet  ]
+[2026/01/14 09:37:42 211][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:sample_rate  :  16000  ]
+[2026/01/14 09:37:42 213][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:grm_build_path  :  res/asr/GrmBuilld  ]
+[2026/01/14 09:37:42 213][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 109  lEngine_Start(2800a7d8,2800ede8,0, 0) [in]
+[2026/01/14 09:37:42 214][Pxe6c][Tx427fc700][INF] LLOADER    lloader.c  327  load isr_local
+[2026/01/14 09:37:42 215][Pxe6c][Tx427fc700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 215][Pxe6c][Tx427fc700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 216][Pxe6c][Tx427fc700][PRF] LLOADER    lloader.c  397  load isr_local cost 2 (ms)
+[2026/01/14 09:37:42 218][Pxe6c][Tx427fc700][DBG] LENGINE    leng_shell 204  env=2800f0d0,isr_local,local_build_427fb928427fb9302dd006966f3664a647bd0
+[2026/01/14 09:37:42 219][Pxe6c][Tx427fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:6:1:1
+[2026/01/14 09:37:42 219][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 275  lEngine_Start() [out] 0
+[2026/01/14 09:37:42 220][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 477  lEngine_RegisterCallBack(2800f0d0,2800a818,4a646530,427fb8d0,) [in]
+[2026/01/14 09:37:42 221][Pxe6c][Tx427fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:8:1:0
+[2026/01/14 09:37:42 221][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 514  lEngine_RegisterCallBack() [out] 0
+[2026/01/14 09:37:42 222][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 380  lEngine_PostMessage(2800f0d0,307,2,) [in]
+[2026/01/14 09:37:42 223][Pxe6c][Tx427fc700][WAR] LENGINE    leng_shell 390  msg send while not active
+[2026/01/14 09:37:42 223][Pxe6c][Tx427fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:10:1:0
+[2026/01/14 09:37:42 225][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 407  lEngine_PostMessage() [out] 0
+[2026/01/14 09:37:42 225][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 565  ENGINE_MSG_LOAD
+[2026/01/14 09:37:42 227][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(4ad19280,2800f0d0) [in]
+[2026/01/14 09:37:42 227][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:254:ISR_MSG_BUILDGRAMMAR ret =  0  ]
+[2026/01/14 09:37:42 229][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 229][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load ecode
+[2026/01/14 09:37:42 230][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 231][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 231][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load ecode cost 3 (ms)
+[2026/01/14 09:37:42 232][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load dkjson
+[2026/01/14 09:37:42 233][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 234][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 235][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load dkjson cost 2 (ms)
+[2026/01/14 09:37:42 235][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load debug
+[2026/01/14 09:37:42 236][Pxe6c][Tx42ffd700][ERR] LLOADER    lloader.c  390  not found!
+[2026/01/14 09:37:42 237][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load auth
+[2026/01/14 09:37:42 238][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 239][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 240][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load auth cost 3 (ms)
+[2026/01/14 09:37:42 242][Pxe6c][Tx42ffd700][TRC] LENGINE    luac_auth. 106  luac_loadluacAuth enter
+[2026/01/14 09:37:42 242][Pxe6c][Tx42ffd700][TRC] LENGINE    luac_auth. 91   luac_openluacAuth enter
+[2026/01/14 09:37:42 244][Pxe6c][Tx42ffd700][TRC] LENGINE    luac_auth. 99   luac_openluacAuth leave
+[2026/01/14 09:37:42 244][Pxe6c][Tx42ffd700][TRC] LENGINE    luac_auth. 109  luac_loadluacAuth leave
+[2026/01/14 09:37:42 245][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load config
+[2026/01/14 09:37:42 246][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 246][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 247][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load config cost 2 (ms)
+[2026/01/14 09:37:42 248][Pxe6c][Tx42ffd700][INF] LMOD       luac_logge 172  [config:43:use general cloud  ]
+[2026/01/14 09:37:42 248][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load update
+[2026/01/14 09:37:42 249][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 250][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 252][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load update cost 3 (ms)
+[2026/01/14 09:37:42 252][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load transport
+[2026/01/14 09:37:42 253][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 254][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 254][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load transport cost 2 (ms)
+[2026/01/14 09:37:42 256][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load ns
+[2026/01/14 09:37:42 256][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 257][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 258][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load ns cost 3 (ms)
+[2026/01/14 09:37:42 259][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  327  load network
+[2026/01/14 09:37:42 260][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 09:37:42 261][Pxe6c][Tx42ffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 09:37:42 262][Pxe6c][Tx42ffd700][PRF] LLOADER    lloader.c  397  load network cost 3 (ms)
+[2026/01/14 09:37:42 263][Pxe6c][Tx42ffd700][TRC] LENGINE    luac_auth. 118  luac_auth_new enter
+[2026/01/14 09:37:42 264][Pxe6c][Tx42ffd700][TRC] LENGINE    luac_auth. 126  luac_auth_new leave
+[2026/01/14 09:37:42 265][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 263  precall return 0
+[2026/01/14 09:37:42 265][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 288  [local_build_427fb928427fb9302dd006966f3664a647bd0], ACTIVE
+[2026/01/14 09:37:42 266][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(34041010,2800f0d0) [in]
+[2026/01/14 09:37:42 269][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:2211:os_type is:  Linux  ]
+[2026/01/14 09:37:42 271][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:2220:SYS_MSG_LOAD_LOCAL  ]
+[2026/01/14 09:37:42 272][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 273][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 312  [local_build_427fb928427fb9302dd006966f3664a647bd0], loaded
+[2026/01/14 09:37:42 274][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(34041010,2800f0d0) [in]
+[2026/01/14 09:37:42 275][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:2249:SYS_MSG_REGCB_LOCAL| param0 =  msp_status_cb  ]
+[2026/01/14 09:37:42 276][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 276][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2026/01/14 09:37:42 277][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 571  local_build_427fb928427fb9302dd006966f3664a647bd0, eng = l_engine_4, env = 2800f0d0, L = 2800f240
+[2026/01/14 09:37:42 277][Pxe6c][Tx42ffd700][INF] LENGINE    leng_main. 572  l_engine_4 occupancy: 1 (33%)
+[2026/01/14 09:37:42 279][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 690  ENGINE_MSG_REGCB
+[2026/01/14 09:37:42 280][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 715  local_build_427fb928427fb9302dd006966f3664a647bd0 (build_grm_cb)
+[2026/01/14 09:37:42 280][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(34041010,2800f0d0) [in]
+[2026/01/14 09:37:42 282][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:2249:SYS_MSG_REGCB_LOCAL| param0 =  build_grm_cb  ]
+[2026/01/14 09:37:42 283][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 284][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 09:37:42 285][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 525  [local_build_427fb928427fb9302dd006966f3664a647bd0], stat = 1
+[2026/01/14 09:37:42 287][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(28013de0,2800f0d0) [in]
+[2026/01/14 09:37:42 288][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:2262:ASR_LOCAL_MSG_BUILD_GRM  ]
+[2026/01/14 09:37:42 292][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1903:grm_init | params:  engine_type = local, 		asr_res_path = fo|res/asr/common.jet, sample_rate = 16000, 		grm_build_path = res/asr/GrmBuilld,   ]
+[2026/01/14 09:37:42 293][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:805:engine_type  :  local  ]
+[2026/01/14 09:37:42 295][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:805:asr_res_path  :  fo|res/asr/common.jet  ]
+[2026/01/14 09:37:42 296][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:805:sample_rate  :  16000  ]
+[2026/01/14 09:37:42 297][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:805:grm_build_path  :  res/asr/GrmBuilld  ]
+[2026/01/14 09:37:42 298][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   660  Grm_New(34043658, 2, 34041038, 42ffc90c) [in]
+[2026/01/14 09:37:42 299][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   684  temp path is res/asr/GrmBuilld/temp/
+[2026/01/14 09:37:42 302][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:1:1:0
+[2026/01/14 09:37:42 303][Pxe6c][Tx417fa700][DBG] MSPTHREAD  MSPThreadP 826  grmWorker_build IDLE
+[2026/01/14 09:37:42 304][Pxe6c][Tx417fa700][DBG] MSPTHREAD  MSPThreadP 868  grmWorker_build RUN <grmWorker_build>
+[2026/01/14 09:37:42 304][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   732  Grm_New(34043710, 0) [out]
+[2026/01/14 09:37:42 306][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1002:file count =   1  ]
+[2026/01/14 09:37:42 308][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:925:file open type is:   fo  ]
+[2026/01/14 09:37:42 309][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:958:res/asr/common.jet  0  0  ]
+[2026/01/14 09:37:42 310][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1020:speech_plus_setting  0  ]
+[2026/01/14 09:37:42 311][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1033:2  nil  res/asr/common.jet  0  0  ]
+[2026/01/14 09:37:42 313][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   115  Esr_ResCheck(2, 42ffc860) [in]
+[2026/01/14 09:37:42 313][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   116  Esr_ResCheck(2, 34045258, 0, 0) [in]
+[2026/01/14 09:37:42 327][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   192  Esr_ResCheck( 0) [out]
+[2026/01/14 09:37:42 329][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1035:res_ver  2  ]
+[2026/01/14 09:37:42 331][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1036:res 5  19b6a1b4b66938610b89e878385feb4e  ]
+[2026/01/14 09:37:42 332][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1037:res_new_old_mark  v5pp  ]
+[2026/01/14 09:37:42 333][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1038:res_usr_name  ""  ]
+[2026/01/14 09:37:42 334][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1039:res_expires  1775961184  ]
+[2026/01/14 09:37:42 336][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1040:err  0  ]
+[2026/01/14 09:37:42 338][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1071:now expires:  1768354662  1775961184  ]
+[2026/01/14 09:37:42 338][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   1742 GetResFileInfoList_FO(34043710, 34045258, 256, 0)
+[2026/01/14 09:37:42 339][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   1620 GetResPathInfo [in]
+[2026/01/14 09:37:42 340][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   1478 ParseHeaderInfo() [in]
+[2026/01/14 09:37:42 341][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   1599 ParseHeaderInfo() [out]
+[2026/01/14 09:37:42 341][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   1728 GetResPathInfo(ret=0) [out]
+[2026/01/14 09:37:42 342][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   1781 GetResFileInfoList_FO(0)[out]
+[2026/01/14 09:37:42 343][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   743  Grm_Create(34043710, 160, 34009938) [in]
+[2026/01/14 09:37:42 343][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:5:1:1
+[2026/01/14 09:37:42 345][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   784  Grm_Create(0) [out]
+[2026/01/14 09:37:42 347][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   828  Grm_BnfParser(34043710, 340453d8, 424) [in]
+[2026/01/14 09:37:42 348][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:6:1:0
+[2026/01/14 09:37:42 350][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   868  Grm_BnfParser(0) [out]
+[2026/01/14 09:37:42 350][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   878  Grm_BuildNetwork(34043710, 0, 160) [in]
+[2026/01/14 09:37:42 351][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:7:1:0
+[2026/01/14 09:37:42 351][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   913  Grm_BuildNetwork(0) [out]
+[2026/01/14 09:37:42 352][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:grm.irf
+[2026/01/14 09:37:42 353][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(34043710, grm.irf, 417f941c)[in]
+[2026/01/14 09:37:42 355][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[grm.irf] Found!
+[2026/01/14 09:37:42 355][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 09:37:42 356][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=20001440
+[2026/01/14 09:37:42 356][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 09:37:42 357][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 09:37:42 358][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1644:proc_retcode_grm | errorcode =  0  ]
+[2026/01/14 09:37:42 359][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 362][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:ivTable.irf
+[2026/01/14 09:37:42 363][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(34043710, ivTable.irf, 417f952c)[in]
+[2026/01/14 09:37:42 365][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[ivTable.irf] Found!
+[2026/01/14 09:37:42 365][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 09:37:42 366][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=20001440
+[2026/01/14 09:37:42 367][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 09:37:42 368][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 09:37:42 371][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:grm.irf
+[2026/01/14 09:37:42 372][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(34043710, grm.irf, 417f936c)[in]
+[2026/01/14 09:37:42 372][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[grm.irf] Found!
+[2026/01/14 09:37:42 373][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 09:37:42 374][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=20001440
+[2026/01/14 09:37:42 375][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 09:37:42 376][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 09:37:42 377][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:bzvskdaa.d
+[2026/01/14 09:37:42 391][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:hhnkdega.d
+[2026/01/14 09:37:42 396][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:wkufnlaa.d
+[2026/01/14 09:37:42 400][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:uikawbda.d
+[2026/01/14 09:37:42 403][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call.g
+[2026/01/14 09:37:42 407][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call.g
+[2026/01/14 09:37:42 417][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call.g
+[2026/01/14 09:37:42 420][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:ivHmmRes_16K.irf
+[2026/01/14 09:37:42 421][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(34043710, ivHmmRes_16K.irf, 417f918c)[in]
+[2026/01/14 09:37:42 422][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[ivHmmRes_16K.irf] Found!
+[2026/01/14 09:37:42 423][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 09:37:42 423][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=20001440
+[2026/01/14 09:37:42 424][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 09:37:42 425][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 09:37:42 435][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call_16K
+[2026/01/14 09:37:42 438][Pxe6c][Tx417fa700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:10:1:1
+[2026/01/14 09:37:42 440][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 09:37:42 440][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 525  [local_build_427fb928427fb9302dd006966f3664a647bd0], stat = 1
+[2026/01/14 09:37:42 441][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(20045380,2800f0d0) [in]
+[2026/01/14 09:37:42 442][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:2022:grammar id:call  ]
+[2026/01/14 09:37:42 447][Pxe6c][Tx42ffd700][TRC] LMOD       luac_logge 170  [isr_local:1636:onGrmLocalServiceCb  0  call  ]
+[2026/01/14 09:37:42 448][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:10:1:1
+[2026/01/14 09:37:42 448][Pxe6c][Tx42ffd700][PRF] LENGINE    leng_main. 189  callc(build_grm_cb) cost 0 ms
+[2026/01/14 09:37:42 450][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   792  Grm_Destroy(34043710) [in]
+[2026/01/14 09:37:42 451][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 09:37:42 452][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 525  [local_grm], stat = 1
+[2026/01/14 09:37:42 453][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(28013de0,fb8adaa0) [in]
+[2026/01/14 09:37:42 454][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:11:1:1
+[2026/01/14 09:37:42 455][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:2:1:0
+[2026/01/14 09:37:42 456][Pxe6c][Tx427fc700][TRC] LMOD       luac_logge 170  [grm_lex:71:0  call  ]
+[2026/01/14 09:37:42 456][Pxe6c][Tx427fc700][TRC] QISR       qisr.c     864  grmMessageCallBackC| enter
+[2026/01/14 09:37:42 457][Pxe6c][Tx427fc700][TRC] QISR       qisr.c     895  grmMessageCallBackC| leave
+[2026/01/14 09:37:42 458][Pxe6c][Tx427fc700][PRF] LENGINE    leng_main. 189  callc(grmMessageCallBackC) cost 1 ms
+[2026/01/14 09:37:42 459][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 545  lEngine_Exit(fb8adaa0) [in]
+[2026/01/14 09:37:42 459][Pxe6c][Tx427fc700][DBG] LENGINE    leng_shell 549  [local_grm] dying...
+[2026/01/14 09:37:42 460][Pxe6c][Tx427fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:9:1:0
+[2026/01/14 09:37:42 461][Pxe6c][Tx427fc700][TRC] LENGINE    leng_shell 582  lEngine_Exit() [out] 0
+[2026/01/14 09:37:42 462][Pxe6c][Tx427fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 462][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 651  ENGINE_MSG_STOP
+[2026/01/14 09:37:42 463][Pxe6c][Tx427fc700][DBG] LENGINE    leng_main. 671  [local_grm] bg, unload directly!
+[2026/01/14 09:37:42 463][Pxe6c][Tx427fc700][INF] LENGINE    leng_main. 676  l_engine_5 occupancy: 0 (0%)
+[2026/01/14 09:37:42 464][Pxe6c][Tx417fa700][TRC] LENGINE    aitalk.c   2168 AITALK GRM_WORKER EXIT
+[2026/01/14 09:37:42 465][Pxe6c][Tx417fa700][DBG] MSPTHREAD  MSPThreadP 872  grmWorker_build END <grmWorker_build>
+[2026/01/14 09:37:42 467][Pxe6c][Tx417fa700][DBG] MSPTHREAD  MSPThreadP 895  grmWorker_build IDLE
+[2026/01/14 09:37:42 468][Pxe6c][Tx42ffd700][TRC] LENGINE    aitalk.c   817  Grm_Destroy(34043710, 0) [out]
+[2026/01/14 09:37:42 470][Pxe6c][Tx42ffd700][TRC] LENGINE    leng_shell 545  lEngine_Exit(2800f0d0) [in]
+[2026/01/14 09:37:42 470][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_shell 549  [local_build_427fb928427fb9302dd006966f3664a647bd0] dying...
+[2026/01/14 09:37:42 471][Pxe6c][Tx42ffd700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:9:1:0
+[2026/01/14 09:37:42 475][Pxe6c][Tx42ffd700][TRC] LENGINE    leng_shell 582  lEngine_Exit() [out] 0
+[2026/01/14 09:37:42 476][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 09:37:42 476][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 651  ENGINE_MSG_STOP
+[2026/01/14 09:37:42 477][Pxe6c][Tx42ffd700][DBG] LENGINE    leng_main. 671  [local_build_427fb928427fb9302dd006966f3664a647bd0] bg, unload directly!
+[2026/01/14 09:37:42 479][Pxe6c][Tx42ffd700][INF] LENGINE    leng_main. 676  l_engine_4 occupancy: 0 (0%)
+============================================================
+Time  2026/01/14 10:17:02 067 
+============================================================
+[2026/01/14 10:17:02 069][Pxfdb][Txf1817700][DBG] MSPTHREAD  MSPThreadP 826  socket_main_0 IDLE
+[2026/01/14 10:17:02 071][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST socket_main_0:1:1:0
+[2026/01/14 10:17:02 072][Pxfdb][Txf1817700][DBG] MSPTHREAD  MSPThreadP 868  socket_main_0 RUN <socket_main_0>
+[2026/01/14 10:17:02 073][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_1:1:1:0
+[2026/01/14 10:17:02 074][Pxfdb][Txf0815700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_1 IDLE
+[2026/01/14 10:17:02 075][Pxfdb][Txf0815700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_1 RUN <l_engine_1>
+[2026/01/14 10:17:02 076][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_2:1:1:0
+[2026/01/14 10:17:02 078][Pxfdb][Txebfff700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_2 IDLE
+[2026/01/14 10:17:02 079][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_3:1:1:0
+[2026/01/14 10:17:02 079][Pxfdb][Txebfff700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_2 RUN <l_engine_2>
+[2026/01/14 10:17:02 080][Pxfdb][Txeb7fe700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_3 IDLE
+[2026/01/14 10:17:02 081][Pxfdb][Txeb7fe700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_3 RUN <l_engine_3>
+[2026/01/14 10:17:02 082][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:1:1:0
+[2026/01/14 10:17:02 083][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_4 IDLE
+[2026/01/14 10:17:02 083][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:1:1:0
+[2026/01/14 10:17:02 084][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_4 RUN <l_engine_4>
+[2026/01/14 10:17:02 085][Pxfdb][Txea7fc700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_5 IDLE
+[2026/01/14 10:17:02 086][Pxfdb][Txea7fc700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_5 RUN <l_engine_5>
+[2026/01/14 10:17:02 087][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:1:1:0
+[2026/01/14 10:17:02 088][Pxfdb][Txe9ffb700][DBG] MSPTHREAD  MSPThreadP 826  l_engine_6 IDLE
+[2026/01/14 10:17:02 088][Pxfdb][Txe9ffb700][DBG] MSPTHREAD  MSPThreadP 868  l_engine_6 RUN <l_engine_6>
+[2026/01/14 10:17:02 091][Pxfdb][Txf181ad80][TRC] MSPCMN     msp_cmn.c  1300 MSPLogin(0,0,d84513f5) [in]
+[2026/01/14 10:17:02 092][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 109  lEngine_Start(f210a0d2,d195490,1, 0) [in]
+[2026/01/14 10:17:02 093][Pxfdb][Txf181ad80][INF] LLOADER    lloader.c  327  load lgi
+[2026/01/14 10:17:02 093][Pxfdb][Txf181ad80][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 094][Pxfdb][Txf181ad80][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 095][Pxfdb][Txf181ad80][PRF] LLOADER    lloader.c  397  load lgi cost 3 (ms)
+[2026/01/14 10:17:02 096][Pxfdb][Txf181ad80][DBG] LENGINE    leng_shell 204  env=b0dad40,lgi,lgi_
+[2026/01/14 10:17:02 098][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:6:1:1
+[2026/01/14 10:17:02 098][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 275  lEngine_Start() [out] 0
+[2026/01/14 10:17:02 099][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 418  lEngine_SendMessage(b0dad40,1,4,,,) [in]
+[2026/01/14 10:17:02 100][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:11:1:0
+[2026/01/14 10:17:02 100][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 565  ENGINE_MSG_LOAD
+[2026/01/14 10:17:02 102][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(f259a300,b0dad40) [in]
+[2026/01/14 10:17:02 104][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load ecode
+[2026/01/14 10:17:02 105][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 106][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 107][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load ecode cost 2 (ms)
+[2026/01/14 10:17:02 108][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load config
+[2026/01/14 10:17:02 109][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 110][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 110][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load config cost 2 (ms)
+[2026/01/14 10:17:02 111][Pxfdb][Txe9ffb700][INF] LMOD       luac_logge 172  [config:43:use general cloud  ]
+[2026/01/14 10:17:02 111][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load update
+[2026/01/14 10:17:02 112][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 112][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 113][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load update cost 2 (ms)
+[2026/01/14 10:17:02 114][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load transport
+[2026/01/14 10:17:02 115][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 116][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 117][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load transport cost 2 (ms)
+[2026/01/14 10:17:02 119][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load ns
+[2026/01/14 10:17:02 120][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 120][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 121][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load ns cost 3 (ms)
+[2026/01/14 10:17:02 122][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load network
+[2026/01/14 10:17:02 123][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 124][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 125][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load network cost 3 (ms)
+[2026/01/14 10:17:02 127][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 263  precall return 0
+[2026/01/14 10:17:02 128][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 288  [lgi_], ACTIVE
+[2026/01/14 10:17:02 128][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d40490f0,b0dad40) [in]
+[2026/01/14 10:17:02 132][Pxfdb][Txe9ffb700][TRC] LMOD       luac_logge 170  [lgi:684:SYS_MSG_LOAD  ]
+[2026/01/14 10:17:02 132][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load dkjson
+[2026/01/14 10:17:02 133][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 134][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 134][Pxfdb][Txe9ffb700][PRF] LLOADER    lloader.c  397  load dkjson cost 2 (ms)
+[2026/01/14 10:17:02 135][Pxfdb][Txe9ffb700][INF] LLOADER    lloader.c  327  load debug
+[2026/01/14 10:17:02 136][Pxfdb][Txe9ffb700][ERR] LLOADER    lloader.c  390  not found!
+[2026/01/14 10:17:02 137][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 139][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 312  [lgi_], loaded
+[2026/01/14 10:17:02 140][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d40490f0,b0dad40) [in]
+[2026/01/14 10:17:02 142][Pxfdb][Txe9ffb700][TRC] LMOD       luac_logge 170  [lgi:706:SYS_MSG_REGCB  msp_status_cb  func(d40139a0) ]
+[2026/01/14 10:17:02 142][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 143][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2026/01/14 10:17:02 144][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 571  lgi_, eng = l_engine_6, env = b0dad40, L = b0dade0
+[2026/01/14 10:17:02 144][Pxfdb][Txe9ffb700][INF] LENGINE    leng_main. 572  l_engine_6 occupancy: 1 (33%)
+[2026/01/14 10:17:02 145][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 539  ENGINE_MSG_RPC_SYNC
+[2026/01/14 10:17:02 146][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 547  [lgi_], stat = 1
+[2026/01/14 10:17:02 147][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(b0dc790,b0dad40) [in]
+[2026/01/14 10:17:02 150][Pxfdb][Txe9ffb700][TRC] LMOD       luac_logge 170  [lgi:298:LGI_MSG_INIT  ]
+[2026/01/14 10:17:02 151][Pxfdb][Txe9ffb700][INF] LMOD       luac_logge 172  [lgi:305:lgi  lgi_  268436457  1573451739  ]
+[2026/01/14 10:17:02 151][Pxfdb][Txe9ffb700][TRC] MSPCMN     msp_cmn.c  875  statusCbStub(,,param_num = 5)
+[2026/01/14 10:17:02 152][Pxfdb][Txe9ffb700][PRF] LENGINE    leng_main. 189  callc(msp_status_cb) cost 1 ms
+[2026/01/14 10:17:02 154][Pxfdb][Txe9ffb700][TRC] LMOD       luac_logge 170  [lgi:403:token:  nil  ]
+[2026/01/14 10:17:02 155][Pxfdb][Txe9ffb700][INF] LMOD       luac_logge 172  [lgi:476:msc cver : 5.0.44.1288  ]
+[2026/01/14 10:17:02 157][Pxfdb][Txe9ffb700][INF] LMOD       luac_logge 172  [lgi:519:ns_enable=  1  ]
+[2026/01/14 10:17:02 158][Pxfdb][Txe9ffb700][INF] LMOD       luac_logge 172  [lgi:531:prot_ver=1  ]
+[2026/01/14 10:17:02 162][Pxfdb][Txe9ffb700][INF] LMOD       luac_logge 172  [lgi:542:prot_type=tcp  ]
+[2026/01/14 10:17:02 163][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 164][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 461  lEngine_SendMessage() [out] 0
+[2026/01/14 10:17:02 165][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 310  lEngine_Stop(b0dad40) [in]
+[2026/01/14 10:17:02 165][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_6:7:1:1
+[2026/01/14 10:17:02 166][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 586  ENGINE_MSG_UNLOAD
+[2026/01/14 10:17:02 167][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d40490f0,b0dad40) [in]
+[2026/01/14 10:17:02 168][Pxfdb][Txe9ffb700][TRC] LMOD       luac_logge 170  [lgi:693:SYS_MSG_UNLOAD  go bg!  ]
+[2026/01/14 10:17:02 169][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 170][Pxfdb][Txe9ffb700][DBG] LENGINE    leng_main. 623  [lgi_] active, go bg!
+[2026/01/14 10:17:02 172][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 369  lEngine_Stop() [out] 0
+[2026/01/14 10:17:02 174][Pxfdb][Txf181ad80][TRC] MSPCMN     msp_cmn.c  1483 MSPLogin() [out] 0
+[2026/01/14 10:17:02 176][Pxfdb][Txf181ad80][TRC] QISR       qisr.c     917  QISRBuildGrammar(d84511a4,b0e48e0,424,d1954c0) [in]
+[2026/01/14 10:17:02 177][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 109  lEngine_Start(f210a102,d195400,1, 0) [in]
+[2026/01/14 10:17:02 178][Pxfdb][Txf181ad80][INF] LLOADER    lloader.c  327  load grm_lex
+[2026/01/14 10:17:02 179][Pxfdb][Txf181ad80][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 180][Pxfdb][Txf181ad80][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 181][Pxfdb][Txf181ad80][PRF] LLOADER    lloader.c  397  load grm_lex cost 3 (ms)
+[2026/01/14 10:17:02 182][Pxfdb][Txf181ad80][DBG] LENGINE    leng_shell 204  env=b0e4aa0,grm_lex,local_grm
+[2026/01/14 10:17:02 183][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:6:1:1
+[2026/01/14 10:17:02 184][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 275  lEngine_Start() [out] 0
+[2026/01/14 10:17:02 185][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 477  lEngine_RegisterCallBack(b0e4aa0,f2191df7,f1edb910,0,) [in]
+[2026/01/14 10:17:02 186][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:8:1:0
+[2026/01/14 10:17:02 186][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 514  lEngine_RegisterCallBack() [out] 0
+[2026/01/14 10:17:02 187][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 380  lEngine_PostMessage(b0e4aa0,1,3,) [in]
+[2026/01/14 10:17:02 188][Pxfdb][Txf181ad80][WAR] LENGINE    leng_shell 390  msg send while not active
+[2026/01/14 10:17:02 188][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:10:1:0
+[2026/01/14 10:17:02 189][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 407  lEngine_PostMessage() [out] 0
+[2026/01/14 10:17:02 190][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 565  ENGINE_MSG_LOAD
+[2026/01/14 10:17:02 192][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(f259a2c0,b0e4aa0) [in]
+[2026/01/14 10:17:02 193][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 310  lEngine_Stop(b0e4aa0) [in]
+[2026/01/14 10:17:02 194][Pxfdb][Txf181ad80][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:7:1:0
+[2026/01/14 10:17:02 195][Pxfdb][Txea7fc700][INF] LLOADER    lloader.c  327  load ecode
+[2026/01/14 10:17:02 195][Pxfdb][Txea7fc700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 196][Pxfdb][Txea7fc700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 196][Pxfdb][Txea7fc700][PRF] LLOADER    lloader.c  397  load ecode cost 3 (ms)
+[2026/01/14 10:17:02 197][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 263  precall return 0
+[2026/01/14 10:17:02 198][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 288  [local_grm], ACTIVE
+[2026/01/14 10:17:02 199][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d0013de0,b0e4aa0) [in]
+[2026/01/14 10:17:02 202][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:264:SYS_MSG_LOAD  ]
+[2026/01/14 10:17:02 202][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 210][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 312  [local_grm], loaded
+[2026/01/14 10:17:02 212][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d0013de0,b0e4aa0) [in]
+[2026/01/14 10:17:02 214][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:281:SYS_MSG_REGCB  ]
+[2026/01/14 10:17:02 215][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 216][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2026/01/14 10:17:02 217][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 571  local_grm, eng = l_engine_5, env = b0e4aa0, L = b0e5c50
+[2026/01/14 10:17:02 218][Pxfdb][Txea7fc700][INF] LENGINE    leng_main. 572  l_engine_5 occupancy: 1 (33%)
+[2026/01/14 10:17:02 220][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 586  ENGINE_MSG_UNLOAD
+[2026/01/14 10:17:02 221][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d0013de0,b0e4aa0) [in]
+[2026/01/14 10:17:02 223][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:267:SYS_MSG_UNLOAD  ]
+[2026/01/14 10:17:02 223][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 224][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 623  [local_grm] active, go bg!
+[2026/01/14 10:17:02 225][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 690  ENGINE_MSG_REGCB
+[2026/01/14 10:17:02 226][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 715  local_grm (grmMessageCallBackC)
+[2026/01/14 10:17:02 226][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d0013de0,b0e4aa0) [in]
+[2026/01/14 10:17:02 227][Pxfdb][Txf181ad80][TRC] LENGINE    leng_shell 369  lEngine_Stop() [out] 0
+[2026/01/14 10:17:02 229][Pxfdb][Txf181ad80][TRC] QISR       qisr.c     998  QISRBuildGrammar() [out] 0
+[2026/01/14 10:17:02 230][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:281:SYS_MSG_REGCB  ]
+[2026/01/14 10:17:02 231][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 231][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 10:17:02 232][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 525  [local_grm], stat = 1
+[2026/01/14 10:17:02 233][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(b0dc790,b0e4aa0) [in]
+[2026/01/14 10:17:02 234][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:251:ISR_MSG_BUILDGRAMMAR  ]
+[2026/01/14 10:17:02 235][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:100:grm_type :  bnf  ]
+[2026/01/14 10:17:02 237][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:engine_type  :  local  ]
+[2026/01/14 10:17:02 238][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:asr_res_path  :  fo|res/asr/common.jet  ]
+[2026/01/14 10:17:02 241][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:sample_rate  :  16000  ]
+[2026/01/14 10:17:02 242][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:106:grm_build_path  :  res/asr/GrmBuilld  ]
+[2026/01/14 10:17:02 243][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 109  lEngine_Start(d000a7d8,d000ede8,0, 0) [in]
+[2026/01/14 10:17:02 243][Pxfdb][Txea7fc700][INF] LLOADER    lloader.c  327  load isr_local
+[2026/01/14 10:17:02 244][Pxfdb][Txea7fc700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 245][Pxfdb][Txea7fc700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 246][Pxfdb][Txea7fc700][PRF] LLOADER    lloader.c  397  load isr_local cost 2 (ms)
+[2026/01/14 10:17:02 247][Pxfdb][Txea7fc700][DBG] LENGINE    leng_shell 204  env=d000f0d0,isr_local,local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0
+[2026/01/14 10:17:02 248][Pxfdb][Txea7fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:6:1:1
+[2026/01/14 10:17:02 250][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 275  lEngine_Start() [out] 0
+[2026/01/14 10:17:02 250][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 477  lEngine_RegisterCallBack(d000f0d0,d000a818,f1ec7530,ea7fb8d0,) [in]
+[2026/01/14 10:17:02 251][Pxfdb][Txea7fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:8:1:0
+[2026/01/14 10:17:02 252][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 514  lEngine_RegisterCallBack() [out] 0
+[2026/01/14 10:17:02 252][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 380  lEngine_PostMessage(d000f0d0,307,2,) [in]
+[2026/01/14 10:17:02 253][Pxfdb][Txea7fc700][WAR] LENGINE    leng_shell 390  msg send while not active
+[2026/01/14 10:17:02 254][Pxfdb][Txea7fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:10:1:0
+[2026/01/14 10:17:02 254][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 407  lEngine_PostMessage() [out] 0
+[2026/01/14 10:17:02 255][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 565  ENGINE_MSG_LOAD
+[2026/01/14 10:17:02 257][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 209  lEngine_LoadEnv(f259a280,d000f0d0) [in]
+[2026/01/14 10:17:02 258][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:254:ISR_MSG_BUILDGRAMMAR ret =  0  ]
+[2026/01/14 10:17:02 259][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 260][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load ecode
+[2026/01/14 10:17:02 261][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 261][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 262][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load ecode cost 4 (ms)
+[2026/01/14 10:17:02 263][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load dkjson
+[2026/01/14 10:17:02 263][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 264][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 266][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load dkjson cost 3 (ms)
+[2026/01/14 10:17:02 267][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load debug
+[2026/01/14 10:17:02 269][Pxfdb][Txeaffd700][ERR] LLOADER    lloader.c  390  not found!
+[2026/01/14 10:17:02 270][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load auth
+[2026/01/14 10:17:02 270][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 271][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 272][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load auth cost 3 (ms)
+[2026/01/14 10:17:02 274][Pxfdb][Txeaffd700][TRC] LENGINE    luac_auth. 106  luac_loadluacAuth enter
+[2026/01/14 10:17:02 274][Pxfdb][Txeaffd700][TRC] LENGINE    luac_auth. 91   luac_openluacAuth enter
+[2026/01/14 10:17:02 275][Pxfdb][Txeaffd700][TRC] LENGINE    luac_auth. 99   luac_openluacAuth leave
+[2026/01/14 10:17:02 276][Pxfdb][Txeaffd700][TRC] LENGINE    luac_auth. 109  luac_loadluacAuth leave
+[2026/01/14 10:17:02 277][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load config
+[2026/01/14 10:17:02 277][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 278][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 279][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load config cost 2 (ms)
+[2026/01/14 10:17:02 279][Pxfdb][Txeaffd700][INF] LMOD       luac_logge 172  [config:43:use general cloud  ]
+[2026/01/14 10:17:02 280][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load update
+[2026/01/14 10:17:02 281][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 281][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 282][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load update cost 2 (ms)
+[2026/01/14 10:17:02 283][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load transport
+[2026/01/14 10:17:02 283][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 284][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 285][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load transport cost 3 (ms)
+[2026/01/14 10:17:02 286][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load ns
+[2026/01/14 10:17:02 287][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 287][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 288][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load ns cost 2 (ms)
+[2026/01/14 10:17:02 289][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  327  load network
+[2026/01/14 10:17:02 290][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  339  a intalled entry
+[2026/01/14 10:17:02 291][Pxfdb][Txeaffd700][INF] LLOADER    lloader.c  365  from rom
+[2026/01/14 10:17:02 292][Pxfdb][Txeaffd700][PRF] LLOADER    lloader.c  397  load network cost 3 (ms)
+[2026/01/14 10:17:02 293][Pxfdb][Txeaffd700][TRC] LENGINE    luac_auth. 118  luac_auth_new enter
+[2026/01/14 10:17:02 295][Pxfdb][Txeaffd700][TRC] LENGINE    luac_auth. 126  luac_auth_new leave
+[2026/01/14 10:17:02 295][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 263  precall return 0
+[2026/01/14 10:17:02 296][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 288  [local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0], ACTIVE
+[2026/01/14 10:17:02 297][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(dc041010,d000f0d0) [in]
+[2026/01/14 10:17:02 300][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:2211:os_type is:  Linux  ]
+[2026/01/14 10:17:02 302][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:2220:SYS_MSG_LOAD_LOCAL  ]
+[2026/01/14 10:17:02 303][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 304][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 312  [local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0], loaded
+[2026/01/14 10:17:02 306][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(dc041010,d000f0d0) [in]
+[2026/01/14 10:17:02 307][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:2249:SYS_MSG_REGCB_LOCAL| param0 =  msp_status_cb  ]
+[2026/01/14 10:17:02 308][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 308][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 345  lEngine_LoadEnv() [out] successfully
+[2026/01/14 10:17:02 309][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 571  local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0, eng = l_engine_4, env = d000f0d0, L = d000f240
+[2026/01/14 10:17:02 310][Pxfdb][Txeaffd700][INF] LENGINE    leng_main. 572  l_engine_4 occupancy: 1 (33%)
+[2026/01/14 10:17:02 311][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 690  ENGINE_MSG_REGCB
+[2026/01/14 10:17:02 311][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 715  local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0 (build_grm_cb)
+[2026/01/14 10:17:02 313][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(dc041010,d000f0d0) [in]
+[2026/01/14 10:17:02 314][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:2249:SYS_MSG_REGCB_LOCAL| param0 =  build_grm_cb  ]
+[2026/01/14 10:17:02 315][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 316][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 10:17:02 317][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 525  [local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0], stat = 1
+[2026/01/14 10:17:02 318][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d0013de0,d000f0d0) [in]
+[2026/01/14 10:17:02 319][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:2262:ASR_LOCAL_MSG_BUILD_GRM  ]
+[2026/01/14 10:17:02 356][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1903:grm_init | params:  engine_type = local, 		asr_res_path = fo|res/asr/common.jet, sample_rate = 16000, 		grm_build_path = res/asr/GrmBuilld,   ]
+[2026/01/14 10:17:02 358][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:805:engine_type  :  local  ]
+[2026/01/14 10:17:02 359][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:805:asr_res_path  :  fo|res/asr/common.jet  ]
+[2026/01/14 10:17:02 361][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:805:sample_rate  :  16000  ]
+[2026/01/14 10:17:02 363][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:805:grm_build_path  :  res/asr/GrmBuilld  ]
+[2026/01/14 10:17:02 363][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   660  Grm_New(dc043658, 2, dc041038, eaffc90c) [in]
+[2026/01/14 10:17:02 364][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   684  temp path is res/asr/GrmBuilld/temp/
+[2026/01/14 10:17:02 367][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:1:1:0
+[2026/01/14 10:17:02 368][Pxfdb][Txe95d7700][DBG] MSPTHREAD  MSPThreadP 826  grmWorker_build IDLE
+[2026/01/14 10:17:02 369][Pxfdb][Txe95d7700][DBG] MSPTHREAD  MSPThreadP 868  grmWorker_build RUN <grmWorker_build>
+[2026/01/14 10:17:02 370][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   732  Grm_New(dc043710, 0) [out]
+[2026/01/14 10:17:02 372][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1002:file count =   1  ]
+[2026/01/14 10:17:02 374][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:925:file open type is:   fo  ]
+[2026/01/14 10:17:02 375][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:958:res/asr/common.jet  0  0  ]
+[2026/01/14 10:17:02 377][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1020:speech_plus_setting  0  ]
+[2026/01/14 10:17:02 378][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1033:2  nil  res/asr/common.jet  0  0  ]
+[2026/01/14 10:17:02 379][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   115  Esr_ResCheck(2, eaffc860) [in]
+[2026/01/14 10:17:02 379][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   116  Esr_ResCheck(2, dc0451f8, 0, 0) [in]
+[2026/01/14 10:17:02 382][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   192  Esr_ResCheck( 0) [out]
+[2026/01/14 10:17:02 384][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1035:res_ver  2  ]
+[2026/01/14 10:17:02 386][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1036:res 5  19b6a1b4b66938610b89e878385feb4e  ]
+[2026/01/14 10:17:02 388][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1037:res_new_old_mark  v5pp  ]
+[2026/01/14 10:17:02 389][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1038:res_usr_name  ""  ]
+[2026/01/14 10:17:02 390][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1039:res_expires  1775961184  ]
+[2026/01/14 10:17:02 392][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1040:err  0  ]
+[2026/01/14 10:17:02 394][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1071:now expires:  1768357022  1775961184  ]
+[2026/01/14 10:17:02 394][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   1742 GetResFileInfoList_FO(dc043710, dc0451f8, 256, 0)
+[2026/01/14 10:17:02 396][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   1620 GetResPathInfo [in]
+[2026/01/14 10:17:02 397][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   1478 ParseHeaderInfo() [in]
+[2026/01/14 10:17:02 398][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   1599 ParseHeaderInfo() [out]
+[2026/01/14 10:17:02 398][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   1728 GetResPathInfo(ret=0) [out]
+[2026/01/14 10:17:02 399][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   1781 GetResFileInfoList_FO(0)[out]
+[2026/01/14 10:17:02 400][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   743  Grm_Create(dc043710, 160, dc009938) [in]
+[2026/01/14 10:17:02 401][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:5:1:1
+[2026/01/14 10:17:02 402][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   784  Grm_Create(0) [out]
+[2026/01/14 10:17:02 404][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:grm.irf
+[2026/01/14 10:17:02 406][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(dc043710, grm.irf, e95d641c)[in]
+[2026/01/14 10:17:02 407][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[grm.irf] Found!
+[2026/01/14 10:17:02 408][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 10:17:02 408][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=c8001440
+[2026/01/14 10:17:02 409][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 10:17:02 410][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 10:17:02 410][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   828  Grm_BnfParser(dc043710, dc045378, 424) [in]
+[2026/01/14 10:17:02 411][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:6:1:0
+[2026/01/14 10:17:02 412][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   868  Grm_BnfParser(0) [out]
+[2026/01/14 10:17:02 414][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   878  Grm_BuildNetwork(dc043710, 0, 160) [in]
+[2026/01/14 10:17:02 415][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:7:1:0
+[2026/01/14 10:17:02 416][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   913  Grm_BuildNetwork(0) [out]
+[2026/01/14 10:17:02 417][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1644:proc_retcode_grm | errorcode =  0  ]
+[2026/01/14 10:17:02 418][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 419][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:ivTable.irf
+[2026/01/14 10:17:02 420][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(dc043710, ivTable.irf, e95d652c)[in]
+[2026/01/14 10:17:02 421][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[ivTable.irf] Found!
+[2026/01/14 10:17:02 421][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 10:17:02 423][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=c8001440
+[2026/01/14 10:17:02 423][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 10:17:02 424][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 10:17:02 427][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:grm.irf
+[2026/01/14 10:17:02 427][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(dc043710, grm.irf, e95d636c)[in]
+[2026/01/14 10:17:02 428][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[grm.irf] Found!
+[2026/01/14 10:17:02 429][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 10:17:02 429][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=c8001440
+[2026/01/14 10:17:02 430][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 10:17:02 431][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 10:17:02 433][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:bzvskdaa.d
+[2026/01/14 10:17:02 444][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:hhnkdega.d
+[2026/01/14 10:17:02 449][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:wkufnlaa.d
+[2026/01/14 10:17:02 453][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:uikawbda.d
+[2026/01/14 10:17:02 457][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call.g
+[2026/01/14 10:17:02 461][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call.g
+[2026/01/14 10:17:02 478][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call.g
+[2026/01/14 10:17:02 481][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:ivHmmRes_16K.irf
+[2026/01/14 10:17:02 484][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1873 GetResFileInfo(dc043710, ivHmmRes_16K.irf, e95d618c)[in]
+[2026/01/14 10:17:02 485][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1894 GetResFileInfo | File[ivHmmRes_16K.irf] Found!
+[2026/01/14 10:17:02 485][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1934 GetResFileInfo(0)[out]
+[2026/01/14 10:17:02 486][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1968 CBOpenFile | res_file_info=c8001440
+[2026/01/14 10:17:02 487][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1975 CBOpenFile | type=2
+[2026/01/14 10:17:02 488][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1978 CBOpenFile | ESR_FILE_OP_TYPE_FO : resource file name=res/asr/common.jet
+[2026/01/14 10:17:02 495][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   1081 CBOpenFile: open file name:call_16K
+[2026/01/14 10:17:02 499][Pxfdb][Txe95d7700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:10:1:1
+[2026/01/14 10:17:02 501][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 10:17:02 501][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 525  [local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0], stat = 1
+[2026/01/14 10:17:02 502][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(c8045380,d000f0d0) [in]
+[2026/01/14 10:17:02 504][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:2022:grammar id:call  ]
+[2026/01/14 10:17:02 509][Pxfdb][Txeaffd700][TRC] LMOD       luac_logge 170  [isr_local:1636:onGrmLocalServiceCb  0  call  ]
+[2026/01/14 10:17:02 510][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:10:1:1
+[2026/01/14 10:17:02 511][Pxfdb][Txeaffd700][PRF] LENGINE    leng_main. 189  callc(build_grm_cb) cost 1 ms
+[2026/01/14 10:17:02 512][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   792  Grm_Destroy(dc043710) [in]
+[2026/01/14 10:17:02 512][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 517  ENGINE_MSG_RPC_ASYNC
+[2026/01/14 10:17:02 515][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 525  [local_grm], stat = 1
+[2026/01/14 10:17:02 515][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 416  luacRPCFuncProto_Invoke(d0013de0,b0e4aa0) [in]
+[2026/01/14 10:17:02 516][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:11:1:1
+[2026/01/14 10:17:02 518][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST grmWorker_build:2:1:0
+[2026/01/14 10:17:02 518][Pxfdb][Txea7fc700][TRC] LMOD       luac_logge 170  [grm_lex:71:0  call  ]
+[2026/01/14 10:17:02 519][Pxfdb][Txea7fc700][TRC] QISR       qisr.c     864  grmMessageCallBackC| enter
+[2026/01/14 10:17:02 520][Pxfdb][Txea7fc700][TRC] QISR       qisr.c     895  grmMessageCallBackC| leave
+[2026/01/14 10:17:02 521][Pxfdb][Txea7fc700][PRF] LENGINE    leng_main. 189  callc(grmMessageCallBackC) cost 2 ms
+[2026/01/14 10:17:02 522][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 545  lEngine_Exit(b0e4aa0) [in]
+[2026/01/14 10:17:02 523][Pxfdb][Txea7fc700][DBG] LENGINE    leng_shell 549  [local_grm] dying...
+[2026/01/14 10:17:02 524][Pxfdb][Txea7fc700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_5:9:1:0
+[2026/01/14 10:17:02 524][Pxfdb][Txea7fc700][TRC] LENGINE    leng_shell 582  lEngine_Exit() [out] 0
+[2026/01/14 10:17:02 525][Pxfdb][Txea7fc700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 526][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 651  ENGINE_MSG_STOP
+[2026/01/14 10:17:02 527][Pxfdb][Txea7fc700][DBG] LENGINE    leng_main. 671  [local_grm] bg, unload directly!
+[2026/01/14 10:17:02 527][Pxfdb][Txea7fc700][INF] LENGINE    leng_main. 676  l_engine_5 occupancy: 0 (0%)
+[2026/01/14 10:17:02 528][Pxfdb][Txe95d7700][TRC] LENGINE    aitalk.c   2168 AITALK GRM_WORKER EXIT
+[2026/01/14 10:17:02 529][Pxfdb][Txe95d7700][DBG] MSPTHREAD  MSPThreadP 872  grmWorker_build END <grmWorker_build>
+[2026/01/14 10:17:02 530][Pxfdb][Txe95d7700][DBG] MSPTHREAD  MSPThreadP 895  grmWorker_build IDLE
+[2026/01/14 10:17:02 532][Pxfdb][Txeaffd700][TRC] LENGINE    aitalk.c   817  Grm_Destroy(dc043710, 0) [out]
+[2026/01/14 10:17:02 534][Pxfdb][Txeaffd700][TRC] LENGINE    leng_shell 545  lEngine_Exit(d000f0d0) [in]
+[2026/01/14 10:17:02 534][Pxfdb][Txeaffd700][DBG] LENGINE    leng_shell 549  [local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0] dying...
+[2026/01/14 10:17:02 535][Pxfdb][Txeaffd700][DBG] MSPTHREAD  MSPThreadP 734  POST l_engine_4:9:1:0
+[2026/01/14 10:17:02 536][Pxfdb][Txeaffd700][TRC] LENGINE    leng_shell 582  lEngine_Exit() [out] 0
+[2026/01/14 10:17:02 536][Pxfdb][Txeaffd700][DBG] LENGINE    leng_rpc.c 533  luacRPCFuncProto_Invoke() [out] ret = 0
+[2026/01/14 10:17:02 537][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 651  ENGINE_MSG_STOP
+[2026/01/14 10:17:02 538][Pxfdb][Txeaffd700][DBG] LENGINE    leng_main. 671  [local_build_ea7fb928ea7fb93026dfde6966fc9ef1ec8bd0] bg, unload directly!
+[2026/01/14 10:17:02 539][Pxfdb][Txeaffd700][INF] LENGINE    leng_main. 676  l_engine_4 occupancy: 0 (0%)

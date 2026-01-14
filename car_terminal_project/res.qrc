@@ -25,5 +25,8 @@
         <file>image/help.png</file>
         <file>image/camera.png</file>
         <file>image/music_pause.png</file>
+        <file>image/fan.png</file>
+        <file>image/left_fan.png</file>
+        <file>image/right_fan.png</file>
     </qresource>
 </RCC>
