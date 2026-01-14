@@ -9,6 +9,7 @@
 #include "threadtime.h"
 #include "voicethread.h"
 #include "clientbthread.h"
+#include "gamehall.h"
 extern "C"
 {
 #include <sys/types.h>
@@ -40,6 +41,8 @@ public:
 
 private:
     Ui::Widget *ui;
+    //贪吃蛇游戏
+    GameHall *snake;
     //相机界面
     CameraWidget *camera;
     //语音线程
@@ -165,5 +168,6 @@ private slots:
     void requestWeather(const QString &city);
     //帮助按钮槽函数
     void on_btn_help_clicked();
+    void on_btn_snake_clicked();
 };
 #endif // WIDGET_H

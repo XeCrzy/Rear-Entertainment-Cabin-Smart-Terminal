@@ -25,7 +25,10 @@ SOURCES += \
     time_manager.c \
     camerawidget.cpp \
     picshowmainwindow.cpp \
-    v4l2api.cpp
+    v4l2api.cpp \
+    gameroom.cpp \
+    gameselect.cpp \
+    gamehall.cpp
 HEADERS += \
     clientbthread.h \
     threadtime.h \
@@ -35,12 +38,17 @@ HEADERS += \
     time_manager.h \
     camerawidget.h \
     picshowmainwindow.h \
-    v4l2api.h
+    v4l2api.h \
+    gamehall.h \
+    gameroom.h \
+    gameselect.h
 
 FORMS += \
     widget.ui \
     camerawidget.ui \
-    picshowmainwindow.ui
+    picshowmainwindow.ui \
+    gamehall.ui
+
 
 
 # Default rules for deployment.

@@ -58,6 +58,9 @@ SOURCES       = clientbthread.cpp \
 		camerawidget.cpp \
 		picshowmainwindow.cpp \
 		v4l2api.cpp \
+		gameroom.cpp \
+		gameselect.cpp \
+		gamehall.cpp \
 		easyInput/googlepinyin.cpp \
 		easyInput/googlepinyin/dictbuilder.cpp \
 		easyInput/googlepinyin/dictlist.cpp \
@@ -83,6 +86,9 @@ SOURCES       = clientbthread.cpp \
 		moc_widget.cpp \
 		moc_camerawidget.cpp \
 		moc_picshowmainwindow.cpp \
+		moc_gamehall.cpp \
+		moc_gameroom.cpp \
+		moc_gameselect.cpp \
 		moc_easyinput.cpp \
 		moc_googlepinyin.cpp
 OBJECTS       = clientbthread.o \
@@ -95,6 +101,9 @@ OBJECTS       = clientbthread.o \
 		camerawidget.o \
 		picshowmainwindow.o \
 		v4l2api.o \
+		gameroom.o \
+		gameselect.o \
+		gamehall.o \
 		googlepinyin.o \
 		dictbuilder.o \
 		dictlist.o \
@@ -121,6 +130,9 @@ OBJECTS       = clientbthread.o \
 		moc_widget.o \
 		moc_camerawidget.o \
 		moc_picshowmainwindow.o \
+		moc_gamehall.o \
+		moc_gameroom.o \
+		moc_gameselect.o \
 		moc_easyinput.o \
 		moc_googlepinyin.o
 DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
@@ -248,6 +260,9 @@ DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
 		camerawidget.h \
 		picshowmainwindow.h \
 		v4l2api.h \
+		gamehall.h \
+		gameroom.h \
+		gameselect.h \
 		easyInput/easyinput.h \
 		easyInput/googlepinyin.h \
 		easyInput/googlepinyin/atomdictbase.h \
@@ -278,6 +293,9 @@ DIST          = /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
 		camerawidget.cpp \
 		picshowmainwindow.cpp \
 		v4l2api.cpp \
+		gameroom.cpp \
+		gameselect.cpp \
+		gamehall.cpp \
 		easyInput/googlepinyin.cpp \
 		easyInput/googlepinyin/dictbuilder.cpp \
 		easyInput/googlepinyin/dictlist.cpp \
@@ -304,7 +322,7 @@ TARGET        = car_terminal_project
 first: all
 ####### Build rules
 
-$(TARGET): ui_widget.h ui_camerawidget.h ui_picshowmainwindow.h ui_easyInput.h $(OBJECTS)  
+$(TARGET): ui_widget.h ui_camerawidget.h ui_picshowmainwindow.h ui_gamehall.h ui_easyInput.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: car_terminal_project.pro /usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++/qmake.conf /usr/local/Qt-Embedded-5.7.0/mkspecs/features/spec_pre.prf \
@@ -569,9 +587,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc easyInput/easyInput.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents clientbthread.h threadtime.h voicethread.h widget.h ntp_client.h time_manager.h camerawidget.h picshowmainwindow.h v4l2api.h easyInput/easyinput.h easyInput/googlepinyin.h easyInput/googlepinyin/atomdictbase.h easyInput/googlepinyin/dictbuilder.h easyInput/googlepinyin/dictdef.h easyInput/googlepinyin/dictlist.h easyInput/googlepinyin/dicttrie.h easyInput/googlepinyin/lpicache.h easyInput/googlepinyin/matrixsearch.h easyInput/googlepinyin/mystdlib.h easyInput/googlepinyin/ngram.h easyInput/googlepinyin/pinyinime.h easyInput/googlepinyin/searchutility.h easyInput/googlepinyin/spellingtable.h easyInput/googlepinyin/spellingtrie.h easyInput/googlepinyin/splparser.h easyInput/googlepinyin/sync.h easyInput/googlepinyin/userdict.h easyInput/googlepinyin/utf16char.h easyInput/googlepinyin/utf16reader.h easyInput/easyinput.h $(DISTDIR)/
-	$(COPY_FILE) --parents clientbthread.cpp main.cpp threadtime.cpp voicethread.cpp widget.cpp ntp_client.c time_manager.c camerawidget.cpp picshowmainwindow.cpp v4l2api.cpp easyInput/googlepinyin.cpp easyInput/googlepinyin/dictbuilder.cpp easyInput/googlepinyin/dictlist.cpp easyInput/googlepinyin/dicttrie.cpp easyInput/googlepinyin/lpicache.cpp easyInput/googlepinyin/matrixsearch.cpp easyInput/googlepinyin/mystdlib.cpp easyInput/googlepinyin/ngram.cpp easyInput/googlepinyin/pinyinime.cpp easyInput/googlepinyin/searchutility.cpp easyInput/googlepinyin/spellingtable.cpp easyInput/googlepinyin/spellingtrie.cpp easyInput/googlepinyin/splparser.cpp easyInput/googlepinyin/sync.cpp easyInput/googlepinyin/userdict.cpp easyInput/googlepinyin/utf16char.cpp easyInput/googlepinyin/utf16reader.cpp easyInput/easyInput.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents widget.ui camerawidget.ui picshowmainwindow.ui easyInput/easyInput.ui $(DISTDIR)/
+	$(COPY_FILE) --parents clientbthread.h threadtime.h voicethread.h widget.h ntp_client.h time_manager.h camerawidget.h picshowmainwindow.h v4l2api.h gamehall.h gameroom.h gameselect.h easyInput/easyinput.h easyInput/googlepinyin.h easyInput/googlepinyin/atomdictbase.h easyInput/googlepinyin/dictbuilder.h easyInput/googlepinyin/dictdef.h easyInput/googlepinyin/dictlist.h easyInput/googlepinyin/dicttrie.h easyInput/googlepinyin/lpicache.h easyInput/googlepinyin/matrixsearch.h easyInput/googlepinyin/mystdlib.h easyInput/googlepinyin/ngram.h easyInput/googlepinyin/pinyinime.h easyInput/googlepinyin/searchutility.h easyInput/googlepinyin/spellingtable.h easyInput/googlepinyin/spellingtrie.h easyInput/googlepinyin/splparser.h easyInput/googlepinyin/sync.h easyInput/googlepinyin/userdict.h easyInput/googlepinyin/utf16char.h easyInput/googlepinyin/utf16reader.h easyInput/easyinput.h $(DISTDIR)/
+	$(COPY_FILE) --parents clientbthread.cpp main.cpp threadtime.cpp voicethread.cpp widget.cpp ntp_client.c time_manager.c camerawidget.cpp picshowmainwindow.cpp v4l2api.cpp gameroom.cpp gameselect.cpp gamehall.cpp easyInput/googlepinyin.cpp easyInput/googlepinyin/dictbuilder.cpp easyInput/googlepinyin/dictlist.cpp easyInput/googlepinyin/dicttrie.cpp easyInput/googlepinyin/lpicache.cpp easyInput/googlepinyin/matrixsearch.cpp easyInput/googlepinyin/mystdlib.cpp easyInput/googlepinyin/ngram.cpp easyInput/googlepinyin/pinyinime.cpp easyInput/googlepinyin/searchutility.cpp easyInput/googlepinyin/spellingtable.cpp easyInput/googlepinyin/spellingtrie.cpp easyInput/googlepinyin/splparser.cpp easyInput/googlepinyin/sync.cpp easyInput/googlepinyin/userdict.cpp easyInput/googlepinyin/utf16char.cpp easyInput/googlepinyin/utf16reader.cpp easyInput/easyInput.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents widget.ui camerawidget.ui picshowmainwindow.ui gamehall.ui easyInput/easyInput.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -600,6 +618,24 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_res.cpp qrc_easyInput.cpp
 qrc_res.cpp: res.qrc \
 		/usr/local/Qt-Embedded-5.7.0/bin/rcc \
+		res/hard_food.png \
+		res/scores.png \
+		res/game_hall.png \
+		res/body.png \
+		res/ico.png \
+		res/normal_room.png \
+		res/simple_room.png \
+		res/up.png \
+		res/normal_food.bmp \
+		res/sorce_bg.png \
+		res/game_select.png \
+		res/down.png \
+		res/hard_room.png \
+		res/simple_food.png \
+		res/right.png \
+		res/right_area.png \
+		res/left.png \
+		res/back.png \
 		image/music_next.png \
 		image/help.png \
 		image/background.png \
@@ -637,9 +673,9 @@ qrc_easyInput.cpp: easyInput/easyInput.qrc \
 		easyInput/image/upper_white.png
 	/usr/local/Qt-Embedded-5.7.0/bin/rcc -name easyInput easyInput/easyInput.qrc -o qrc_easyInput.cpp
 
-compiler_moc_header_make_all: moc_clientbthread.cpp moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
+compiler_moc_header_make_all: moc_clientbthread.cpp moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_gamehall.cpp moc_gameroom.cpp moc_gameselect.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_clientbthread.cpp moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
+	-$(DEL_FILE) moc_clientbthread.cpp moc_threadtime.cpp moc_voicethread.cpp moc_widget.cpp moc_camerawidget.cpp moc_picshowmainwindow.cpp moc_gamehall.cpp moc_gameroom.cpp moc_gameselect.cpp moc_easyinput.cpp moc_googlepinyin.cpp moc_easyinput.cpp
 moc_clientbthread.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
@@ -1289,6 +1325,8 @@ moc_widget.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		clientbthread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
+		gamehall.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
 		widget.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include widget.h -o moc_widget.cpp
@@ -1518,6 +1556,312 @@ moc_picshowmainwindow.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMainW
 		picshowmainwindow.h \
 		/usr/local/Qt-Embedded-5.7.0/bin/moc
 	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include picshowmainwindow.h -o moc_picshowmainwindow.cpp
+
+moc_gamehall.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
+		gamehall.h \
+		/usr/local/Qt-Embedded-5.7.0/bin/moc
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include gamehall.h -o moc_gamehall.cpp
+
+moc_gameroom.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QList \
+		gameroom.h \
+		/usr/local/Qt-Embedded-5.7.0/bin/moc
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include gameroom.h -o moc_gameroom.cpp
+
+moc_gameselect.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		gameselect.h \
+		/usr/local/Qt-Embedded-5.7.0/bin/moc
+	/usr/local/Qt-Embedded-5.7.0/bin/moc $(DEFINES) -I/usr/local/Qt-Embedded-5.7.0/mkspecs/linux-arm-gnueabi-g++ -I/mnt/hgfs/code/car_terminal_project/car_terminal_project -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput -I/mnt/hgfs/code/car_terminal_project/car_terminal_project/easyInput/googlepinyin -I/usr/local/Qt-Embedded-5.7.0/include -I/usr/local/Qt-Embedded-5.7.0/include/QtWidgets -I/usr/local/Qt-Embedded-5.7.0/include/QtGui -I/usr/local/Qt-Embedded-5.7.0/include/QtNetwork -I/usr/local/Qt-Embedded-5.7.0/include/QtCore -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0 -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/arm-none-linux-gnueabi -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include/c++/5.4.0/backward -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include -I/home/gec/usr/local/arm/5.4.0/usr/lib/gcc/arm-none-linux-gnueabi/5.4.0/include-fixed -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/include -I/home/gec/usr/local/arm/5.4.0/usr/arm-none-linux-gnueabi/sysroot/usr/include gameselect.h -o moc_gameselect.cpp
 
 moc_easyinput.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGuiDepends \
@@ -2465,9 +2809,9 @@ moc_easyinput.cpp: /usr/local/Qt-Embedded-5.7.0/include/QtGui/QtGui \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_widget.h ui_camerawidget.h ui_picshowmainwindow.h ui_easyInput.h
+compiler_uic_make_all: ui_widget.h ui_camerawidget.h ui_picshowmainwindow.h ui_gamehall.h ui_easyInput.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_widget.h ui_camerawidget.h ui_picshowmainwindow.h ui_easyInput.h
+	-$(DEL_FILE) ui_widget.h ui_camerawidget.h ui_picshowmainwindow.h ui_gamehall.h ui_easyInput.h
 ui_widget.h: widget.ui \
 		/usr/local/Qt-Embedded-5.7.0/bin/uic
 	/usr/local/Qt-Embedded-5.7.0/bin/uic widget.ui -o ui_widget.h
@@ -2479,6 +2823,10 @@ ui_camerawidget.h: camerawidget.ui \
 ui_picshowmainwindow.h: picshowmainwindow.ui \
 		/usr/local/Qt-Embedded-5.7.0/bin/uic
 	/usr/local/Qt-Embedded-5.7.0/bin/uic picshowmainwindow.ui -o ui_picshowmainwindow.h
+
+ui_gamehall.h: gamehall.ui \
+		/usr/local/Qt-Embedded-5.7.0/bin/uic
+	/usr/local/Qt-Embedded-5.7.0/bin/uic gamehall.ui -o ui_gamehall.h
 
 ui_easyInput.h: easyInput/easyInput.ui \
 		/usr/local/Qt-Embedded-5.7.0/bin/uic
@@ -3039,6 +3387,8 @@ main.o: main.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		clientbthread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
+		gamehall.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
@@ -3657,6 +4007,8 @@ widget.o: widget.cpp widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QString \
 		clientbthread.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QWaitCondition \
+		gamehall.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
 		ui_widget.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
 		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
@@ -4005,6 +4357,396 @@ picshowmainwindow.o: picshowmainwindow.cpp picshowmainwindow.h \
 
 v4l2api.o: v4l2api.cpp v4l2api.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o v4l2api.o v4l2api.cpp
+
+gameroom.o: gameroom.cpp gameroom.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QList \
+		gameselect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPainter \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainter.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QIcon \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTimer \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasictimer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QMessageBox \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qmessagebox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdialog.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTextStream \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QDebug
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameroom.o gameroom.cpp
+
+gameselect.o: gameselect.cpp gameselect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QIcon \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPainter \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainter.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QTextEdit \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtextedit.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qframe.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextdocument.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QTextStream \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QFile \
+		gamehall.h \
+		gameroom.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QList
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameselect.o gameselect.cpp
+
+gamehall.o: gamehall.cpp gamehall.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QWidget \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobal.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qconfig.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfeatures.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsystemdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qprocessordetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcompilerdetection.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypeinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtypetraits.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qisenum.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsysinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlogging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qflags.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbasicatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_bootstrap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qgenericatomic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_cxx11.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qatomic_msvc.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qglobalstatic.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmutex.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnumeric.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qversiontagging.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qnamespace.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobjectdefs_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qwindowdefs_win.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstring.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qchar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrefcount.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qarraydata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringbuilder.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qalgorithms.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiterator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhashfunctions.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpair.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qbytearraylist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringlist.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregexp.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qstringmatcher.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qscopedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmetatype.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvarlengtharray.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontainerfwd.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qobject_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmargins.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpaintdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qrect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsize.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qpoint.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpalette.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcolor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgb.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qrgba64.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qbrush.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvector.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qmatrix.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpolygon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qregion.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdatastream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qiodevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qline.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtransform.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainterpath.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qimage.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixelformat.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpixmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qshareddata.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qhash.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qsharedpointer_impl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfont.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontmetrics.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qfontinfo.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qsizepolicy.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qcursor.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qkeysequence.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qevent.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qvariant.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qmap.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qdebug.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qtextstream.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qlocale.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qset.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcontiguouscache.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurl.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qurlquery.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfile.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qfiledevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvector2d.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtouchdevice.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPaintEvent \
+		ui_gamehall.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QVariant \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QAction \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qaction.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qicon.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qactiongroup.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QApplication \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qcoreapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qeventloop.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qdesktopwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qguiapplication.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qinputmethod.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QButtonGroup \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qbuttongroup.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QHeaderView \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qheaderview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemview.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractscrollarea.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qframe.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qabstractitemmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qitemselectionmodel.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractitemdelegate.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyleoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractspinbox.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qvalidator.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtCore/qregularexpression.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractslider.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qstyle.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabbar.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qtabwidget.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qrubberband.h \
+		gameselect.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPainter \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpainter.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qtextoption.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/qpen.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QPixmap \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QIcon \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/QPushButton \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qpushbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtWidgets/qabstractbutton.h \
+		/usr/local/Qt-Embedded-5.7.0/include/QtGui/QFont
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamehall.o gamehall.cpp
 
 googlepinyin.o: easyInput/googlepinyin.cpp easyInput/googlepinyin.h \
 		/usr/local/Qt-Embedded-5.7.0/include/QtCore/QObject \
@@ -4767,6 +5509,15 @@ moc_camerawidget.o: moc_camerawidget.cpp
 
 moc_picshowmainwindow.o: moc_picshowmainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_picshowmainwindow.o moc_picshowmainwindow.cpp
+
+moc_gamehall.o: moc_gamehall.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gamehall.o moc_gamehall.cpp
+
+moc_gameroom.o: moc_gameroom.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gameroom.o moc_gameroom.cpp
+
+moc_gameselect.o: moc_gameselect.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gameselect.o moc_gameselect.cpp
 
 moc_easyinput.o: moc_easyinput.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_easyinput.o moc_easyinput.cpp

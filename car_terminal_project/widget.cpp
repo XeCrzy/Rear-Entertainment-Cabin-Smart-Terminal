@@ -20,6 +20,10 @@ Widget::Widget(QWidget *parent)
         eInput->hide();
     }
 
+    // ============== 贪吃蛇游戏初始化 ==============
+    snake = new GameHall(this);  // 确保在这里创建 snake 对象
+    snake->setWindowFlags(Qt::Window);  // 设置为独立窗口
+    snake->hide();  // 初始隐藏
 
     // ============== GIF动画初始化 ==============
     voiceGifMovie = new QMovie(":/image/voice.gif", QByteArray(), this);
@@ -1376,8 +1380,78 @@ Widget::~Widget()
         timeThread->stopTimeThread();
         delete timeThread;
     }
+
+    // 删除游戏对象
+    if (snake) {
+        snake->close();
+        delete snake;
+        snake = nullptr;
+    }
+
     delete camera;
     delete ui;
+
 }
 
 
+
+void Widget::on_btn_snake_clicked()
+{
+    qDebug() << "Snake game button clicked";
+
+    // If game window already exists, just show it
+    if (snake) {
+        // Clean up if window is closed but pointer still exists
+        if (snake->isHidden() || !snake->parent()) {
+            delete snake;
+            snake = nullptr;
+        } else {
+            snake->show();
+            snake->raise();
+            snake->activateWindow();
+            snake->setFocus();
+            qDebug() << "Existing game window shown";
+            return;
+        }
+    }
+
+    // Create new game window
+    qDebug() << "Creating new GameHall";
+    snake = new GameHall(this);
+
+    // Set window flags - make it a proper window
+    snake->setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
+
+    // Connect signals
+    connect(snake, &GameHall::returnToMain, this, [=]() {
+        qDebug() << "Game returned to main window";
+        if (snake) {
+            snake->close();
+            snake->deleteLater();
+            snake = nullptr;
+        }
+    });
+
+    // Show game window
+    snake->show();
+
+    // Set window position (centered on main window)
+    snake->setGeometry(
+        this->x() + (this->width() - snake->width()) / 2,
+        this->y() + (this->height() - snake->height()) / 2,
+        snake->width(),
+        snake->height()
+    );
+
+    // Raise and activate window
+    snake->raise();
+    snake->activateWindow();
+
+    // Important: Set focus to game window for keyboard input
+    snake->setFocus();
+
+    // Try to grab keyboard for embedded systems
+    snake->grabKeyboard();
+
+    qDebug() << "Snake game window created and shown";
+}
