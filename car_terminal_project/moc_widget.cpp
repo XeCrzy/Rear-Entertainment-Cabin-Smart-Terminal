@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[42];
-    char stringdata0[725];
+    QByteArrayData data[44];
+    char stringdata0[751];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,27 +50,29 @@ QT_MOC_LITERAL(17, 286, 20), // "onVoiceStatusChanged"
 QT_MOC_LITERAL(18, 307, 6), // "status"
 QT_MOC_LITERAL(19, 314, 24), // "onVoiceRecordingFinished"
 QT_MOC_LITERAL(20, 339, 20), // "onVoiceButtonClicked"
-QT_MOC_LITERAL(21, 360, 18), // "queryWeatherByCity"
-QT_MOC_LITERAL(22, 379, 4), // "city"
-QT_MOC_LITERAL(23, 384, 23), // "onWeatherQueryCompleted"
-QT_MOC_LITERAL(24, 408, 21), // "onWeatherDataReceived"
-QT_MOC_LITERAL(25, 430, 7), // "weather"
-QT_MOC_LITERAL(26, 438, 11), // "temperature"
-QT_MOC_LITERAL(27, 450, 8), // "humidity"
-QT_MOC_LITERAL(28, 459, 17), // "onCommandReceived"
-QT_MOC_LITERAL(29, 477, 18), // "onClientBConnected"
-QT_MOC_LITERAL(30, 496, 21), // "onClientBDisconnected"
-QT_MOC_LITERAL(31, 518, 24), // "onClientBConnectionError"
-QT_MOC_LITERAL(32, 543, 5), // "error"
-QT_MOC_LITERAL(33, 549, 21), // "onClientBCityNameSent"
-QT_MOC_LITERAL(34, 571, 21), // "onClientBDebugMessage"
-QT_MOC_LITERAL(35, 593, 3), // "msg"
-QT_MOC_LITERAL(36, 597, 27), // "onManualConnectionCompleted"
-QT_MOC_LITERAL(37, 625, 19), // "on_btn_send_clicked"
-QT_MOC_LITERAL(38, 645, 22), // "on_btn_beijing_clicked"
-QT_MOC_LITERAL(39, 668, 24), // "on_btn_guangzhou_clicked"
-QT_MOC_LITERAL(40, 693, 16), // "reconnectClientB"
-QT_MOC_LITERAL(41, 710, 14) // "requestWeather"
+QT_MOC_LITERAL(21, 360, 12), // "showVoiceGif"
+QT_MOC_LITERAL(22, 373, 12), // "hideVoiceGif"
+QT_MOC_LITERAL(23, 386, 18), // "queryWeatherByCity"
+QT_MOC_LITERAL(24, 405, 4), // "city"
+QT_MOC_LITERAL(25, 410, 23), // "onWeatherQueryCompleted"
+QT_MOC_LITERAL(26, 434, 21), // "onWeatherDataReceived"
+QT_MOC_LITERAL(27, 456, 7), // "weather"
+QT_MOC_LITERAL(28, 464, 11), // "temperature"
+QT_MOC_LITERAL(29, 476, 8), // "humidity"
+QT_MOC_LITERAL(30, 485, 17), // "onCommandReceived"
+QT_MOC_LITERAL(31, 503, 18), // "onClientBConnected"
+QT_MOC_LITERAL(32, 522, 21), // "onClientBDisconnected"
+QT_MOC_LITERAL(33, 544, 24), // "onClientBConnectionError"
+QT_MOC_LITERAL(34, 569, 5), // "error"
+QT_MOC_LITERAL(35, 575, 21), // "onClientBCityNameSent"
+QT_MOC_LITERAL(36, 597, 21), // "onClientBDebugMessage"
+QT_MOC_LITERAL(37, 619, 3), // "msg"
+QT_MOC_LITERAL(38, 623, 27), // "onManualConnectionCompleted"
+QT_MOC_LITERAL(39, 651, 19), // "on_btn_send_clicked"
+QT_MOC_LITERAL(40, 671, 22), // "on_btn_beijing_clicked"
+QT_MOC_LITERAL(41, 694, 24), // "on_btn_guangzhou_clicked"
+QT_MOC_LITERAL(42, 719, 16), // "reconnectClientB"
+QT_MOC_LITERAL(43, 736, 14) // "requestWeather"
 
     },
     "Widget\0slotHideInput\0\0exitWindow\0"
@@ -83,7 +85,8 @@ QT_MOC_LITERAL(41, 710, 14) // "requestWeather"
     "on_btn_camera_clicked\0onVoiceCommandReceived\0"
     "command\0onVoiceStatusChanged\0status\0"
     "onVoiceRecordingFinished\0onVoiceButtonClicked\0"
-    "queryWeatherByCity\0city\0onWeatherQueryCompleted\0"
+    "showVoiceGif\0hideVoiceGif\0queryWeatherByCity\0"
+    "city\0onWeatherQueryCompleted\0"
     "onWeatherDataReceived\0weather\0temperature\0"
     "humidity\0onCommandReceived\0"
     "onClientBConnected\0onClientBDisconnected\0"
@@ -102,7 +105,7 @@ static const uint qt_meta_data_Widget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      30,   14, // methods
+      32,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -110,36 +113,38 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  164,    2, 0x08 /* Private */,
-       3,    0,  165,    2, 0x08 /* Private */,
-       4,    1,  166,    2, 0x08 /* Private */,
-       6,    2,  169,    2, 0x08 /* Private */,
-       8,    0,  174,    2, 0x08 /* Private */,
-       9,    0,  175,    2, 0x08 /* Private */,
-      10,    0,  176,    2, 0x08 /* Private */,
-      11,    0,  177,    2, 0x08 /* Private */,
-      12,    0,  178,    2, 0x08 /* Private */,
-      13,    0,  179,    2, 0x08 /* Private */,
-      14,    0,  180,    2, 0x08 /* Private */,
-      15,    1,  181,    2, 0x08 /* Private */,
-      17,    1,  184,    2, 0x08 /* Private */,
-      19,    0,  187,    2, 0x08 /* Private */,
-      20,    0,  188,    2, 0x08 /* Private */,
-      21,    1,  189,    2, 0x08 /* Private */,
-      23,    1,  192,    2, 0x08 /* Private */,
-      24,    4,  195,    2, 0x08 /* Private */,
-      28,    1,  204,    2, 0x08 /* Private */,
-      29,    0,  207,    2, 0x08 /* Private */,
-      30,    0,  208,    2, 0x08 /* Private */,
-      31,    1,  209,    2, 0x08 /* Private */,
-      33,    1,  212,    2, 0x08 /* Private */,
-      34,    1,  215,    2, 0x08 /* Private */,
-      36,    1,  218,    2, 0x08 /* Private */,
-      37,    0,  221,    2, 0x08 /* Private */,
-      38,    0,  222,    2, 0x08 /* Private */,
-      39,    0,  223,    2, 0x08 /* Private */,
-      40,    0,  224,    2, 0x08 /* Private */,
-      41,    1,  225,    2, 0x08 /* Private */,
+       1,    0,  174,    2, 0x08 /* Private */,
+       3,    0,  175,    2, 0x08 /* Private */,
+       4,    1,  176,    2, 0x08 /* Private */,
+       6,    2,  179,    2, 0x08 /* Private */,
+       8,    0,  184,    2, 0x08 /* Private */,
+       9,    0,  185,    2, 0x08 /* Private */,
+      10,    0,  186,    2, 0x08 /* Private */,
+      11,    0,  187,    2, 0x08 /* Private */,
+      12,    0,  188,    2, 0x08 /* Private */,
+      13,    0,  189,    2, 0x08 /* Private */,
+      14,    0,  190,    2, 0x08 /* Private */,
+      15,    1,  191,    2, 0x08 /* Private */,
+      17,    1,  194,    2, 0x08 /* Private */,
+      19,    0,  197,    2, 0x08 /* Private */,
+      20,    0,  198,    2, 0x08 /* Private */,
+      21,    0,  199,    2, 0x08 /* Private */,
+      22,    0,  200,    2, 0x08 /* Private */,
+      23,    1,  201,    2, 0x08 /* Private */,
+      25,    1,  204,    2, 0x08 /* Private */,
+      26,    4,  207,    2, 0x08 /* Private */,
+      30,    1,  216,    2, 0x08 /* Private */,
+      31,    0,  219,    2, 0x08 /* Private */,
+      32,    0,  220,    2, 0x08 /* Private */,
+      33,    1,  221,    2, 0x08 /* Private */,
+      35,    1,  224,    2, 0x08 /* Private */,
+      36,    1,  227,    2, 0x08 /* Private */,
+      38,    1,  230,    2, 0x08 /* Private */,
+      39,    0,  233,    2, 0x08 /* Private */,
+      40,    0,  234,    2, 0x08 /* Private */,
+      41,    0,  235,    2, 0x08 /* Private */,
+      42,    0,  236,    2, 0x08 /* Private */,
+      43,    1,  237,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -157,21 +162,23 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::QString,   18,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   22,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   24,
     QMetaType::Void, QMetaType::Bool,    7,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,   22,   25,   26,   27,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QString,   24,   27,   28,   29,
     QMetaType::Void, QMetaType::QString,   16,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   32,
-    QMetaType::Void, QMetaType::QString,   22,
-    QMetaType::Void, QMetaType::QString,   35,
+    QMetaType::Void, QMetaType::QString,   34,
+    QMetaType::Void, QMetaType::QString,   24,
+    QMetaType::Void, QMetaType::QString,   37,
     QMetaType::Void, QMetaType::Bool,    7,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   22,
+    QMetaType::Void, QMetaType::QString,   24,
 
        0        // eod
 };
@@ -197,21 +204,23 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 12: _t->onVoiceStatusChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 13: _t->onVoiceRecordingFinished(); break;
         case 14: _t->onVoiceButtonClicked(); break;
-        case 15: _t->queryWeatherByCity((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 16: _t->onWeatherQueryCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 17: _t->onWeatherDataReceived((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4]))); break;
-        case 18: _t->onCommandReceived((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 19: _t->onClientBConnected(); break;
-        case 20: _t->onClientBDisconnected(); break;
-        case 21: _t->onClientBConnectionError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 22: _t->onClientBCityNameSent((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 23: _t->onClientBDebugMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 24: _t->onManualConnectionCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 25: _t->on_btn_send_clicked(); break;
-        case 26: _t->on_btn_beijing_clicked(); break;
-        case 27: _t->on_btn_guangzhou_clicked(); break;
-        case 28: _t->reconnectClientB(); break;
-        case 29: _t->requestWeather((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 15: _t->showVoiceGif(); break;
+        case 16: _t->hideVoiceGif(); break;
+        case 17: _t->queryWeatherByCity((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 18: _t->onWeatherQueryCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 19: _t->onWeatherDataReceived((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< const QString(*)>(_a[4]))); break;
+        case 20: _t->onCommandReceived((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 21: _t->onClientBConnected(); break;
+        case 22: _t->onClientBDisconnected(); break;
+        case 23: _t->onClientBConnectionError((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 24: _t->onClientBCityNameSent((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 25: _t->onClientBDebugMessage((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 26: _t->onManualConnectionCompleted((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 27: _t->on_btn_send_clicked(); break;
+        case 28: _t->on_btn_beijing_clicked(); break;
+        case 29: _t->on_btn_guangzhou_clicked(); break;
+        case 30: _t->reconnectClientB(); break;
+        case 31: _t->requestWeather((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -242,13 +251,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 30)
+        if (_id < 32)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 30;
+        _id -= 32;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 30)
+        if (_id < 32)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 30;
+        _id -= 32;
     }
     return _id;
 }

@@ -28,5 +28,6 @@
         <file>image/fan.png</file>
         <file>image/left_fan.png</file>
         <file>image/right_fan.png</file>
+        <file>image/voice.gif</file>
     </qresource>
 </RCC>

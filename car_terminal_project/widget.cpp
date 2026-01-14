@@ -20,6 +20,13 @@ Widget::Widget(QWidget *parent)
         eInput->hide();
     }
 
+
+    // ============== GIF动画初始化 ==============
+    voiceGifMovie = new QMovie(":/image/voice.gif", QByteArray(), this);
+    ui->label_voice->setMovie(voiceGifMovie);
+    ui->label_voice->setScaledContents(true);  // 缩放内容以适应标签大小
+    ui->label_voice->hide();  // 初始隐藏
+
     // 初始化语音线程
     voiceThread = new VoiceThread(this);
     connect(voiceThread, &VoiceThread::voiceCommand, this, &Widget::onVoiceCommandReceived);
@@ -138,6 +145,27 @@ Widget::Widget(QWidget *parent)
 
 
     mainWindowInit();
+}
+
+// 显示GIF动画
+void Widget::showVoiceGif()
+{
+    qDebug() << "Showing voice GIF animation";
+    if (voiceGifMovie) {
+        voiceGifMovie->start();  // 开始播放GIF
+        ui->label_voice->show(); // 显示标签
+        ui->label_voice->raise(); // 提升到最前
+    }
+}
+
+// 隐藏GIF动画
+void Widget::hideVoiceGif()
+{
+    qDebug() << "Hiding voice GIF animation";
+    if (voiceGifMovie) {
+        voiceGifMovie->stop();   // 停止播放GIF
+        ui->label_voice->hide(); // 隐藏标签
+    }
 }
 
 // ============== LED控制函数 ==============
@@ -631,7 +659,8 @@ void Widget::on_btn_camera_clicked()
 void Widget::onVoiceRecordingFinished()
 {
     qDebug() << "Voice recording finished";
-    // 可以在这里更新UI，比如显示"正在识别..."等
+    // 这里不隐藏GIF，因为识别还在进行中
+    // 只在最终结果或失败时隐藏
 }
 // 修改语音按钮点击处理函数
 void Widget::onVoiceButtonClicked()
@@ -643,6 +672,9 @@ void Widget::onVoiceButtonClicked()
         qDebug() << "Voice recognition is already in progress";
         return;
     }
+
+    // 显示GIF动画
+    showVoiceGif();
 
     // 开始语音识别
     if (voiceThread) {
@@ -656,6 +688,8 @@ void Widget::onVoiceButtonClicked()
 void Widget::onVoiceCommandReceived(const QString &command)
 {
     qDebug() << "Voice command received:" << command;
+    // 隐藏GIF动画
+    hideVoiceGif();
 
     // 重新启用语音按钮
     ui->btn_talk->setEnabled(true);
@@ -780,13 +814,17 @@ void Widget::onVoiceStatusChanged(const QString &status)
 {
     qDebug() << "Voice status:" << status;
 
-        // 可以在这里更新UI，显示语音识别状态
-        // 例如：在某个标签上显示当前状态
-        // 注意：确保这个标签存在，如果不存在可以创建一个或者使用现有的
-        // 例如：ui->label_status->setText(status);
+    // 如果状态是失败或完成，确保GIF被隐藏
+    if (status.contains("failed", Qt::CaseInsensitive) ||
+        status.contains("complete", Qt::CaseInsensitive) ||
+        status.contains("stopped", Qt::CaseInsensitive)) {
+        // 延迟隐藏GIF，确保用户能看到最后状态
+        QTimer::singleShot(500, this, &Widget::hideVoiceGif);
 
-        // 如果需要在状态栏显示，可以使用 QStatusBar（如果存在）
-        // 或者简单地在调试信息中显示
+        // 重新启用按钮
+        ui->btn_talk->setEnabled(true);
+        ui->btn_talk1->setEnabled(true);
+    }
 }
 
 QString Widget::getWeatherIconPath(const QString &weather)
@@ -1206,6 +1244,14 @@ Widget::~Widget()
         delete voiceThread;
         voiceThread = nullptr;
     }
+
+    // 清理GIF资源
+    if (voiceGifMovie) {
+        voiceGifMovie->stop();
+        delete voiceGifMovie;
+        voiceGifMovie = nullptr;
+    }
+
     // 停止音乐
     stopMusic();
 

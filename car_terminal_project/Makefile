@@ -621,6 +621,7 @@ qrc_res.cpp: res.qrc \
 		image/video_play.png \
 		image/led_off.png \
 		image/led_on.png \
+		image/voice.gif \
 		image/right_fan.png \
 		image/cloud.png \
 		image/music_pause.png \

@@ -248,6 +248,7 @@ debug/qrc_res.cpp: ../car_terminal_project/res.qrc \
 		../car_terminal_project/image/video_play.png \
 		../car_terminal_project/image/led_off.png \
 		../car_terminal_project/image/led_on.png \
+		../car_terminal_project/image/voice.gif \
 		../car_terminal_project/image/right_fan.png \
 		../car_terminal_project/image/cloud.png \
 		../car_terminal_project/image/music_pause.png \

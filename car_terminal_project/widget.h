@@ -44,7 +44,8 @@ private:
     CameraWidget *camera;
     //语音线程
     VoiceThread *voiceThread;
-
+    // GIF动画对象
+    QMovie *voiceGifMovie;
 
     //输入法相关
     void mainWindowInit();
@@ -136,6 +137,9 @@ private slots:
     void onVoiceStatusChanged(const QString &status);
     void onVoiceRecordingFinished();
     void onVoiceButtonClicked();  // 统一处理两个语音按钮
+
+    void showVoiceGif();     // 显示GIF动画
+    void hideVoiceGif();     // 隐藏GIF动画
     //城市天气查询函数
     void queryWeatherByCity(const QString &city);
     void onWeatherQueryCompleted(bool success);

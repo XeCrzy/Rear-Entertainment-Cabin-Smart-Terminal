@@ -74,6 +74,7 @@ public:
     QFrame *frame_talk;
     QLabel *label_7;
     QPushButton *btn_talk1;
+    QLabel *label_voice;
     QFrame *frame_bottom;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_led;
@@ -782,6 +783,9 @@ public:
 "    background-color: #F8FAFC;\n"
 "    border-style: solid;\n"
 "	border-image: url(:/image/Intelligent_voice.png);"));
+        label_voice = new QLabel(frame_talk);
+        label_voice->setObjectName(QStringLiteral("label_voice"));
+        label_voice->setGeometry(QRect(20, 240, 131, 51));
 
         horizontalLayout_8->addWidget(frame_talk);
 
@@ -908,6 +912,7 @@ public:
         btn_camera->setText(QString());
         label_7->setText(QApplication::translate("Widget", "\346\231\272\350\203\275\350\257\255\351\237\263\345\212\251\346\211\213", 0));
         btn_talk1->setText(QString());
+        label_voice->setText(QString());
         label_led->setText(QString());
         btn_led_switch->setText(QApplication::translate("Widget", "\347\201\257\345\274\200\345\205\263", 0));
         btn_talk->setText(QString());

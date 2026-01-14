@@ -71,6 +71,7 @@ public:
     QFrame *frame_talk;
     QLabel *label_7;
     QPushButton *btn_talk1;
+    QLabel *label_voice;
     QFrame *frame_bottom;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_led;
@@ -315,6 +316,7 @@ public:
 "    border: none;\n"
 "    border-radius: 4px;\n"
 "}\n"
+"QPushButton#btn_music_pre:hover,QPushButton#btn_music_next:hover {background-color: #0EA5E9;}\n"
 "QPushButton#btn_music_play {\n"
 "    \n"
 "    color: #FFFFFF;\n"
@@ -322,19 +324,20 @@ public:
 "    border: none;\n"
 "    border-radius: 4px;\n"
 "}\n"
+"QPushButton#btn_music_play:hover {background-color: #0EA5E9;}\n"
 "\n"
 "/* -------------------- \345\244\251\346\260\224\345\214\272-\350\276\223\345\205\245\346\241\206+\346\214\211\351\222\256 \346\240\267\345\274\217\343\200\220\345\216\237\345\244\247\345\260\217\344\270\215\345\217\230\343\200\221 -------------------- */\n"
 "QLineEdit#lineEdit {\n"
 "    border:1px solid #E4E7ED;\n"
 "    border-radius:4px;\n"
 "    background-color:#FFFFFF;\n"
-"    color:#1E293B;\n"
+"    color:#"
+                        "1E293B;\n"
 "    font-size:12px;\n"
 "    padding-left:5px;\n"
 "}\n"
 "QPushButton#btn_send,QPushButton#btn_beijing,QPushButton#btn_guangzhou {\n"
-"    background-colo"
-                        "r: #E2E8F0;\n"
+"    background-color: #E2E8F0;\n"
 "    color: #1E293B;\n"
 "    font-size:12px;\n"
 "    border:none;\n"
@@ -344,8 +347,16 @@ public:
 "    background-color: #CBD5E1;\n"
 "}\n"
 "\n"
+"/*\347\233\270\346\234\272*/\n"
+"QPushButton#btn_camera{\n"
+"	border: 1px solid #E4E7ED;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"QPushButton#btn_camera:hover {background-color: #0EA5E9;}\n"
+"/* \345\256\214\347\276\216\345\234\206\345\275\242\357\274\214\345\214\271\351\205\215\344\275\240\347\232\204140x160\345\260\272\345\257\270 */\n"
 "/* -------------------- \350\247\206\351\242\221\345\214\272 \346\240\267\345\274\217\343\200\220\345\216\237\345\244\247\345\260\217\344\270\215\345\217\230\343\200\221 -------------------- */\n"
-"/* \350\247\206\351\242\221\346\222\255\346\224\276\345\256\271\345\231\250 - \344\275\240\345\220\216\346\234\237\345\212\240border-image\357\274\214\345\217\252\345\212\240\345\272\225\350\211\262\345\222\214\350\276\271\346\241\206 */\n"
+"/* \350\247\206\351\242\221\346\222\255\346\224\276\345\256\271\345"
+                        "\231\250 - \344\275\240\345\220\216\346\234\237\345\212\240border-image\357\274\214\345\217\252\345\212\240\345\272\225\350\211\262\345\222\214\350\276\271\346\241\206 */\n"
 "QWidget#widget {\n"
 "    background-color: #1E293B;\n"
 "    border:1px solid #475569;\n"
@@ -356,60 +367,65 @@ public:
 "    \n"
 "    color:#FFFFFF;\n"
 "    font-size:12px;\n"
-"    b"
-                        "order:none;\n"
+"    border:none;\n"
 "    border-radius:4px;\n"
 "}\n"
 "\n"
 "/* -------------------- \346\231\272\350\203\275\350\257\255\351\237\263\345\214\272 \345\234\206\345\275\242\345\256\271\345\231\250 \346\240\267\345\274\217\343\200\220\345\216\237150x150\345\244\247\345\260\217\344\270\215\345\217\230\343\200\221 -------------------- */\n"
 "QLabel#label_4 {\n"
 "    border: 2px solid #CBD5E1;\n"
-"    border-radius:75px;/* \345\256\214\347\276\216\345\234\206\345\275\242\357\274\214\345\214\271\351\205\215\344\275\240\347\232\204150x150\345\260\272\345\257\270 */\n"
+"    border-radius:75px;/* \345\256\214\347\276\216\345\234\206\345\275\242\357\274\214\345\214\271\351\205\215\344\275\240\347\232\20415"
+                        "0x150\345\260\272\345\257\270 */\n"
 "    background-color: #F8FAFC;\n"
 "    border-style: solid;\n"
 "    /* \344\275\240\345\220\216\346\234\237\345\234\250\350\277\231\351\207\214\345\212\240 border-image: url(\344\275\240\347\232\204\345\233\276\347\211\207\350\267\257\345\276\204); \345\215\263\345\217\257 */\n"
 "}\n"
 "\n"
-"/* ===================== \345\272\225\351\203\250\345\212\237\350\203\275\345\214\272 - frame_bottom \345\217\212\345\206\205\351\203\250\346\211\200\346\234\211\346\214\211"
-                        "\351\222\256 \343\200\220\344\270\245\346\240\274\345\216\237\345\270\203\345\261\200/\345\216\237\345\244\247\345\260\217/\345\216\237\351\227\264\350\267\235 \345\256\214\345\205\250\344\270\215\345\217\230\343\200\221 ===================== */\n"
-"/* \345\272\225\351\203\250\346\200\273\346\241\206\346\236\266\346\240\267\345\274\217\357\274\232\347\272\257\347\231\275\345\272\225\350\211\262+\347\273\206\347\201\260\350\276\271\346\241\206\357\274\214\345\217\202\350\200\203\345\233\276\345\272\225\351\203\250\346\240\267\345\274\217 */\n"
+"/* ===================== \345\272\225\351\203\250\345\212\237\350\203\275\345\214\272 - frame_bottom \345\217\212\345\206\205\351\203\250\346\211\200\346\234\211\346\214\211\351\222\256 \343\200\220\344\270\245\346\240\274\345\216\237\345\270\203\345\261\200/\345\216\237\345\244\247\345\260\217/\345\216\237\351\227\264\350\267\235 \345\256\214\345\205\250\344\270\215\345\217\230\343\200\221 ===================== */\n"
+"/* \345\272\225\351\203\250\346\200\273\346\241\206\346\236\266\346\240\267\345\274\217\357\274\232\347\272\257\347\231\275\345\272\225\350\211\262+\347\273\206\347\201\260\350\276\271\346\241\206\357\274\214\345\217\202\350\200\203\345\233\276\345\272\225\351\203\250\346\240"
+                        "\267\345\274\217 */\n"
 "QFrame#frame_bottom {\n"
 "    background-color: #FFFFFF;\n"
 "    border:1px solid #E4E7ED;\n"
 "    border-radius:4px;\n"
 "}\n"
-"/* -------------------- \345\272\225\351\203\250\346\211\200\346\234\211\346\214\211\351\222\256 \347\273\237\344\270\200\345\237\272\347\241\200\346\240\267\345\274\217 + \344\270\252\346\200\247\351\205\215\350\211\262\343\200\220\345\205\250\351\203\250\345\216\237\345\244\247\345\260\217/\344\275\215\347\275\256\344\270\215\345\217\230\357\274"
-                        "\214\346\227\240\344\273\273\344\275\225\344\275\215\347\247\273\343\200\221 -------------------- */\n"
+"/* -------------------- \345\272\225\351\203\250\346\211\200\346\234\211\346\214\211\351\222\256 \347\273\237\344\270\200\345\237\272\347\241\200\346\240\267\345\274\217 + \344\270\252\346\200\247\351\205\215\350\211\262\343\200\220\345\205\250\351\203\250\345\216\237\345\244\247\345\260\217/\344\275\215\347\275\256\344\270\215\345\217\230\357\274\214\346\227\240\344\273\273\344\275\225\344\275\215\347\247\273\343\200\221 -------------------- */\n"
 "/* \345\272\225\351\203\250\351\200\232\347\224\250\346\214\211\351\222\256\346\240\267\345\274\217\357\274\232\347\273\237\344\270\200\345\237\272\347\241\200\346\240\267\345\274\217\357\274\214hover\345\222\214pressed\346\227\240\344\275\215\347\247\273\357\274\214\345\217\252\346\224\271\351\242\234\350\211\262 */\n"
 "QPushButton#btn_led,QPushButton#btn_led_switch,QPushButton#btn_talk,QPushButton#btn_wind_small,\n"
-"QPushButton#btn_fan,QPushButton#btn_wind_big,QPushButton#btn_buzzer,QPushButton#btn_buzzer_switch,QPushButton#btn_help {\n"
+""
+                        "QPushButton#btn_fan,QPushButton#btn_wind_big,QPushButton#btn_buzzer,QPushButton#btn_buzzer_switch,QPushButton#btn_help {\n"
 "    font-size: 12px;\n"
 "    font-weight: normal;\n"
 "    border: none;\n"
 "    border-radius: 4px;\n"
+"	border-right: 1px solid grey;\n"
 "}\n"
 "/* LED\347\233\270\345\205\263\346\214\211\351\222\256-\346\265\205\350\223\235 */\n"
 "QPushButton#btn_led {background-color: #94A3B8;color:#FFFFFF;}\n"
 "QPushButton#btn_led:hover {background-color: #64748B;}\n"
-"QPushButton#btn_led_switch {background-color: #38"
-                        "BDF8;color:#FFFFFF;}\n"
+"QPushButton#btn_led_switch {background-color: #38BDF8;color:#FFFFFF;}\n"
 "QPushButton#btn_led_switch:hover {background-color: #0EA5E9;}\n"
 "/* \350\257\255\351\237\263\346\214\211\351\222\256-\347\264\253\350\211\262 */\n"
 "QPushButton#btn_talk:hover {background-color: #7E22CE;}\n"
-"/* \351\243\216\346\211\207\347\233\270\345\205\263\346\214\211\351\222\256-\346\265\205\347\273\277 */\n"
-"QPushButton#btn_wind_small,QPushButton#btn_wind_big {background-color: #A3E635;color:#1E293B;font-size:11px;}\n"
-"QPushButton#btn_fan {background-color: #4ADE80;color:#FFFFFF;}\n"
+"/*\350\257\255\351\237\263\346\214\211\351\222\256-\350\223\235\350\211\262*/\n"
+"QPushButton#btn_talk1:hover {background-color: rgba(85, 170, 255, 150);}\n"
+"\n"
+"background-color: rgba(85, 170, 255, 150);\n"
+"/* \351\243\216\346\211\207\347\233\270\345\205"
+                        "\263\346\214\211\351\222\256-\346\265\205\347\273\277 */\n"
 "QPushButton#btn_fan:hover {background-color: #22C55E;}\n"
+"QPushButton#btn_wind_small:hover {background-color: #22C55E;}\n"
+"QPushButton#btn_wind_big:hover {background-color: #22C55E;}\n"
 "/* \350\234\202\351\270\243\345\231\250\347\233\270\345\205\263\346\214\211\351\222\256-\346\251\231\350\211\262 */\n"
 "QPushButton#btn_buzzer {background-color: #F97316;color:#FFFFFF;}\n"
 "QPushButton#btn_buzzer:hover {background-color: #EA580C;}\n"
-"QPushButton#btn_buzzer_switch {background-color: #FB923C;color:#FFFFFF;}\n"
+"QPushButton#btn_buzzer_switch {background-color: #F97316;color:#FFFFFF;}\n"
 "QPushButton#btn_buzzer_switch:hover {background-color: #F97316;}\n"
-"/* \345\270\256\345\212\251\346\214\211\351\222"
-                        "\256-\347\201\260\350\211\262 */\n"
+"/* \345\270\256\345\212\251\346\214\211\351\222\256-\347\201\260\350\211\262 */\n"
 "QPushButton#btn_help:hover {background-color: #475569;}\n"
 "\n"
-"/* ===================== \345\205\250\345\261\200\351\200\232\347\224\250\350\241\245\345\205\205 \351\230\262\346\240\267\345\274\217\346\272\242\345\207\272\343\200\220\346\227\240\344\273\273\344\275\225\345\270\203\345\261\200\344\277\256\346\224\271\343\200\221 ===================== */\n"
+"/* ===================== \345\205\250\345\261\200\351\200\232\347\224\250\350\241\245\345\205\205 \351\230\262\346\240\267\345\274\217\346\272\242\345\207\272\343\200\220\346\227\240\344\273\273\344\275\225\345\270\203\345\261\200"
+                        "\344\277\256\346\224\271\343\200\221 ===================== */\n"
 "/* \346\270\205\351\231\244\346\211\200\346\234\211QFrame\347\232\204\351\273\230\350\256\244\345\244\232\344\275\231\350\276\271\346\241\206\357\274\214\351\230\262\346\255\242\351\201\256\346\214\241 */\n"
 "QFrame {border-style: none;}\n"
 "/* \346\211\200\346\234\211\346\214\211\351\222\256\346\214\211\344\270\213\346\227\240\345\201\217\347\247\273\357\274\214\345\256\214\347\276\216\350\264\264\345\220\210\345\216\237\345\270\203\345\261\200 */\n"
@@ -419,8 +435,7 @@ public:
 "}\n"
 "\n"
 "/* \346\273\221\345\235\227 - \347\273\206\346\235\241\347\212\266 */\n"
-"QSlider#horizontalSlider::"
-                        "handle {\n"
+"QSlider#horizontalSlider::handle {\n"
 "    width: 2px;\n"
 "    height: 12px;\n"
 "    background-color: #FFFFFF;\n"
@@ -430,7 +445,8 @@ public:
 "    margin-bottom: -4px;\n"
 "}\n"
 "\n"
-"/* \345\267\262\345\241\253\345\205\205\347\232\204\350\277\233\345\272\246\351\203\250\345\210\206 */\n"
+"/* \345\267\262\345\241\253\345\205\205\347\232"
+                        "\204\350\277\233\345\272\246\351\203\250\345\210\206 */\n"
 "QSlider#horizontalSlider::sub-page:horizontal {\n"
 "    background-color: #2563EB;\n"
 "    height: 4px;\n"
@@ -446,8 +462,7 @@ public:
 "\n"
 "/* \346\225\264\344\275\223\346\273\221\345\235\227\346\216\247\344\273\266 */\n"
 "QSlider#horizontalSlider {\n"
-"    /* \344\277\235\347\225\231\345\237\272\346\234\254\350\256\276\347\275\256\357\274\214\344\275\206\350\203\214\346"
-                        "\231\257\350\256\276\344\270\272\351\200\217\346\230\216 */\n"
+"    /* \344\277\235\347\225\231\345\237\272\346\234\254\350\256\276\347\275\256\357\274\214\344\275\206\350\203\214\346\231\257\350\256\276\344\270\272\351\200\217\346\230\216 */\n"
 "    background-color: transparent;\n"
 "    height: 4px;\n"
 "    border-radius: 2px;\n"
@@ -737,7 +752,11 @@ public:
         btn_camera->setObjectName(QString::fromUtf8("btn_camera"));
         btn_camera->setMinimumSize(QSize(130, 100));
         btn_camera->setMaximumSize(QSize(130, 100));
-        btn_camera->setStyleSheet(QString::fromUtf8("border-image: url(:/image/camera.png);"));
+        btn_camera->setStyleSheet(QString::fromUtf8("border-image: url(:/image/camera.png);\n"
+"QPushButton#btn_camera:hover {\n"
+"	background-color: rgb(230, 230, 230);\n"
+"};\n"
+""));
 
         verticalLayout_4->addWidget(btn_camera);
 
@@ -762,7 +781,7 @@ public:
         label_7->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         btn_talk1 = new QPushButton(frame_talk);
         btn_talk1->setObjectName(QString::fromUtf8("btn_talk1"));
-        btn_talk1->setGeometry(QRect(10, 90, 150, 150));
+        btn_talk1->setGeometry(QRect(10, 70, 150, 150));
         btn_talk1->setMinimumSize(QSize(150, 150));
         btn_talk1->setMaximumSize(QSize(150, 150));
         btn_talk1->setStyleSheet(QString::fromUtf8("    border: 1px solid #E4E7ED;\n"
@@ -770,6 +789,9 @@ public:
 "    background-color: #F8FAFC;\n"
 "    border-style: solid;\n"
 "	border-image: url(:/image/Intelligent_voice.png);"));
+        label_voice = new QLabel(frame_talk);
+        label_voice->setObjectName(QString::fromUtf8("label_voice"));
+        label_voice->setGeometry(QRect(20, 240, 131, 51));
 
         horizontalLayout_8->addWidget(frame_talk);
 
@@ -788,7 +810,8 @@ public:
         label_led->setObjectName(QString::fromUtf8("label_led"));
         label_led->setMinimumSize(QSize(70, 50));
         label_led->setMaximumSize(QSize(70, 50));
-        label_led->setStyleSheet(QString::fromUtf8("border-image: url(:/image/led_off.png);"));
+        label_led->setStyleSheet(QString::fromUtf8("border-image: url(:/image/led_off.png);\n"
+"border-right: 1px solid grey;"));
 
         horizontalLayout_7->addWidget(label_led);
 
@@ -813,6 +836,7 @@ public:
         btn_wind_small->setObjectName(QString::fromUtf8("btn_wind_small"));
         btn_wind_small->setMinimumSize(QSize(50, 30));
         btn_wind_small->setMaximumSize(QSize(50, 30));
+        btn_wind_small->setStyleSheet(QString::fromUtf8("border-image: url(:/image/left_fan.png);"));
 
         horizontalLayout_6->addWidget(btn_wind_small);
 
@@ -820,6 +844,7 @@ public:
         btn_fan->setObjectName(QString::fromUtf8("btn_fan"));
         btn_fan->setMinimumSize(QSize(70, 50));
         btn_fan->setMaximumSize(QSize(70, 50));
+        btn_fan->setStyleSheet(QString::fromUtf8("border-image: url(:/image/fan.png);"));
 
         horizontalLayout_6->addWidget(btn_fan);
 
@@ -827,6 +852,7 @@ public:
         btn_wind_big->setObjectName(QString::fromUtf8("btn_wind_big"));
         btn_wind_big->setMinimumSize(QSize(50, 30));
         btn_wind_big->setMaximumSize(QSize(50, 30));
+        btn_wind_big->setStyleSheet(QString::fromUtf8("border-image: url(:/image/right_fan.png);"));
 
         horizontalLayout_6->addWidget(btn_wind_big);
 
@@ -837,7 +863,8 @@ public:
         label_buzzer->setObjectName(QString::fromUtf8("label_buzzer"));
         label_buzzer->setMinimumSize(QSize(70, 50));
         label_buzzer->setMaximumSize(QSize(70, 50));
-        label_buzzer->setStyleSheet(QString::fromUtf8("border-image: url(:/image/buzzer_off.png);"));
+        label_buzzer->setStyleSheet(QString::fromUtf8("border-image: url(:/image/buzzer_off.png);\n"
+"border-right: 1px solid grey;"));
 
         horizontalLayout_7->addWidget(label_buzzer);
 
@@ -845,6 +872,7 @@ public:
         btn_buzzer_switch->setObjectName(QString::fromUtf8("btn_buzzer_switch"));
         btn_buzzer_switch->setMinimumSize(QSize(70, 50));
         btn_buzzer_switch->setMaximumSize(QSize(70, 50));
+        btn_buzzer_switch->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 0);"));
 
         horizontalLayout_7->addWidget(btn_buzzer_switch);
 
@@ -890,12 +918,13 @@ public:
         btn_camera->setText(QString());
         label_7->setText(QCoreApplication::translate("Widget", "\346\231\272\350\203\275\350\257\255\351\237\263\345\212\251\346\211\213", nullptr));
         btn_talk1->setText(QString());
+        label_voice->setText(QString());
         label_led->setText(QString());
         btn_led_switch->setText(QCoreApplication::translate("Widget", "\347\201\257\345\274\200\345\205\263", nullptr));
         btn_talk->setText(QString());
-        btn_wind_small->setText(QCoreApplication::translate("Widget", "\345\260\217\351\243\216", nullptr));
-        btn_fan->setText(QCoreApplication::translate("Widget", "\351\243\216\346\211\207", nullptr));
-        btn_wind_big->setText(QCoreApplication::translate("Widget", "\345\244\247\351\243\216", nullptr));
+        btn_wind_small->setText(QString());
+        btn_fan->setText(QString());
+        btn_wind_big->setText(QString());
         label_buzzer->setText(QString());
         btn_buzzer_switch->setText(QCoreApplication::translate("Widget", "\350\234\202\351\270\243\345\231\250\345\274\200\345\205\263", nullptr));
         btn_help->setText(QString());
