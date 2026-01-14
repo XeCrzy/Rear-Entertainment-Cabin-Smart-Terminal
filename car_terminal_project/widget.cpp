@@ -143,7 +143,7 @@ Widget::Widget(QWidget *parent)
         }
     });
 
-
+    connect(ui->btn_help, &QPushButton::clicked, this, &Widget::on_btn_help_clicked);
     mainWindowInit();
 }
 
@@ -757,27 +757,28 @@ void Widget::onVoiceCommandReceived(const QString &command)
         }
     }
     // 新增天气查询命令处理 - 使用新的手动连接方式
-    else if (cmd == "广州天气" || cmd == "查看广州天气") {
+    else if (cmd == "广州天气" || cmd == "查看广州天气" || cmd == "获取广州天气") {
         qDebug() << "Executing: Query Guangzhou weather";
         requestWeather("广州");
     }
-    else if (cmd == "北京天气" || cmd == "查看北京天气") {
+    else if (cmd == "北京天气" || cmd == "查看北京天气" || cmd == "获取北京天气") {
         qDebug() << "Executing: Query Beijing weather";
         requestWeather("北京");
     }
-    else if (cmd == "杭州天气" || cmd == "查看杭州天气") {
+    else if (cmd == "杭州天气" || cmd == "查看杭州天气" || cmd == "获取杭州天气") {
         qDebug() << "Executing: Query Hangzhou weather";
         requestWeather("杭州");
     }
-    else if (cmd == "上海天气" || cmd == "查看上海天气") {
+    else if (cmd == "上海天气" || cmd == "查看上海天气" || cmd == "获取上海天气") {
         qDebug() << "Executing: Query Shanghai weather";
         requestWeather("上海");
     }
     else if (cmd.contains("天气") && cmd.length() > 2) {
         // 通用天气查询：提取城市名
         QString city = cmd;
+        QString city1 = cmd;
         city = city.replace("天气", "").replace("查看", "").trimmed();
-
+        city1 = city1.replace("天气", "").replace("获取", "").trimmed();
         if (!city.isEmpty()) {
             qDebug() << "Executing: Query weather for" << city;
             requestWeather(city);
@@ -789,19 +790,65 @@ void Widget::onVoiceCommandReceived(const QString &command)
     else if (cmd == "帮助" || cmd.contains("帮助")) {
         qDebug() << "Executing: Show help";
         QString helpText =
-                "Supported voice commands:\n\n"
-                "Device Control:\n"
-                "1. Open camera / Camera open\n"
-                "2. Play music / Stop music\n"
-                "3. Turn on LED / Turn off LED\n"
-                "4. Turn on buzzer / Turn off buzzer\n\n"
-                "Weather Query:\n"
-                "5. Beijing weather / Guangzhou weather\n"
-                "6. Hangzhou weather / Shanghai weather\n"
-                "7. Other cities: Say city name + weather, e.g.: Shenzhen weather\n\n"
-                "8. Help - Show this help information";
+            "=== 语音命令帮助 ===\n\n"
+            "设备控制命令：\n"
+            "• 打开相机/相机打开/相机\n"
+            "• 播放音乐/音乐播放/播放音乐\n"
+            "• 暂停音乐/音乐暂停/暂停音乐\n"
+            "• 停止音乐/音乐停止/停止音乐\n"
+            "• 打开灯/灯打开/打开灯/开灯\n"
+            "• 关闭灯/灯关闭/关闭灯/关灯\n"
+            "• 打开蜂鸣器/蜂鸣器打开/蜂鸣器\n"
+            "• 关闭蜂鸣器/蜂鸣器关闭/关闭蜂鸣器\n\n"
+            "天气查询命令：\n"
+            "• 广州天气/查看广州天气\n"
+            "• 北京天气/查看北京天气\n"
+            "• 杭州天气/查看杭州天气\n"
+            "• 上海天气/查看上海天气\n"
+            "• [城市名]天气 (例如：深圳天气)\n\n"
+            "其他命令：\n"
+            "• 帮助 - 显示此帮助信息";
 
-        QMessageBox::information(this, "Voice Command Help", helpText);
+        // 创建自定义对话框
+        QDialog *helpDialog = new QDialog(this);
+        helpDialog->setWindowTitle("语音帮助");
+        helpDialog->setFixedSize(550, 400);  // 固定大小
+
+        QVBoxLayout *mainLayout = new QVBoxLayout(helpDialog);
+
+        // 标题
+        QLabel *titleLabel = new QLabel("语音命令帮助");
+        titleLabel->setAlignment(Qt::AlignCenter);
+        titleLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
+        mainLayout->addWidget(titleLabel);
+
+        // 分隔线
+        QFrame *line = new QFrame();
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        mainLayout->addWidget(line);
+
+        // 可滚动的文本区域
+        QTextEdit *textEdit = new QTextEdit();
+        textEdit->setPlainText(helpText);
+        textEdit->setReadOnly(true);
+        textEdit->setFont(QFont("Microsoft YaHei", 10));
+        textEdit->setStyleSheet("background-color: white;");
+        mainLayout->addWidget(textEdit);
+
+        // 按钮区域
+        QHBoxLayout *buttonLayout = new QHBoxLayout();
+        buttonLayout->addStretch();  // 添加弹性空间
+
+        QPushButton *okButton = new QPushButton("确定");
+        okButton->setFixedSize(80, 30);
+        connect(okButton, &QPushButton::clicked, helpDialog, &QDialog::accept);
+        buttonLayout->addWidget(okButton);
+
+        mainLayout->addLayout(buttonLayout);
+
+        helpDialog->exec();
+        delete helpDialog;  // 对话框关闭后删除
     }
     else {
         qDebug() << "Unrecognized command:" << command;
@@ -1201,6 +1248,69 @@ void Widget::playPreviousMusic()
     }
 }
 
+void Widget::on_btn_help_clicked()
+{
+    QString helpText =
+        "=== 语音命令帮助 ===\n\n"
+        "设备控制命令：\n"
+        "• 打开相机/相机打开/相机\n"
+        "• 播放音乐/音乐播放/播放音乐\n"
+        "• 暂停音乐/音乐暂停/暂停音乐\n"
+        "• 停止音乐/音乐停止/停止音乐\n"
+        "• 打开灯/灯打开/打开灯/开灯\n"
+        "• 关闭灯/灯关闭/关闭灯/关灯\n"
+        "• 打开蜂鸣器/蜂鸣器打开/蜂鸣器\n"
+        "• 关闭蜂鸣器/蜂鸣器关闭/关闭蜂鸣器\n\n"
+        "天气查询命令：\n"
+        "• 广州天气/查看广州天气\n"
+        "• 北京天气/查看北京天气\n"
+        "• 杭州天气/查看杭州天气\n"
+        "• 上海天气/查看上海天气\n"
+        "• [城市名]天气 (例如：深圳天气)\n\n"
+        "其他命令：\n"
+        "• 帮助 - 显示此帮助信息";
+
+    // 创建自定义对话框
+    QDialog *helpDialog = new QDialog(this);
+    helpDialog->setWindowTitle("语音帮助");
+    helpDialog->setFixedSize(550, 400);  // 固定大小
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(helpDialog);
+
+    // 标题
+    QLabel *titleLabel = new QLabel("语音命令帮助");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    titleLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
+    mainLayout->addWidget(titleLabel);
+
+    // 分隔线
+    QFrame *line = new QFrame();
+    line->setFrameShape(QFrame::HLine);
+    line->setFrameShadow(QFrame::Sunken);
+    mainLayout->addWidget(line);
+
+    // 可滚动的文本区域
+    QTextEdit *textEdit = new QTextEdit();
+    textEdit->setPlainText(helpText);
+    textEdit->setReadOnly(true);
+    textEdit->setFont(QFont("Microsoft YaHei", 10));
+    textEdit->setStyleSheet("background-color: white;");
+    mainLayout->addWidget(textEdit);
+
+    // 按钮区域
+    QHBoxLayout *buttonLayout = new QHBoxLayout();
+    buttonLayout->addStretch();  // 添加弹性空间
+
+    QPushButton *okButton = new QPushButton("确定");
+    okButton->setFixedSize(80, 30);
+    connect(okButton, &QPushButton::clicked, helpDialog, &QDialog::accept);
+    buttonLayout->addWidget(okButton);
+
+    mainLayout->addLayout(buttonLayout);
+
+    helpDialog->exec();
+    delete helpDialog;  // 对话框关闭后删除
+}
 
 Widget::~Widget()
 {
@@ -1269,4 +1379,5 @@ Widget::~Widget()
     delete camera;
     delete ui;
 }
+
 

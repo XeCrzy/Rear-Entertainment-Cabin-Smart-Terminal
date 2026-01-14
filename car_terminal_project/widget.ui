@@ -601,6 +601,10 @@ QSlider#horizontalSlider {
           <height>48</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">
+</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Box</enum>
         </property>
@@ -619,13 +623,13 @@ QSlider#horizontalSlider {
        <widget class="QLabel" name="label_city">
         <property name="minimumSize">
          <size>
-          <width>50</width>
+          <width>100</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>50</width>
+          <width>100</width>
           <height>16777215</height>
          </size>
         </property>

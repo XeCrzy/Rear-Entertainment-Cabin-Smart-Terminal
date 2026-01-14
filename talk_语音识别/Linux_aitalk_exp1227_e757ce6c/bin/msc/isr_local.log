@@ -2957,3 +2957,829 @@ xœ«VJÌ,IÌÉV²ªV*K-R²R2RÒQJ*-	¤Vd¥Æ§$–¤*Yš››ZšZ˜è(¥å%e¦
 [2026/01/14 11:26:57 310] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
 [2026/01/14 11:26:57 314] isr_local  2185 esr_session_end, ret =  0  
 [2026/01/14 11:26:57 394] isr_local  640  local engine already stopped! stop cmd ignored  
+============================================================
+Time  2026/01/14 11:49:53 584 
+============================================================
+[2026/01/14 11:49:53 585] isr_local  2211 os_type is:  Linux  
+[2026/01/14 11:49:53 587] isr_local  2220 SYS_MSG_LOAD_LOCAL  
+[2026/01/14 11:49:53 590] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  msp_status_cb  
+[2026/01/14 11:49:53 597] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:49:53 602] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:49:53 603] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:49:53 605] isr_local  805  engine_type  :  local  
+[2026/01/14 11:49:53 606] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:49:53 608] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:49:53 609] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:49:53 611] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:49:53 613] isr_local  805  result_type  :  xml  
+[2026/01/14 11:49:53 614] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:49:53 615] isr_local  1314 init aitalk in ssb  
+[2026/01/14 11:49:53 616] isr_local  1177 esr_init | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:49:53 619] isr_local  805  engine_type  :  local  
+[2026/01/14 11:49:53 621] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:49:53 622] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:49:53 624] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:49:53 625] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:49:53 627] isr_local  805  result_type  :  xml  
+[2026/01/14 11:49:53 628] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:49:53 630] isr_local  1085  lucEsr.new   
+[2026/01/14 11:49:53 634] isr_local  1002 file count =   1  
+[2026/01/14 11:49:53 635] isr_local  925  file open type is:   fo  
+[2026/01/14 11:49:53 646] isr_local  958  res/asr/common.jet  0  0  
+[2026/01/14 11:49:53 650] isr_local  1020 speech_plus_setting  0  
+[2026/01/14 11:49:53 675] isr_local  1033 2  nil  res/asr/common.jet  0  0  
+[2026/01/14 11:49:53 681] isr_local  1035 res_ver  2  
+[2026/01/14 11:49:53 683] isr_local  1036 res 5  19b6a1b4b66938610b89e878385feb4e  
+[2026/01/14 11:49:53 684] isr_local  1037 res_new_old_mark  v5pp  
+[2026/01/14 11:49:53 687] isr_local  1038 res_usr_name  ""  
+[2026/01/14 11:49:53 689] isr_local  1039 res_expires  1775961184  
+[2026/01/14 11:49:53 690] isr_local  1040 err  0  
+[2026/01/14 11:49:53 692] isr_local  1071 now expires:  1768362593  1775961184  
+[2026/01/14 11:49:53 703] auth       86   aitalk  app  nil  nil  {"aitalk":{"ver":"2","bus":{"expire_date":1775961184,"forbid":"0","nlimit":10}}}  
+[2026/01/14 11:49:53 704] auth       420  nil  
+[2026/01/14 11:49:53 753] isr_local  1329 authorized_aitalk=  nil  
+[2026/01/14 11:49:53 754] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:49:53 756] auth       687  app  nil  nil  nil  
+[2026/01/14 11:49:53 757] auth       744  ath rquest  {"authorize":[{"ver":"2.1.1","busin":"aitalk"}]}  
+[2026/01/14 11:49:53 759] config     91   select default  
+[2026/01/14 11:49:53 760] config     113  use general cloud  
+[2026/01/14 11:49:53 762] transport  645  paramkvsport is   nil  
+[2026/01/14 11:49:53 764] transport  657  ns_enable=  1  
+[2026/01/14 11:49:53 766] transport  659  2017-08--24 is_ns_need_close =   nil  
+[2026/01/14 11:49:53 767] transport  665  net.nettype=  unknown  
+[2026/01/14 11:49:53 768] transport  675  url.full=  nil  
+[2026/01/14 11:49:53 770] transport  680  server_url_host=, server_url_port=, server_url_path=  open.xf-yun.com  nil  /msp.do  
+[2026/01/14 11:49:53 772] transport  907  net type:  unknown  
+[2026/01/14 11:49:53 775] transport  908  net operator:  def  
+[2026/01/14 11:49:53 780] transport  909  use proxy:  false  
+[2026/01/14 11:49:53 781] auth       799  not login!  
+[2026/01/14 11:49:53 783] auth       636  [session] send auth request  
+[2026/01/14 11:49:53 785] transport  1105 session.domain=  open.xf-yun.com  
+[2026/01/14 11:49:53 786] transport  1106 url.host=  open.xf-yun.com  
+[2026/01/14 11:49:53 788] transport  1083 NAMESERVER START  
+[2026/01/14 11:49:53 789] transport  1086 name =   ath  
+[2026/01/14 11:49:53 790] ns         634  ntt=  unknown  
+[2026/01/14 11:49:53 792] transport  1089 trans,ns_inprog =  0  
+[2026/01/14 11:49:53 802] ns         582  name server start  
+[2026/01/14 11:49:53 805] ns         588  ns_sub =   ath  
+[2026/01/14 11:49:53 813] ns         596  ns_host =   open.xf-yun.com  
+[2026/01/14 11:49:53 818] ns         475  ns_host=  open.xf-yun.com  
+[2026/01/14 11:49:53 833] ns         555  net_type =  standard  
+[2026/01/14 11:49:53 836] ns         556  cmwapascmnet =  
+[2026/01/14 11:49:53 837] ns         557  uniwapasuninet =  
+[2026/01/14 11:49:53 839] ns         558  ctwapasctnet =  
+[2026/01/14 11:49:53 840] ns         576  host=  hdns.xf-yun.com  
+[2026/01/14 11:49:53 841] network    263  gethostbyname  hdns.xf-yun.com  ns1  
+[2026/01/14 11:49:53 846] auth       643  0  
+[2026/01/14 11:49:53 849] auth       606  lver:  nil  
+[2026/01/14 11:49:53 856] auth       611  cfg_ver:  nil  
+[2026/01/14 11:49:53 858] transport  1860 transport_obj.send | in  
+[2026/01/14 11:49:53 861] transport  1866 self.msg_flag_q  table(1402dc70) 
+[2026/01/14 11:49:53 862] transport  1867 self.msg_q  table(1402dd40) 
+[2026/01/14 11:49:53 864] transport  1799 transport_obj.try2send | in  
+[2026/01/14 11:49:53 869] transport  1800 self.soc  nil  
+[2026/01/14 11:49:53 870] transport  1801 self.connected  false  
+[2026/01/14 11:49:53 874] transport  1802 self.latesterr  0  
+[2026/01/14 11:49:53 875] transport  1873 transport_obj.send | out  
+[2026/01/14 11:49:53 881] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:49:53 968] isr_local  2119 commit success!  
+[2026/01/14 11:49:54 011] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:49:54 013] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:49:54 019] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:54 020] isr_local  603  audio buffered :   udata(140422e8) 1  
+[2026/01/14 11:49:54 024] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:54 026] isr_local  603  audio buffered :   udata(14042248) 2  
+[2026/01/14 11:49:54 032] network    245  dns resp  0  ns1  
+[2026/01/14 11:49:54 034] ns         422  ns dns ok  101.200.180.128  
+[2026/01/14 11:49:54 035] ns         202  iplist not avail  
+[2026/01/14 11:49:54 074] ns         429  is_voicecloud_ip=  0  
+[2026/01/14 11:49:54 080] ns         436  ip_is_expected=  true  
+[2026/01/14 11:49:54 090] ns         444  ip_is_expected=  true  
+[2026/01/14 11:49:54 102] network    445  gethttpresp2  101.200.180.128  80  ns2  
+[2026/01/14 11:49:54 105] network    465  prot_type  tcp  
+[2026/01/14 11:49:54 144] transport  194  [dns] [1] response 125.254.169.39  
+[2026/01/14 11:49:54 156] transport  202  125  254  169  39  
+[2026/01/14 11:49:54 163] transport  204  ipv =  v4  
+[2026/01/14 11:49:54 183] transport  208  dns ip is v4  
+[2026/01/14 11:49:54 186] transport  130  iplist not avail  
+[2026/01/14 11:49:54 192] transport  247  no iplist now  
+[2026/01/14 11:49:54 194] network    95   iptoenv ,  ipcache  open.xf-yun.com  def  125.254.169.39  
+[2026/01/14 11:49:54 218] transport  291  dns cb start conn  
+[2026/01/14 11:49:54 219] transport  1304 [soc] connect   125.254.169.39  1028  
+[2026/01/14 11:49:54 221] transport  1316 mspsoc.open,prot_type=  tcp  
+[2026/01/14 11:49:54 230] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:54 232] isr_local  603  audio buffered :   udata(14038848) 2  
+[2026/01/14 11:49:54 236] isr_local  657  local engine ready  
+[2026/01/14 11:49:54 239] isr_local  587  esr_flush_buf_audio buffer audio num:  3  
+[2026/01/14 11:49:54 241] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:54 244] isr_local  592  esr_audio_write, ret =  0  
+[2026/01/14 11:49:54 249] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:54 290] isr_local  592  esr_audio_write, ret =  0  
+[2026/01/14 11:49:54 547] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:54 602] isr_local  592  esr_audio_write, ret =  0  
+[2026/01/14 11:49:55 006] isr_local  632  local engine started  
+[2026/01/14 11:49:55 032] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 046] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 075] network    350  connected  ns2  
+[2026/01/14 11:49:55 139] transport  473  [soc] [1] connected  
+[2026/01/14 11:49:55 196] transport  1799 transport_obj.try2send | in  
+[2026/01/14 11:49:55 204] transport  1800 self.soc  udata(14408568) 
+[2026/01/14 11:49:55 213] transport  1801 self.connected  true  
+[2026/01/14 11:49:55 240] transport  1802 self.latesterr  0  
+[2026/01/14 11:49:55 248] transport  1819 transport:try2send,#msg_q=  1  
+[2026/01/14 11:49:55 254] transport  1359 build http request.  
+[2026/01/14 11:49:55 258] transport  1476 POST /msp.do HTTP/1.1
+X-Sub: auth
+X-Par: ver=MSSP+0%2E9&sub=auth&cmd=rath&key=08TTQTiY2wttc=
+Host: open.xf-yun.com
+CT: multipart/mixed;boundary=--
+CL: 349
+
+----
+Content-Length:48
+Content-Type:text/appinfo
+Content-Encoding:gzip
+
+36
+xœËN­´5µ´L1LN3±L³L521312IM3NMJKNLL3J±4  
+[2026/01/14 11:49:55 342] transport  1819 transport:try2send,#msg_q=  0  
+[2026/01/14 11:49:55 355] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 361] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 391] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 400] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 432] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 437] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 456] network    353  send ok  268  ns2  
+[2026/01/14 11:49:55 462] network    362  readable  ns2  
+[2026/01/14 11:49:55 470] network    366  HTTP/1.1 400 Bad Request
+Server: fasthttp
+Date: Wed, 14 Jan 2026 03:49:55 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 26
+Connection: close
+
+Error when parsing request  
+[2026/01/14 11:49:55 486] ns         253  name server http resp  0  
+[2026/01/14 11:49:55 489] ns         263  ns response failed, statuscode =  400  
+[2026/01/14 11:49:55 492] ns         103  ns_host=  open.xf-yun.com  
+[2026/01/14 11:49:55 498] transport  1052 MSC:name server failed, ip is nil  
+[2026/01/14 11:49:55 510] ns         670  no data in ns_q  
+[2026/01/14 11:49:55 514] ns         671  conti_ns,ns_inprog =   1  
+[2026/01/14 11:49:55 528] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 550] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 562] transport  482  [soc] [1] send ok  512  
+[2026/01/14 11:49:55 566] transport  1799 transport_obj.try2send | in  
+[2026/01/14 11:49:55 569] transport  1800 self.soc  udata(14408568) 
+[2026/01/14 11:49:55 572] transport  1801 self.connected  true  
+[2026/01/14 11:49:55 579] transport  1802 self.latesterr  0  
+[2026/01/14 11:49:55 582] transport  1819 transport:try2send,#msg_q=  0  
+[2026/01/14 11:49:55 589] transport  494  [soc] [1] readable  
+[2026/01/14 11:49:55 595] transport  1767 HTTP/1.1 200 OK
+Content-Length: 87
+X-Req-Date: 2026/01/14 11:49:55 260
+X-Par: ver=MSSP+0%2E9&ret=0&key=09yYh6A2QEQW9rMlIqVgqD0Wy/7jvSr05an75rLKO9mnnoTfbKIlhwig==
+CE: gzip
+CT: binary/authinfo
+CL: 87
+Content-Length: 87
+X-Res-Date: 2026/01/14 11:49:55 273
+
+80
+xœ«VJÌ,IÌÉV²ªV*K-R²R2RÒQJ*-	¤Vd¥Æ§$–¤*Yš››ZšZ˜è(¥å%e¦  
+[2026/01/14 11:49:55 600] transport  1494 a_complete_httpmessage  200  
+[2026/01/14 11:49:55 603] transport  1604 is_update  true  
+[2026/01/14 11:49:55 605] transport  1608 port updated  1028  
+[2026/01/14 11:49:55 608] transport  1610 switch  1028  
+[2026/01/14 11:49:55 610] auth       455  [trans] [id = table: 0x7fda143f1e10;;;=0===;auth] readable  
+[2026/01/14 11:49:55 618] network    90   ipfromenv ,  ipcache  open.xf-yun.com  def  125.254.169.39  
+[2026/01/14 11:49:55 622] transport  981  cached ip is confirmed  
+[2026/01/14 11:49:55 623] transport  1332 [soc] disconnect   
+[2026/01/14 11:49:55 628] transport  991  transport clean  
+[2026/01/14 11:49:55 629] auth       491  auth_json=  udata(14413378) 
+[2026/01/14 11:49:55 631] auth       492  tostring(auth_json)=  {"aitalk":{"ver":"2","bus":{"expire_date":1775961184,"forbid":"0","nlimit":10}}}  
+[2026/01/14 11:49:55 634] auth       86   aitalk  app  nil  nil  {"aitalk":{"ver":"2","bus":{"expire_date":1775961184,"forbid":"0","nlimit":10}}}  
+[2026/01/14 11:49:55 652] auth       512  auth ok!  
+[2026/01/14 11:49:55 658] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 665] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 687] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 690] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 722] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 724] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:55 849] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:55 853] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:56 000] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:56 003] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:56 156] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:56 158] isr_local  1601 auwl =   6400  
+[2026/01/14 11:49:56 315] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:49:56 316] isr_local  1601 auwl =   5760  
+[2026/01/14 11:49:56 349] isr_local  671  final result will throw out next!  
+[2026/01/14 11:49:56 358] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:49:56 360] isr_local  682  nConfidenceScore:  0  
+[2026/01/14 11:49:56 363] isr_local  730  result_type :   xml  
+[2026/01/14 11:49:56 366] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:49:56 369] isr_local  732  is iat :   true  
+[2026/01/14 11:49:56 370] isr_local  773  no recognized result!  
+[2026/01/14 11:49:56 377] isr_local  677  recognized end!  
+[2026/01/14 11:49:56 736] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:49:56 742] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:49:56 747] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:49:56 780] isr_local  640  local engine already stopped! stop cmd ignored  
+============================================================
+Time  2026/01/14 11:54:20 367 
+============================================================
+[2026/01/14 11:54:20 368] isr_local  2211 os_type is:  Linux  
+[2026/01/14 11:54:20 370] isr_local  2220 SYS_MSG_LOAD_LOCAL  
+[2026/01/14 11:54:20 374] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  msp_status_cb  
+[2026/01/14 11:54:20 381] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:54:20 386] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:54:20 387] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:54:20 389] isr_local  805  engine_type  :  local  
+[2026/01/14 11:54:20 391] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:54:20 392] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:54:20 394] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:54:20 395] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:54:20 396] isr_local  805  result_type  :  xml  
+[2026/01/14 11:54:20 398] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:54:20 399] isr_local  1314 init aitalk in ssb  
+[2026/01/14 11:54:20 400] isr_local  1177 esr_init | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:54:20 403] isr_local  805  engine_type  :  local  
+[2026/01/14 11:54:20 404] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:54:20 405] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:54:20 408] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:54:20 409] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:54:20 410] isr_local  805  result_type  :  xml  
+[2026/01/14 11:54:20 412] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:54:20 414] isr_local  1085  lucEsr.new   
+[2026/01/14 11:54:20 417] isr_local  1002 file count =   1  
+[2026/01/14 11:54:20 418] isr_local  925  file open type is:   fo  
+[2026/01/14 11:54:20 420] isr_local  958  res/asr/common.jet  0  0  
+[2026/01/14 11:54:20 422] isr_local  1020 speech_plus_setting  0  
+[2026/01/14 11:54:20 423] isr_local  1033 2  nil  res/asr/common.jet  0  0  
+[2026/01/14 11:54:20 430] isr_local  1035 res_ver  2  
+[2026/01/14 11:54:20 432] isr_local  1036 res 5  19b6a1b4b66938610b89e878385feb4e  
+[2026/01/14 11:54:20 434] isr_local  1037 res_new_old_mark  v5pp  
+[2026/01/14 11:54:20 447] isr_local  1038 res_usr_name  ""  
+[2026/01/14 11:54:20 450] isr_local  1039 res_expires  1775961184  
+[2026/01/14 11:54:20 480] isr_local  1040 err  0  
+[2026/01/14 11:54:20 481] isr_local  1071 now expires:  1768362860  1775961184  
+[2026/01/14 11:54:20 493] auth       86   aitalk  app  nil  nil  {"aitalk":{"ver":"2","bus":{"expire_date":1775961184,"forbid":"0","nlimit":10}}}  
+[2026/01/14 11:54:20 495] auth       420  nil  
+[2026/01/14 11:54:20 546] isr_local  1329 authorized_aitalk=  nil  
+[2026/01/14 11:54:20 547] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:54:20 549] auth       687  app  nil  nil  nil  
+[2026/01/14 11:54:20 550] auth       744  ath rquest  {"authorize":[{"ver":"2.1.1","busin":"aitalk"}]}  
+[2026/01/14 11:54:20 553] config     91   select default  
+[2026/01/14 11:54:20 555] config     113  use general cloud  
+[2026/01/14 11:54:20 556] transport  645  paramkvsport is   nil  
+[2026/01/14 11:54:20 558] transport  657  ns_enable=  1  
+[2026/01/14 11:54:20 559] transport  659  2017-08--24 is_ns_need_close =   nil  
+[2026/01/14 11:54:20 561] transport  665  net.nettype=  unknown  
+[2026/01/14 11:54:20 563] transport  675  url.full=  nil  
+[2026/01/14 11:54:20 564] transport  680  server_url_host=, server_url_port=, server_url_path=  open.xf-yun.com  nil  /msp.do  
+[2026/01/14 11:54:20 568] transport  907  net type:  unknown  
+[2026/01/14 11:54:20 570] transport  908  net operator:  def  
+[2026/01/14 11:54:20 571] transport  909  use proxy:  false  
+[2026/01/14 11:54:20 573] auth       799  not login!  
+[2026/01/14 11:54:20 575] auth       636  [session] send auth request  
+[2026/01/14 11:54:20 576] transport  1105 session.domain=  open.xf-yun.com  
+[2026/01/14 11:54:20 578] transport  1106 url.host=  open.xf-yun.com  
+[2026/01/14 11:54:20 580] transport  1083 NAMESERVER START  
+[2026/01/14 11:54:20 581] transport  1086 name =   ath  
+[2026/01/14 11:54:20 582] ns         634  ntt=  unknown  
+[2026/01/14 11:54:20 585] transport  1089 trans,ns_inprog =  0  
+[2026/01/14 11:54:20 587] ns         582  name server start  
+[2026/01/14 11:54:20 589] ns         588  ns_sub =   ath  
+[2026/01/14 11:54:20 591] ns         596  ns_host =   open.xf-yun.com  
+[2026/01/14 11:54:20 600] ns         475  ns_host=  open.xf-yun.com  
+[2026/01/14 11:54:20 603] ns         555  net_type =  standard  
+[2026/01/14 11:54:20 610] ns         556  cmwapascmnet =  
+[2026/01/14 11:54:20 618] ns         557  uniwapasuninet =  
+[2026/01/14 11:54:20 635] ns         558  ctwapasctnet =  
+[2026/01/14 11:54:20 636] ns         576  host=  hdns.xf-yun.com  
+[2026/01/14 11:54:20 638] network    263  gethostbyname  hdns.xf-yun.com  ns1  
+[2026/01/14 11:54:20 643] auth       643  0  
+[2026/01/14 11:54:20 647] auth       606  lver:  nil  
+[2026/01/14 11:54:20 649] auth       611  cfg_ver:  nil  
+[2026/01/14 11:54:20 657] transport  1860 transport_obj.send | in  
+[2026/01/14 11:54:20 660] transport  1866 self.msg_flag_q  table(a4008ae0) 
+[2026/01/14 11:54:20 662] transport  1867 self.msg_q  table(a4008bb0) 
+[2026/01/14 11:54:20 664] transport  1799 transport_obj.try2send | in  
+[2026/01/14 11:54:20 666] transport  1800 self.soc  nil  
+[2026/01/14 11:54:20 668] transport  1801 self.connected  false  
+[2026/01/14 11:54:20 669] transport  1802 self.latesterr  0  
+[2026/01/14 11:54:20 670] transport  1873 transport_obj.send | out  
+[2026/01/14 11:54:20 676] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:54:20 716] isr_local  2119 commit success!  
+[2026/01/14 11:54:20 735] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:54:20 743] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:54:20 766] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:20 771] isr_local  603  audio buffered :   udata(a4084458) 1  
+[2026/01/14 11:54:20 791] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:20 814] isr_local  603  audio buffered :   udata(a409d158) 2  
+[2026/01/14 11:54:20 818] network    245  dns resp  0  ns1  
+[2026/01/14 11:54:20 820] ns         422  ns dns ok  101.200.180.128  
+[2026/01/14 11:54:20 822] ns         202  iplist not avail  
+[2026/01/14 11:54:20 834] ns         429  is_voicecloud_ip=  0  
+[2026/01/14 11:54:20 843] ns         436  ip_is_expected=  true  
+[2026/01/14 11:54:20 845] ns         444  ip_is_expected=  true  
+[2026/01/14 11:54:20 856] network    445  gethttpresp2  101.200.180.128  80  ns2  
+[2026/01/14 11:54:20 861] network    465  prot_type  tcp  
+[2026/01/14 11:54:20 878] transport  194  [dns] [1] response 125.254.169.39  
+[2026/01/14 11:54:20 886] transport  202  125  254  169  39  
+[2026/01/14 11:54:20 893] transport  204  ipv =  v4  
+[2026/01/14 11:54:20 896] transport  208  dns ip is v4  
+[2026/01/14 11:54:20 909] transport  130  iplist not avail  
+[2026/01/14 11:54:20 923] transport  247  no iplist now  
+[2026/01/14 11:54:20 928] network    95   iptoenv ,  ipcache  open.xf-yun.com  def  125.254.169.39  
+[2026/01/14 11:54:20 966] transport  291  dns cb start conn  
+[2026/01/14 11:54:20 975] transport  1304 [soc] connect   125.254.169.39  1028  
+[2026/01/14 11:54:20 982] transport  1316 mspsoc.open,prot_type=  tcp  
+[2026/01/14 11:54:21 018] isr_local  657  local engine ready  
+[2026/01/14 11:54:21 022] isr_local  587  esr_flush_buf_audio buffer audio num:  2  
+[2026/01/14 11:54:21 026] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 031] isr_local  592  esr_audio_write, ret =  0  
+[2026/01/14 11:54:21 036] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 044] isr_local  592  esr_audio_write, ret =  0  
+[2026/01/14 11:54:21 053] isr_local  632  local engine started  
+[2026/01/14 11:54:21 059] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 060] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 066] network    350  connected  ns2  
+[2026/01/14 11:54:21 098] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 108] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 155] transport  473  [soc] [1] connected  
+[2026/01/14 11:54:21 157] transport  1799 transport_obj.try2send | in  
+[2026/01/14 11:54:21 194] transport  1800 self.soc  udata(a4407f68) 
+[2026/01/14 11:54:21 197] transport  1801 self.connected  true  
+[2026/01/14 11:54:21 198] transport  1802 self.latesterr  0  
+[2026/01/14 11:54:21 199] transport  1819 transport:try2send,#msg_q=  1  
+[2026/01/14 11:54:21 200] transport  1359 build http request.  
+[2026/01/14 11:54:21 201] transport  1476 POST /msp.do HTTP/1.1
+X-Sub: auth
+X-Par: ver=MSSP+0%2E9&sub=auth&cmd=rath&key=08TTQTiY2wttc=
+Host: open.xf-yun.com
+CT: multipart/mixed;boundary=--
+CL: 349
+
+----
+Content-Length:48
+Content-Type:text/appinfo
+Content-Encoding:gzip
+
+36
+xœËN­´5µ´L1LN3±L³L521312IM3NMJKNLL3J±4  
+[2026/01/14 11:54:21 395] transport  1819 transport:try2send,#msg_q=  0  
+[2026/01/14 11:54:21 455] network    353  send ok  268  ns2  
+[2026/01/14 11:54:21 463] network    362  readable  ns2  
+[2026/01/14 11:54:21 520] network    366  HTTP/1.1 200 OK
+Server: iflytek/hdns
+Date: Wed, 14 Jan 2026 03:54:20 GMT
+Content-Type: application/json
+Content-Length: 314
+Connection: close
+
+{"dns":[{"host":"open.xf-yun.com","sip":[{"svc":"ath","ips":[{"ip":"121.37.244.117","port":80,"idc":"gz"},{"ip":"121.37.220.137","port":80,"idc":"gz"}],"ttl":6000,"compel":0}]}],"default":[{"host":"open.xf-yun.com","sip":[{"svc":"ath","ips":[{"ip":"121.37.220.137","port":80,"idc":"gz"}],"ttl":6000,"compel":0}]}]}  
+[2026/01/14 11:54:21 594] ns         253  name server http resp  0  
+[2026/01/14 11:54:21 603] ns         266  ns response OK for this time!  
+[2026/01/14 11:54:21 621] ns         277  from_server=  iflytek/hdns  
+[2026/01/14 11:54:21 645] ns         360  compel :  0  
+[2026/01/14 11:54:21 650] transport  1063 ns_ip =   121.37.244.117  
+[2026/01/14 11:54:21 656] transport  1064 ip_type =  assigned_athopen.xf-yun.com_host  
+[2026/01/14 11:54:21 665] ns         670  no data in ns_q  
+[2026/01/14 11:54:21 674] ns         671  conti_ns,ns_inprog =   1  
+[2026/01/14 11:54:21 694] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 708] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 717] transport  482  [soc] [1] send ok  512  
+[2026/01/14 11:54:21 730] transport  1799 transport_obj.try2send | in  
+[2026/01/14 11:54:21 743] transport  1800 self.soc  udata(a4407f68) 
+[2026/01/14 11:54:21 745] transport  1801 self.connected  true  
+[2026/01/14 11:54:21 749] transport  1802 self.latesterr  0  
+[2026/01/14 11:54:21 752] transport  1819 transport:try2send,#msg_q=  0  
+[2026/01/14 11:54:21 758] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 762] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 769] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 773] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 781] transport  494  [soc] [1] readable  
+[2026/01/14 11:54:21 787] transport  1767 HTTP/1.1 200 OK
+Content-Length: 87
+X-Req-Date: 2026/01/14 11:54:21 366
+X-Par: ver=MSSP+0%2E9&ret=0&key=09udqbWG4lmbmVaofJPXxbK0SNn7MSW8jeWaiQ3wscEGLoTfbKIlhwig==
+CE: gzip
+CT: binary/authinfo
+CL: 87
+Content-Length: 87
+X-Res-Date: 2026/01/14 11:54:21 380
+
+80
+xœ«VJÌ,IÌÉV²ªV*K-R²R2RÒQJ*-	¤Vd¥Æ§$–¤*Yš››ZšZ˜è(¥å%e¦  
+[2026/01/14 11:54:21 791] transport  1494 a_complete_httpmessage  200  
+[2026/01/14 11:54:21 794] transport  1604 is_update  true  
+[2026/01/14 11:54:21 796] transport  1608 port updated  1028  
+[2026/01/14 11:54:21 799] transport  1610 switch  1028  
+[2026/01/14 11:54:21 804] auth       455  [trans] [id = table: 0x7fafa43f1a80;;;=0===;auth] readable  
+[2026/01/14 11:54:21 823] network    90   ipfromenv ,  ipcache  open.xf-yun.com  def  125.254.169.39  
+[2026/01/14 11:54:21 840] transport  981  cached ip is confirmed  
+[2026/01/14 11:54:21 875] transport  1332 [soc] disconnect   
+[2026/01/14 11:54:21 894] transport  991  transport clean  
+[2026/01/14 11:54:21 897] auth       491  auth_json=  udata(a4401c68) 
+[2026/01/14 11:54:21 900] auth       492  tostring(auth_json)=  {"aitalk":{"ver":"2","bus":{"expire_date":1775961184,"forbid":"0","nlimit":10}}}  
+[2026/01/14 11:54:21 901] auth       86   aitalk  app  nil  nil  {"aitalk":{"ver":"2","bus":{"expire_date":1775961184,"forbid":"0","nlimit":10}}}  
+[2026/01/14 11:54:21 914] auth       512  auth ok!  
+[2026/01/14 11:54:21 919] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 920] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:21 928] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:21 930] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:22 022] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:22 024] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:22 182] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:22 183] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:22 350] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:22 352] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:22 488] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:22 490] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:22 651] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:22 653] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:22 806] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:22 810] isr_local  1601 auwl =   5760  
+[2026/01/14 11:54:22 847] isr_local  671  final result will throw out next!  
+[2026/01/14 11:54:22 853] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:54:22 855] isr_local  682  nConfidenceScore:  98  
+[2026/01/14 11:54:22 858] isr_local  730  result_type :   xml  
+[2026/01/14 11:54:22 859] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:54:22 860] isr_local  732  is iat :   false  
+[2026/01/14 11:54:22 866] isr_local  471  item_count:1  
+[2026/01/14 11:54:22 867] isr_local  471  item_count:1  
+[2026/01/14 11:54:22 869] isr_local  294  nil  
+[2026/01/14 11:54:22 876] isr_local  677  recognized end!  
+[2026/01/14 11:54:23 199] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:54:23 204] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:54:23 210] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:54:23 293] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/14 11:54:40 227] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:54:40 232] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:54:40 236] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:54:40 238] isr_local  805  engine_type  :  local  
+[2026/01/14 11:54:40 240] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:54:40 243] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:54:40 249] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:54:40 253] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:54:40 264] isr_local  805  result_type  :  xml  
+[2026/01/14 11:54:40 268] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:54:40 276] isr_local  1329 authorized_aitalk=  1  
+[2026/01/14 11:54:40 289] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:54:40 305] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:54:40 322] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:54:40 325] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:54:40 328] isr_local  657  local engine ready  
+[2026/01/14 11:54:40 331] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/14 11:54:40 336] isr_local  632  local engine started  
+[2026/01/14 11:54:40 447] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:40 449] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:40 597] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:40 606] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:40 755] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:40 758] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:40 943] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:40 945] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:41 099] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:41 102] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:41 273] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:41 281] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:41 433] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:41 440] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:41 583] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:41 588] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:41 745] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:41 747] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:41 898] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:41 901] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:42 051] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:42 055] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:42 204] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:42 207] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:42 361] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:42 367] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:42 513] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:42 515] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:42 670] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:42 672] isr_local  1601 auwl =   5760  
+[2026/01/14 11:54:42 710] isr_local  671  final result will throw out next!  
+[2026/01/14 11:54:42 717] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:54:42 721] isr_local  682  nConfidenceScore:  98  
+[2026/01/14 11:54:42 723] isr_local  730  result_type :   xml  
+[2026/01/14 11:54:42 726] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:54:42 729] isr_local  732  is iat :   false  
+[2026/01/14 11:54:42 732] isr_local  471  item_count:1  
+[2026/01/14 11:54:42 737] isr_local  471  item_count:1  
+[2026/01/14 11:54:42 739] isr_local  294  nil  
+[2026/01/14 11:54:42 745] isr_local  677  recognized end!  
+[2026/01/14 11:54:43 086] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:54:43 093] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:54:43 100] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:54:43 163] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/14 11:54:59 407] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:54:59 415] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:54:59 419] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:54:59 423] isr_local  805  engine_type  :  local  
+[2026/01/14 11:54:59 432] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:54:59 435] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:54:59 447] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:54:59 450] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:54:59 453] isr_local  805  result_type  :  xml  
+[2026/01/14 11:54:59 455] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:54:59 460] isr_local  1329 authorized_aitalk=  1  
+[2026/01/14 11:54:59 462] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:54:59 472] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:54:59 484] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:54:59 488] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:54:59 603] isr_local  657  local engine ready  
+[2026/01/14 11:54:59 615] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/14 11:54:59 627] isr_local  632  local engine started  
+[2026/01/14 11:54:59 667] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:59 669] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:59 784] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:59 786] isr_local  1601 auwl =   6400  
+[2026/01/14 11:54:59 932] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:54:59 937] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:00 096] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:00 107] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:00 244] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:00 248] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:00 399] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:00 402] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:00 559] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:00 564] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:00 718] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:00 720] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:00 865] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:00 867] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:01 023] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:01 025] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:01 184] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:01 195] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:01 331] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:01 334] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:01 485] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:01 494] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:01 649] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:01 651] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:01 802] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:01 804] isr_local  1601 auwl =   6080  
+[2026/01/14 11:55:01 859] isr_local  671  final result will throw out next!  
+[2026/01/14 11:55:01 863] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:55:01 864] isr_local  682  nConfidenceScore:  95  
+[2026/01/14 11:55:01 865] isr_local  730  result_type :   xml  
+[2026/01/14 11:55:01 867] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:55:01 868] isr_local  732  is iat :   false  
+[2026/01/14 11:55:01 870] isr_local  471  item_count:1  
+[2026/01/14 11:55:01 872] isr_local  471  item_count:1  
+[2026/01/14 11:55:01 874] isr_local  294  nil  
+[2026/01/14 11:55:01 880] isr_local  677  recognized end!  
+[2026/01/14 11:55:02 207] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:55:02 212] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:55:02 218] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:55:02 296] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/14 11:55:14 204] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:55:14 213] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:55:14 216] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:55:14 219] isr_local  805  engine_type  :  local  
+[2026/01/14 11:55:14 227] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:55:14 229] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:55:14 236] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:55:14 243] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:55:14 246] isr_local  805  result_type  :  xml  
+[2026/01/14 11:55:14 247] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:55:14 250] isr_local  1329 authorized_aitalk=  1  
+[2026/01/14 11:55:14 253] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:55:14 264] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:55:14 277] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:55:14 282] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:55:14 385] isr_local  657  local engine ready  
+[2026/01/14 11:55:14 400] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/14 11:55:14 423] isr_local  632  local engine started  
+[2026/01/14 11:55:14 443] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:14 444] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:14 575] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:14 576] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:14 743] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:14 744] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:14 894] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:14 896] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:15 054] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:15 056] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:15 208] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:15 210] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:15 364] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:15 366] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:15 526] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:15 529] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:15 682] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:15 684] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:15 843] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:15 845] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:16 000] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:16 003] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:16 156] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:16 158] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:16 309] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:16 311] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:16 461] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:16 463] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:16 616] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:16 619] isr_local  1601 auwl =   5760  
+[2026/01/14 11:55:16 654] isr_local  671  final result will throw out next!  
+[2026/01/14 11:55:16 659] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:55:16 665] isr_local  682  nConfidenceScore:  40  
+[2026/01/14 11:55:16 668] isr_local  730  result_type :   xml  
+[2026/01/14 11:55:16 673] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:55:16 674] isr_local  732  is iat :   false  
+[2026/01/14 11:55:16 675] isr_local  471  item_count:1  
+[2026/01/14 11:55:16 678] isr_local  471  item_count:1  
+[2026/01/14 11:55:16 679] isr_local  294  nil  
+[2026/01/14 11:55:16 686] isr_local  677  recognized end!  
+[2026/01/14 11:55:17 019] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:55:17 025] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:55:17 031] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:55:17 085] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/14 11:55:21 723] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:55:21 732] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:55:21 735] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:55:21 737] isr_local  805  engine_type  :  local  
+[2026/01/14 11:55:21 745] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:55:21 753] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:55:21 760] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:55:21 763] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:55:21 765] isr_local  805  result_type  :  xml  
+[2026/01/14 11:55:21 772] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:55:21 779] isr_local  1329 authorized_aitalk=  1  
+[2026/01/14 11:55:21 782] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:55:21 798] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:55:21 810] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:55:21 814] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:55:21 820] isr_local  657  local engine ready  
+[2026/01/14 11:55:21 823] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/14 11:55:21 830] isr_local  632  local engine started  
+[2026/01/14 11:55:21 931] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:21 935] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:22 107] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:22 108] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:22 251] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:22 254] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:22 408] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:22 410] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:22 583] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:22 584] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:22 723] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:22 725] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:22 883] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:22 886] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 031] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 033] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 194] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 198] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 350] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 352] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 502] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 505] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 663] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 665] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 815] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 817] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 974] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 977] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:23 989] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:23 991] isr_local  1601 auwl =   5120  
+[2026/01/14 11:55:24 032] isr_local  671  final result will throw out next!  
+[2026/01/14 11:55:24 039] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:55:24 042] isr_local  682  nConfidenceScore:  10  
+[2026/01/14 11:55:24 044] isr_local  730  result_type :   xml  
+[2026/01/14 11:55:24 047] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:55:24 049] isr_local  732  is iat :   false  
+[2026/01/14 11:55:24 052] isr_local  471  item_count:1  
+[2026/01/14 11:55:24 055] isr_local  471  item_count:1  
+[2026/01/14 11:55:24 057] isr_local  294  nil  
+[2026/01/14 11:55:24 064] isr_local  677  recognized end!  
+[2026/01/14 11:55:24 363] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:55:24 370] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:55:24 380] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:55:24 442] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/14 11:55:30 403] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:55:30 415] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:55:30 419] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:55:30 432] isr_local  805  engine_type  :  local  
+[2026/01/14 11:55:30 459] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:55:30 460] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:55:30 464] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:55:30 474] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:55:30 475] isr_local  805  result_type  :  xml  
+[2026/01/14 11:55:30 476] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:55:30 479] isr_local  1329 authorized_aitalk=  1  
+[2026/01/14 11:55:30 480] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:55:30 486] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:55:30 495] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:55:30 497] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:55:30 503] isr_local  657  local engine ready  
+[2026/01/14 11:55:30 505] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/14 11:55:30 513] isr_local  632  local engine started  
+[2026/01/14 11:55:30 596] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:30 598] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:30 750] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:30 751] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:30 906] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:30 908] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:31 065] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:31 067] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:31 217] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:31 219] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:31 384] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:31 386] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:31 548] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:31 558] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:31 691] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:31 702] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:31 849] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:31 851] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:32 001] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:32 011] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:32 165] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:32 168] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:32 355] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:32 357] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:32 475] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:32 477] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:32 632] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:32 637] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:32 783] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:32 786] isr_local  1601 auwl =   5760  
+[2026/01/14 11:55:32 903] isr_local  671  final result will throw out next!  
+[2026/01/14 11:55:32 912] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:55:32 914] isr_local  682  nConfidenceScore:  0  
+[2026/01/14 11:55:32 915] isr_local  730  result_type :   xml  
+[2026/01/14 11:55:32 916] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:55:32 918] isr_local  732  is iat :   false  
+[2026/01/14 11:55:32 919] isr_local  773  no recognized result!  
+[2026/01/14 11:55:32 925] isr_local  677  recognized end!  
+[2026/01/14 11:55:33 183] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:55:33 190] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:55:33 195] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:55:33 243] isr_local  640  local engine already stopped! stop cmd ignored  
+[2026/01/14 11:55:45 500] isr_local  2249 SYS_MSG_REGCB_LOCAL| param0 =  local_service_cbmsg  
+[2026/01/14 11:55:45 507] isr_local  2157 ASR_LOCAL_MSG_SSB  
+[2026/01/14 11:55:45 509] isr_local  1269 esr_session_begin | params:  engine_type=local,asr_res_path=fo|res/asr/common.jet,sample_rate=16000,grm_build_path=res/asr/GrmBuilld,local_grammar=call,result_type=xml,result_encoding=UTF-8  
+[2026/01/14 11:55:45 514] isr_local  805  engine_type  :  local  
+[2026/01/14 11:55:45 518] isr_local  805  asr_res_path  :  fo|res/asr/common.jet  
+[2026/01/14 11:55:45 524] isr_local  805  sample_rate  :  16000  
+[2026/01/14 11:55:45 529] isr_local  805  grm_build_path  :  res/asr/GrmBuilld  
+[2026/01/14 11:55:45 533] isr_local  805  local_grammar  :  call  
+[2026/01/14 11:55:45 538] isr_local  805  result_type  :  xml  
+[2026/01/14 11:55:45 543] isr_local  805  result_encoding  :  UTF-8  
+[2026/01/14 11:55:45 548] isr_local  1329 authorized_aitalk=  1  
+[2026/01/14 11:55:45 556] isr_local  1330 forbid_aitalk=  0  
+[2026/01/14 11:55:45 566] isr_local  2081 commit path:   res/asr/GrmBuilld/temp/commit  
+[2026/01/14 11:55:45 589] isr_local  1452 esr_session_begin | esr_obj:start ret =  0  
+[2026/01/14 11:55:45 594] isr_local  2165 esr_session_begin, ret =   0  
+[2026/01/14 11:55:45 604] isr_local  657  local engine ready  
+[2026/01/14 11:55:45 608] isr_local  587  esr_flush_buf_audio buffer audio num:  0  
+[2026/01/14 11:55:45 615] isr_local  632  local engine started  
+[2026/01/14 11:55:45 717] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:45 722] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:45 868] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:45 871] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 028] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 034] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 182] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 184] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 336] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 340] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 498] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 500] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 646] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 649] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 803] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 808] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:46 963] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:46 965] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:47 117] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:47 121] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:47 270] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:47 274] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:47 430] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:47 433] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:47 586] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:47 592] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:47 737] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:47 742] isr_local  1601 auwl =   6400  
+[2026/01/14 11:55:47 892] isr_local  2169 ASR_LOCAL_MSG_AUW  
+[2026/01/14 11:55:47 894] isr_local  1601 auwl =   5760  
+[2026/01/14 11:55:47 930] isr_local  671  final result will throw out next!  
+[2026/01/14 11:55:47 936] isr_local  681  nRecognizeState:  1  
+[2026/01/14 11:55:47 938] isr_local  682  nConfidenceScore:  0  
+[2026/01/14 11:55:47 941] isr_local  730  result_type :   xml  
+[2026/01/14 11:55:47 943] isr_local  731  result_encoding :   UTF-8  
+[2026/01/14 11:55:47 946] isr_local  732  is iat :   true  
+[2026/01/14 11:55:47 949] isr_local  773  no recognized result!  
+[2026/01/14 11:55:47 958] isr_local  677  recognized end!  
+[2026/01/14 11:55:48 304] isr_local  2183 ASR_LOCAL_MSG_SSE  
+[2026/01/14 11:55:48 315] isr_local  1561 esr_session_end | esr_obj:stop ret =  0  
+[2026/01/14 11:55:48 320] isr_local  2185 esr_session_end, ret =  0  
+[2026/01/14 11:55:48 349] isr_local  640  local engine already stopped! stop cmd ignored  

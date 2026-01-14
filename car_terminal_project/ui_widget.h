@@ -481,6 +481,7 @@ public:
         label_title->setObjectName(QStringLiteral("label_title"));
         label_title->setMinimumSize(QSize(250, 48));
         label_title->setMaximumSize(QSize(250, 48));
+        label_title->setStyleSheet(QStringLiteral(""));
         label_title->setFrameShape(QFrame::Box);
         label_title->setFrameShadow(QFrame::Plain);
         label_title->setLineWidth(0);
@@ -489,8 +490,8 @@ public:
 
         label_city = new QLabel(frame_header);
         label_city->setObjectName(QStringLiteral("label_city"));
-        label_city->setMinimumSize(QSize(50, 0));
-        label_city->setMaximumSize(QSize(50, 16777215));
+        label_city->setMinimumSize(QSize(100, 0));
+        label_city->setMaximumSize(QSize(100, 16777215));
         label_city->setStyleSheet(QString::fromUtf8("font: 12pt \"\345\276\256\350\275\257\351\233\205\351\273\221\";"));
 
         horizontalLayout->addWidget(label_city);

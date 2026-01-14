@@ -163,6 +163,7 @@ private slots:
     void reconnectClientB();
     // 手动请求天气
     void requestWeather(const QString &city);
-
+    //帮助按钮槽函数
+    void on_btn_help_clicked();
 };
 #endif // WIDGET_H
